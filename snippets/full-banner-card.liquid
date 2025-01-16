@@ -1,0 +1,59 @@
+<!-- full-banner-card.liquid -->
+<div class="full-banner-card {{ full_banner_card_varient_class }}">
+  <div class="bg-rectangle"></div>
+  <div class="full-banner-card__wrapper full-banner-card__wrapper-info">
+    <h2 class="full-banner-card__title">{{ full_banner_card_title }}</h2>
+    <p class="full-banner-card__text">{{ full_banner_card_text }}</p>
+    <a href="{{ full_banner_card_button_link }}" class="full-banner-card__button">
+      <span class="full-banner-card__text-text">
+        {{ full_banner_card_button_varient_text }}
+      </span>
+      <span class="full-banner-card__text-arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#B52F2B">
+          <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+  <div class="full-banner-card__img">
+    {% if full_banner_card_image %}
+      <a href="{{ full_banner_card_button_link }}">
+        <img
+          srcset="
+            {{ full_banner_card_image | img_url: '165x' }} 165w,
+            {{ full_banner_card_image | img_url: '360x' }} 360w,
+            {{ full_banner_card_image | img_url: '533x' }} 533w,
+            {{ full_banner_card_image | img_url: '720x' }} 720w,
+            {{ full_banner_card_image | img_url: '940x' }} 940w,
+            {{ full_banner_card_image | img_url: '1066x' }} 1066w,
+            {{ full_banner_card_image | img_url: 'master' }} {{ full_banner_card_image.width }}w
+          "
+          sizes="(max-width: 720px) 100vw, 720px"
+          src="{{ full_banner_card_image | img_url: 'master' }}"
+          alt="{{ full_banner_card_image_title }}"
+          width="722"
+          height="422"
+        >
+      </a>
+    {% else %}
+      <a href="{{ full_banner_card_button_link }}">
+        <img
+          srcset="
+            {{ 'full-banner-card-img.png' | file_img_url: '165x' }} 165w,
+            {{ 'full-banner-card-img.png' | file_img_url: '360x' }} 360w,
+            {{ 'full-banner-card-img.png' | file_img_url: '533x' }} 533w,
+            {{ 'full-banner-card-img.png' | file_img_url: '720x' }} 720w,
+            {{ 'full-banner-card-img.png' | file_img_url: '940x' }} 940w,
+            {{ 'full-banner-card-img.png' | file_img_url: '1066x' }} 1066w,
+            {{ 'full-banner-card-img.png' | file_img_url: '748x610' }} 748w
+          "
+          sizes="(max-width: 720px) 100vw, 720px"
+          src="{{ 'full-banner-card-img.png' | file_img_url: '748x610' }}"
+          alt="{{ full_banner_card_image_title }}"
+          width="722"
+          height="422"
+        >
+      </a>
+    {% endif %}
+  </div>
+</div>

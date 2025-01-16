@@ -1,0 +1,301 @@
+@use '../utilities/mx' as mx;
+
+.header {
+    &__nav-bar {
+        display: flex;
+        background-color: var(--clr-smoke-2);
+
+        @include mx.mq('tablet', max) {
+            background-color: var(--clr-white);
+            position: absolute;
+            height: 100vh;
+            max-width: 65%;
+            width: 100%;
+            opacity: 1;
+            transition: all .3s ease-in-out;
+            z-index: 9999;
+            border-top: 1px solid #ececec;
+            transform: translate(100%);
+            right: 0;
+
+            &:after {
+                content: "";
+                transition: all 0.3s ease-in-out;
+                position: absolute;
+                opacity: 0;
+                transform: translateX(-100%);
+                width: 100vw;
+                height: 100vh;
+                z-index: 9998;
+                background-color: rgba(0, 0, 0, 0.5); // Semi-transparent black
+                pointer-events: none;
+            }
+
+            &.open {
+                transform: translateX(0%);
+
+                &::after {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+            }
+        }
+
+
+        ul {
+            padding: 0;
+        }
+
+
+        .nav.nav--main-menu,
+        .nav.nav--main-menu>li,
+        .nav-phone {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .nav.nav--main-menu,
+        .nav-phone {
+            min-height: 88px;
+
+            @include mx.mq('tablet-wide', max) {
+                min-height: 45px;
+            }
+
+            @include mx.mq('tablet', max) {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+        }
+
+        .nav.nav--main-menu {
+
+            li,
+            a {
+                @include mx.mq('tablet', max) {
+                    width: 100%;
+                }
+            }
+
+            a {
+                @include mx.mq('tablet', max) {
+                    justify-content: space-between;
+                }
+            }
+
+        }
+
+        .nav.nav--main-menu li {
+            a {
+                padding: 0 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+                @include mx.font-source-sans(--font-family-2-1, --theme-font-p-mob-1, --clr-white, false, 24px);
+                text-transform: uppercase;
+
+                @include mx.mq('tablet', max) {
+                    color: var(--clr-smoke-2);
+                    font-family: var(--font-family-2);
+                }
+
+                .nav-arrow {
+                    svg {
+                        transform-origin: center;
+
+                        path {
+                            @include mx.mq('tablet', max) {
+                                fill: var(--clr-smoke-2);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.open {
+                >a {
+                    >.nav-arrow {
+
+                        >svg {
+                            transform: rotate(-90deg);
+                        }
+                    }
+                }
+            }
+
+            &:hover,
+            &.active {
+                >a {
+                    background-color: var(--clr-red);
+
+                    @include mx.mq('tablet', max) {
+                        background-color: transparent;
+                    }
+
+                }
+            }
+
+            &.has-submenu:hover {
+                >.submenu {
+                    @include mx.mq('tablet', min) {
+                        display: block;
+                    }
+                }
+            }
+
+            &.has-submenu {
+                &.open>.submenu {
+                    display: block;
+                }
+            }
+
+            &.has-submenu .has-submenu:hover {
+                li {
+                    a {
+                        svg {
+                            transform: rotate(-90deg);
+                        }
+                    }
+
+                }
+
+                >.submenu {
+
+                    // display: block;
+                    @include mx.mq('tablet', min) {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        li.has-submenu {
+            position: relative;
+
+            @include mx.mq('tablet', max) {
+                flex-direction: column;
+            }
+
+            a {
+                gap: 5px;
+            }
+
+        }
+
+        .nav.nav--main-menu .submenu {
+            display: none;
+            position: absolute;
+            width: fit-content;
+            min-width: 100%;
+            top: 100%;
+            list-style: none;
+            padding: 0;
+
+            @include mx.mq('tablet', max) {
+                position: inherit;
+                width: 100%;
+            }
+
+            >li {
+                background-color: var(--clr-smoke-2);
+                padding: 5px 0;
+
+                @include mx.mq('tablet', max) {
+                    background-color: transparent;
+                }
+
+                &:hover {
+                    background-color: var(--clr-red);
+
+                    @include mx.mq('tablet', max) {
+                        background-color: transparent;
+                    }
+                }
+
+                >a {
+                    padding: 5px 5px 5px 15px;
+
+                    @include mx.mq('tablet', max) {
+                        padding: 5px 5px 5px 25px;
+                    }
+                }
+            }
+
+
+
+        }
+
+        .nav.nav--main-menu.submenu-depth-0 {
+            >li {
+                @include mx.mq('tablet', max) {
+                    border-bottom: 1px solid #ececec;
+                }
+
+                a {
+                    @include mx.mq('tablet', max) {
+                        padding: 15px 5px;
+                    }
+                }
+            }
+        }
+
+        .nav.nav--main-menu .submenu.submenu-depth-1 {
+            >li {
+                >a {
+                    @include mx.mq('tablet', max) {
+                        padding: 5px 5px 5px 15px;
+                    }
+                }
+            }
+        }
+
+        .nav.nav--main-menu .submenu.submenu-depth-2 {
+            left: 100%;
+            top: 0;
+
+            @include mx.mq('tablet', max) {
+                position: initial;
+                left: 0;
+            }
+
+            >li {
+                >a {
+                    @include mx.mq('tablet', max) {
+                        padding: 5px 5px 5px 30px;
+                    }
+                }
+            }
+        }
+
+        .nav-phone {
+            justify-content: flex-end;
+
+            &__text {
+                @include mx.mq('tablet-wide', max) {
+                    display: none;
+                }
+            }
+
+            a {
+                padding: 0 30px;
+                display: flex;
+                align-items: center;
+                transition: all 0.3s ease-in-out;
+                @include mx.font-source-sans(--font-family-2-1, --theme-font-p-mob-1, --clr-white, false, 24px);
+                text-transform: capitalize;
+                gap: 13px;
+
+                &:hover,
+                &.active {
+                    background-color: var(--clr-red);
+                }
+            }
+
+
+        }
+    }
+}

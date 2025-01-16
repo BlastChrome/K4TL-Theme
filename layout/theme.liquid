@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <link href="{{ 'theme.css' | asset_url }}" rel="stylesheet">
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ content_for_header }}
+  </head>
+  <body>
+    {% sections 'header-group' %}
+    <main id="main" role="main">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+    <div class="global--overlay" data-drawer="overlay"></div>
+    <script src="{{ 'jquery.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </body>
+</html>

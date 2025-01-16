@@ -1,0 +1,61 @@
+<!-- product-card.liquid -->
+
+{% assign show_second_image = false %}
+{% if product_card_image_two != null %}
+  {% assign show_second_image = true %}
+{% endif %}
+
+<product-card class="product-card" data-slick="slide">
+  <form action="/cart/add.js" method="post" class="product-card__form">
+    <!-- Hidden input for variant ID -->
+    <input type="hidden" name="id" value="{{ product_varient_id }}">
+    <div class="product-card__actions {% if product_card_image_two == null %}image-single {% endif %}">
+      <div class="product-card__actions--image">
+        <div class="img-wrapper {% if product_card_image_two != null %}img-wrapper--one {% endif %}">
+          <a href="{{ product_card_url }}">
+            <img
+              src="{{ product_card_image | img_url: 'master' }}"
+              alt="{{ product_card_title }}"
+              width="748"
+              height="610"
+            >
+          </a>
+        </div>
+        {% if product_card_image_two != null %}
+          <div class="img-wrapper img-wrapper--two">
+            <a href="{{ product_card_url }}">
+              <img
+                src="{{ product_card_image_two | img_url: 'master' }}"
+                alt="{{ product_card_title }}"
+                width="748"
+                height="610"
+              >
+            </a>
+          </div>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="product-card__actions--cart">
+        <span id="btn-text" class="actions__btn-text">Add to Cart</span>
+        <span id="loader-spinner" class="loader-spinner"></span>
+      </button>
+
+      <div class="product-card__actions-group">
+        <button class="product-card__action product-card__action--favorite">
+          {{ 'product-card-favorite.svg' | inline_asset_content }}
+        </button>
+        <button class="product-card__action product-card__action--share">
+          {{ 'product-card-share.svg' | inline_asset_content }}
+        </button>
+        <button class="product-card__action product-card__action--zoom">
+          {{ 'product-card-zoom.svg' | inline_asset_content }}
+        </button>
+      </div>
+    </div>
+    <div class="product-card__details">
+      <h3 class="product-card__category">{{ product_card_category }}</h3>
+      <h2 class="product-card__title">{{ product_card_title }}</h2>
+      <p class="product-card__price">{{ product_card_price | money }}</p>
+    </div>
+  </form>
+</product-card>

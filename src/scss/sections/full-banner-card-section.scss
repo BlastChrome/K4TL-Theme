@@ -1,0 +1,9 @@
+@use '../utilities/mx' as mx;
+
+.full-banner-card-section {
+    margin-top: 150px;
+    @include mx.mq('tablet-wide'){
+        margin-top: 56px;
+    }
+    
+}

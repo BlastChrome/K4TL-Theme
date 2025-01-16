@@ -1,0 +1,42 @@
+<!-- banner-card.liquid -->
+<div class="banner-card {{ banner_card_varient_class }} {{ banner_card_width_class }}">
+  <div class="banner-card__wrapper banner-card__wrapper-info">
+    <h3 class="banner-card__subtitle">{{ banner_card_subtitle }}</h3>
+    <h2 class="banner-card__title">{{ banner_card_title }}</h2>
+    <p class="banner-card__text">{{ banner_card_text }}</p>
+    <a href="{{ banner_card_button_link }}" class="banner-card__button">
+      <span class="banner-card__text-text">
+        {{ banner_card_button_varient_text }}
+      </span>
+      <span class="banner-card__text-arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#B52F2B">
+          <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+  <div class="banner-card__img">
+    <div class="bg-circle">
+      {{ 'half-banner-card-circle.svg' | inline_asset_content }}
+    </div>
+    {% if banner_card_image %}
+      <a href="{{ banner_card_button_link }}">
+        <img
+          src="{{ banner_card_image | img_url: 'master' }}"
+          alt="{{ banner_card_image_title }}"
+          width="450"
+          height="360"
+        >
+      </a>
+    {% else %}
+      <a href="{{ banner_card_button_link }}">
+        <img
+          src="{{ 'banner-card-shoe.png' | file_img_url: '748x610' }}"
+          alt="{{ banner_card_image_title }}"
+          width="450"
+          height="360"
+        >
+      </a>
+    {% endif %}
+  </div>
+</div>

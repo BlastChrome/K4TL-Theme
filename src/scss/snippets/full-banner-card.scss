@@ -1,0 +1,184 @@
+@use '../utilities/mx' as mx;
+
+.full-banner-card {
+    width: 100%;
+    height: auto;
+    background-color: var(--clr-grey);
+    padding: 40px 40px 0;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+
+
+    .bg-rectangle {
+        position: absolute;
+        background-color: var(--clr-yellow);
+        width: 130%;
+        height: 300px;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
+
+        @include mx.mq('tablet-wide') {
+            width: 100%;
+            height: 996px;
+            right: -600px;
+            clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+     
+    }
+
+    @include mx.mq('tablet-wide') {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @include mx.mq('desktop') {
+        align-items: flex-start;
+    }
+
+    @include mx.mq('desktop-medium') {
+       justify-content: space-around;
+       align-items: center;
+    }
+
+    &:hover {
+        .full-banner-card__button {
+            color: var(--clr-red);
+        }
+
+        .full-banner-card__text-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    &__wrapper-info {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        overflow: hidden;
+
+        @include mx.mq('tablet-wide') {
+            text-align: left;
+        }
+
+        @include mx.mq('desktop-medium') {
+            max-width: 513px;
+            margin-top: 5px;
+        }
+
+    }
+
+    &__subtitle {
+        letter-spacing: 4.3px;
+        text-transform: uppercase;
+        max-width: 400px;
+        margin: 0 auto;
+
+        @include mx.mq('desktop-medium') {
+            margin: 0 auto 19px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 10px;
+
+        @include mx.mq('desktop-medium') {
+            @include mx.font-source-sans(--font-family-1, --theme-font-h1-mob-3, --clr-smoke-2, false, 62px);
+        }
+    }
+
+    &__text {
+        margin-bottom: 10px;
+        @include mx.font-source-sans(--font-family-2, --theme-font-p-mob-3, --clr-smoke-2, false, 30px);
+
+        @include mx.mq('desktop-medium') {
+            margin-bottom: 51px;
+        }
+    }
+
+    &__text-arrow {
+        opacity: 0;
+        transition: all 0.6s ease-in-out;
+        transform: translateX(-100%);
+
+    }
+
+    &__button {
+        margin: 0 auto 40px;
+        @include mx.font-source-sans(--font-family-1, --theme-font-btn-tab-1, --clr-smoke-2, false, normal);
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: none;
+        width: fit-content;
+        position: relative;
+        flex-direction: column;
+
+        @include mx.mq('tablet-wide') {
+            margin-left: 0;
+            min-width: 216px;
+            flex-direction: row;
+        }
+
+    }
+
+    &__img {
+        position: relative;
+
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 712px;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
+            transition: all 0.6s ease-in-out;
+            cursor: pointer;
+        }
+
+        &:hover {
+            img {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    // varients
+    &--secondary {
+        background-color: var(--clr-grey);
+
+        &:hover {
+            .full-banner-card__button {
+                color: var(--clr-red);
+            }
+        }
+
+        .full-banner-card__title,
+        .full-banner-card__text,
+        .full-banner-card__button {
+            color: var(--clr-smoke-2)
+        }
+
+        .full-banner-card__subtitle {
+            color: var(--clr-smoke-2)
+        }
+
+        .full-banner-card__text-arrow {
+            svg {
+                fill: var(--clr-red);
+            }
+        }
+
+        .bg-rectangle {
+            background-color: var(--clr-yellow);
+        }
+
+
+    }
+
+}

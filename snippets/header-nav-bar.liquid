@@ -1,0 +1,64 @@
+{% comment %}
+  Renders a thin bar with text information
+
+  Usage:
+  {% render 'header-nav-bar'
+   nav: 'link_list'
+    %}
+{% endcomment %}
+
+<div class="header__nav-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-9 col-lg-6">
+        <nav>
+          <ul class="submenu-depth-0 nav nav--{{ nav.handle }}">
+            {% for link in nav.links %}
+              <li class="outer-link {% if link.links.size > 0 %}has-submenu{% endif %}">
+                {% if link.links.size > 0 %}
+                  <a class="nav-link" href="{{ link.url }}">
+                    {{ link.title }}
+                    <span class="nav-arrow">{{- 'nav-arrow-icon.svg' | inline_asset_content }}</span>
+                  </a>
+                  <ul class="submenu submenu-depth-1">
+                    {% for sub_link in link.links %}
+                      <li class="inner-link {% if sub_link.links.size > 0 %}has-submenu{% endif %}">
+                        {% if sub_link.links.size > 0 %}
+                          <a class="nav-link" href="{{ sub_link.url }}">
+                            {{- sub_link.title }}
+                            <span class="nav-arrow">{{- 'nav-arrow-icon.svg' | inline_asset_content }}</span>
+                          </a>
+                          <ul class="submenu submenu-depth-2">
+                            {% for sub_sub_link in sub_link.links %}
+                              <li class="inner-link">
+                                <a class="nav-link" href="{{ sub_sub_link.url }}">
+                                  {{- sub_sub_link.title -}}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          <a class="nav-link" href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+      <div class="d-none d-md-block col-md-3 col-lg-6">
+        <div class="nav-phone">
+          <a href="tel:+11234567891">
+            <span class="nav-pone__icon">{{- 'nav-phone-icon.svg' | inline_asset_content }}</span>
+            <span class="nav-phone__text">Customer Care: +1 (123) 456-7891</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="header header--{{ section.settings.sticky_nav }}" id="header">
+  <top-header>
+    {% for block in section.blocks %}
+      {% if block.type == 'address-bar' %}
+        {% render 'header-top-bar', top_bar_text: block.settings.location_text %}
+      {% elsif block.type == 'logo-bar' %}
+        {% render 'header-logo-bar', nav_logo: block.settings.nav_logo, nav_width: block.settings.nav_width %}
+      {% elsif block.type == 'nav-bar' %}
+        {% render 'header-nav-bar', nav: block.settings.primary_nav %}
+      {% endif %}
+    {% endfor %}
+  </top-header>
+</section>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "radio",
+      "id": "sticky_nav",
+      "label": "Enable Sticky Nav",
+      "info": "The nav will follow the user down the page when scrolling",
+      "options": [
+        {
+          "value": "sticky",
+          "label": "On"
+        },
+        {
+          "value": "sticky--off",
+          "label": "Off"
+        }
+      ],
+      "default": "sticky"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "address-bar",
+      "name": "Address Bar",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "label": "Store Address",
+          "id": "location_text",
+          "default": "123 Main Street Chicago, IL 12345 United States"
+        }
+      ]
+    },
+    {
+      "type": "logo-bar",
+      "name": "Logo Bar",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "nav_logo",
+          "label": "Nav Logo",
+          "info": "Recommended image size: 153x94px"
+        },
+        {
+          "type": "range",
+          "id": "nav_width",
+          "min": 110,
+          "max": 180,
+          "step": 2,
+          "unit": "px",
+          "label": "Logo Width",
+          "default": 150
+        }
+      ]
+    },
+    {
+      "type": "nav-bar",
+      "name": "Nav Bar",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "primary_nav",
+          "label": "Primary Navigation"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

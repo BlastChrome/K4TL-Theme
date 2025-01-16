@@ -1,0 +1,61 @@
+{
+    "type": "footer",
+    "name": "footer-group",
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "logo_block": {
+            "type": "logo_block",
+            "settings": {
+              "pin_text": "123 Main Street Chicago, IL 12345 United States",
+              "pin_link": "#", 
+              "phone_text": "(123) 456-7891", 
+              "mail_text": "hello@kicks4thallow.com"
+            }
+          },
+          "nav_one_block": {
+            "type": "nav_block",
+            "settings": {
+              "nav_link": "footer-company", 
+            }
+          },
+          "nav_two_block": {
+            "type": "nav_block",
+            "settings": {
+              "nav_link": "footer-account", 
+            }
+          },
+          "nav_three_block": {
+            "type": "nav_block",
+            "settings": {
+              "nav_link": "footer-support", 
+            }
+          },
+          "newsletter_block": {
+            "type": "newsletter_block",
+            "settings": {
+              "placeholder_text": "Enter Your Email",
+              "show_payment_logos": "yes", 
+              "payment_text": "Payment" 
+            }
+          },
+        },
+        "block_order": [
+          "logo_block",
+          "nav_one_block",
+          "nav_two_block",
+          "nav_three_block",
+          "newsletter_block"
+        ],
+        "settings": { 
+          "padding_top": 84, 
+          "padding_bottom": 84,
+        }
+      },
+    },
+    "order": [
+      "footer"
+    ],
+  }
+  

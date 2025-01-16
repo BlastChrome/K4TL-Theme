@@ -1,0 +1,359 @@
+{{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'productCard.js' | asset_url }}" defer></script>
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {% if section.settings.view_all %}
+    .view-all-wrapper{
+      margin-top: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  {% endif %}
+
+    {% assign grid_columns = section.settings.columns_desktop %}
+    .section-{{ section.id }} .product-slider--grid{
+      display: grid;
+      gap: 30px;
+      padding: 0 15px;
+      grid-template-columns: repeat({{ grid_columns }}, 1fr);
+    }
+
+    @media screen and (max-width: 991px) {
+        .section-{{ section.id }} .product-slider--grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media screen and (max-width: 767px) {
+        .section-{{ section.id }} .product-slider--grid{
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+{%- endstyle -%}
+
+<section class="product-listing-section section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
+  <div class="container">
+    <div class="row ">
+      <div class="col-12 title-category-col">
+        {% assign collection_one = collections[section.settings.product_collection_one] %}
+        <div class="product-tabs">
+          <a href="#" id="product-tab-1" class="product-tabs__title  product-tabs__title--active">Trending Products</a>
+        </div>
+        <div class="categories">
+          <label for="categories-select" class="categories-label">Category</label>
+          <div class="vert-line"></div>
+          <select name="categories-select" id="categories-select" class="categories-select">
+            {% for vendor in collection_one.all_vendors %}
+              <option value="{{vendor}}">{{ vendor }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="product-tabs__separator product-tabs__separator--horizontal"></div>
+      </div>
+    </div>
+  </div>
+  <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
+    <div class="row">
+      <div class="col-12">
+        <div class="product-slider-wrapper">
+          {% if section.settings.grid_layout == false %}
+            <div class="product-slider__controller">
+              <button
+                class="product-slider__controller-button product-slider__controller-button--prev"
+                data-slick="prev"
+              >
+                {{ 'product-slider-section-prev.svg' | inline_asset_content }}
+              </button>
+              <button
+                class="product-slider__controller-button product-slider__controller-button--next"
+                data-slick="next"
+              >
+                {{ 'product-slider-section-next.svg' | inline_asset_content }}
+              </button>
+            </div>
+          {% endif %}
+          <div class="product-slider  product-slider--grid">
+            {% if section.settings.product_collection_one %}
+              {% assign collection = collections[section.settings.product_collection_one] %}
+            {% endif %}
+            {% if collection %}
+              {% for product in collection.products limit: section.settings.total_products_to_show %}
+                {% if section.settings.show_secondary_image == true %}
+                  {% assign image_two = product.media[1] %}
+                {% endif %}
+                {%
+                  render 'product-card',
+                  product_form: product,
+                  product_varient_id: product.variants.first.id,
+                  product_card_image: product.featured_media | default: product.featured_image,
+                  product_card_image_two: image_two,
+                  product_card_category: product.type,
+                  product_card_title: product.title,
+                  product_card_price: product.price,
+                  product_card_url: product.url
+                %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if section.settings.view_all %}
+      {% assign view_all_class = 'button--' | append: section.settings.view_all_style %}
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="view-all-wrapper">
+            {% render 'button', button_text: 'View All', button_link: collection.url, button_class: view_all_class %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+// Encapsulate the section logic inside IIFE
+    (function(){
+          function handleProductLayout(products,layoutElement){
+            // Clear the contents of the wrapper
+            $(layoutElement).empty();
+
+            // if the number of products is less than the max set in the admin, set the limit to length of products array
+            let limit = 0
+            products.length < {{ section.settings.total_products_to_show }}
+              ? limit = products.length
+              : limit = {{ section.settings.total_products_to_show }}
+
+              // Loop through the products and render them in the product slider, 
+             for(let i = 0; i < limit; i++){
+                    const product = products[i];
+                    // query the relevant product info
+                    const first_varient_id = product.variants[0].id;
+                    const first_varient_price = product.variants[0].price;
+                    const product_title = product.title;
+                    const product_featured_image = product.images[0].src;
+                    const product_url = `/products/${product.handle}`
+                    {% if section.settings.show_secondary_image == true %}
+                    const product_secondary_image = product.images[1].src;
+                    {% endif %}
+                    const product_category = product.product_type;
+             
+                    // re-construct the product card html
+                    const productHTML = `
+                        <product-card class="product-card" data-slick="slide">
+                          <form action="/cart/add.js" method="post" class="product-card__form">
+                            <!-- Hidden input for variant ID -->
+                            <input type="hidden" name="id" value="${first_varient_id}">
+                            <div class="product-card__actions {% if section.settings.show_secondary_image == blank %} image-single {%endif %}">
+                              <div class="product-card__actions--image">
+                               <div class="img-wrapper {% if section.settings.show_secondary_image %} img-wrapper--one {% endif %}">
+                                <a href="${product_url}">
+                                  <img
+                                    src="${product_featured_image}"
+                                    alt="${product_title}"
+                                    width="748"
+                                    height="610"
+                                  >
+                                </a>
+                              </div>
+                           {% if section.settings.show_secondary_image %}
+                               <div class="img-wrapper img-wrapper--two">
+                                 <a href="${product_url}">
+                                   <img
+                                     src="${product_secondary_image}"
+                                     alt=""
+                                     width="748"
+                                     height="610"
+                                   >
+                                 </a>
+                               </div>
+                             {% endif %} 
+                              </div>
+                              
+                               <button type="submit" class="product-card__actions--cart">
+                                  <span id="btn-text" class="actions__btn-text">Add to Cart</span>
+                                 <span id="loader-spinner" class="loader-spinner"></span>
+                               </button>
+             
+                              <div class="product-card__actions-group">
+                                <button class="product-card__action product-card__action--favorite">
+                                 {{ 'product-card-favorite.svg' | inline_asset_content }}
+                                </button>
+                                <button class="product-card__action product-card__action--share">
+                                 {{ 'product-card-share.svg' | inline_asset_content }}
+                                </button>
+                                <button class="product-card__action product-card__action--zoom">
+                                 {{ 'product-card-zoom.svg' | inline_asset_content }}
+                                </button>
+                              </div>
+                            </div>
+             
+                            <div class="product-card__details">
+                              <h3 class="product-card__category">${product_category}</h3>
+                              <h2 class="product-card__title">${product_title}</h2>
+                              <p class="product-card__price">$${first_varient_price}</p>
+                            </div>
+                          </form>
+                        </product-card>
+                    `;
+                  $(layoutElement).append(productHTML); 
+            }
+          }
+        
+          function handleSelectField(){
+                // Select all tabs within the product slider section
+                const select = document.querySelector('.section-{{ section.id }} #categories-select');
+                select.addEventListener("change", async (e) => {
+                  // get the vendor value from the from the option tag
+                  const vendor = e.target.value; 
+
+                  // fetch all the products from the current collection
+                  const res = await fetch(`/collections/{{section.settings.product_collection_one}}/products.json`);
+                  const collection = await res.json();
+                  const products = collection.products;
+
+                  //filter the products to the selected vendor 
+                  const filteredProducts = products.filter(product => product.vendor == vendor)
+                  handleProductLayout(filteredProducts,'#{{ section.id }} .product-slider--grid')
+                })
+          }
+        
+          // re-initialize the slider in the editor
+          document.addEventListener('shopify:section:load', function () {
+            handleSelectField()
+          });
+        
+          // initial setup for the section
+          document.addEventListener('DOMContentLoaded', function () {
+            handleSelectField()
+          });
+    })()
+</script>
+
+{% schema %}
+{
+  "name": "Product Listing Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Collections"
+    },
+    {
+      "type": "collection",
+      "id": "product_collection_one",
+      "label": "Product Collection One"
+    },
+    {
+      "type": "checkbox",
+      "id": "view_all",
+      "label": "Enable View All Button",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "view_all_style",
+      "label": "View View All Style",
+      "options": [
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "link",
+          "label": "Link"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "range",
+      "label": "Number of Columns (Desktop)",
+      "id": "columns_desktop",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "label": "Products To Show",
+      "id": "total_products_to_show",
+      "min": 3,
+      "max": 16,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable Full Width",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Grid Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "grid_layout",
+      "label": "Change to grid layout",
+      "info": "this setting will disable the carousel",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Product Image Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "Show secondary image on hover"
+    }
+  ]
+}
+{% endschema %}

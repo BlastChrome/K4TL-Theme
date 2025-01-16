@@ -1,0 +1,144 @@
+@use '../utilities/mx' as mx;
+
+
+
+body {
+    font-family: var(--font-family-2);
+    color: var(--clr-smoke-2);
+    overflow-x: hidden;
+    position: relative;
+}
+
+main#main {
+    overflow: hidden;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+
+.global--overlay {
+    display: none;
+    position: fixed; // Ensure overlay covers the entire screen
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); // Semi-transparent black
+    z-index: 9998; // Below the drawer
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    @include mx.mq('tablet-wide', max) {
+        display: block;
+
+    }
+}
+
+h1,
+h2,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-1);
+    color: var(--clr-smoke-2);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+h1 {
+
+    @include mx.font-source-sans(--font-family-1, --theme-font-h1-mob-1-1, --clr-smoke-2, false, normal);
+
+    @include mx.mq('desktop-phablet') {
+        @include mx.font-source-sans(--font-family-1, --theme-font-h1-mob-2, --clr-smoke-2, false, normal);
+    }
+
+    @include mx.mq('desktop-medium') {
+        @include mx.font-source-sans(--font-family-1, --theme-font-h1-tab-2, --clr-smoke-2, false, 70px);
+    }
+
+    @include mx.mq('desktop-medium') {
+        @include mx.font-source-sans(--font-family-1, --theme-font-h1-tab-3, --clr-smoke-2, false, 80px);
+    }
+}
+
+
+p {
+    @include mx.font-source-sans(--font-family-2, --theme-font-3, --clr-smoke-2, false, normal);
+
+    @include mx.mq('desktop-medium') {
+        @include mx.font-source-sans(--font-family-2, --theme-font-p-mob-3, --clr-smoke-2, false, 30px);
+    }
+}
+
+h3 {
+    @include mx.font-source-sans(--font-family-2-1, --theme-font-h3-mob-1, --clr-red, false, normal);
+}
+
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        color: var(--clr-red);
+    }
+}
+
+[data-slick="slider"]>[data-slick="slide"]:not(:first-child) {
+    display: none;
+}
+
+.horizontal-line,
+.vertical-line {
+    background-color: var(--clr-smoke-2);
+    opacity: 0.2;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 1px;
+}
+
+.vertical-line {
+    height: 100%;
+    width: 1px;
+}
+
+
+.loader-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, .3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: loader-spinner 1s ease-in-out infinite;
+    -webkit-animation: loader-spinner 1s ease-in-out infinite;
+    position: absolute;
+    opacity: 0;
+}
+
+@keyframes loader-spinner {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes loader-spinner {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}

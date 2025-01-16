@@ -1,0 +1,111 @@
+<section class="half-banner-card-section" id="1-block">
+  <div class="container">
+    <div class="row">
+      {% for block in section.blocks %}
+        <div class="col-12 col{% if block.settings.card_width == 'half' %}-xl-6{% elsif block.settings.card_width == 'full' %}-xl-12{% endif %}">
+          {% assign card_width = 'banner-card--' | append: block.settings.card_width %}
+          {% assign card_type = 'banner-card--' | append: block.settings.card_type %}
+
+          {% render 'banner-card',
+            banner_card_varient_class: card_width,
+            banner_card_width_class: card_type,
+            banner_card_subtitle: block.settings.card_subtitle,
+            banner_card_title: block.settings.card_title,
+            banner_card_text: block.settings.card_text,
+            banner_card_button_link: block.settings.card_button_link,
+            banner_card_button_varient_text: block.settings.card_button_text,
+            banner_card_image: block.settings.card_image
+          %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Half Banner Card Section",
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Banner Card",
+      "settings": [
+        {
+          "type": "radio",
+          "id": "card_type",
+          "label": "Card Type",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "radio",
+          "id": "card_width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "full",
+              "label": "Full"
+            },
+            {
+              "value": "half",
+              "label": "Half"
+            }
+          ],
+          "default": "half"
+        },
+        {
+          "type": "text",
+          "id": "card_subtitle",
+          "label": "Subtitle",
+          "default": "NEW UP!"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Title",
+          "default": "UNLEASH YOUR POTENTIAL"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Text",
+          "default": "Explore our wide range of high-quality sportswear."
+        },
+        {
+          "type": "url",
+          "id": "card_button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "card_button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Image",
+          "info": "Recommended image size: 450x360px"
+        }
+      ],
+      "limit": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": "Half Banner Card",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

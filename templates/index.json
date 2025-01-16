@@ -1,0 +1,242 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured-section": {
+      "type": "featured-section",
+      "settings": {
+        "featured_title": "DISCOVER YOUR SPORTY EDGE",
+        "featured_text": "Get the best sports apparel with the best offer that you can afford. Available for worldwide shipping and free delivery order.",
+        "featured_link_url": "",
+        "featured_link_class": "primary",
+        "featured_link_text": "Shop Now"
+      }
+    },
+    "half-banner-card-section": {
+      "type": "half-banner-card-section",
+      "blocks": {
+        "block_QJ3Bc9": {
+          "type": "block",
+          "settings": {
+            "card_type": "primary",
+            "card_width": "half",
+            "card_subtitle": "NEW UP!",
+            "card_title": "UNLEASH YOUR POTENTIAL",
+            "card_text": "Explore our wide range of high-quality sportswear.",
+            "card_button_link": "",
+            "card_button_text": "Shop Now"
+          }
+        },
+        "block_8PetNa": {
+          "type": "block",
+          "settings": {
+            "card_type": "secondary",
+            "card_width": "half",
+            "card_subtitle": "NEW UP!",
+            "card_title": "UNLEASH YOUR POTENTIAL",
+            "card_text": "Explore our wide range of high-quality sportswear.",
+            "card_button_link": "",
+            "card_button_text": "Shop Now"
+          }
+        }
+      },
+      "block_order": ["block_QJ3Bc9", "block_8PetNa"],
+      "settings": {}
+    },
+    "product-slider-section": {
+      "type": "product-slider-section",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "active_tab": "product-tab-2",
+        "product_collection_one": "featured",
+        "product_collection_two": "new",
+        "view_all": false,
+        "view_all_style": "solid",
+        "columns_desktop": 4,
+        "total_products_to_show": 5,
+        "full_width": false,
+        "autoplay": "yes",
+        "autoplay_speed": 3,
+        "pause_on_hover": "yes",
+        "grid_layout": false,
+        "show_secondary_image": false
+      }
+    },
+    "full-banner-card-section": {
+      "type": "full-banner-card-section",
+      "blocks": {
+        "block_QJ3Bc9": {
+          "type": "block",
+          "settings": {
+            "card_title": "UNLOCK YOUR BEST SELF",
+            "card_text": "Elevate your style on and off the field with our fashionable sportswear. 40% Off for 15-30 July only.",
+            "card_button_link": "#",
+            "card_button_text": "Shop Now"
+          }
+        }
+      },
+      "block_order": ["block_QJ3Bc9"],
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "product-listing-section": {
+      "type": "product-listing-section",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "product_collection_one": "featured",
+        "view_all": false,
+        "view_all_style": "solid",
+        "columns_desktop": 4,
+        "total_products_to_show": 8,
+        "full_width": false,
+        "grid_layout": true,
+        "show_secondary_image": false
+      }
+    },
+    "product-promos-section": {
+      "type": "product-promos-section",
+      "blocks": {
+        "promo_card_1": {
+          "type": "promo_card",
+          "settings": {
+            "card_type": "primary",
+            "card_width": "half",
+            "card_subtitle": "Trending",
+            "card_title": "Nike Jordan Air Max",
+            "card_text": "Celebrate the basketball month with our selected items.",
+            "card_button_link": "",
+            "card_button_text": "Shop Now",
+            "card_image": "shopify://shop_images/promo-main-card.jpg"
+          }
+        },
+        "promo_card_2": {
+          "type": "promo_card",
+          "settings": {
+            "card_type": "primary",
+            "card_width": "quarter",
+            "card_subtitle": "Promo",
+            "card_title": "Easy To Wear",
+            "card_text": "",
+            "card_button_link": "",
+            "card_button_text": "Shop Now",
+            "card_image": "shopify://shop_images/promo-quarter-card.jpg"
+          }
+        },
+        "mini_cards": {
+          "type": "mini_cards",
+          "settings": {
+            "card_title_top": "Nike Air Max 1",
+            "card_text_top": "From $80.00",
+            "card_image_top": "shopify://shop_images/minicard-first.png",
+            "card_title_middle": "Nike Air Max 2",
+            "card_text_middle": "From $50.00",
+            "card_image_middle": "shopify://shop_images/minicard-second.png",
+            "card_title_bottom": "Nike Air Max 3",
+            "card_text_bottom": "From $40.00",
+            "card_image_bottom": "shopify://shop_images/minicard-third.png"
+          }
+        }
+      },
+      "block_order": ["promo_card_1", "promo_card_2", "mini_cards"],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "callout-banner-section": {
+      "type": "callout-banner-section",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "WE ARE DIFFERENT",
+        "text": "Discover our qualities that makes us different than other marketplace.",
+        "button_text": "More About Us",
+      }, 
+      "blocks": {
+        "icon_column_1": {
+          "type": "icon_column",
+          "settings": {
+            "title": "Worldwide Shipping",
+            "text": "Doesn’t matter wherever you are, you will always get your order.",
+            "icon": "worldwide"
+          }
+        },
+        "icon_column_2": {
+          "type": "icon_column",
+          "settings": {
+            "title": "Free Delivery",
+            "text": "No more additional fees other than what you pay for what you want.",
+            "icon": "delivery"
+          }
+        },
+        "icon_column_3": {
+          "type": "icon_column",
+          "settings": {
+            "title": "Secure Transaction",
+            "text": "We are a verified marketplace since 2018. Safety guarantee.",
+            "icon": "secure"
+          }
+        }
+      },
+      "block_order": ["icon_column_1", "icon_column_2", "icon_column_3"]
+    },
+    "blog-card-section": {
+      "type": "blog-card-section",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Latest Updates",
+        "button_text": "See All Articles",
+      },  
+      "blocks": {
+        "blog_block_1": {
+          "type": "blog_block",
+          "settings": {
+            "title": "The LeBron X Nike Plus basketball shoes will retail for approximately $270",
+            "text": "Michael Davis",
+            "img": "shopify://shop_images/blog-thumbnail-1.png"
+          }
+        },
+        "blog_block_2": {
+          "type": "blog_block",
+          "settings": {
+            "title": "ECCO Men's Biom Hybrid Gore-tex Golf Shoe – Ascent Wear",
+            "text": "Sarah Thompson",
+            "img": "shopify://shop_images/blog-thumbnail-2.png"
+          }
+        },
+        "blog_block_3": {
+          "type": "blog_block",
+          "settings": {
+            "title": "Updates to the Therapeutic Shoes for Persons with Diabetes LCD",
+            "text": "Emily Wilson",
+            "img": "shopify://shop_images/blog-thumbnail-3.png"
+          }
+        },
+      },
+      "block_order": ["blog_block_1", "blog_block_2", "blog_block_3"]
+      
+    }
+  },
+  "order": [
+    "featured-section",
+    "half-banner-card-section",
+    "product-slider-section",
+    "full-banner-card-section",
+    "product-listing-section",
+    "product-promos-section",
+    "callout-banner-section",
+    "blog-card-section"
+  ]
+}

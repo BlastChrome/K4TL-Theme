@@ -1,0 +1,71 @@
+@use 'mx';
+// Heading
+
+:root{
+    --font-family-1: 'JostBold', sans-serif; 
+    --font-family-1-2: 'JostBlackItalic', sans-serif; 
+// Body
+    --font-family-2: 'MontserratRegular', sans-serif; 
+    --font-family-2-1: 'MontserratBold', sans-serif; 
+    --font-family-2-2: 'MontserratSemiBold', sans-serif; 
+    --font-family-2-3: 'MontserratMedium', sans-serif; 
+
+  // Heading font sizes 
+  --theme-font-h1-mob-1-1: em-convert(30px, 16px); 
+  --theme-font-h1-mob-1: em-convert(45px, 16px); 
+  --theme-font-h1-mob-2: em-convert(50px, 16px); 
+  --theme-font-h1-mob-3: em-convert(55px, 16px);
+  --theme-font-h1-mob-4: em-convert(56px, 16px);
+  --theme-font-h1-tab-1: em-convert(60px, 16px);
+  --theme-font-h1-tab-2: em-convert(65px, 16px); 
+  --theme-font-h1-tab-3: em-convert(70px, 16px); 
+
+
+  --theme-font-h2-mob-4: em-convert(16px, 16px);
+  --theme-font-h2-mob-1: em-convert(20px, 16px);
+  --theme-font-h2-mob-2: em-convert(30px, 16px);
+  --theme-font-h2-mob-2-1: em-convert(36px, 16px);
+  --theme-font-h2-mob-3: em-convert(40px, 16px);
+  --theme-font-h2-tab-1: em-convert(45px, 16px);
+  --theme-font-h2-tab-2: em-convert(50px, 16px);
+  --theme-font-h2-tab-3: em-convert(60px, 16px);  
+
+
+  --theme-font-h3-mob-1: em-convert(16px, 16px);
+  --theme-font-h3-mob-2: em-convert(30px, 16px);
+  --theme-font-h3-mob-2-1: em-convert(34px, 16px);
+  --theme-font-h3-mob-3: em-convert(40px, 16px);
+  --theme-font-h3-mob-4: em-convert(12px, 16px);
+  --theme-font-h3-tab-1: em-convert(40px, 16px);
+  --theme-font-h3-tab-2: em-convert(50px, 16px);
+  --theme-font-h3-tab-3: em-convert(60px, 16px); 
+
+
+  --theme-font-p-mob-1: em-convert(16px, 16px); 
+  --theme-font-p-mob-2: em-convert(18px, 16px);
+  --theme-font-p-mob-3: em-convert(20px, 16px);
+  --theme-font-p-mob-4: em-convert(20px, 16px);
+  --theme-font-p-mob-5: em-convert(14px, 16px);
+
+  --theme-font-btn-mob-1: em-convert(16px, 16px);
+  --theme-font-btn-mob-2: em-convert(18px, 16px);
+  --theme-font-btn-mob-3: em-convert(20px, 16px);
+
+  --theme-font-btn-tab-1: em-convert(24px, 16px);
+
+
+
+  // Colors 
+    --clr-red: #B52F2B; 
+    --clr-smoke-1: #333332;
+    --clr-smoke-2: #303030;
+    --clr-smoke-3: #b9b9b9;
+    --clr-yellow: #D8B658; 
+    --clr-black: #000000; 
+    --clr-grey: #F2F2F2;
+    --clr-white: #FFFFFF;
+}
+
+
+
+

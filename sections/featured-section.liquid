@@ -1,0 +1,201 @@
+{{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: 95px;
+      padding-bottom: 115px;
+    }
+
+  @media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+      padding: 40px 0 120px;
+    }
+  }
+
+  /* Sticky Nav active */
+    .section-{{ section.id }}-sticky-padding {
+      padding-top: 200px;
+      padding-bottom: 115px;
+    }
+
+  @media screen and (max-width: 991px) {
+    .section-{{ section.id }}-sticky-padding {
+    padding: 200px 0 120px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="featured-section section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <div class="textbox">
+          <h1>{{ section.settings.featured_title }}</h1>
+          <p>{{ section.settings.featured_text }}</p>
+
+          {% assign featured_link_class = 'button--' | append: section.settings.featured_link_class %}
+
+          {% render 'button',
+            button_text: section.settings.featured_link_text,
+            button_link: section.settings.featured_link_url,
+            button_class: featured_link_class
+          %}
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 featured-section__slider-wrapper">
+        <div class="featured-section__circle-wrapper animation--rotate360">
+          <svg
+            class="featured-section__circle featured-section__circle--big circle animation--shinkGrow"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="50" cy="50" r="50"  fill="#333332"/>
+          </svg>
+          <svg
+            class="featured-section__circle featured-section__circle--small circle animation--growShrink"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="50" cy="50" r="50"  fill="#B52F2B"/>
+          </svg>
+        </div>
+        <div class="featured-section__slider featured-swiper--init" data-slick="slider">
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              <div class="swiper-slide" data-slick="slide">
+                <a
+                  href="{{ block.settings.slider_image_link }}"
+                  class="featured-section__slider-link"
+                >
+                  <img
+                    src="{{ block.settings.slider_image | img_url: '748x610' }}"
+                    alt="{{ block.settings.slider_image_title }}"
+                    width="748"
+                    height="610"
+                  >
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="swiper-slide" data-slick="slide">
+              <a
+                href="#"
+                class="featured-section__slider-link"
+              >
+                <img
+                  src="{{ 'featured-shoe_1_19636be1-ea6b-449d-b493-f143487551cb.png' | file_img_url: '748x610' }}"
+                  alt="placeholder"
+                  width="748"
+                  height="610"
+                >
+              </a>
+            </div>
+            <div class="swiper-slide" data-slick="slide">
+              <a
+                href="#"
+                class="featured-section__slider-link"
+              >
+                <img
+                  src="{{ 'featured-shoe_1_19636be1-ea6b-449d-b493-f143487551cb.png' | file_img_url: '748x610' }}"
+                  alt="placeholder"
+                  width="748"
+                  height="610"
+                >
+              </a>
+            </div>
+          {% endif %}
+          {% comment %}
+            // Placeholder image(s)
+          {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    $('.featured-swiper--init').slick({
+      slidesToShow: 1,
+      speed: 300,
+      fade: true,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      pauseOnHover: true,
+      dots: true,
+      arrows: false,
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Featured section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "featured_title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "featured_text",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "featured_link_url",
+      "label": "Link"
+    },
+    {
+      "type": "radio",
+      "id": "featured_link_class",
+      "label": "Link Class",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "featured_link_text",
+      "label": "Link Text",
+      "default": "Shop Now"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Slider Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slider_image",
+          "label": "Slider Image",
+          "info": "Recommended image size: 748x610px"
+        },
+        {
+          "type": "text",
+          "id": "slider_image_title",
+          "label": "Image Title"
+        },
+        {
+          "type": "text",
+          "id": "slider_image_link",
+          "label": "Image Link",
+          "info": "Link to the product or collection",
+          "default": "#"
+        }
+      ],
+      "limit": 3
+    }
+  ]
+}
+{% endschema %}

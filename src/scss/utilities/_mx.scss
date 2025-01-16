@@ -1,0 +1,79 @@
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+@mixin em($property, $px, $mixed: 16px) {
+    #{$property}: em-convert($px, $mixed);
+}
+
+/**
+* Example
+**/
+// @include mx.em(padding-right, 20px);
+
+/**
+* Media queries
+**/
+$breakpoints: (
+    "phone-s": 375px,
+    "phone": 400px,
+    "phone-wide": 480px,
+    "phablet": 560px,
+    "phablet-2": 570px,
+    "tablet-small": 640px,
+    "tablet": 768px,
+    "tablet-wide": 992px,
+    "desktop": 1200px,
+    "desktop-medium": 1440px,
+    "desktop-wide": 1600px,
+    "desktop-extra-wide": 1760px,
+    "desktop-extra2-wide": 1900px,
+    "desktop-extra-large-wide": 2560px
+);
+
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+
+        @if $type ==max {
+            $width: $width - 1px;
+        }
+
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+@mixin font-source-sans($ffamily: false,
+    $size: false,
+    $colour: false,
+    $weight: false,
+    $lh: false,
+    $ls: false) {
+    @if $ffamily {
+        font-family: var($ffamily);
+    }
+
+    @if $size {
+        font-size: var($size);
+    }
+
+    @if $colour {
+        color: var($colour);
+    }
+
+    @if $weight {
+        font-weight: $weight;
+    }
+
+    @if $lh {
+        line-height: $lh;
+    }
+
+    @if $ls {
+        letter-spacing: $ls;
+    }
+}

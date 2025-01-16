@@ -1,0 +1,18 @@
+{
+    "sections": {
+      "banner": {
+        "type": "main-collection-title",
+      },
+      "product-grid": {
+        "type": "main-collection-grid",
+        "settings": {
+          "image_ad": "shopify://shop_images/kicks4thalow_vertical_ad.jpg"
+        }
+      },
+    },
+    "order": [
+      "banner",
+      "product-grid",
+    ]
+  }
+  

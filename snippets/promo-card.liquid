@@ -1,0 +1,36 @@
+<!-- promo-card.liquid -->
+<div class="promo-card {{ promo_card_varient_class }}">
+  <div class="promo-card__wrapper promo-card__wrapper-info">
+    <h3 class="promo-card__subtitle">{{ promo_card_subtitle }}</h3>
+    <h2 class="promo-card__title">{{ promo_card_title }}</h2>
+    {% if promo_card_varient_class == 'promo-card--half' %}
+      <p class="promo-card__text">{{ promo_card_text }}</p>
+      {% render 'button',
+        button_text: promo_card_button_varient_text,
+        button_link: promo_card_button_link,
+        button_class: 'button--secondary'
+      %}
+    {% elsif promo_card_varient_class == 'promo-card--quarter' %}
+      <a href="{{ banner_card_button_link }}" class="promo-card__button">
+        <span class="promo-card__text-text">
+          {{ promo_card_button_varient_text }}
+        </span>
+        <span class="promo-card__text-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#B52F2B">
+            <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/>
+          </svg>
+        </span>
+      </a>
+    {% endif %}
+  </div>
+  <div class="promo-card__img">
+    <a href="{{ promo_card_button_link }}">
+      <img
+        src="{{ promo_card_image | img_url: 'master' }}"
+        alt="{{ promo_card_image_title }}"
+        width="450"
+        height="360"
+      >
+    </a>
+  </div>
+</div>

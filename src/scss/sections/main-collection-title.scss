@@ -1,0 +1,21 @@
+@use '../utilities/mx' as mx;
+
+.main-collection-title {
+    
+    h1{
+        @include mx.font-source-sans(--font-family-1, --theme-font-h1-mob-4, --clr-smoke-2, false, 44px, normal);
+        text-transform: capitalize;
+
+        @include mx.mq('tablet-wide',max){
+            font-size: var(--theme-font-h2-tab-1);
+            line-height: normal
+        }
+
+        @include mx.mq('tablet',max){
+            font-size: var(--theme-font-h2-mob-2-1);
+        }
+
+
+    }
+}
+

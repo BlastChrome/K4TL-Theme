@@ -1,0 +1,47 @@
+// theme.scss
+
+// Base styles
+@import 'base/resets';
+@import 'base/typography';
+
+// Utilities
+@import 'utilities/variables';
+@import 'utilities/mx';
+@import 'utilities/bootstrap';
+@import 'utilities/container'; // override bootstrap container
+@import 'utilities/animations'; // animations added here
+
+// Global styles
+@import 'globals/global';
+
+
+// Snippets-global
+@import 'snippets/button';
+@import 'snippets/banner-card';
+@import 'snippets/product-card';
+@import 'snippets/full-banner-card';
+@import 'snippets/promo-card';
+@import 'snippets/mini-cards';
+@import 'snippets/filters';
+@import 'snippets/sortby';
+
+// Snippets-header
+@import 'snippets/header-top-bar';
+@import 'snippets/header-logo-bar';
+
+// global
+@import 'sections/header';
+@import 'sections/footer';
+
+// homepage
+@import 'sections/featured-section';
+@import 'sections/half-banner-card-section';
+@import 'sections/product-slider-section';
+@import 'sections/full-banner-card-section';
+@import 'sections/product-listing-section';
+@import 'sections/product-promos-section';
+@import 'sections/callout-banner-section';
+@import 'sections/blog-card-section';
+
+// main 
+@import 'sections/main-collection-title';

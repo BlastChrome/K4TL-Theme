@@ -1,0 +1,128 @@
+@use '../utilities/mx' as mx;
+
+a.button,
+button.button {
+
+    display: block;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    width: fit-content;
+    padding: 20px 38px;
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+    max-width: 240px;
+    display: flex;
+    justify-content: center;
+    @include mx.font-source-sans(--font-family-2-1, --theme-font-2, --clr-white, false, 24px);
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: var(--clr-white);
+        transform: translateX(-105%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    &:hover {
+        &:after {
+            transform: translateX(0);
+        }
+    }
+
+    & span {
+        transition: all 0.3s;
+        position: relative;
+        z-index: 1;
+    }
+
+    * {
+        pointer-events: none; // will prevent event bubbling
+    }
+
+    &--primary,
+    &--solid {
+        border: 2px solid var(--clr-red);
+        background-color: var(--clr-red);
+
+        &:hover {
+            color: var(--clr-red);
+        }
+    }
+
+    &--secondary {
+        border: 2px solid var(--clr-yellow);
+        color: var(--clr-black);
+        background-color: var(--clr-yellow);
+
+        &:hover {
+            color: var(--clr-yellow);
+        }
+    }
+
+    &--black {
+        border: 2px solid var(--clr-smoke-2);
+        color: var(--clr-white);
+        background-color: var(--clr-smoke-2);
+
+        &:hover {
+            color: var(--clr-smoke-2);
+        }
+    }
+
+
+
+    &--outline,
+    &--link {
+        span {
+            color: var(--clr-red);
+        }
+    }
+
+    &--outline {
+        background: transparent;
+        border: 2px solid var(--clr-red);
+
+        &:after {
+            background: var(--clr-red);
+        }
+
+        &:hover {
+            span {
+                color: var(--clr-white);
+            }
+        }
+
+        &.black {
+            border: 2px solid var(--clr-smoke-2);
+
+            span {
+                color: var(--clr-smoke-2);
+            }
+
+            &:after {
+                background: var(--clr-smoke-2);
+            }
+
+            &:hover {
+                span {
+                    color: var(--color-white);
+                }
+            }
+        }
+    }
+
+    &--link {
+        background-color: none;
+        border: none;
+
+        span {
+            text-decoration: underline;
+        }
+    }
+}

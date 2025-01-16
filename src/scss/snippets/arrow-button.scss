@@ -1,0 +1,36 @@
+@use '../utilities/mx' as mx;
+
+.arrow-button{
+    width: 100%;
+    max-width: 200px;
+    min-height: 52px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &:hover{
+        .arrow-button__text{
+            color: var(--clr-red);
+        }
+        .arrow-button__arrow{
+            transform: translateX(10px)
+        }
+    }
+
+
+    &__text{
+        @include mx.font-source-sans(--font-family-1,--theme-font-btn-tab-1,--clr-smoke-2,false,32px);
+        margin: 0;
+        transition: all 0.6s ease-in-out;
+    }
+
+    &__arrow{
+        opacity: 1;
+        transition: all 0.6s ease-in-out;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+    }
+
+}

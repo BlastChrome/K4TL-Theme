@@ -1,0 +1,166 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="callout-banner-section section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
+  <div class="callout-banner-section__top-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="callout-banner-section__title_box">
+            {% if section.settings.title %}
+              <h2>{{ section.settings.title }}</h2>
+            {% endif %}
+            {% if section.settings.text %}
+              <p>{{ section.settings.text }}</p>
+            {% endif %}
+
+            {% if section.settings.button_text %}
+              {% render 'button',
+                button_text: section.settings.button_text,
+                button_link: section.settings.button_link,
+                button_class: 'button--primary'
+              %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout-banner-section__bottom-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="callout-banner-section__icon_box">
+            {% for block in section.blocks %}
+              <div class="icon">
+                {% assign icon_class = 'icon__icon--' | append: block.settings.icon %}
+                {% assign icon_text = block.settings.icon | append: '-icon.svg' %}
+                <a href="{{ block.settings.icon_link }}">
+                  <div class="icon__icon {{ icon_class }}">{{ icon_text | inline_asset_content }}</div>
+                  <h3>{{ block.settings.title }}</h3>
+                  <p>{{ block.settings.text }}</p>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Callout Banner Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "WE ARE DIFFERENT"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Discover our qualities that makes us different than other marketplace."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Link",
+      "default": "More About Us"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_column",
+      "name": "Icon Column",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Worldwide Shipping"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Doesn’t matter wherever you are, you will always get your order."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Column Icon",
+          "options": [
+            {
+              "value": "worldwide",
+              "label": "Shipping Logo"
+            },
+            {
+              "value": "delivery",
+              "label": "Delivery Logo"
+            },
+            {
+              "value": "secure",
+              "label": "Secure Transaction Logo"
+            }
+          ],
+          "default": "worldwide"
+        },
+        {
+          "type": "url",
+          "id": "icon_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

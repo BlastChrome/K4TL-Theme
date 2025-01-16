@@ -1,0 +1,238 @@
+
+@use '../utilities/mx' as mx;
+
+.product-listing-section {
+  padding: 0; // placeholder padding
+
+  .product-tabs {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+
+    @include mx.mq('tablet-wide') {
+      justify-content: flex-start;
+    }
+
+    &__title {
+      @include mx.font-source-sans(--font-family-1, --theme-font-h2-mob-1, --clr-smoke-2, false, 44px, normal);
+      text-transform: none;
+      opacity: 0.5;
+      margin: 0;
+
+      &--active {
+        color: var(--clr-black);
+        opacity: 1;
+      }
+
+      &--first {}
+
+      &--second {}
+
+      @include mx.mq('phone') {
+        font-size: var(--theme-font-h2-mob-2);
+      }
+
+      @include mx.mq('tablet-wide') {
+        font-size: var(--theme-font-h2-mob-2-1);
+        line-height: 44px;
+      }
+    }
+
+    &__separator {
+      margin: 0 10px;
+      width: 1px;
+      background-color: var(--clr-smoke-2);
+      opacity: 0.5;
+
+      &--vertical {
+        height: 40px;
+        width: 1px;
+      }
+
+      &--horizontal {
+        height: 1px;
+        width: 100%;
+        margin: 30px 0 72px;
+      }
+    }
+
+  }
+
+  .title-category-col{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mx.mq('tablet',max) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+
+  .categories{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    @include mx.font-source-sans(--font-family-2-1,--theme-font-1,--clr-smoke-2,false,normal); 
+
+    @include mx.mq('tablet',max) {
+      width: 100%;
+    }
+  
+    .vert-line{
+      width: 2px;
+      height: 24px;
+      background-color: var(--clr-red);
+    }
+
+    &-select{
+      width: 100%;
+      max-width: 320px;
+      border: none;
+
+      @include mx.mq('tablet',max) {
+        max-width: none;
+      }
+    }
+    &-label{
+      color: var(--clr-smoke-3);
+    }
+  }
+
+
+  .product-slider {
+    .slick-track {
+      display: flex;
+      gap: 0 20px;
+    }
+  }
+
+  .product-slider-wrapper {
+    position: relative;
+  }
+
+  .product-slider__controller {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .product-slider__controller-button--next,
+  .product-slider__controller-button--prev {
+    width: 66px;
+    height: 66px;
+    aspect-ratio: 1;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    top: 40%;
+    cursor: pointer;
+    pointer-events: auto;
+
+    @include mx.mq('desktop-extra-wide', max) {
+      background-color: var(--clr-black);
+      width: 55px;
+      height: 55px;
+    }
+
+    @include mx.mq('desktop', max) {
+      top: 30%;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .product-slider__controller-button--next svg,
+  .product-slider__controller-button--prev svg {
+    max-width: 25px;
+
+    @include mx.mq('desktop-extra-wide', max) {
+      path {
+        fill: var(--clr-white);
+      }
+    }
+
+    @include mx.mq('desktop', max) {
+      max-width: 16px;
+
+    }
+  }
+
+  .product-slider__controller-button--next {
+    left: 100%;
+    margin-left: 10px;
+
+    @include mx.mq('desktop-extra-wide', max) {
+      left: auto;
+      right: 0;
+      border-radius: 0;
+      margin-right: 15px;
+    }
+  }
+
+  .product-slider__controller-button--prev {
+    right: 100%;
+    left: auto;
+    margin-right: 9px;
+
+    @include mx.mq('desktop-extra-wide', max) {
+      right: auto;
+      left: 0;
+      margin-right: 0;
+      border-radius: 0;
+      margin-left: 30px;
+    }
+  }
+
+  .product-slider__controller-button--next:after,
+  .product-slider__controller-button--prev:after {
+    display: none;
+  }
+
+  .product-slider__controller-button--prev svg {
+    transform: rotate(180deg);
+  }
+
+
+  // full width slider
+  .container-full {
+    .product-slider__controller-button--next,
+    .product-slider__controller-button--prev {
+      background-color: var(--clr-black);
+      width: 55px;
+      height: 55px;
+    }
+
+    .product-slider__controller-button--next svg,
+    .product-slider__controller-button--prev svg {
+      path {
+        fill: var(--clr-white);
+      }
+    }
+
+    .product-slider__controller-button--next {
+      left: auto;
+      right: 0;
+      border-radius: 0;
+      margin-right: 15px;
+    }
+
+    .product-slider__controller-button--prev {
+      right: auto;
+      left: 0;
+      margin-right: 0;
+      border-radius: 0;
+      margin-left: 30px;
+    }
+  }
+
+}

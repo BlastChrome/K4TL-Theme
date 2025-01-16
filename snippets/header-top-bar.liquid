@@ -1,0 +1,53 @@
+{% comment %}
+  Renders a thin bar with text information
+
+  Usage:
+  {% render 'header-top-bar' %}
+{% endcomment %}
+
+<div class="header__top-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <a href="/contact/">
+          <div class="location">
+            <div class="location__pin">
+              <span class="icon">{{- 'location-pin-icon.svg' | inline_asset_content }} </span>
+            </div>
+            <p class="location__text">
+              {{ top_bar_text }}
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="settings">
+          <div class="settings__currency">
+            <select name="currency" id="currency" class="currency">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="JPY">JPY</option>
+              <option value="GBP">GBP</option>
+              <option value="CAD">CAD</option>
+            </select>
+          </div>
+          <div class="vertical-line"></div>
+          <div class="settings__lang">
+            <select name="lang" id="lang">
+              <option value="eng">EN</option>
+              <option value="spa">SPA</option>
+              <option value="fra">FRA</option>
+              <option value="deu">DEU</option>
+              <option value="ita">ITA</option>
+            </select>
+          </div>
+          <div class="vertical-line"></div>
+          <div class="settings__order-track">
+            <a href="#"> Track Your Order </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="horizontal-line"></div>

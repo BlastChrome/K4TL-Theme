@@ -1,0 +1,81 @@
+{% comment %}
+  Renders the logo and the associated user options, aswell
+  as the mobile hamburger icon
+
+  Usage:
+  {% render 'header-top-bar' %}
+{% endcomment %}
+
+<div class="header__logo-bar">
+  <div class="container">
+    <div class="row">
+      <div class="d-none d-md-block col-md-4">
+        <div class="search">
+          <form action="{{ routes.search_url }}">
+            <button type="submit">
+              {{ 'search-icon.svg' | inline_asset_content }}
+            </button>
+            <input
+              type="text"
+              placeholder="Enter your search keywords ..."
+              name="q"
+              value="{{ search.terms | escape }}"
+            >
+          </form>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div
+          class="logo logo--nav"
+          style="max-width: {{ nav_width }}px;"
+        >
+          <a href="/">
+            {% if nav_logo != blank %}
+              <img
+                src="{{ nav_logo | image_url: "master" }}"
+                alt="{{ shop.name }}"
+                width="100%"
+                height="auto"
+              >
+            {% else %}
+              <img
+                src="{{ 'nav-logo@2x.png' | asset_url }}"
+                width="100%"
+                height="auto"
+                alt="{{ shop.name }}"
+              >
+            {% endif %}
+          </a>
+        </div>
+      </div>
+      <div class="col-6 d-md-none">
+        <div class="hamburger" id="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+      <div class="d-none d-md-block col-md-4">
+        <div class="icon-group">
+          <a href="#">
+            <div class="user">
+              <div class="user__icon">
+                {{ 'user-icon.svg' | inline_asset_content }}
+              </div>
+              <p class="user__text">Sign In</p>
+            </div>
+          </a>
+          <div class="vertical-line"></div>
+          <a href="#">
+            <div class="cart">
+              <div class="cart__icon">
+                {{ 'cart-icon.svg' | inline_asset_content }}
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="horizontal-line"></div>

@@ -1,0 +1,178 @@
+@use '../utilities/mx' as mx;
+
+.header {
+    &__logo-bar {
+        padding: 22px 0;
+
+        .row {
+            align-items: center;
+        }
+
+        .location,
+        .settings {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            margin: 0 auto;
+
+            @include mx.mq('tablet', max) {
+                margin: 0 auto 0 0;
+            }
+
+            svg,
+            img {
+                width: 100%;
+                height: auto;
+
+                @include mx.mq('tablet-wide', max) {
+                    max-width: 80px;
+                    display: block;
+                    margin: 0 auto;
+                }
+
+                @include mx.mq('tablet', max) {
+                    margin: 0;
+                }
+            }
+        }
+
+        .icon-group {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .user {
+                display: flex;
+                align-items: center;
+                gap: 0 16px;
+
+                &__text {
+                    @include mx.font-source-sans(--font-family-2-1, --theme-font-p-mob-1, --clr-smoke-2, false, 24px);
+                    text-transform: uppercase;
+                    opacity: 0.75;
+                    transition: all 0.5s ease-in-out;
+                }
+
+                svg {
+                    path {
+                        transition: all 0.5s ease-in-out;
+                    }
+                }
+
+                &:hover {
+                    .user__text {
+                        color: var(--clr-red);
+                        opacity: 1;
+                    }
+
+                    svg {
+                        path {
+                            fill: var(--clr-red);
+                        }
+                    }
+                }
+            }
+
+            .cart {
+                &__icon {
+                    svg {
+                        transition: all 0.3s ease-in-out;
+                    }
+                }
+
+                &:hover {
+                    .cart__icon {
+                        svg {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+        }
+
+        .search {
+            &:hover {
+                svg {
+                    transform: scale(1.1);
+                }
+            }
+
+            form {
+                display: flex;
+                gap: 12px;
+            }
+
+            input {
+                width: 100%;
+                max-width: 236px;
+                border: none;
+            }
+
+            button {
+                background-color: transparent;
+                border: none;
+            }
+
+            svg {
+                transition: all 0.5s ease-in-out;
+            }
+        }
+
+
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            position: relative;
+            margin: 0 0 0 auto;
+            transform: rotate(0);
+            transition: .5s ease-in-out;
+            cursor: pointer;
+
+            span {
+                display: block;
+                position: absolute;
+                height: 3px;
+                width: 100%;
+                background: var(--clr-red);
+                border-radius: 9px;
+                opacity: 1;
+                left: 0;
+                transform: rotate(0deg);
+                transition: .25s ease-in-out;
+
+                &:nth-child(1) {
+                    top: 0px;
+                }
+
+                &:nth-child(2) {
+                    top: 8px;
+                }
+
+                &:nth-child(3) {
+                    top: 16px;
+                }
+            }
+
+            &.open {
+                span {
+                    &:nth-child(1) {
+                        top: 16px;
+                        transform: rotate(135deg);
+                    }
+
+                    &:nth-child(2) {
+                        opacity: 0;
+                        left: -60px;
+                    }
+
+                    &:nth-child(3) {
+                        top: 16px;
+                        transform: rotate(-135deg);
+                    }
+                }
+            }
+        }
+    }
+}

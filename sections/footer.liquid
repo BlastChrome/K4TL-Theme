@@ -1,0 +1,219 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="footer section-{{ section.id }}" id="{{ section.id }}">
+  <div class="horizontal-line"></div>
+  <div class="footer__wrapper section-{{ section.id }}-padding">
+    <div class="container">
+      <div class="row">
+        {% for block in section.blocks %}
+          <div class="col-12 col-md-6 {% if block.type == 'logo_block' or block.type == 'newsletter_block' %}col-lg-3{% elsif block.type == 'nav_block' %}col-lg-2{% endif %}">
+            <div class="footer-block footer-block__{{ block.type }}">
+              {% if block.type == 'logo_block' %}
+                <div class="img img--logo">
+                  {{ 'footer-logo.svg' | inline_asset_content }}
+                </div>
+                <ul>
+                  <li>
+                    <a href="{{ block.settings.phone_link }}">
+                      <span class="icon">{{- 'footer-pin-icon.svg' | inline_asset_content }} </span>
+                      <span class="text">{{ block.settings.pin_text }}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tel:+1{{ block.settings.phone_text }}">
+                      <span class="icon">{{- 'footer-phone-icon.svg' | inline_asset_content }}</span>
+                      <span class="text">{{ block.settings.phone_text }}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:{{ block.settings.mail_text }}">
+                      <span class="icon">{{ 'footer-mail-icon.svg' | inline_asset_content }}</span>
+                      <span class="text">{{ block.settings.mail_text }}</span>
+                    </a>
+                  </li>
+                </ul>
+              {% elsif block.type == 'nav_block' %}
+                <h3>{{ block.settings.nav_link.title }}</h3>
+                <ul class="footer__nav">
+                  {% for link in block.settings.nav_link.links %}
+                    <li>
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% elsif block.type == 'newsletter_block' %}
+                <h3>{{ block.settings.title }}</h3>
+                <form action="#" method="post" class="footer__newsletter-form">
+                  <label for="email"></label>
+                  <input placeholder="{{ block.settings.placeholder_text }}" type="email" name="email">
+                  <button type="submit" class="button button--primary">
+                    {{ 'newsletter-arrow.svg' | inline_asset_content }}
+                  </button>
+                </form>
+                {% if block.settings.show_payment_logos == 'yes' %}
+                  <div class="payment">
+                    <h3>{{ block.settings.payment_text }}</h3>
+                    <div class="payment-logos">
+                      <div class="logo logo--visa">
+                        <a href="#">
+                          <img width="78px" height="auto" src="{{ 'visa-logo.png' | asset_img_url }}">
+                        </a>
+                      </div>
+                      <div class="logo logo--mastercard">
+                        <a href="#">
+                          <img width="66px" height="auto" src="{{ 'mastercard-logo.png' | asset_img_url }}">
+                        </a>
+                      </div>
+                      <div class="logo logo--american-express">
+                        <a href="#">
+                          <img width="54px" height="auto" src="{{ 'american-express-logo.png' | asset_img_url }}">
+                        </a>
+                      </div>
+                      <div class="logo logo--paypal">
+                        <a href="#">
+                          <img width="auto" height="auto" src="{{ 'paypal-logo.png' | asset_img_url }}">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_block",
+      "name": "Logo Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pin_text",
+          "label": "Pin Text",
+          "default": "123 Main Street Chicago, IL 12345 United States"
+        },
+        {
+          "type": "url",
+          "id": "pin_link",
+          "label": "Pin Link"
+        },
+        {
+          "type": "text",
+          "id": "phone_text",
+          "label": "Phone Number",
+          "default": "(123) 456-7891"
+        },
+        {
+          "type": "text",
+          "id": "mail_text",
+          "label": "Email",
+          "default": "hello@kicks4thallow.com"
+        }
+      ],
+      "limit": 3
+    },
+    {
+      "type": "nav_block",
+      "name": "Nav Block",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "nav_link",
+          "label": "Navigation"
+        }
+      ],
+      "limit": 3
+    },
+    {
+      "type": "newsletter_block",
+      "name": "Newsletter Block",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Newsletter Settings"
+        },
+        {
+          "type": "text",
+          "id": "placeholder_text",
+          "label": "Placeholder Text",
+          "default": "Please Enter Your Email"
+        },
+
+        {
+          "type": "header",
+          "content": "Payment Settings"
+        },
+        {
+          "type": "select",
+          "id": "show_payment_logos",
+          "label": "Show Payment Logos",
+          "options": [
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
+          ],
+          "default": "yes"
+        },
+        {
+          "type": "text",
+          "id": "payment_text",
+          "label": "Payment Header",
+          "default": "Payment"
+        }
+      ],
+      "limit": 3
+    }
+  ]
+}
+{% endschema %}

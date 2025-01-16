@@ -1,0 +1,110 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="full-banner-card-section section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
+  <div class="container">
+    <div class="row">
+      {% for block in section.blocks %}
+        <div class="col-12">
+          {% assign card_type = 'full-banner-card--' | append: block.settings.card_type %}
+
+          {% render 'full-banner-card',
+            full_banner_card_varient_class: card_type,
+            full_banner_card_title: block.settings.card_title,
+            full_banner_card_text: block.settings.card_text,
+            full_banner_card_button_link: block.settings.card_button_link,
+            full_banner_card_button_varient_text: block.settings.card_button_text,
+            full_banner_card_image: block.settings.card_image
+          %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Full Banner Card Section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Full Banner Card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Section Padding"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Title",
+          "default": "UNLEASH YOUR POTENTIAL"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Text",
+          "default": "Explore our wide range of high-quality sportswear."
+        },
+        {
+          "type": "url",
+          "id": "card_button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "card_button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Image",
+          "info": "Recommended image size: 450x360px"
+        }
+      ],
+      "limit": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Banner Card",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

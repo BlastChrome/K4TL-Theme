@@ -1,0 +1,242 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="product-promos-section section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
+  <div class="container">
+    <div class="row">
+      {% for block in section.blocks %}
+        {% if block.type == 'promo_card' %}
+          <div class="col-12 col-sm-12 col-md-4 col{% if block.settings.card_width == 'half' %}-xl-6{% elsif block.settings.card_width == 'full' %}-xl-12{% elsif block.settings.card_width == 'quarter' %}-xl-3{% endif %}">
+            {% assign card_width = 'promo-card--' | append: block.settings.card_width %}
+            {% render 'promo-card',
+              promo_card_varient_class: card_width,
+              promo_card_subtitle: block.settings.card_subtitle,
+              promo_card_title: block.settings.card_title,
+              promo_card_text: block.settings.card_text,
+              promo_card_button_link: block.settings.card_button_link,
+              promo_card_button_varient_text: block.settings.card_button_text,
+              promo_card_image: block.settings.card_image
+            %}
+          </div>
+        {% elsif block.type == 'mini_cards' %}
+          <div class="col-12 col-sm-12 col-md-4 col-xl-3">
+            {% render 'mini-cards',
+              mini_cards_title_top: block.settings.card_title_top,
+              mini_cards_title_middle: block.settings.card_title_middle,
+              mini_cards_title_bottom: block.settings.card_title_bottom,
+              mini_cards_text_top: block.settings.card_text_top,
+              mini_cards_text_middle: block.settings.card_text_middle,
+              mini_cards_text_bottom: block.settings.card_text_bottom,
+              mini_cards_image_top: block.settings.card_image_top,
+              mini_cards_image_middle: block.settings.card_image_middle,
+              mini_cards_image_bottom: block.settings.card_image_bottom
+            %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Promos Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promo_card",
+      "name": "Promo Card",
+      "settings": [
+        {
+          "type": "radio",
+          "id": "card_type",
+          "label": "Card Type",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "radio",
+          "id": "card_width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "full",
+              "label": "Full"
+            },
+            {
+              "value": "half",
+              "label": "Half"
+            },
+            {
+              "value": "quarter",
+              "label": "Quarter"
+            }
+          ],
+          "default": "half"
+        },
+        {
+          "type": "text",
+          "id": "card_subtitle",
+          "label": "Subtitle",
+          "default": "Trending"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Title",
+          "default": "Nike Jordan Air Max"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Text",
+          "default": "Celebrate the basketball month with our selected items."
+        },
+        {
+          "type": "url",
+          "id": "card_button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "card_button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Image",
+          "info": "Recommended image size: 450x360px"
+        }
+      ],
+      "limit": 3
+    },
+    {
+      "type": "mini_cards",
+      "name": "Mini Cards",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Top Card Settings"
+        },
+        {
+          "type": "text",
+          "id": "card_title_top",
+          "label": "Top Title",
+          "default": "Nike Air Max 1"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text_top",
+          "label": "Top Text",
+          "default": "From $80.00"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image_top",
+          "label": "Top Image",
+          "info": "Recommended image size: 450x360px"
+        },
+        {
+          "type": "header",
+          "content": "Middle Card Settings"
+        },
+        {
+          "type": "text",
+          "id": "card_title_middle",
+          "label": "Middle Title",
+          "default": "Nike Air Max 2"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text_middle",
+          "label": "Middle Text",
+          "default": "From $80.00"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "card_image_middle",
+          "label": "Middle Image",
+          "info": "Recommended image size: 450x360px"
+        },
+        {
+          "type": "header",
+          "content": "Bottom Card Settings"
+        },
+        {
+          "type": "text",
+          "id": "card_title_bottom",
+          "label": "Bottom Title",
+          "default": "Nike Air Max 3"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text_bottom",
+          "label": "Bottom Text",
+          "default": "From $80.00"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image_bottom",
+          "label": "Bottom Image",
+          "info": "Recommended image size: 450x360px"
+        }
+      ],
+      "limit": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Promos Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

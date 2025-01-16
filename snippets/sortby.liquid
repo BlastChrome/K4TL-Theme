@@ -1,0 +1,67 @@
+{% comment %}
+  Renders Sort By Drawer ()
+  Usage:
+  {% render 'sortby'%}
+{% endcomment %}
+<div class="sortby-container">
+  {% if filter_type == 'drawer' %}
+    <!-- Overlay -->
+    <menu-drawer id="mobile-sortby">
+      <aside class="filter filter--drawer" data-drawer="content">
+        <div class="filter-wrapper filter-wrapper__header">
+          <a href="#" id="close-btn" class="button button--black" data-target="mobile-sortby" data-drawer="close">
+            <span>Sort Options</span>
+            <span>X</span>
+          </a>
+        </div>
+        <div class="filter-wrapper filter-wrapper__content">
+          <!-- Filter Clear Button -->
+          <div class="filter-clear">
+            <button class="clear-btn">
+              <span class="icon">X</span>
+              <span class="text">Clear All Filters </span>
+            </button>
+          </div>
+          <!-- Sort options -->
+          <div class="filter-group">
+            <ul>
+              <li>
+                <div class="checkboxWrapper">
+                  <input type="checkbox" id="sort-featured">
+                  <div class="checkmark">
+                    <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
+                  </div>
+                  <label for="sort-featured">Featured</label>
+                </div>
+              </li>
+              <li>
+                <div class="checkboxWrapper">
+                  <input type="checkbox" id="sort-latest">
+                  <div class="checkmark">
+                    <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
+                  </div>
+                  <label for="sort-latest">Latest </label>
+                </div>
+              </li>
+              <li>
+                <div class="checkboxWrapper">
+                  <input type="checkbox" id="sort-lowhigh">
+                  <div class="checkmark">
+                    <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
+                  </div>
+                  <label for="sort-lowhigh">Price: Low to High</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="horizontal-line"></div>
+        </div>
+        <div class="filter-wrapper filter-wrapper__footer">
+          <a href="#" id="close-btn" class="button button--black" data-target="mobile-sortby" data-drawer="close">
+            <span>Close</span>
+          </a>
+        </div>
+      </aside>
+    </menu-drawer>
+  {% endif %}
+</div>

@@ -1,0 +1,63 @@
+<!-- mini-cards.liquid -->
+<div class="mini-cards-wrapper">
+  <div class="mini-cards mini-cards--top">
+    <div class="mini-cards__wrapper mini-cards__wrapper-info">
+      <h2 class="mini-cards__title">{{ mini_cards_title_top }}</h2>
+      <p class="mini-cards__text">{{ mini_cards_text_top }}</p>
+    </div>
+    <div class="mini-cards__img">
+      <a href="{{ mini_cards_button_link }}">
+        {% if mini_cards_image_top %}
+          <img
+            src="{{ mini_cards_image_top | img_url: 'master' }}"
+            alt="{{ mini_cards_image_title_top }}"
+            width="450"
+            height="360"
+          >
+        {% else %}
+          {{ 'collection-1' | placeholder_svg_tag }}
+        {% endif %}
+      </a>
+    </div>
+  </div>
+  <div class="mini-cards mini-cards--middle">
+    <div class="mini-cards__wrapper mini-cards__wrapper-info">
+      <h2 class="mini-cards__title">{{ mini_cards_title_middle }}</h2>
+      <p class="mini-cards__text">{{ mini_cards_text_middle }}</p>
+    </div>
+    <div class="mini-cards__img">
+      <a href="{{ mini_cards_button_link }}">
+        {% if mini_cards_image_middle %}
+          <img
+            src="{{ mini_cards_image_middle | img_url: 'master' }}"
+            alt="{{ mini_cards_image_title_middle }}"
+            width="450"
+            height="360"
+          >
+        {% else %}
+          {{ 'collection-2' | placeholder_svg_tag }}
+        {% endif %}
+      </a>
+    </div>
+  </div>
+  <div class="mini-cards mini-cards--bottom">
+    <div class="mini-cards__wrapper mini-cards__wrapper-info">
+      <h2 class="mini-cards__title">{{ mini_cards_title_bottom }}</h2>
+      <p class="mini-cards__text">{{ mini_cards_text_bottom }}</p>
+    </div>
+    <div class="mini-cards__img">
+      <a href="{{ mini_cards_button_link }}">
+        {% if mini_cards_image_bottom %}
+          <img
+            src="{{ mini_cards_image_bottom | img_url: 'master' }}"
+            alt="{{ mini_cards_image_title_bottom }}"
+            width="450"
+            height="360"
+          >
+        {% else %}
+          {{ 'collection-3' | placeholder_svg_tag }}
+        {% endif %}
+      </a>
+    </div>
+  </div>
+</div>

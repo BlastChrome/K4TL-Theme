@@ -1,0 +1,54 @@
+
+// Animation classes
+  .animation--rotate360{
+    animation-name: rotate360;
+    animation-duration: 45s; 
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite;
+  } 
+  .animation--shinkGrow{
+    animation-name: shrinkGrow;
+    animation-duration: 15s; 
+    animation-timing-function: ease-in-out; 
+    animation-iteration-count: infinite;
+  } 
+  .animation--growShrink{
+    animation-name: growShrink;
+    animation-duration: 15s; 
+    animation-timing-function: ease-in-out; 
+    animation-iteration-count: infinite;
+  }
+
+  // Codepen animations 
+  @keyframes rotate360{
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes shrinkGrow{
+    0%{
+      transform: scale(1.0);
+    }
+    50%{
+      transform: scale(0.5);
+    } 
+    100%{
+      transform: scale(1.0);
+    }
+  }
+  
+  @keyframes growShrink{
+    0%{
+      transform: scale(0.5);
+    }
+    50%{
+      transform: scale(1.0);
+    } 
+    100%{
+      transform: scale(0.5);
+    }
+  }

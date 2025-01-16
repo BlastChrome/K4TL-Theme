@@ -1,0 +1,44 @@
+{
+    "type": "header",
+    "name": "header-group",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "address-bar": {
+            "type": "address-bar",
+            "settings": {
+              "location_text": "123 Main Street Chicago, IL 12345 United States",
+            }
+          },
+          "logo-bar": {
+            "type": "logo-bar",
+            "settings": {
+              "nav_logo": "shopify://shop_images/nav-logo@2x.png", 
+              "nav_width": 150
+            }
+          },
+          "nav-bar": {
+            "type": "nav-bar",
+            "settings": {
+              "primary_nav": "main-menu", 
+            }
+          },
+        },
+        "block_order": [
+          "address-bar",
+          "logo-bar",
+          "nav-bar",
+        ],
+        "settings": { 
+          "padding_top": 40, 
+          "padding_bottom": 40,
+          "stick_nav": "sticky"
+        }
+      },
+    },
+    "order": [
+      "header"
+    ],
+  }
+  
