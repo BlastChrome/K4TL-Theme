@@ -3,7 +3,7 @@ class FacetFiltersForm extends HTMLElement {
     super();
     const facetForm = this.querySelector('form');
     facetForm.addEventListener('input', (e) => {
-      console.log(e.target);
+      console.log(e.currentTarget);
     });
   }
 }

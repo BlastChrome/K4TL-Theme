@@ -54,6 +54,9 @@
                               id="{{input_id}}"
                               value="{{ filter_value.label }}"
                               name="{{ filter_value.param_name }}"
+                              {% if filter_value.active %}
+                                checked
+                              {% endif %}
                             >
                             <div class="checkmark">
                               <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
