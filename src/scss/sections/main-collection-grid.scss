@@ -21,6 +21,10 @@
       align-items: center;
       gap: 12px;
 
+      @include mx.mq('tablet-wide', max) {
+        margin-bottom: 0;
+      }
+
       &:nth-of-type(1) {
         border-right: none;
       }
@@ -118,6 +122,10 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 15px;
+
+    @include mx.mq('tablet-wide', max) {
+      margin-bottom: 20px;
+    }
 
   }
 

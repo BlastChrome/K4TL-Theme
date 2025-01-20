@@ -8311,6 +8311,11 @@ button.button--link span {
   align-items: center;
   gap: 12px;
 }
+@media only screen and (max-width: 991px) {
+  .main-collection-grid .mb-filters-buttons #filters-open-btn {
+    margin-bottom: 0;
+  }
+}
 .main-collection-grid .mb-filters-buttons #filters-open-btn:nth-of-type(1) {
   border-right: none;
 }
@@ -8392,6 +8397,11 @@ button.button--link span {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px;
+}
+@media only screen and (max-width: 991px) {
+  .main-collection-grid .title-category-col {
+    margin-bottom: 20px;
+  }
 }
 .main-collection-grid .sort-by {
   display: flex;
