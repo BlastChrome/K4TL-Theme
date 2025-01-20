@@ -34,7 +34,12 @@
                   {% if filter.label == 'Size' %}
                     <div class="filter-group__buttons">
                       {%- for filter_value in filter.values -%}
-                        <button class="button button--outline">
+                        <button
+                          class="button button--outline"
+                          id="{{input_id}}"
+                          value="{{ filter_value.label }}"
+                          name="{{ filter_value.param_name }}"
+                        >
                           <span>{{ filter_value.label }}</span>
                         </button>
                       {% endfor %}
@@ -54,6 +59,9 @@
                               id="{{input_id}}"
                               value="{{ filter_value.label }}"
                               name="{{ filter_value.param_name }}"
+                              {% if filter_value.active %}
+                                checked
+                              {% endif %}
                             >
                             <div class="checkmark">
                               <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
@@ -70,34 +78,20 @@
                     <!-- Slider -->
                     <div class="range__slider">
                       <div class="range__track"></div>
-                      <input
-                        class="range__slide-input range__slide-input--min"
-                        type="range"
-                        class="min-range"
-                        min="50"
-                        max="1000"
-                        value="50"
-                        step="1"
-                      >
-                      <input
-                        class="range__slide-input range__slide-input--max"
-                        type="range"
-                        class="min-range"
-                        min="50"
-                        max="1000"
-                        value="50"
-                        step="1"
-                      >
                     </div>
                     <div class="range__number">
-                      <div class="input-group">
-                        <label for="min-price">Min. Price</label>
-                        <input type="number" name="min-price" id="min-price">
-                      </div>
-                      <div class="input-group">
-                        <label for="max-price">Max. Price</label>
-                        <input type="number" name="max-price" id="max-price">
-                      </div>
+                      {%- for filter_value in filter.values -%}
+                        <div class="input-group">
+                          <label for="min-price">Min. Price</label>
+                          <input type="number" name="min-price" id="min-price">
+                        </div>
+                      {%- endfor -%}
+                      {% comment %}
+                        <div class="input-group">
+                          <label for="max-price">Max. Price</label>
+                          <input type="number" name="max-price" id="max-price">
+                        </div>
+                      {% endcomment %}
                     </div>
                   </div>
               {% endcase %}
