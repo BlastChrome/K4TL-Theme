@@ -3,8 +3,10 @@ class FacetFiltersForm extends HTMLElement {
     super();
     const facetForm = this.querySelector('form');
     const clearBtn = this.querySelector('.clear-btn');
+    this.urlParams = new URLSearchParams();
+
     facetForm.addEventListener('input', this.handleInputFilters.bind(this));
-    clearBtn.addEventListener('click', this.handleFilterClear);
+    clearBtn.addEventListener('click', this.handleFilterClear.bind(this));
   }
 
   handleFilterClear(e) {
@@ -27,27 +29,47 @@ class FacetFiltersForm extends HTMLElement {
     }
   }
 
-  handleCheckBoxFilter2(checkboxInput) {
-    let inputValue = checkboxInput.value.replace(' ', '+'); // replaces any whitespace with '+'
+  // handleCheckBoxFilter2(checkboxInput) {
+  //   let filter = `${checkboxInput.name}=${checkboxInput.value.replace(' ', '+')}`;
+  //   let params = window.location.href.includes('?') ? `&` : '?';
+  //   let isLastFilter = !window.location.href.includes('&') ? true : false;
+  //   debugger;
 
-    let params = window.location.href.includes('?')
-      ? `&${checkboxInput.name}=${inputValue}`
-      : `?${checkboxInput.name}=${inputValue}`;
+  //   if (isLastFilter) {
+  //     checkboxInput.checked
+  //       ? (window.location.href = window.location.href + `${params}${filter}`)
+  //       : (window.location.href = window.location.href.replace(`?${filter}`, ''));
+  //   } else {
+  //     checkboxInput.checked
+  //       ? (window.location.href = window.location.href + `${params}${filter}`)
+  //       : (window.location.href = window.location.href.replace(`${params}${filter}`, ''));
+  //   }
+  // }
 
-    checkboxInput.checked
-      ? (window.location.href = window.location.href + params)
-      : (window.location.href = window.location.href.replace(params, ''));
-  }
+  // handleCheckBoxFilter2(checkboxInput) {
+  //   let isChecked = checkboxInput.checked;
+  //   let filter = `${checkboxInput.name}=${checkboxInput.value.replace(' ', '+')}`;
+  //   if (isChecked) {
+  //     // Adding a Filter
+  //     if (!window.location.href.includes('?')) {
+  //       window.location.href = `${window.location.href}?${filter}`;
+  //     } else {
+  //       window.location.href = `${window.location.href}&${filter}`;
+  //     }
+  //   } else {
+  //     // Removing Filter
+  //     // get the current filter to remove
+  //     window.location.search = window.location.search.replace(filter, '');
+  //   }
+  // }
+
   handleCheckBoxFilter(checkboxInput) {
-    // replaces any whitespace with '+'
-
-    // http://127.0.0.1:9292/collections/all                                                      - no param
-    // http://127.0.0.1:9292/collections/all?filter.p.vendor=Nike                                 - last param
-    // http://127.0.0.1:9292/collections/all?filter.p.vendor=Nike&filter.p.vendor=Kicks4ThaLow    - not last param
-
-    const inputValue = checkboxInput.value.replace(' ', '+');
-    let param = '';
-    console.log(window.location.pathname);
+    let name = `${checkboxInput.name}`;
+    let value = `${checkboxInput.value.replace(' ', '+')}`;
+    this.urlParams.append(name, value);
+    checkboxInput.checked ? this.urlParams.delete(name, value) : this.urlParams.append(name, value);
+    console.log(this.urlParams.get(name));
+    // console.log(value);
   }
 
   handlePriceFilter(numInput) {
