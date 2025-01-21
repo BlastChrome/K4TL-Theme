@@ -3,10 +3,10 @@ class FacetFiltersForm extends HTMLElement {
     super();
     const facetForm = this.querySelector('form');
     const clearBtn = this.querySelector('.clear-btn');
-    this.urlParams = new URLSearchParams();
-
     facetForm.addEventListener('input', this.handleInputFilters.bind(this));
     clearBtn.addEventListener('click', this.handleFilterClear.bind(this));
+    // // initialize searchParams with the current URL params,
+    this.searchParams = new URLSearchParams(window.location.search);
   }
 
   handleFilterClear(e) {
@@ -17,59 +17,29 @@ class FacetFiltersForm extends HTMLElement {
 
   handleInputFilters(e) {
     const input = e.target;
-    switch (e.target.type) {
-      case 'checkbox':
-        this.handleCheckBoxFilter(input);
-        break;
-      case 'number':
-        this.handlePriceFilter(input);
-        break;
-      default:
-        console.warn(`Unhandled input type: ${e.target.type}`);
-    }
+    const inputType = e.target.type;
+
+    if (inputType == 'checkbox') this.handleCheckBoxFilter(input);
+    if (inputType == 'number') this.handlePriceFilter(input);
   }
 
-  // handleCheckBoxFilter2(checkboxInput) {
-  //   let filter = `${checkboxInput.name}=${checkboxInput.value.replace(' ', '+')}`;
-  //   let params = window.location.href.includes('?') ? `&` : '?';
-  //   let isLastFilter = !window.location.href.includes('&') ? true : false;
-  //   debugger;
-
-  //   if (isLastFilter) {
-  //     checkboxInput.checked
-  //       ? (window.location.href = window.location.href + `${params}${filter}`)
-  //       : (window.location.href = window.location.href.replace(`?${filter}`, ''));
-  //   } else {
-  //     checkboxInput.checked
-  //       ? (window.location.href = window.location.href + `${params}${filter}`)
-  //       : (window.location.href = window.location.href.replace(`${params}${filter}`, ''));
-  //   }
-  // }
-
-  // handleCheckBoxFilter2(checkboxInput) {
-  //   let isChecked = checkboxInput.checked;
-  //   let filter = `${checkboxInput.name}=${checkboxInput.value.replace(' ', '+')}`;
-  //   if (isChecked) {
-  //     // Adding a Filter
-  //     if (!window.location.href.includes('?')) {
-  //       window.location.href = `${window.location.href}?${filter}`;
-  //     } else {
-  //       window.location.href = `${window.location.href}&${filter}`;
-  //     }
-  //   } else {
-  //     // Removing Filter
-  //     // get the current filter to remove
-  //     window.location.search = window.location.search.replace(filter, '');
-  //   }
-  // }
-
   handleCheckBoxFilter(checkboxInput) {
-    let name = `${checkboxInput.name}`;
-    let value = `${checkboxInput.value.replace(' ', '+')}`;
-    this.urlParams.append(name, value);
-    checkboxInput.checked ? this.urlParams.delete(name, value) : this.urlParams.append(name, value);
-    console.log(this.urlParams.get(name));
-    // console.log(value);
+    const isChecked = checkboxInput.checked;
+    const name = checkboxInput.name;
+    const value = checkboxInput.value;
+
+    isChecked ? this.addParams(name, value) : this.removeParams(name, value);
+  }
+
+  addParams(name, value) {
+    this.searchParams.append(name, value);
+    // update and send the url
+    window.location.search = this.searchParams.toString();
+  }
+  removeParams(name, value) {
+    this.searchParams.delete(name, value);
+    // update and send the url
+    window.location.search = this.searchParams.toString();
   }
 
   handlePriceFilter(numInput) {
