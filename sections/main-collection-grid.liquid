@@ -49,6 +49,9 @@
 {% render 'filters', image_ad: section.settings.image_ad, show_ad: section.settings.show_ad, filter_type: 'drawer' %}
 {% render 'sortby', filter_type: 'drawer' %}
 
+{% for product in collection.products %}
+  <p>{{ product.vendor }}</p>
+{% endfor %}
 <section class="main-collection-grid section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
   <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
     <div class="row">
@@ -62,7 +65,7 @@
       <div class="col-12 col-lg-10">
         <div class="row">
           <div class="col-12 title-category-col">
-            <p class="results-summary">Showing {{ section.settings.total_products_to_show }} Products.</p>
+            <p class="results-summary">Showing 8 of {{ collection.products.size }} Products.</p>
             {% comment %}
               <facet-filters-form>
               <form id="facet-sort-form">
@@ -113,10 +116,7 @@
           <div class="col-12">
             <div class="product-tabs__separator product-tabs__separator--horizontal"></div>
             <div class="product-slider-wrapper">
-              <div class="product-slider  product-slider--grid">
-                {% if section.settings.product_collection_one %}
-                  {% assign collection = collections[section.settings.product_collection_one] %}
-                {% endif %}
+              <div class="product-slider product-slider--grid">
                 {% if collection %}
                   {% for product in collection.products %}
                     {% if section.settings.show_secondary_image == true %}

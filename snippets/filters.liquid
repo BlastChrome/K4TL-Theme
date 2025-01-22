@@ -30,7 +30,6 @@
               <h3>{{ filter.label }}</h3>
               {% case filter.type %}
                 {% when 'list' %}
-                  {% comment %} Size Filters {% endcomment %}
                   {% if filter.label == 'Size' %}
                     <div class="filter-group__buttons">
                       {%- for filter_value in filter.values -%}
@@ -45,20 +44,18 @@
                       {% endfor %}
                     </div>
                   {% else %}
-                    {% comment %} Filter CheckBoxes {% endcomment %}
                     <ul>
                       {%- for filter_value in filter.values -%}
                         {% liquid
                           assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index
                         %}
-
                         <li>
                           <div class="checkboxWrapper">
                             <input
                               type="checkbox"
                               id="{{input_id}}"
-                              value="{{ filter_value.label }}"
                               name="{{ filter_value.param_name }}"
+                              value="{{ filter_value.label }}"
                               {% if filter_value.active %}
                                 checked
                               {% endif %}
