@@ -8,8 +8,8 @@
         }
 
         h3 {
-            @include mx.font-source-sans(--font-family-1, --theme-font-btn-tab-1, --clr-smoke-2, false, 32px, normal);
-            margin-bottom: 20px;
+            @include mx.font-source-sans(--font-family-1, --theme-font-btn-mob-2, --clr-smoke-2, false, 32px, normal);
+            margin-bottom: 10px;
         }
 
         .filter-group {

@@ -1,0 +1,9 @@
+{% comment %} pill button {% endcomment %}
+<a href="{{ pill_button_link }}" class="pill-button {{ pill_button_varient_class }}">
+  <span class="pill-button__text">
+    {{ pill_button_text }}
+  </span>
+  <span class="pill-button__pill">
+    {{ 'icon-close-small.svg' | inline_asset_content }}
+  </span>
+</a>

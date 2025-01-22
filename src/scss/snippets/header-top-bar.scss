@@ -1,13 +1,14 @@
 @use '../utilities/mx' as mx;
 
-.header{
+.header {
     &__top-bar {
         padding: 22px 0;
+
         @include mx.mq('tablet', max) {
             padding: 12px 0;
             display: none;
         }
-        
+
         .location,
         .settings {
             display: flex;

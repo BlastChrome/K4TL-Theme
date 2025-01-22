@@ -24,6 +24,15 @@
               <span class="icon">X</span>
               <span class="text">Clear All Filters </span>
             </button>
+            {%- for filter in collection.filters -%}
+              {%- for value in filter.active_values -%}
+                {% render 'pill-button',
+                  pill_button_varient_class: 'primary',
+                  pill_button_link: 'test',
+                  pill_button_text: 'Test'
+                %}
+              {%- endfor -%}
+            {%- endfor -%}
           </div>
           {%- for filter in collection.filters -%}
             <div class="filter-group">

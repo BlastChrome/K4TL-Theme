@@ -49,9 +49,6 @@
 {% render 'filters', image_ad: section.settings.image_ad, show_ad: section.settings.show_ad, filter_type: 'drawer' %}
 {% render 'sortby', filter_type: 'drawer' %}
 
-{% for product in collection.products %}
-  <p>{{ product.vendor }}</p>
-{% endfor %}
 <section class="main-collection-grid section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
   <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
     <div class="row">
