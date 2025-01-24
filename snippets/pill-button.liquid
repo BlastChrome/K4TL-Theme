@@ -1,9 +1,24 @@
-{% comment %} pill button {% endcomment %}
+{% comment %}
+  Renders a pill button for removing avtive collection/search filters
+
+  Accepts:
+  - pill_button_varient_class: css class
+  - pill_button_link: url
+  - pill_button_text: string
+
+  Usage:
+  {% render 'pill-button',
+    pill_button_varient_class: 'primary',
+    pill_button_name: 'brand'
+    pill_button_label: 'nike'
+  %}
+{% endcomment %}
+
 <a href="{{ pill_button_link }}" class="pill-button {{ pill_button_varient_class }}">
-  <span class="pill-button__text">
-    {{ pill_button_text }}
-  </span>
-  <span class="pill-button__pill">
+  <span class="pill-button__icon">
     {{ 'icon-close-small.svg' | inline_asset_content }}
+  </span>
+  <span class="pill-button__text">
+    <strong>{{ pill_button_name }}</strong>: {{ pill_button_label }}
   </span>
 </a>

@@ -28,8 +28,9 @@
               {%- for value in filter.active_values -%}
                 {% render 'pill-button',
                   pill_button_varient_class: 'primary',
-                  pill_button_link: 'test',
-                  pill_button_text: 'Test'
+                  pill_button_link: '#',
+                  pill_button_name: filter.label,
+                  pill_button_label: value.label
                 %}
               {%- endfor -%}
             {%- endfor -%}

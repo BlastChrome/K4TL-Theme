@@ -2,12 +2,16 @@
 
 .pill-button {
     width: 100%;
-    max-width: 200px;
-    min-height: 52px;
-    height: auto;
+    max-width: fit-content;
+    min-height: 25px;
+    height: 25px;
     display: flex;
+    gap: 8px;
     align-items: center;
     position: relative;
+    background-color: var(--clr-black);
+    padding: 12px;
+    margin-bottom: 5px;
 
     &:hover {
         .pill-button__text {
@@ -20,17 +24,28 @@
     }
 
     &__text {
-        @include mx.font-source-sans(--font-family-1, --theme-font-btn-tab-1, --clr-smoke-2, false, 32px);
+        @include mx.font-source-sans(--font-family-1, --theme-font-h3-mob-4, --clr-white, false, 32px);
         margin: 0;
         transition: all 0.6s ease-in-out;
     }
 
-    &__pill {
+    &__icon {
         opacity: 1;
         transition: all 0.6s ease-in-out;
-        position: absolute;
-        right: 0;
         z-index: 1;
+
+        path {
+            fill: var(--clr-white);
+        }
+
+        svg {
+            width: 10px;
+            height: 10px;
+        }
+
+        path {
+            fill: var(--clr-white);
+        }
     }
 
 }
