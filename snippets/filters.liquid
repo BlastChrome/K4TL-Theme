@@ -20,10 +20,6 @@
         <aside class="filter filter--sidebar">
           <!-- Filter Clear Button -->
           <div class="filter-clear">
-            <button class="clear-btn">
-              <span class="icon">X</span>
-              <span class="text">Clear All Filters </span>
-            </button>
             {%- for filter in collection.filters -%}
               {%- for value in filter.active_values -%}
                 <facet-remove>
@@ -35,6 +31,10 @@
                   %}
                 </facet-remove>
               {%- endfor -%}
+              <button class="clear-btn">
+                <span class="icon">X</span>
+                <span class="text">Clear All Filters </span>
+              </button>
             {%- endfor -%}
           </div>
           {%- for filter in collection.filters -%}

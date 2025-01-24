@@ -4,13 +4,12 @@
     width: 100%;
     max-width: fit-content;
     min-height: 25px;
-    height: 25px;
     display: flex;
     gap: 8px;
     align-items: center;
     position: relative;
     background-color: var(--clr-black);
-    padding: 18px 12px;
+    padding: 8px;
     margin-bottom: 5px;
 
     &:hover {
@@ -21,7 +20,7 @@
     }
 
     &__text {
-        @include mx.font-source-sans(--font-family-1, --theme-font-h3-mob-4, --clr-white, false, 32px);
+        @include mx.font-source-sans(--font-family-1, --theme-font-h3-mob-4, --clr-white, false, normal);
         margin: 0;
     }
 
@@ -30,13 +29,11 @@
         transition: all 0.25s ease-in-out;
         z-index: 1;
         transform: rotate(45deg);
-
-        path {
-            fill: var(--clr-white);
-        }
+        width: 10px;
+        height: 10px;
 
         svg {
-            width: 10px;
+            min-width: 10px;
             height: 10px;
         }
 
