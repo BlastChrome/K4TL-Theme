@@ -26,12 +26,14 @@
             </button>
             {%- for filter in collection.filters -%}
               {%- for value in filter.active_values -%}
-                {% render 'pill-button',
-                  pill_button_varient_class: 'primary',
-                  pill_button_link: '#',
-                  pill_button_name: filter.label,
-                  pill_button_label: value.label
-                %}
+                <facet-remove>
+                  {% render 'pill-button',
+                    pill_button_varient_class: 'primary',
+                    pill_button_url_to_remove: value.url_to_remove,
+                    pill_button_name: filter.label,
+                    pill_button_label: value.label
+                  %}
+                </facet-remove>
               {%- endfor -%}
             {%- endfor -%}
           </div>

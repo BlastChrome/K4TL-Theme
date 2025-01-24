@@ -10,29 +10,26 @@
     align-items: center;
     position: relative;
     background-color: var(--clr-black);
-    padding: 12px;
+    padding: 18px 12px;
     margin-bottom: 5px;
 
     &:hover {
-        .pill-button__text {
-            color: var(--clr-red);
-        }
 
-        .pill-button__pill {
-            transform: translateX(10px)
+        .pill-button__icon {
+            transform: rotate(270deg)
         }
     }
 
     &__text {
         @include mx.font-source-sans(--font-family-1, --theme-font-h3-mob-4, --clr-white, false, 32px);
         margin: 0;
-        transition: all 0.6s ease-in-out;
     }
 
     &__icon {
         opacity: 1;
-        transition: all 0.6s ease-in-out;
+        transition: all 0.25s ease-in-out;
         z-index: 1;
+        transform: rotate(45deg);
 
         path {
             fill: var(--clr-white);
