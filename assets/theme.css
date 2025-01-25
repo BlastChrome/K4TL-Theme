@@ -5888,7 +5888,7 @@ button.button--link span {
 }
 @media only screen and (max-width: 1439px) {
   .filters-container .filter .filter-group .range__number {
-    flex-direction: column;
+    flex-direction: coluin;
     gap: 5px;
   }
 }
@@ -9620,7 +9620,7 @@ button.button--link span {
 }
 @media only screen and (max-width: 1439px) {
   .filters-container .filter .filter-group .range__number {
-    flex-direction: column;
+    flex-direction: coluin;
     gap: 5px;
   }
 }

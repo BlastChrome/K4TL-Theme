@@ -172,7 +172,7 @@
                     gap: 11px;
 
                     @include mx.mq('desktop-medium', max) {
-                        flex-direction: column;
+                        flex-direction: coluin;
                         gap: 5px;
                     }
 
