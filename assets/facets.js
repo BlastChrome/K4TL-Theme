@@ -3,9 +3,11 @@ class FacetFiltersForm extends HTMLElement {
     super();
     const facetForm = this.querySelector('form');
     const clearBtn = this.querySelector('.clear-btn');
+    const sizeButtons = this.querySelector('.filter-group__buttons');
     facetForm.addEventListener('input', this.handleInputFilters.bind(this));
     clearBtn.addEventListener('click', this.handleFilterClear.bind(this));
-    // // initialize searchParams with the current URL params,
+    sizeButtons.addEventListener('click', this.handleSizeButtonClick.bind(this));
+    // initialize searchParams with the current URL params,
     this.searchParams = new URLSearchParams(window.location.search);
   }
 
@@ -48,6 +50,16 @@ class FacetFiltersForm extends HTMLElement {
     } else {
       console.log('max-price');
     }
+  }
+
+  handleSizeButtonClick(e) {
+    e.preventDefault();
+    const clickedButton = e.target;
+    const isActive = clickedButton.classList.contains('active');
+    const name = clickedButton.getAttribute('name');
+    const value = clickedButton.getAttribute('value');
+
+    isActive ? this.removeParams(name, value) : this.addParams(name, value);
   }
 }
 

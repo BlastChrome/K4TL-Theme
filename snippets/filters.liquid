@@ -20,6 +20,10 @@
         <aside class="filter filter--sidebar">
           <!-- Filter Clear Button -->
           <div class="filter-clear">
+            <button class="clear-btn">
+              <span class="icon">X</span>
+              <span class="text">Clear All Filters </span>
+            </button>
             {%- for filter in collection.filters -%}
               {%- for value in filter.active_values -%}
                 <facet-remove>
@@ -31,10 +35,6 @@
                   %}
                 </facet-remove>
               {%- endfor -%}
-              <button class="clear-btn">
-                <span class="icon">X</span>
-                <span class="text">Clear All Filters </span>
-              </button>
             {%- endfor -%}
           </div>
           {%- for filter in collection.filters -%}
@@ -46,7 +46,7 @@
                     <div class="filter-group__buttons">
                       {%- for filter_value in filter.values -%}
                         <button
-                          class="button button--outline"
+                          class=" button button--outline{% if filter_value.active %} active {% endif %}"
                           id="{{input_id}}"
                           value="{{ filter_value.label }}"
                           name="{{ filter_value.param_name }}"
@@ -89,18 +89,17 @@
                       <div class="range__track"></div>
                     </div>
                     <div class="range__number">
-                      {%- for filter_value in filter.values -%}
-                        <div class="input-group">
-                          <label for="min-price">Min. Price</label>
-                          <input type="number" name="min-price" id="min-price">
-                        </div>
-                      {%- endfor -%}
-                      {% comment %}
-                        <div class="input-group">
-                          <label for="max-price">Max. Price</label>
-                          <input type="number" name="max-price" id="max-price">
-                        </div>
-                      {% endcomment %}
+                      {% comment %} {%- for filter_value in filter.values -%} {% endcomment %}
+                      <div class="input-group">
+                        <label for="min-price">Min. Price</label>
+                        <input type="number" name="min-price" id="min-price">
+                      </div>
+                      {% comment %} {%- endfor -%} {% endcomment %}
+
+                      <div class="input-group">
+                        <label for="max-price">Max. Price</label>
+                        <input type="number" name="max-price" id="max-price">
+                      </div>
                     </div>
                   </div>
               {% endcase %}
