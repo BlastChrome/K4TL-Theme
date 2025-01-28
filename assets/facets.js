@@ -45,11 +45,8 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   handlePriceFilter(numInput) {
-    if (numInput.id == 'min-price') {
-      console.log('min-price');
-    } else {
-      console.log('max-price');
-    }
+    const name = numInput.name;
+    const value = numInput.value;
   }
 
   handleSizeButtonClick(e) {
