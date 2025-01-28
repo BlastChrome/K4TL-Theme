@@ -9,6 +9,8 @@ class FacetFiltersForm extends HTMLElement {
     sizeButtons.addEventListener('click', this.handleSizeButtonClick.bind(this));
     // initialize searchParams with the current URL params,
     this.searchParams = new URLSearchParams(window.location.search);
+    this.inputBuffer = [];
+    this.timeoutID = undefined;
   }
 
   handleFilterClear(e) {
@@ -20,7 +22,6 @@ class FacetFiltersForm extends HTMLElement {
   handleInputFilters(e) {
     const input = e.target;
     const inputType = e.target.type;
-
     if (inputType == 'checkbox') this.handleCheckBoxFilter(input);
     if (inputType == 'number') this.handlePriceFilter(input);
   }
@@ -34,8 +35,16 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   addParams(name, value) {
-    this.searchParams.append(name, value);
-    // update and send the url
+    // determine if the paramater already exists
+    const paramExists = this.searchParams.get(name) ? true : false;
+
+    if (!paramExists) {
+      // add the new parameter
+      this.searchParams.append(name, value);
+    } else {
+      // update existing parameter
+      this.searchParams.set(name, value);
+    }
     window.location.search = this.searchParams.toString();
   }
   removeParams(name, value) {
@@ -44,9 +53,34 @@ class FacetFiltersForm extends HTMLElement {
     window.location.search = this.searchParams.toString();
   }
 
+  updateParams(oldName, newName, value) {
+    this.searchParams.get(oldName);
+  }
+
   handlePriceFilter(numInput) {
+    // determine if it's the max or min input
+    const isMAX = numInput.id == 'max-price' ? true : false;
+
+    //determine if the url has
+    console.log(this.searchParams.getAll('filter.v.price.lte'));
+
+    // clear the last input timeout
+    clearInterval(this.timeoutID);
+
     const name = numInput.name;
-    const value = numInput.value;
+    // get the last input
+    const lastInput = numInput.value.split('').pop();
+
+    // add that input to the buffer
+    this.inputBuffer.push(lastInput);
+
+    //combine the array into a single value, [1,2,5] = $125
+    const result = this.inputBuffer.join('');
+
+    //after a certain amount of time update the filters with the result
+    this.timeoutID = setTimeout(() => {
+      this.addParams(name, result);
+    }, 500);
   }
 
   handleSizeButtonClick(e) {
