@@ -5849,16 +5849,10 @@ button.button--link span {
 }
 .filters-container .filter .filter-group .range__progress {
   content: "";
-  width: 100%;
+  left: 0;
   position: absolute;
   min-height: 2px;
   background-color: var(--clr-red);
-}
-.filters-container .filter .filter-group .range__progress--left {
-  left: 0;
-}
-.filters-container .filter .filter-group .range__progress--right {
-  right: 0;
 }
 .filters-container .filter .filter-group .range__track {
   position: absolute;
@@ -8258,16 +8252,10 @@ button.button--link span {
 }
 .filters-container .filter .filter-group .range__progress {
   content: "";
-  width: 100%;
+  left: 0;
   position: absolute;
   min-height: 2px;
   background-color: var(--clr-red);
-}
-.filters-container .filter .filter-group .range__progress--left {
-  left: 0;
-}
-.filters-container .filter .filter-group .range__progress--right {
-  right: 0;
 }
 .filters-container .filter .filter-group .range__track {
   position: absolute;

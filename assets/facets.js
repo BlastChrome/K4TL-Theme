@@ -13,8 +13,7 @@ class FacetFiltersForm extends HTMLElement {
     // Price filter elements
     this.minToolTip = this.querySelector('input[type="range"]#min');
     this.maxToolTip = this.querySelector('input[type="range"]#max');
-    this.priceProgressBarLeft = this.querySelector('.range__progress--left');
-    this.priceProgressBarRight = this.querySelector('.range__progress--right');
+    this.priceProgressBar = this.querySelector('.range__progress');
 
     facetForm.addEventListener('input', this.handleInputFilters.bind(this));
     clearBtn.addEventListener('click', this.handleFilterClear.bind(this));
@@ -75,16 +74,20 @@ class FacetFiltersForm extends HTMLElement {
     }, this.refreshDelay);
   }
   handlePriceFilterRangeSlider(slide) {
-    // prevent the sliders from crossing each other
-    e.preventDefault();
-    return;
+    const minValue = parseInt(this.minToolTip.value);
+    const maxValue = parseInt(this.maxToolTip.value);
 
-    // get the distance between the tooltips
-    // apply the red bar styling to the space between them
+    // get the total range of the slider
+    const range = parseInt(this.maxToolTip.max) - parseInt(this.minToolTip.min);
 
-    this.priceProgressBarLeft.style.left = `${this.minToolTip.value}%`;
-    this.priceProgressBarRight.style.left = `-${this.maxToolTip.value}%`;
-    this.priceProgressBarRight.style.right = `0%`;
+    // get the selected value range of the slider
+    const valueRange = maxValue - minValue;
+
+    // calculate the width percentage
+    const width = (valueRange / range) * 100;
+
+    // update the progress width:
+    this.priceProgressBar.style.width = `${width}%`;
   }
 
   handleSizeButtonClick(e) {
