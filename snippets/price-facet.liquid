@@ -1,0 +1,60 @@
+<div class="range">
+  <!-- Slider -->
+  <div class="range__slider">
+    <div class="range__progress range__progress--left"></div>
+    <div class="range__progress range__progress--right"></div>
+    <div class="range__track"></div>
+    <input
+      class="range__slide-input range__slide-input--min"
+      type="range"
+      id="min"
+      min="0"
+      max="{{ filter.range_max | money_without_currency }}"
+      {%- if filter.min_value.value -%}
+        value="{{ filter.min_value.value | money_without_currency }}"
+      {%- else -%}
+        value="25"
+      {%- endif -%}
+      name="{{ filter.min_value.param_name }}"
+    >
+    <input
+      class="range__slide-input range__slide-input--max"
+      type="range"
+      id="max"
+      min="0"
+      max="{{ filter.range_max | money_without_currency }}"
+      {%- if filter.max_value.value -%}
+        value="{{ filter.max_value.value | money_without_currency }}"
+      {%- else -%}
+        value="75"
+      {%- endif -%}
+      name="{{ filter.max_value.param_name }}"
+    >
+  </div>
+  <div class="range__number">
+    <div class="input-group">
+      <label for="min-price">Min</label>
+      <input
+        type="number"
+        placeholder="0"
+        name="{{ filter.min_value.param_name }}"
+        id="{{ id_prefix }}{{ filter.label | escape }}-LTE"
+        {%- if filter.min_value.value -%}
+          value="{{ filter.min_value.value | money_without_currency }}"
+        {%- endif -%}
+      >
+    </div>
+    <div class="input-group">
+      <label for="max-price">Max</label>
+      <input
+        type="number"
+        placeholder="{{ filter.range_max | money_without_currency }}"
+        name="{{ filter.max_value.param_name }}"
+        id="{{ id_prefix }}{{ filter.label | escape }}-GTE"
+        {%- if filter.max_value.value -%}
+          value="{{ filter.max_value.value | money_without_currency }}"
+        {%- endif -%}
+      >
+    </div>
+  </div>
+</div>

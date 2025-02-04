@@ -84,44 +84,7 @@
 
                 {% when 'price_range' %}
                   <price-range>
-                    <div class="range">
-                      <!-- Slider -->
-                      <div class="range__slider">
-                        <div class="range__track"></div>
-                        <input
-                          class="range__slide-input range__slide-input--min"
-                          type="range"
-                          class="min-range"
-                          min="50"
-                          max="1000"
-                          value="50"
-                          placeholder="0"
-                          name="filter.v.price.gte"
-                          step="1"
-                        >
-                        <input
-                          class="range__slide-input range__slide-input--max"
-                          type="range"
-                          class="min-range"
-                          min="50"
-                          max="1000"
-                          value="50"
-                          placeholder="$50"
-                          name="filter.v.price.lte"
-                          step="1"
-                        >
-                      </div>
-                      <div class="range__number">
-                        <div class="input-group">
-                          <label for="min-price">Min</label>
-                          <input type="number" name="filter.v.price.gte" id="min-price">
-                        </div>
-                        <div class="input-group">
-                          <label for="max-price">Max</label>
-                          <input type="number" name="filter.v.price.lte" id="max-price">
-                        </div>
-                      </div>
-                    </div>
+                    {% render 'price-facet', filter: filter, id_prefix: 'Filter-' %}
                   </price-range>
               {% endcase %}
             </div>
