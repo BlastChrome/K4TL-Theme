@@ -1,7 +1,6 @@
 <div class="range">
   <!-- Slider -->
   <div class="range__slider">
-    <div class="range__progress"></div>
     <div class="range__track"></div>
     <input
       class="range__slide-input range__slide-input--min"
@@ -32,10 +31,11 @@
   </div>
   <div class="range__number">
     <div class="input-group">
-      <label for="min-price">Min</label>
+      <label for="{{ filter.min_value.param_name }}">Min</label>
       <input
         type="number"
         placeholder="0"
+        class="min-input"
         name="{{ filter.min_value.param_name }}"
         id="{{ id_prefix }}{{ filter.label | escape }}-LTE"
         {%- if filter.min_value.value -%}
@@ -44,9 +44,10 @@
       >
     </div>
     <div class="input-group">
-      <label for="max-price">Max</label>
+      <label for="{{ filter.max_value.param_name }}">Max</label>
       <input
         type="number"
+        class="max-input"
         placeholder="{{ filter.range_max | money_without_currency }}"
         name="{{ filter.max_value.param_name }}"
         id="{{ id_prefix }}{{ filter.label | escape }}-GTE"

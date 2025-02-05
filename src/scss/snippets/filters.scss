@@ -127,31 +127,22 @@
                     margin: 25px 0;
                     min-height: 16px;
                     background-color: transparent;
-                    display: flex;
-                    align-items: center;
-                    overflow: hidden;
                 }
 
-                &__progress {
-                    content: '';
-                    // width: 100%;
-                    left: 0;
-                    position: absolute;
-                    min-height: 2px;
-                    background-color: var(--clr-red);
-                }
 
                 &__track {
                     position: absolute;
+                    background-color: #ccc;
                     height: 100%;
                 }
 
                 &__slide-input {
-                    background: none;
                     position: absolute;
                     width: 100%;
+                    background: none;
                     pointer-events: none;
-                    top: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
                     appearance: none;
 
                     &[type='range']::-webkit-slider-thumb {

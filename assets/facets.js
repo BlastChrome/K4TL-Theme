@@ -10,10 +10,18 @@ class FacetFiltersForm extends HTMLElement {
     this.timeoutID = null;
     this.refreshDelay = 500; // half a second buffer before inputs are processed
 
-    // Price filter elements
-    this.minToolTip = this.querySelector('input[type="range"]#min');
-    this.maxToolTip = this.querySelector('input[type="range"]#max');
-    this.priceProgressBar = this.querySelector('.range__progress');
+    // price filter range inputs
+    this.minValue = this.querySelector('input[type="range"]#min');
+    this.maxValue = this.querySelector('input[type="range"]#max');
+
+    // price filter inputs fields
+    this.priceInputMin = this.querySelector('input.min-input');
+    this.priceInputMax = this.querySelector('input.max-input');
+
+    this.minGap = 0;
+    this.priceRange = this.querySelector('.range__track');
+    this.sliderMinValue = parseInt(this.minValue.min);
+    this.sliderMaxValue = parseInt(this.maxValue.max);
 
     facetForm.addEventListener('input', this.handleInputFilters.bind(this));
     clearBtn.addEventListener('click', this.handleFilterClear.bind(this));
@@ -73,21 +81,11 @@ class FacetFiltersForm extends HTMLElement {
       }
     }, this.refreshDelay);
   }
-  handlePriceFilterRangeSlider(slide) {
-    const minValue = parseInt(this.minToolTip.value);
-    const maxValue = parseInt(this.maxToolTip.value);
 
-    // get the total range of the slider
-    const range = parseInt(this.maxToolTip.max) - parseInt(this.minToolTip.min);
+  handlePriceFilterRangeSlider(slide) {}
 
-    // get the selected value range of the slider
-    const valueRange = maxValue - minValue;
-
-    // calculate the width percentage
-    const width = (valueRange / range) * 100;
-
-    // update the progress width:
-    this.priceProgressBar.style.width = `${width}%`;
+  priceSlideMin(){
+    let gap 
   }
 
   handleSizeButtonClick(e) {
