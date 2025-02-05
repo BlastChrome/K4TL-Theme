@@ -132,8 +132,10 @@
 
                 &__track {
                     position: absolute;
-                    background-color: #ccc;
-                    height: 100%;
+                    background-color: var(--clr-red);
+                    height: 2px;
+                    z-index: 1;
+                    top: 50%;
                 }
 
                 &__slide-input {

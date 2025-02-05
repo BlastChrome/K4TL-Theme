@@ -9,9 +9,7 @@
       min="0"
       max="{{ filter.range_max | money_without_currency }}"
       {%- if filter.min_value.value -%}
-        value="{{ filter.min_value.value | money_without_currency }}"
-      {%- else -%}
-        value="25"
+        value="{{ filter.min_value.value | money }}"
       {%- endif -%}
       name="{{ filter.min_value.param_name }}"
     >
@@ -23,8 +21,6 @@
       max="{{ filter.range_max | money_without_currency }}"
       {%- if filter.max_value.value -%}
         value="{{ filter.max_value.value | money_without_currency }}"
-      {%- else -%}
-        value="75"
       {%- endif -%}
       name="{{ filter.max_value.param_name }}"
     >
@@ -33,7 +29,7 @@
     <div class="input-group">
       <label for="{{ filter.min_value.param_name }}">Min</label>
       <input
-        type="number"
+        type="text"
         placeholder="0"
         class="min-input"
         name="{{ filter.min_value.param_name }}"
@@ -46,7 +42,7 @@
     <div class="input-group">
       <label for="{{ filter.max_value.param_name }}">Max</label>
       <input
-        type="number"
+        type="text"
         class="max-input"
         placeholder="{{ filter.range_max | money_without_currency }}"
         name="{{ filter.max_value.param_name }}"

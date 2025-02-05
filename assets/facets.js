@@ -15,17 +15,23 @@ class FacetFiltersForm extends HTMLElement {
     this.maxValue = this.querySelector('input[type="range"]#max');
 
     // price filter inputs fields
-    this.priceInputMin = this.querySelector('input.min-input');
-    this.priceInputMax = this.querySelector('input.max-input');
+    this.priceInputMin = this.querySelector('input[type="text"].min-input');
+    this.priceInputMax = this.querySelector('input[type="text"].max-input');
 
     this.minGap = 0;
-    this.priceRange = this.querySelector('.range__track');
+    this.priceRangeTrack = this.querySelector('.range__track');
     this.sliderMinValue = parseInt(this.minValue.min);
     this.sliderMaxValue = parseInt(this.maxValue.max);
 
     facetForm.addEventListener('input', this.handleInputFilters.bind(this));
     clearBtn.addEventListener('click', this.handleFilterClear.bind(this));
     sizeButtons.addEventListener('click', this.handleSizeButtonClick.bind(this));
+
+    this.minValue.addEventListener('input', this.priceSlideMin.bind(this));
+    this.maxValue.addEventListener('input', this.priceSlideMax.bind(this));
+
+    this.priceSlideMin();
+    this.priceSlideMax();
   }
 
   handleFilterClear(e) {
@@ -39,7 +45,7 @@ class FacetFiltersForm extends HTMLElement {
     const inputType = e.target.type;
     if (inputType == 'checkbox') this.handleCheckBoxFilter(input);
     if (inputType == 'number') this.handlePriceFilterNumber(input);
-    if (inputType == 'range') this.handlePriceFilterRangeSlider(input);
+    // if (inputType == 'range') this.handlePriceFilterRangeSlider(input);
   }
 
   handleCheckBoxFilter(checkboxInput) {
@@ -82,10 +88,26 @@ class FacetFiltersForm extends HTMLElement {
     }, this.refreshDelay);
   }
 
-  handlePriceFilterRangeSlider(slide) {}
+  priceSlideMin() {
+    let gap = parseInt(this.maxValue.value) - parseInt(this.minValue.value);
+    if (gap <= this.minGap) {
+      this.minValue.value = parseInt(this.maxValue.value) - this.minGap;
+    }
+    this.priceInputMin.value = this.minValue.value;
+    this.setPriceArea();
+  }
+  priceSlideMax() {
+    let gap = parseInt(this.maxValue.value) - parseInt(this.minValue.value);
+    if (gap <= this.minGap) {
+      this.maxValue.value = parseInt(this.minValue.value) + this.minGap;
+    }
+    this.priceInputMax.value = this.maxValue.value;
+    this.setPriceArea();
+  }
 
-  priceSlideMin(){
-    let gap 
+  setPriceArea() {
+    this.priceRangeTrack.style.left = (this.minValue.value / this.sliderMaxValue) * 100 + '%';
+    this.priceRangeTrack.style.right = 100 - (this.maxValue.value / this.sliderMaxValue) * 100 + '%';
   }
 
   handleSizeButtonClick(e) {
