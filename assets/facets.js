@@ -11,12 +11,12 @@ class FacetFiltersForm extends HTMLElement {
     this.refreshDelay = 500; // half a second buffer before inputs are processed
 
     // price filter range inputs
-    this.minValue = this.querySelector('input[type="range"]#min');
-    this.maxValue = this.querySelector('input[type="range"]#max');
+    this.minValue = this.querySelector('.range__slide-input--min');
+    this.maxValue = this.querySelector('.range__slide-input--max');
 
     // price filter inputs fields
-    this.priceInputMin = this.querySelector('input[type="text"].min-input');
-    this.priceInputMax = this.querySelector('input[type="text"].max-input');
+    this.priceInputMin = this.querySelector('input[type="number"].min-input');
+    this.priceInputMax = this.querySelector('input[type="number"].max-input');
 
     this.minGap = 0;
     this.priceRangeTrack = this.querySelector('.range__track');
@@ -29,7 +29,7 @@ class FacetFiltersForm extends HTMLElement {
 
     this.minValue.addEventListener('input', this.priceSlideMin.bind(this));
     this.maxValue.addEventListener('input', this.priceSlideMax.bind(this));
-
+    // initialize the price filter on load
     this.priceSlideMin();
     this.priceSlideMax();
   }
@@ -93,9 +93,11 @@ class FacetFiltersForm extends HTMLElement {
     if (gap <= this.minGap) {
       this.minValue.value = parseInt(this.maxValue.value) - this.minGap;
     }
+    console.log(this.minValue.getAttribute('value'));
     this.priceInputMin.value = this.minValue.value;
     this.setPriceArea();
   }
+
   priceSlideMax() {
     let gap = parseInt(this.maxValue.value) - parseInt(this.minValue.value);
     if (gap <= this.minGap) {
