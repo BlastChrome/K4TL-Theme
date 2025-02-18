@@ -32,6 +32,8 @@ class FacetFiltersForm extends HTMLElement {
     // initialize the price filter on load
     this.priceSlideMin();
     this.priceSlideMax();
+
+    console.log(this.maxValue.value);
   }
 
   handleFilterClear(e) {
@@ -93,7 +95,6 @@ class FacetFiltersForm extends HTMLElement {
     if (gap <= this.minGap) {
       this.minValue.value = parseInt(this.maxValue.value) - this.minGap;
     }
-    console.log(this.minValue.getAttribute('value'));
     this.priceInputMin.value = this.minValue.value;
     this.setPriceArea();
   }

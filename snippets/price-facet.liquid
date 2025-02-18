@@ -50,6 +50,7 @@
 {% endcomment %}
 
 <div class="range">
+  <p>Currency:{{ filter.range_max }}</p>
   <!-- Slider -->
   <div class="range__slider">
     <div class="range__track"></div>
@@ -57,18 +58,18 @@
       class="range__slide-input range__slide-input--min"
       type="range"
       id="min"
-      min="1000"
+      min="0"
       max="12000"
-      value="2000"
+      value="{{  }}"
       name="{{ filter.min_value.param_name }}"
     >
     <input
       class="range__slide-input range__slide-input--max"
       type="range"
       id="max"
-      min="1000"
-      max="12000"
-      value="2000"
+      min="0"
+      max="{{ filter.range_max}}"
+      value="{{ filter.range_max}}"
       name="{{ filter.max_value.param_name }}"
     >
   </div>
