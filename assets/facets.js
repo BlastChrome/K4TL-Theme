@@ -20,6 +20,8 @@ class FacetFiltersForm extends HTMLElement {
 
     this.minGap = 0;
     this.priceRangeTrack = this.querySelector('.range__track');
+
+    // Initialize slider values
     this.sliderMinValue = parseInt(this.minValue.min);
     this.sliderMaxValue = parseInt(this.maxValue.max);
 
@@ -29,11 +31,32 @@ class FacetFiltersForm extends HTMLElement {
 
     this.minValue.addEventListener('input', this.priceSlideMin.bind(this));
     this.maxValue.addEventListener('input', this.priceSlideMax.bind(this));
-    // initialize the price filter on load
-    this.priceSlideMin();
-    this.priceSlideMax();
 
-    console.log(this.maxValue.value);
+    // Update slider range on load
+    this.updateSliderRange();
+  }
+
+  // Fetch and update the slider range based on filtered products
+  updateSliderRange() {
+    const filteredMin = parseInt(this.minValue.min);
+    const filteredMax = parseInt(this.maxValue.max);
+
+    // Update slider attributes
+    this.minValue.min = filteredMin;
+    this.minValue.max = filteredMax;
+    this.maxValue.min = filteredMin;
+    this.maxValue.max = filteredMax;
+
+    // Update slider values if they are outside the new range
+    if (parseInt(this.minValue.value) < filteredMin) {
+      this.minValue.value = filteredMin;
+    }
+    if (parseInt(this.maxValue.value) > filteredMax) {
+      this.maxValue.value = filteredMax;
+    }
+
+    // Update the track
+    this.setPriceArea();
   }
 
   handleFilterClear(e) {
@@ -97,6 +120,8 @@ class FacetFiltersForm extends HTMLElement {
     }
     this.priceInputMin.value = this.minValue.value;
     this.setPriceArea();
+    // Trigger filter update after adjusting the input
+    this.handlePriceFilterNumber(this.priceInputMin);
   }
 
   priceSlideMax() {
@@ -106,6 +131,8 @@ class FacetFiltersForm extends HTMLElement {
     }
     this.priceInputMax.value = this.maxValue.value;
     this.setPriceArea();
+    // Trigger filter update after adjusting the input
+    this.handlePriceFilterNumber(this.priceInputMax);
   }
 
   setPriceArea() {

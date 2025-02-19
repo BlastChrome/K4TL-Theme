@@ -58,18 +58,18 @@
       class="range__slide-input range__slide-input--min"
       type="range"
       id="min"
-      min="0"
-      max="12000"
-      value="{{  }}"
+      min="{{ filter.range_min | money_without_currency | default: 0 }}"
+      max="{{ filter.range_max | money_without_currency | default: 12000 }}"
+      value="{{ filter.min_value.value | money_without_currency | default: filter.range_min | money_without_currency | default: 0 }}"
       name="{{ filter.min_value.param_name }}"
     >
     <input
       class="range__slide-input range__slide-input--max"
       type="range"
       id="max"
-      min="0"
-      max="{{ filter.range_max}}"
-      value="{{ filter.range_max}}"
+      min="{{ filter.range_min | money_without_currency | default: 0 }}"
+      max="{{ filter.range_max | money_without_currency | default: 12000 }}"
+      value="{{ filter.max_value.value | money_without_currency | default: filter.range_max | money_without_currency | default: 12000 }}"
       name="{{ filter.max_value.param_name }}"
     >
   </div>
