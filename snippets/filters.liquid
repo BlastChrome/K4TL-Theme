@@ -81,11 +81,6 @@
                       {%- endfor -%}
                     </ul>
                   {% endif %}
-
-                {% when 'price_range' %}
-                  <price-range>
-                    {% render 'price-facet', filter: filter, id_prefix: 'Filter-' %}
-                  </price-range>
               {% endcase %}
             </div>
             <div class="horizontal-line"></div>

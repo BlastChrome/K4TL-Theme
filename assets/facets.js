@@ -10,53 +10,9 @@ class FacetFiltersForm extends HTMLElement {
     this.timeoutID = null;
     this.refreshDelay = 500; // half a second buffer before inputs are processed
 
-    // price filter range inputs
-    this.minValue = this.querySelector('.range__slide-input--min');
-    this.maxValue = this.querySelector('.range__slide-input--max');
-
-    // price filter inputs fields
-    this.priceInputMin = this.querySelector('input[type="number"].min-input');
-    this.priceInputMax = this.querySelector('input[type="number"].max-input');
-
-    this.minGap = 0;
-    this.priceRangeTrack = this.querySelector('.range__track');
-
-    // Initialize slider values
-    this.sliderMinValue = parseInt(this.minValue.min);
-    this.sliderMaxValue = parseInt(this.maxValue.max);
-
     facetForm.addEventListener('input', this.handleInputFilters.bind(this));
     clearBtn.addEventListener('click', this.handleFilterClear.bind(this));
     sizeButtons.addEventListener('click', this.handleSizeButtonClick.bind(this));
-
-    this.minValue.addEventListener('input', this.priceSlideMin.bind(this));
-    this.maxValue.addEventListener('input', this.priceSlideMax.bind(this));
-
-    // Update slider range on load
-    this.updateSliderRange();
-  }
-
-  // Fetch and update the slider range based on filtered products
-  updateSliderRange() {
-    const filteredMin = parseInt(this.minValue.min);
-    const filteredMax = parseInt(this.maxValue.max);
-
-    // Update slider attributes
-    this.minValue.min = filteredMin;
-    this.minValue.max = filteredMax;
-    this.maxValue.min = filteredMin;
-    this.maxValue.max = filteredMax;
-
-    // Update slider values if they are outside the new range
-    if (parseInt(this.minValue.value) < filteredMin) {
-      this.minValue.value = filteredMin;
-    }
-    if (parseInt(this.maxValue.value) > filteredMax) {
-      this.maxValue.value = filteredMax;
-    }
-
-    // Update the track
-    this.setPriceArea();
   }
 
   handleFilterClear(e) {
@@ -111,33 +67,6 @@ class FacetFiltersForm extends HTMLElement {
         this.updateParams(name, value, 'update');
       }
     }, this.refreshDelay);
-  }
-
-  priceSlideMin() {
-    let gap = parseInt(this.maxValue.value) - parseInt(this.minValue.value);
-    if (gap <= this.minGap) {
-      this.minValue.value = parseInt(this.maxValue.value) - this.minGap;
-    }
-    this.priceInputMin.value = this.minValue.value;
-    this.setPriceArea();
-    // Trigger filter update after adjusting the input
-    this.handlePriceFilterNumber(this.priceInputMin);
-  }
-
-  priceSlideMax() {
-    let gap = parseInt(this.maxValue.value) - parseInt(this.minValue.value);
-    if (gap <= this.minGap) {
-      this.maxValue.value = parseInt(this.minValue.value) + this.minGap;
-    }
-    this.priceInputMax.value = this.maxValue.value;
-    this.setPriceArea();
-    // Trigger filter update after adjusting the input
-    this.handlePriceFilterNumber(this.priceInputMax);
-  }
-
-  setPriceArea() {
-    this.priceRangeTrack.style.left = (this.minValue.value / this.sliderMaxValue) * 100 + '%';
-    this.priceRangeTrack.style.right = 100 - (this.maxValue.value / this.sliderMaxValue) * 100 + '%';
   }
 
   handleSizeButtonClick(e) {
