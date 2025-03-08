@@ -15,7 +15,7 @@
 
 <div class="filters-container">
   {% if filter_type == 'sidebar' %}
-    <facet-filters-form>
+    <facet-filters-form class="sidebar-filters">
       <form>
         <aside class="filter filter--sidebar">
           <!-- Filter Clear Button -->
@@ -31,7 +31,8 @@
                     pill_button_varient_class: 'primary',
                     pill_button_url_to_remove: value.url_to_remove,
                     pill_button_name: filter.label,
-                    pill_button_label: value.label
+                    pill_button_label: value.label,
+                    pill_button_param_name: value.param_name
                   %}
                 </facet-remove>
               {%- endfor -%}
@@ -112,7 +113,7 @@
   {% if filter_type == 'drawer' %}
     <!-- Overlay -->
     <menu-drawer id="mobile-filters">
-      <facet-filters-form>
+      <facet-filters-form class="mobile-filters">
         <form>
           <aside class="filter filter--drawer" data-drawer="content">
             <div class="filter-wrapper filter-wrapper__header">
@@ -135,7 +136,8 @@
                         pill_button_varient_class: 'primary',
                         pill_button_url_to_remove: value.url_to_remove,
                         pill_button_name: filter.label,
-                        pill_button_label: value.label
+                        pill_button_label: value.label,
+                        pill_button_test: 'value.param_name'
                       %}
                     </facet-remove>
                   {%- endfor -%}

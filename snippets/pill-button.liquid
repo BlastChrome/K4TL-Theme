@@ -11,10 +11,17 @@
     pill_button_varient_class: 'primary',
     pill_button_name: 'brand'
     pill_button_label: 'nike'
+    pill_button_value: 'nike'
     pill_button_url_to_remove: 'filter.p.vendor=nike'
+
   %}
 {% endcomment %}
-<a href="{{ pill_button_url_to_remove }}" class="pill-button {{ pill_button_varient_class }}">
+<a
+  href="{{ pill_button_url_to_remove }}"
+  data-name="{{ pill_button_param_name }}"
+  data-value="{{ pill_button_label }}"
+  class="pill-button {{ pill_button_varient_class }}"
+>
   <span class="pill-button__icon">
     {{ 'icon-close-small.svg' | inline_asset_content }}
   </span>
