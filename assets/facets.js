@@ -2,55 +2,50 @@ class FacetFiltersForm extends HTMLElement {
   constructor() {
     super();
     const facetForm = this.querySelector('form');
-    const sizeButtons = this.querySelector('.filter-group__buttons');
-
-    // initialize searchParams with the current URL params,
     this.searchParams = new URLSearchParams(window.location.search);
-    this.timeoutID = null;
-
-    facetForm.addEventListener('input', this.handleInputFilters.bind(this));
-    sizeButtons.addEventListener('click', this.handleSizeButtonClick.bind(this));
-
-    // event delegation approach
-    facetForm.addEventListener('click', this.handleEventDelgation.bind(this));
+    facetForm.addEventListener('click', this.handleFormClickEvents.bind(this));
   }
 
-  handleEventDelgation(e) {
+  handleFormClickEvents(e) {
     const facetRemoveElement = e.target.closest('facet-remove');
     const filterClearElement = e.target.closest('.clear-btn');
+    const sizeButton = e.target.closest('.filter-group__buttons button');
+    const clickedInput = e.target.closest('input[type="checkbox"]');
 
     if (facetRemoveElement) {
       e.preventDefault();
-      const linkToRemove = event.target.closest('a');
+      const linkToRemove = e.target.closest('a');
       const name = linkToRemove.dataset.name;
       const value = linkToRemove.dataset.value;
       this.updateParams(name, value, 'delete');
     }
     if (filterClearElement) {
       e.preventDefault();
-      console.log(filterClearElement);
       this.updateParams(null, null, 'clear');
     }
-  }
-
-  handleInputFilters(e) {
-    const input = e.target;
-    const inputType = e.target.type;
-    if (inputType == 'checkbox') this.handleCheckBoxFilter(input);
-    if (inputType == 'number') this.handlePriceFilterNumber(input);
-  }
-
-  handleCheckBoxFilter(checkboxInput) {
-    const isChecked = checkboxInput.checked;
-    const name = checkboxInput.name;
-    const value = checkboxInput.value;
-
-    isChecked ? this.updateParams(name, value, 'add') : this.updateParams(name, value, 'delete');
+    if (sizeButton) {
+      e.preventDefault();
+      const isActive = sizeButton.classList.contains('active');
+      const name = sizeButton.getAttribute('name');
+      const value = sizeButton.getAttribute('value');
+      isActive ? this.updateParams(name, value, 'delete') : this.updateParams(name, value, 'add');
+    }
+    if (clickedInput) {
+      const isChecked = clickedInput.checked;
+      const name = clickedInput.name;
+      const value = clickedInput.value;
+      isChecked ? this.updateParams(name, value, 'add') : this.updateParams(name, value, 'delete');
+    }
   }
 
   updateParams(name, value, action) {
     if (!action) return;
-
+    if (action == 'clear') {
+      this.searchParams.forEach((_, key) => this.searchParams.delete(key)); // Remove all parameters
+      const cleanUrl = '/collections/all';
+      this.updatePageWithFilters(cleanUrl);
+      return;
+    }
     if (action == 'add') {
       this.searchParams.append(name, value);
     }
@@ -59,11 +54,6 @@ class FacetFiltersForm extends HTMLElement {
     }
     if (action == 'update') {
       this.searchParams.set(name, value);
-    }
-    if (action == 'clear') {
-      this.searchParams.forEach((_, key) => this.searchParams.delete(key)); // Remove all parameters
-      const cleanUrl = '/collections/all';
-      window.history.replaceState({}, '', cleanUrl); // Update the URL
     }
     this.updatePageWithFilters();
   }
@@ -86,42 +76,27 @@ class FacetFiltersForm extends HTMLElement {
         const html = parser.parseFromString(text, 'text/html');
 
         const productGrid = document.querySelector('.product-slider.product-slider--grid');
-        const filterWrapper = document.querySelector('facet-filters-form.sidebar-filters');
+        const sidebarFilterWrapper = document.querySelector('facet-filters-form.sidebar-filters');
 
         // get the updated filters and products from the html element
         const updatedProducts = html.querySelectorAll('.product-card');
-        const updatedFilters = html.querySelector('facet-filters-form.sidebar-filters form');
+        const sidebarUpdatedFilters = html.querySelector('facet-filters-form.sidebar-filters form');
 
         // clear the old values
         productGrid.innerHTML = '';
-        filterWrapper.innerHTML = '';
+        sidebarFilterWrapper.innerHTML = '';
 
         // add the new products and filter values
         updatedProducts.forEach((product) => productGrid.appendChild(product));
 
         // update the filters to show the currently applied tags
-        filterWrapper.appendChild(updatedFilters);
+        sidebarFilterWrapper.appendChild(sidebarUpdatedFilters);
 
         // Reattach event listeners to the new filter form and buttons
-        const facetForm = filterWrapper.querySelector('form');
-        const sizeButtons = filterWrapper.querySelector('.filter-group__buttons');
+        const facetForm = sidebarFilterWrapper.querySelector('form');
 
-        // re-attach event listeners
-        facetForm.addEventListener('input', this.handleInputFilters.bind(this));
-        sizeButtons.addEventListener('click', this.handleSizeButtonClick.bind(this));
-
-        facetForm.addEventListener('click', this.handleEventDelgation.bind(this));
+        facetForm.addEventListener('click', this.handleFormClickEvents.bind(this));
       });
-  }
-
-  handleSizeButtonClick(e) {
-    e.preventDefault();
-    const clickedButton = e.target;
-    const isActive = clickedButton.classList.contains('active');
-    const name = clickedButton.getAttribute('name');
-    const value = clickedButton.getAttribute('value');
-
-    isActive ? this.updateParams(name, value, 'delete') : this.updateParams(name, value, 'add');
   }
 }
 
