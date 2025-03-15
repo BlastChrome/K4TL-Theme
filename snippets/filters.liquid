@@ -17,95 +17,97 @@
   {% if filter_type == 'sidebar' %}
     <facet-filters-form class="sidebar-filters">
       <form>
-        <aside class="filter filter--sidebar">
-          <!-- Filter Clear Button -->
-          <div class="filter-clear">
-            <button class="clear-btn">
-              <span class="icon">X</span>
-              <span class="text">Clear All Filters </span>
-            </button>
-            {%- for filter in collection.filters -%}
-              {%- for value in filter.active_values -%}
-                <facet-remove>
-                  {% render 'pill-button',
-                    pill_button_varient_class: 'primary',
-                    pill_button_url_to_remove: value.url_to_remove,
-                    pill_button_name: filter.label,
-                    pill_button_label: value.label,
-                    pill_button_param_name: value.param_name
-                  %}
-                </facet-remove>
+        <div class="wrapper sidebar-wrapper">
+          <aside class="filter filter--sidebar">
+            <!-- Filter Clear Button -->
+            <div class="filter-clear">
+              <button class="clear-btn">
+                <span class="icon">X</span>
+                <span class="text">Clear All Filters </span>
+              </button>
+              {%- for filter in collection.filters -%}
+                {%- for value in filter.active_values -%}
+                  <facet-remove>
+                    {% render 'pill-button',
+                      pill_button_varient_class: 'primary',
+                      pill_button_url_to_remove: value.url_to_remove,
+                      pill_button_name: filter.label,
+                      pill_button_label: value.label,
+                      pill_button_param_name: value.param_name
+                    %}
+                  </facet-remove>
+                {%- endfor -%}
               {%- endfor -%}
-            {%- endfor -%}
-          </div>
-          {%- for filter in collection.filters -%}
-            <div class="filter-group">
-              <h3>{{ filter.label }}</h3>
-              {% case filter.type %}
-                {% when 'list' %}
-                  {% if filter.label == 'Size' %}
-                    <div class="filter-group__buttons">
-                      {%- for filter_value in filter.values -%}
-                        <button
-                          class=" button button--outline{% if filter_value.active %} active {% endif %}"
-                          id="{{input_id}}"
-                          value="{{ filter_value.label }}"
-                          name="{{ filter_value.param_name }}"
-                        >
-                          <span>{{ filter_value.label }}</span>
-                        </button>
-                      {% endfor %}
-                    </div>
-                  {% else %}
-                    <ul>
-                      {%- for filter_value in filter.values -%}
-                        {% liquid
-                          assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index
-                        %}
-                        <li>
-                          <div class="checkboxWrapper">
-                            <input
-                              type="checkbox"
-                              id="{{input_id}}"
-                              name="{{ filter_value.param_name }}"
-                              value="{{ filter_value.label }}"
-                              {% if filter_value.active %}
-                                checked
-                              {% endif %}
-                            >
-                            <div class="checkmark">
-                              <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
-                            </div>
-                            <label for="{{input_id}}">{{ filter_value.label }} ({{ filter_value.count }})</label>
-                          </div>
-                        </li>
-                      {%- endfor -%}
-                    </ul>
-                  {% endif %}
-              {% endcase %}
             </div>
-            <div class="horizontal-line"></div>
-          {%- endfor -%}
-
-          {% if show_ad != 'blank' %}
-            <a href="#">
-              <div class="advertisement advertisement--vertical">
-                <div class="img">
-                  <img
-                    src="{{ image_ad | img_url: 'master' }}"
-                    alt="advertisement"
-                    width="100%"
-                    height="auto"
-                  >
-                </div>
-                <div class="advertisement__text">
-                  <h3>Nike Shoes</h3>
-                  {% render 'button', button_text: 'Buy Now', button_link: '#', button_class: 'button--primary' %}
-                </div>
+            {%- for filter in collection.filters -%}
+              <div class="filter-group">
+                <h3>{{ filter.label }}</h3>
+                {% case filter.type %}
+                  {% when 'list' %}
+                    {% if filter.label == 'Size' %}
+                      <div class="filter-group__buttons">
+                        {%- for filter_value in filter.values -%}
+                          <button
+                            class=" button button--outline{% if filter_value.active %} active {% endif %}"
+                            id="{{input_id}}"
+                            value="{{ filter_value.label }}"
+                            name="{{ filter_value.param_name }}"
+                          >
+                            <span>{{ filter_value.label }}</span>
+                          </button>
+                        {% endfor %}
+                      </div>
+                    {% else %}
+                      <ul>
+                        {%- for filter_value in filter.values -%}
+                          {% liquid
+                            assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index
+                          %}
+                          <li>
+                            <div class="checkboxWrapper">
+                              <input
+                                type="checkbox"
+                                id="{{input_id}}"
+                                name="{{ filter_value.param_name }}"
+                                value="{{ filter_value.label }}"
+                                {% if filter_value.active %}
+                                  checked
+                                {% endif %}
+                              >
+                              <div class="checkmark">
+                                <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
+                              </div>
+                              <label for="{{input_id}}">{{ filter_value.label }} ({{ filter_value.count }})</label>
+                            </div>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {% endif %}
+                {% endcase %}
               </div>
-            </a>
-          {% endif %}
-        </aside>
+              <div class="horizontal-line"></div>
+            {%- endfor -%}
+
+            {% if show_ad != 'blank' %}
+              <a href="#">
+                <div class="advertisement advertisement--vertical">
+                  <div class="img">
+                    <img
+                      src="{{ image_ad | img_url: 'master' }}"
+                      alt="advertisement"
+                      width="100%"
+                      height="auto"
+                    >
+                  </div>
+                  <div class="advertisement__text">
+                    <h3>Nike Shoes</h3>
+                    {% render 'button', button_text: 'Buy Now', button_link: '#', button_class: 'button--primary' %}
+                  </div>
+                </div>
+              </a>
+            {% endif %}
+          </aside>
+        </div>
       </form>
     </facet-filters-form>
   {% endif %}
@@ -117,102 +119,116 @@
         <form>
           <aside class="filter filter--drawer" data-drawer="content">
             <div class="filter-wrapper filter-wrapper__header">
-              <a href="#" id="close-btn" class="button button--black" data-target="mobile-filters" data-drawer="close">
+              <a
+                href="#"
+                id="close-btn"
+                class="button button--black"
+                data-target="mobile-filters"
+                data-drawer="close"
+              >
                 <span>Filter Options</span>
                 <span>X</span>
               </a>
             </div>
-            <div class="filter-wrapper filter-wrapper__content">
-              <!-- Filter Clear Button -->
-              <div class="filter-clear">
-                <button class="clear-btn">
-                  <span class="icon">X</span>
-                  <span class="text">Clear All Filters </span>
-                </button>
-                {%- for filter in collection.filters -%}
-                  {%- for value in filter.active_values -%}
-                    <facet-remove>
-                      {% render 'pill-button',
-                        pill_button_varient_class: 'primary',
-                        pill_button_url_to_remove: value.url_to_remove,
-                        pill_button_name: filter.label,
-                        pill_button_label: value.label,
-                        pill_button_param_name: value.param_name
-                      %}
-                    </facet-remove>
+            <div class="wrapper mobile-wrapper">
+              <div class="filter-wrapper filter-wrapper__content">
+                <!-- Filter Clear Button -->
+                <div class="filter-clear">
+                  <button class="clear-btn">
+                    <span class="icon">X</span>
+                    <span class="text">Clear All Filters </span>
+                  </button>
+                  {%- for filter in collection.filters -%}
+                    {%- for value in filter.active_values -%}
+                      <facet-remove>
+                        {% render 'pill-button',
+                          pill_button_varient_class: 'primary',
+                          pill_button_url_to_remove: value.url_to_remove,
+                          pill_button_name: filter.label,
+                          pill_button_label: value.label,
+                          pill_button_param_name: value.param_name
+                        %}
+                      </facet-remove>
+                    {%- endfor -%}
                   {%- endfor -%}
-                {%- endfor -%}
-              </div>
-              {%- for filter in collection.filters -%}
-                <div class="filter-group">
-                  <h3>{{ filter.label }}</h3>
-                  {% case filter.type %}
-                    {% when 'list' %}
-                      {% if filter.label == 'Size' %}
-                        <div class="filter-group__buttons">
-                          {%- for filter_value in filter.values -%}
-                            <button
-                              class=" button button--outline{% if filter_value.active %} active {% endif %}"
-                              id="{{input_id}}"
-                              value="{{ filter_value.label }}"
-                              name="{{ filter_value.param_name }}"
-                            >
-                              <span>{{ filter_value.label }}</span>
-                            </button>
-                          {% endfor %}
-                        </div>
-                      {% else %}
-                        <ul>
-                          {%- for filter_value in filter.values -%}
-                            {% liquid
-                              assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index
-                            %}
-                            <li>
-                              <div class="checkboxWrapper">
-                                <input
-                                  type="checkbox"
-                                  id="{{input_id}}"
-                                  name="{{ filter_value.param_name }}"
-                                  value="{{ filter_value.label }}"
-                                  {% if filter_value.active %}
-                                    checked
-                                  {% endif %}
-                                >
-                                <div class="checkmark">
-                                  <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
-                                </div>
-                                <label for="{{input_id}}">{{ filter_value.label }} ({{ filter_value.count }})</label>
-                              </div>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                      {% endif %}
-                  {% endcase %}
                 </div>
-                <div class="horizontal-line"></div>
-              {%- endfor -%}
-
-              {% if show_ad != 'blank' %}
-                <a href="#">
-                  <div class="advertisement advertisement--vertical">
-                    <div class="img">
-                      <img
-                        src="{{ image_ad | img_url: 'master' }}"
-                        alt="advertisement"
-                        width="100%"
-                        height="auto"
-                      >
-                    </div>
-                    <div class="advertisement__text">
-                      <h3>Nike Shoes</h3>
-                      {% render 'button', button_text: 'Buy Now', button_link: '#', button_class: 'button--primary' %}
-                    </div>
+                {%- for filter in collection.filters -%}
+                  <div class="filter-group">
+                    <h3>{{ filter.label }}</h3>
+                    {% case filter.type %}
+                      {% when 'list' %}
+                        {% if filter.label == 'Size' %}
+                          <div class="filter-group__buttons">
+                            {%- for filter_value in filter.values -%}
+                              <button
+                                class=" button button--outline{% if filter_value.active %} active {% endif %}"
+                                id="{{input_id}}"
+                                value="{{ filter_value.label }}"
+                                name="{{ filter_value.param_name }}"
+                              >
+                                <span>{{ filter_value.label }}</span>
+                              </button>
+                            {% endfor %}
+                          </div>
+                        {% else %}
+                          <ul>
+                            {%- for filter_value in filter.values -%}
+                              {% liquid
+                                assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index
+                              %}
+                              <li>
+                                <div class="checkboxWrapper">
+                                  <input
+                                    type="checkbox"
+                                    id="{{input_id}}"
+                                    name="{{ filter_value.param_name }}"
+                                    value="{{ filter_value.label }}"
+                                    {% if filter_value.active %}
+                                      checked
+                                    {% endif %}
+                                  >
+                                  <div class="checkmark">
+                                    <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
+                                  </div>
+                                  <label for="{{input_id}}">{{ filter_value.label }} ({{ filter_value.count }})</label>
+                                </div>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {% endif %}
+                    {% endcase %}
                   </div>
-                </a>
-              {% endif %}
+                  <div class="horizontal-line"></div>
+                {%- endfor -%}
+
+                {% if show_ad != 'blank' %}
+                  <a href="#">
+                    <div class="advertisement advertisement--vertical">
+                      <div class="img">
+                        <img
+                          src="{{ image_ad | img_url: 'master' }}"
+                          alt="advertisement"
+                          width="100%"
+                          height="auto"
+                        >
+                      </div>
+                      <div class="advertisement__text">
+                        <h3>Nike Shoes</h3>
+                        {% render 'button', button_text: 'Buy Now', button_link: '#', button_class: 'button--primary' %}
+                      </div>
+                    </div>
+                  </a>
+                {% endif %}
+              </div>
             </div>
             <div class="filter-wrapper filter-wrapper__footer">
-              <a href="#" id="close-btn" class="button button--black" data-target="mobile-filters" data-drawer="close">
+              <a
+                href="#"
+                id="close-btn"
+                class="button button--black"
+                data-target="mobile-filters"
+                data-drawer="close"
+              >
                 <span>Close</span>
               </a>
             </div>

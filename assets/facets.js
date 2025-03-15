@@ -76,26 +76,23 @@ class FacetFiltersForm extends HTMLElement {
         const html = parser.parseFromString(text, 'text/html');
 
         const productGrid = document.querySelector('.product-slider.product-slider--grid');
-        const sidebarFilterWrapper = document.querySelector('facet-filters-form.sidebar-filters');
-
         // get the updated filters and products from the html element
         const updatedProducts = html.querySelectorAll('.product-card');
-        const sidebarUpdatedFilters = html.querySelector('facet-filters-form.sidebar-filters form');
-
-        // clear the old values
         productGrid.innerHTML = '';
-        sidebarFilterWrapper.innerHTML = '';
-
-        // add the new products and filter values
         updatedProducts.forEach((product) => productGrid.appendChild(product));
 
-        // update the filters to show the currently applied tags
-        sidebarFilterWrapper.appendChild(sidebarUpdatedFilters);
+        // wrapper element for the mobile/sidebar filter
+        const oldFilterWrappers = document.querySelectorAll('facet-filters-form .wrapper');
 
-        // Reattach event listeners to the new filter form and buttons
-        const facetForm = sidebarFilterWrapper.querySelector('form');
+        const newSidebarFilters = html.querySelector('facet-filters-form.sidebar-filters .filter--sidebar');
+        const newMobileFilters = html.querySelector('facet-filters-form.mobile-filters .filter-wrapper__content');
 
-        facetForm.addEventListener('click', this.handleFormClickEvents.bind(this));
+        oldFilterWrappers.forEach((wrapper) => {
+          wrapper.innerHTML = '';
+          wrapper.classList.contains('mobile-wrapper')
+            ? wrapper.appendChild(newMobileFilters)
+            : wrapper.appendChild(newSidebarFilters);
+        });
       });
   }
 }
