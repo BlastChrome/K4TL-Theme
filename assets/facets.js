@@ -5,7 +5,6 @@ class FacetFiltersForm extends HTMLElement {
     this.searchParams = new URLSearchParams(window.location.search);
     facetForm.addEventListener('click', this.handleFormClickEvents.bind(this));
   }
-
   handleFormClickEvents(e) {
     const facetRemoveElement = e.target.closest('facet-remove');
     const filterClearElement = e.target.closest('.clear-btn');
@@ -98,3 +97,12 @@ class FacetFiltersForm extends HTMLElement {
 }
 
 customElements.define('facet-filters-form', FacetFiltersForm);
+
+class SortBy extends FacetFiltersForm {
+  constructor() {
+    super();
+    console.log(this);
+  }
+}
+
+customElements.define('sort-by', SortBy);
