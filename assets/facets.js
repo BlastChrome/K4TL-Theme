@@ -67,7 +67,6 @@ class FacetFiltersForm extends HTMLElement {
 
     // Use the History API to update the URL in the address bar without reloading the page
     window.history.pushState({ path: url }, '', url);
-
     fetch(url)
       .then((response) => response.text())
       .then((text) => {
@@ -101,7 +100,16 @@ customElements.define('facet-filters-form', FacetFiltersForm);
 class SortBy extends FacetFiltersForm {
   constructor() {
     super();
-    console.log(this);
+    const isDrawer = this.classList.contains('drawer') ? true : false;
+    if (!isDrawer) {
+      const facetSelection = this.querySelector('select');
+      facetSelection.addEventListener('change', this.handleSelectionChange.bind(this));
+    }
+  }
+
+  handleSelectionChange(e) {
+    const clickedOption = e.target.value;
+    console.log(clickedOption);
   }
 }
 

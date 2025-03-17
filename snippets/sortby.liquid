@@ -1,9 +1,11 @@
 {% comment %}
   Renders Sort By Drawer ()
   Usage:
-  {% render 'sortby'%}
+  {% render 'sortby'
+   "filter_type": "Either drawer or desktop"
+   %}
 {% endcomment %}
-<sort-by class="sortby-container">
+<sort-by class="sortby-container {{ filter_type }}">
   {% if filter_type == 'drawer' %}
     <!-- Overlay -->
     <menu-drawer id="mobile-sortby">
