@@ -108,8 +108,8 @@ class SortBy extends FacetFiltersForm {
   }
 
   handleSelectionChange(e) {
-    const clickedOption = e.target.value;
-    console.log(clickedOption);
+    const value = e.target.value;
+    // FacetFiltersForm.updateParams('sortby', value, 'add');
   }
 }
 

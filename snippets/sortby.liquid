@@ -3,6 +3,7 @@
   Usage:
   {% render 'sortby'
    "filter_type": "Either drawer or desktop"
+   "sort_by_options": collection.sort_options
    %}
 {% endcomment %}
 <sort-by class="sortby-container {{ filter_type }}">
@@ -67,10 +68,16 @@
       <div class="vert-line"></div>
       <form>
         <select name="sort-by-select" id="sort-by-select" class="sort-by-select">
-          <option value="featured">Featured</option>
-          <option value="latest">Latest</option>
-          <option value="price-high">Price: High to low</option>
-          <option value="price-low">Price: Low to high</option>
+          {%- for option in sort_by_options -%}
+            <option
+              value="{{ option.value | escape }}"
+              {% if option.value == sort_by %}
+                selected="selected"
+              {% endif %}
+            >
+              {{ option.name | escape }}
+            </option>
+          {%- endfor -%}
         </select>
       </form>
     </div>
