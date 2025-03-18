@@ -14,7 +14,7 @@
 {% endcomment %}
 
 <div class="filters-container">
-  {% if filter_type == 'sidebar' %}
+  {% if filter_type == 'main_filters_sidebar' %}
     <facet-filters-form class="sidebar-filters">
       <form>
         <div class="wrapper sidebar-wrapper">
@@ -112,7 +112,7 @@
     </facet-filters-form>
   {% endif %}
   {% comment %} Mobile filters {% endcomment %}
-  {% if filter_type == 'drawer' %}
+  {% if filter_type == 'main_filters_drawer' %}
     <!-- Overlay -->
     <menu-drawer id="mobile-filters">
       <facet-filters-form class="mobile-filters">
@@ -258,5 +258,53 @@
         </form>
       </div>
     </facet-filters-form>
+  {% endif %}
+  {% if filter_type == 'sortby_drawer' %}
+    <menu-drawer id="mobile-sortby">
+      <facet-filters-form>
+        <aside class="filter filter--drawer" data-drawer="content">
+          <div class="filter-wrapper filter-wrapper__header">
+            <a href="#" id="close-btn" class="button button--black" data-target="mobile-sortby" data-drawer="close">
+              <span>Sort Options</span>
+              <span>X</span>
+            </a>
+          </div>
+          <div class="filter-wrapper filter-wrapper__content">
+            <form>
+              <!-- Sort options -->
+              <div class="filter-group">
+                <ul>
+                  {%- for option in sort_by_options -%}
+                    <li>
+                      <div class="checkboxWrapper">
+                        <input
+                          {% assign input_id = 'sort-' | append: option.value | escape %}
+                          type="checkbox"
+                          id="{{ input_id }}"
+                          value="{{ option.value | escape }}"
+                          {% if option.value == sort_by %}
+                            checked
+                          {% endif %}
+                        >
+                        <div class="checkmark">
+                          <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
+                        </div>
+                        <label for="{{input_id}}">{{ option.name | escape }}</label>
+                      </div>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+              <div class="horizontal-line"></div>
+            </form>
+          </div>
+          <div class="filter-wrapper filter-wrapper__footer">
+            <a href="#" id="close-btn" class="button button--black" data-target="mobile-sortby" data-drawer="close">
+              <span>Close</span>
+            </a>
+          </div>
+        </aside>
+      </facet-filters-form>
+    </menu-drawer>
   {% endif %}
 </div>

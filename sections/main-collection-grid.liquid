@@ -44,7 +44,11 @@
     }
 {%- endstyle -%}
 
-{% render 'filters', image_ad: section.settings.image_ad, show_ad: section.settings.show_ad, filter_type: 'drawer' %}
+{% render 'filters',
+  image_ad: section.settings.image_ad,
+  show_ad: section.settings.show_ad,
+  filter_type: 'main_filters_drawer'
+%}
 {% render 'filters',
   image_ad: section.settings.image_ad,
   show_ad: section.settings.show_ad,
@@ -60,7 +64,7 @@
         {% render 'filters',
           image_ad: section.settings.image_ad,
           show_ad: section.settings.show_ad,
-          filter_type: 'sidebar'
+          filter_type: 'main_filters_sidebar'
         %}
       </div>
       <div class="col-12 col-lg-10">
