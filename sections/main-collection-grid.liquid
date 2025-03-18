@@ -45,7 +45,13 @@
 {%- endstyle -%}
 
 {% render 'filters', image_ad: section.settings.image_ad, show_ad: section.settings.show_ad, filter_type: 'drawer' %}
-{% render 'sortby', filter_type: 'drawer', sort_by_options: collection.sort_options %}
+{% render 'filters',
+  image_ad: section.settings.image_ad,
+  show_ad: section.settings.show_ad,
+  sort_by_options: collection.sort_options,
+  filter_type: 'sortby_drawer'
+%}
+{% comment %} {% render 'sortby', filter_type: 'drawer', sort_by_options: collection.sort_options %} {% endcomment %}
 
 <section class="main-collection-grid section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
   <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
@@ -61,7 +67,13 @@
         <div class="row">
           <div class="col-12 title-category-col">
             <p class="results-summary">Showing 8 of {{ collection.products.size }} Products.</p>
-            {% render 'sortby', filter_type: 'desktop', sort_by_options: collection.sort_options %}
+            {% comment %} {% render 'sortby', filter_type: 'desktop', sort_by_options: collection.sort_options %} {% endcomment %}
+            {% render 'filters',
+              image_ad: section.settings.image_ad,
+              show_ad: section.settings.show_ad,
+              sort_by_options: collection.sort_options,
+              filter_type: 'sortby_desktop'
+            %}
           </div>
         </div>
         <div class="row">

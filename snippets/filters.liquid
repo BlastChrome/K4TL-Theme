@@ -237,4 +237,26 @@
       </facet-filters-form>
     </menu-drawer>
   {% endif %}
+  {% if filter_type == 'sortby_desktop' %}
+    <facet-filters-form>
+      <div class="sort-by">
+        <label for="sort-by-select" class="sort-by-label">Sort By</label>
+        <div class="vert-line"></div>
+        <form>
+          <select name="sort-by-select" id="sort-by-select" class="sort-by-select">
+            {%- for option in sort_by_options -%}
+              <option
+                value="{{ option.value | escape }}"
+                {% if option.value == sort_by %}
+                  selected="selected"
+                {% endif %}
+              >
+                {{ option.name | escape }}
+              </option>
+            {%- endfor -%}
+          </select>
+        </form>
+      </div>
+    </facet-filters-form>
+  {% endif %}
 </div>

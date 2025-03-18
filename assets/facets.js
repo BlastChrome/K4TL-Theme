@@ -4,7 +4,9 @@ class FacetFiltersForm extends HTMLElement {
     const facetForm = this.querySelector('form');
     this.searchParams = new URLSearchParams(window.location.search);
     facetForm.addEventListener('click', this.handleFormClickEvents.bind(this));
+    facetForm.addEventListener('change', this.handleFormChangeEvent.bind(this));
   }
+
   handleFormClickEvents(e) {
     const facetRemoveElement = e.target.closest('facet-remove');
     const filterClearElement = e.target.closest('.clear-btn');
@@ -34,6 +36,15 @@ class FacetFiltersForm extends HTMLElement {
       const name = clickedInput.name;
       const value = clickedInput.value;
       isChecked ? this.updateParams(name, value, 'add') : this.updateParams(name, value, 'delete');
+    }
+  }
+
+  handleFormChangeEvent(e) {
+    const facetSelection = e.target.closest('select');
+    if (facetSelection) {
+      const value = e.target.value;
+      const hasSortParam = this.searchParams.has('sort_by') ? true : false;
+      hasSortParam ? this.updateParams('sort_by', value, 'update') : this.updateParams('sort_by', value, 'add');
     }
   }
 
@@ -96,21 +107,3 @@ class FacetFiltersForm extends HTMLElement {
 }
 
 customElements.define('facet-filters-form', FacetFiltersForm);
-
-class SortBy extends FacetFiltersForm {
-  constructor() {
-    super();
-    const isDrawer = this.classList.contains('drawer') ? true : false;
-    if (!isDrawer) {
-      const facetSelection = this.querySelector('select');
-      facetSelection.addEventListener('change', this.handleSelectionChange.bind(this));
-    }
-  }
-
-  handleSelectionChange(e) {
-    const value = e.target.value;
-    // FacetFiltersForm.updateParams('sortby', value, 'add');
-  }
-}
-
-customElements.define('sort-by', SortBy);
