@@ -41,14 +41,14 @@ class FacetFiltersForm extends HTMLElement {
 
   handleFormChangeEvent(e) {
     const facetSelection = e.target.closest('select');
-    if (facetSelection) {
-      const value = e.target.value;
-      const hasSortParam = this.searchParams.has('sort_by') ? true : false;
-      hasSortParam ? this.updateParams('sort_by', value, 'update') : this.updateParams('sort_by', value, 'add');
-    }
+    if (!facetSelection) return;
+    const value = e.target.value;
+    this.updateParams('sort_by', value, 'add');
   }
 
   updateParams(name, value, action) {
+    console.log(this.searchParams.toString());
+    debugger;
     if (!action) return;
     if (action == 'clear') {
       this.searchParams.forEach((_, key) => this.searchParams.delete(key)); // Remove all parameters
