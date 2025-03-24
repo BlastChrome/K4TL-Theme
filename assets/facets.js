@@ -41,7 +41,11 @@ class FacetFiltersForm extends HTMLElement {
   handleFormChangeEvent(e) {
     const facetSelection = e.target.closest('select');
     if (!facetSelection) return;
-    FacetFiltersForm.updateParams('sort_by', e.target.value, 'add');
+    FacetFiltersForm.updateParams(
+      'sort_by',
+      e.target.value,
+      FacetFiltersForm.searchParams.get('sort_by') ? 'update' : 'add'
+    );
   }
 
   static updateParams(name, value, action) {
@@ -61,7 +65,6 @@ class FacetFiltersForm extends HTMLElement {
     if (action === 'update') {
       FacetFiltersForm.searchParams.set(name, value);
     }
-
     FacetFiltersForm.updatePageWithFilters();
   }
 
