@@ -39,9 +39,17 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   handleFormChangeEvent(e) {
-    if (!e.target.closest('select')) return;
+    e.preventDefault();
+    const desktopSelection = e.target.closest('select');
+    const mobileInputs = e.target.closest('.sort_by--mobile');
     const hasSortByFilter = FacetFiltersForm.searchParams.get('sort_by');
     FacetFiltersForm.updateParams('sort_by', e.target.value, hasSortByFilter ? 'update' : 'add');
+    if (mobileInputs) {
+      mobileInputs.querySelectorAll('input').forEach((input) => {
+        if (e.target == input) return;
+        input.checked = false;
+      });
+    }
   }
 
   static updateParams(name, value, action) {
