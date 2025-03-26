@@ -262,7 +262,7 @@
   {% endif %}
   {% if filter_type == 'sortby_drawer' %}
     <menu-drawer id="mobile-sortby">
-      <facet-filters-form>
+      <facet-filters-form class="mobile-filters">
         <aside class="filter filter--drawer" data-drawer="content">
           <div class="filter-wrapper filter-wrapper__header">
             <a href="#" id="close-btn" class="button button--black" data-target="mobile-sortby" data-drawer="close">
@@ -270,35 +270,37 @@
               <span>X</span>
             </a>
           </div>
-          <div class="filter-wrapper filter-wrapper__content">
-            <form>
-              <!-- Sort options -->
-              <div class="filter-group">
-                <ul class="sort_by sort_by--mobile">
-                  {%- for option in sort_by_options -%}
-                    <li>
-                      <div class="checkboxWrapper">
-                        <input
-                          {% assign input_id = 'sort-' | append: option.value | escape %}
-                          type="checkbox"
-                          id="{{ input_id }}"
-                          class="checkbox-sortby checkbox-sortby--drawer"
-                          value="{{ option.value | escape }}"
-                          {% if option.value == sort_by %}
-                            checked
-                          {% endif %}
-                        >
-                        <div class="checkmark">
-                          <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
+          <div class="wrapper mobile-wrapper">
+            <div class="filter-wrapper filter-wrapper__content">
+              <form>
+                <!-- Sort options -->
+                <div class="filter-group">
+                  <ul class="sort_by sort_by--mobile">
+                    {%- for option in sort_by_options -%}
+                      <li>
+                        <div class="checkboxWrapper">
+                          <input
+                            {% assign input_id = 'sort-' | append: option.value | escape %}
+                            type="checkbox"
+                            id="{{ input_id }}"
+                            class="checkbox-sortby checkbox-sortby--drawer"
+                            value="{{ option.value | escape }}"
+                            {% if option.value == sort_by %}
+                              checked
+                            {% endif %}
+                          >
+                          <div class="checkmark">
+                            <span class="icon">{{ 'filter-checkmark.svg' | inline_asset_content }}</span>
+                          </div>
+                          <label for="{{input_id}}">{{ option.name | escape }}</label>
                         </div>
-                        <label for="{{input_id}}">{{ option.name | escape }}</label>
-                      </div>
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              </div>
-              <div class="horizontal-line"></div>
-            </form>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+                <div class="horizontal-line"></div>
+              </form>
+            </div>
           </div>
           <div class="filter-wrapper filter-wrapper__footer">
             <a href="#" id="close-btn" class="button button--black" data-target="mobile-sortby" data-drawer="close">

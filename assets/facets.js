@@ -40,10 +40,6 @@ class FacetFiltersForm extends HTMLElement {
         FacetFiltersForm.updateParams(name, value, isChecked ? 'add' : 'delete');
       }
       if (isSortByInput) {
-        document.querySelectorAll('.sort_by--mobile input[type="checkbox"]').forEach((input) => {
-          if (e.target == input) return;
-          input.checked = false;
-        });
         const hasSortByFilter = FacetFiltersForm.searchParams.get('sort_by');
         FacetFiltersForm.updateParams('sort_by', e.target.value, hasSortByFilter ? 'update' : 'add');
       }
@@ -88,16 +84,16 @@ class FacetFiltersForm extends HTMLElement {
         const productGrid = document.querySelector('.product-slider.product-slider--grid');
         productGrid.innerHTML = '';
         html.querySelectorAll('.product-card').forEach((product) => productGrid.appendChild(product));
-
+        debugger;
         // Update filters
         document.querySelectorAll('facet-filters-form .wrapper').forEach((wrapper) => {
           wrapper.innerHTML = '';
-          const newFilters = html.querySelector(
+          const newContent = html.querySelector(
             wrapper.classList.contains('mobile-wrapper')
               ? 'facet-filters-form.mobile-filters .filter-wrapper__content'
               : 'facet-filters-form.sidebar-filters .filter--sidebar'
           );
-          wrapper.appendChild(newFilters);
+          wrapper.appendChild(newContent);
         });
       });
   }
