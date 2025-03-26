@@ -33,23 +33,27 @@ class FacetFiltersForm extends HTMLElement {
     if (clickedInput) {
       const name = clickedInput.name;
       const value = clickedInput.value;
+      const isFilterInput = clickedInput.classList.contains('checkbox-filters');
+      const isSortByInput = clickedInput.classList.contains('checkbox-sortby');
       const isChecked = clickedInput.checked;
-      FacetFiltersForm.updateParams(name, value, isChecked ? 'add' : 'delete');
+      if (isFilterInput) {
+        FacetFiltersForm.updateParams(name, value, isChecked ? 'add' : 'delete');
+      }
+      if (isSortByInput) {
+        document.querySelectorAll('.sort_by--mobile input[type="checkbox"]').forEach((input) => {
+          if (e.target == input) return;
+          input.checked = false;
+        });
+        const hasSortByFilter = FacetFiltersForm.searchParams.get('sort_by');
+        FacetFiltersForm.updateParams('sort_by', e.target.value, hasSortByFilter ? 'update' : 'add');
+      }
     }
   }
 
   handleFormChangeEvent(e) {
     e.preventDefault();
-    const desktopSelection = e.target.closest('select');
-    const mobileInputs = e.target.closest('.sort_by--mobile');
     const hasSortByFilter = FacetFiltersForm.searchParams.get('sort_by');
     FacetFiltersForm.updateParams('sort_by', e.target.value, hasSortByFilter ? 'update' : 'add');
-    if (mobileInputs) {
-      mobileInputs.querySelectorAll('input').forEach((input) => {
-        if (e.target == input) return;
-        input.checked = false;
-      });
-    }
   }
 
   static updateParams(name, value, action) {

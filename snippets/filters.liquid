@@ -68,6 +68,7 @@
                               <input
                                 type="checkbox"
                                 id="{{input_id}}"
+                                class="checkbox-filters checkbox-filters--sidebar"
                                 name="{{ filter_value.param_name }}"
                                 value="{{ filter_value.label }}"
                                 {% if filter_value.active %}
@@ -180,6 +181,7 @@
                                   <input
                                     type="checkbox"
                                     id="{{input_id}}"
+                                    class="checkbox-filters checkbox-filters--drawer"
                                     name="{{ filter_value.param_name }}"
                                     value="{{ filter_value.label }}"
                                     {% if filter_value.active %}
@@ -280,6 +282,7 @@
                           {% assign input_id = 'sort-' | append: option.value | escape %}
                           type="checkbox"
                           id="{{ input_id }}"
+                          class="checkbox-sortby checkbox-sortby--drawer"
                           value="{{ option.value | escape }}"
                           {% if option.value == sort_by %}
                             checked
