@@ -12,7 +12,7 @@ class FacetFiltersForm extends HTMLElement {
     const facetRemoveElement = e.target.closest('facet-remove');
     const filterClearElement = e.target.closest('.clear-btn');
     const sizeButton = e.target.closest('.filter-group__buttons button');
-    const clickedInput = e.target.closest('input[type="checkbox"]');
+    const clickedCheckbox = e.target.closest('input[type="checkbox"]');
 
     if (facetRemoveElement) {
       e.preventDefault();
@@ -30,24 +30,25 @@ class FacetFiltersForm extends HTMLElement {
       const isActive = sizeButton.classList.contains('active');
       FacetFiltersForm.updateParams(name, value, isActive ? 'delete' : 'add');
     }
-    if (clickedInput) {
-      const name = clickedInput.name;
-      const value = clickedInput.value;
-      const isFilterInput = clickedInput.classList.contains('checkbox-filters');
-      const isSortByInput = clickedInput.classList.contains('checkbox-sortby');
-      const isChecked = clickedInput.checked;
+    if (clickedCheckbox) {
+      const isFilterInput = clickedCheckbox.classList.contains('checkbox-filters');
+      const isSortByInput = clickedCheckbox.classList.contains('checkbox-sortby');
       if (isFilterInput) {
-        FacetFiltersForm.updateParams(name, value, isChecked ? 'add' : 'delete');
+        const isChecked = clickedCheckbox.checked;
+        FacetFiltersForm.updateParams(clickedCheckbox.name, clickedCheckbox.value, isChecked ? 'add' : 'delete');
       }
       if (isSortByInput) {
         const hasSortByFilter = FacetFiltersForm.searchParams.get('sort_by');
-        FacetFiltersForm.updateParams('sort_by', e.target.value, hasSortByFilter ? 'update' : 'add');
+        FacetFiltersForm.updateParams('sort_by', clickedCheckbox.value, hasSortByFilter ? 'update' : 'add');
       }
     }
   }
 
   handleFormChangeEvent(e) {
+    debugger;
     e.preventDefault();
+    const isSortFiler = e.target.closest('[data-sortby="option"]') ? true : false;
+    if (!isSortFiler) return;
     const hasSortByFilter = FacetFiltersForm.searchParams.get('sort_by');
     FacetFiltersForm.updateParams('sort_by', e.target.value, hasSortByFilter ? 'update' : 'add');
   }
@@ -57,7 +58,7 @@ class FacetFiltersForm extends HTMLElement {
 
     if (action === 'clear') {
       FacetFiltersForm.searchParams = new URLSearchParams();
-      FacetFiltersForm.updatePageWithFilters('/collections/all');
+      FacetFiltersForm.updateFiltersProducts('/collections/all');
       return;
     }
     if (action === 'add') {
@@ -69,10 +70,10 @@ class FacetFiltersForm extends HTMLElement {
     if (action === 'update') {
       FacetFiltersForm.searchParams.set(name, value);
     }
-    FacetFiltersForm.updatePageWithFilters();
+    FacetFiltersForm.updateFiltersProducts();
   }
 
-  static async updatePageWithFilters(url = `/collections/all?${FacetFiltersForm.searchParams.toString()}`) {
+  static async updateFiltersProducts(url = `/collections/all?${FacetFiltersForm.searchParams.toString()}`) {
     window.history.pushState({ path: url }, '', url);
     fetch(url)
       .then((response) => response.text())
@@ -84,16 +85,18 @@ class FacetFiltersForm extends HTMLElement {
         const productGrid = document.querySelector('.product-slider.product-slider--grid');
         productGrid.innerHTML = '';
         html.querySelectorAll('.product-card').forEach((product) => productGrid.appendChild(product));
-        debugger;
-        // Update filters
-        document.querySelectorAll('facet-filters-form .wrapper').forEach((wrapper) => {
-          wrapper.innerHTML = '';
-          const newContent = html.querySelector(
-            wrapper.classList.contains('mobile-wrapper')
-              ? 'facet-filters-form.mobile-filters .filter-wrapper__content'
-              : 'facet-filters-form.sidebar-filters .filter--sidebar'
-          );
-          wrapper.appendChild(newContent);
+
+        // Update filters and drawers
+        const filterContentWrappers = document.querySelectorAll('[data-filter="wrapper"]');
+        const updatedContentWrappers = html.querySelectorAll('[data-filter="wrapper"]');
+        filterContentWrappers.forEach((wrapper, idx) => {
+          debugger;
+          if ([...wrapper.classList].sort().join(' ') === [...updatedContentWrappers[idx].classList].sort().join(' ')) {
+            wrapper.innerHTML = '';
+
+            const newContent = updatedContentWrappers[idx].querySelector('[data-filter="content"]');
+            wrapper.appendChild(newContent);
+          }
         });
       });
   }
