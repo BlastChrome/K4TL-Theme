@@ -45,7 +45,6 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   handleFormChangeEvent(e) {
-    debugger;
     e.preventDefault();
     const isSortFiler = e.target.closest('[data-sortby="option"]') ? true : false;
     if (!isSortFiler) return;
@@ -90,10 +89,8 @@ class FacetFiltersForm extends HTMLElement {
         const filterContentWrappers = document.querySelectorAll('[data-filter="wrapper"]');
         const updatedContentWrappers = html.querySelectorAll('[data-filter="wrapper"]');
         filterContentWrappers.forEach((wrapper, idx) => {
-          debugger;
           if ([...wrapper.classList].sort().join(' ') === [...updatedContentWrappers[idx].classList].sort().join(' ')) {
             wrapper.innerHTML = '';
-
             const newContent = updatedContentWrappers[idx].querySelector('[data-filter="content"]');
             wrapper.appendChild(newContent);
           }
@@ -101,5 +98,4 @@ class FacetFiltersForm extends HTMLElement {
       });
   }
 }
-
 customElements.define('facet-filters-form', FacetFiltersForm);

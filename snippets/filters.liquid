@@ -14,6 +14,7 @@
 {% endcomment %}
 
 <div class="filters-container">
+  {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
   {% if filter_type == 'main_filters_sidebar' %}
     <facet-filters-form class="sidebar-filters">
       <form>
@@ -244,18 +245,22 @@
         <label for="sort-by-select" class="sort-by-label">Sort By</label>
         <div class="vert-line"></div>
         <form>
-          <select name="sort-by-select" id="sort-by-select" class="sort-by-select" data-sortby="option">
-            {%- for option in sort_by_options -%}
-              <option
-                value="{{ option.value | escape }}"
-                {% if option.value == sort_by %}
-                  selected="selected"
-                {% endif %}
-              >
-                {{ option.name | escape }}
-              </option>
-            {%- endfor -%}
-          </select>
+          <div data-filter="wrapper">
+            <div data-filter="content">
+              <select name="sort-by-select" id="sort-by-select" class="sort-by-select" data-sortby="option">
+                {%- for option in sort_by_options -%}
+                  <option
+                    value="{{ option.value | escape }}"
+                    {% if option.value == sort_by %}
+                      selected="selected"
+                    {% endif %}
+                  >
+                    {{ option.name | escape }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          </div>
         </form>
       </div>
     </facet-filters-form>
@@ -270,22 +275,23 @@
               <span>X</span>
             </a>
           </div>
-          <div class="wrapper mobile-wrapper mobile-wrapper--sortby" data-filter="wrapper">
-            <div class="filter-wrapper filter-wrapper__content" data-filter="content">
-              <form>
+          <form>
+            <div class="wrapper mobile-wrapper mobile-wrapper--sortby" data-filter="wrapper">
+              <div class="filter-wrapper filter-wrapper__content" data-filter="content">
                 <!-- Sort options -->
                 <div class="filter-group">
                   <ul class="sort_by sort_by--mobile" data-sortby="checkbox">
                     {%- for option in sort_by_options -%}
                       <li>
                         <div class="checkboxWrapper">
+                          {% assign input_id = 'sort-' | append: option.value | escape %}
+
                           <input
-                            {% assign input_id = 'sort-' | append: option.value | escape %}
                             type="checkbox"
                             id="{{ input_id }}"
                             class="checkbox-sortby checkbox-sortby--drawer"
                             value="{{ option.value | escape }}"
-                            {% if option.value.active %}
+                            {% if option.value == sort_by %}
                               checked
                             {% endif %}
                           >
@@ -299,9 +305,9 @@
                   </ul>
                 </div>
                 <div class="horizontal-line"></div>
-              </form>
+              </div>
             </div>
-          </div>
+          </form>
           <div class="filter-wrapper filter-wrapper__footer">
             <a href="#" id="close-btn" class="button button--black" data-target="mobile-sortby" data-drawer="close">
               <span>Close</span>
