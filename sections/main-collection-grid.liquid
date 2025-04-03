@@ -61,103 +61,109 @@
 %}
 
 <section class="main-collection-grid section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
-  <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
-    <div class="row">
-      <div class="d-none d-lg-block col-3 col-lg-2">
-        {% render 'filters',
-          image_ad: section.settings.image_ad,
-          show_ad: section.settings.show_ad,
-          filter_type: 'main_filters_sidebar'
-        %}
-      </div>
-      <div class="col-12 col-lg-10">
-        <div class="row">
-          <div class="col-12 title-category-col">
-            <p class="results-summary">Showing {{ page_product_limit }} of {{ collection.products.size }} Products.</p>
-            {% render 'filters',
-              image_ad: section.settings.image_ad,
-              show_ad: section.settings.show_ad,
-              sort_by_options: collection.sort_options,
-              filter_type: 'sortby_desktop'
-            %}
-          </div>
+  {%- paginate collection.products by page_product_limit -%}
+    <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
+      <div class="row">
+        <div class="d-none d-lg-block col-3 col-lg-2">
+          {% render 'filters',
+            image_ad: section.settings.image_ad,
+            show_ad: section.settings.show_ad,
+            filter_type: 'main_filters_sidebar'
+          %}
         </div>
-        <div class="row">
-          <div class="col-12 d-lg-none">
-            <div class="mb-filters-buttons">
-              <a
-                href="#"
-                id="filters-open-btn"
-                class="button black button--outline"
-                data-target="mobile-filters"
-                data-drawer="open"
-              >
-                <span>Filters</span>
-                <span class="icon">{{ 'filter-hamburger.svg' | inline_asset_content }}</span>
-              </a>
-              <a
-                href="#"
-                id="filters-open-btn"
-                data-target="mobile-sortby"
-                class="button black button--outline"
-                data-drawer="open"
-              >
-                <span>Sort By</span>
-                <span class="icon">{{ 'filter-sortby.svg' | inline_asset_content }}</span>
-              </a>
+        <div class="col-12 col-lg-10">
+          <div class="row">
+            <div class="col-12 title-category-col">
+              <p class="results-summary">
+                Showing {{ page_product_limit }} of {{ collection.products.size }} Products.
+              </p>
+              {% render 'filters',
+                image_ad: section.settings.image_ad,
+                show_ad: section.settings.show_ad,
+                sort_by_options: collection.sort_options,
+                filter_type: 'sortby_desktop'
+              %}
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="product-tabs__separator product-tabs__separator--horizontal"></div>
-            <div class="product-slider-wrapper">
-              <div class="product-slider product-slider--grid">
-                {% if collection %}
-                  {% for product in collection.products limit: page_product_limit %}
-                    {% if section.settings.show_secondary_image == true %}
-                      {% assign image_two = product.media[1] %}
-                    {% endif %}
-                    {%
-                      render 'product-card',
-                      product_form: product,
-                      product_varient_id: product.variants.first.id,
-                      product_card_image: product.featured_media | default: product.featured_image,
-                      product_card_image_two: image_two,
-                      product_card_category: product.type,
-                      product_card_title: product.title,
-                      product_card_price: product.price,
-                      product_card_url: product.url
-                    %}
-                  {% endfor %}
-                {% endif %}
+          <div class="row">
+            <div class="col-12 d-lg-none">
+              <div class="mb-filters-buttons">
+                <a
+                  href="#"
+                  id="filters-open-btn"
+                  class="button black button--outline"
+                  data-target="mobile-filters"
+                  data-drawer="open"
+                >
+                  <span>Filters</span>
+                  <span class="icon">{{ 'filter-hamburger.svg' | inline_asset_content }}</span>
+                </a>
+                <a
+                  href="#"
+                  id="filters-open-btn"
+                  data-target="mobile-sortby"
+                  class="button black button--outline"
+                  data-drawer="open"
+                >
+                  <span>Sort By</span>
+                  <span class="icon">{{ 'filter-sortby.svg' | inline_asset_content }}</span>
+                </a>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          {% if section.settings.view_all %}
-            {% assign view_all_class = 'button--' | append: section.settings.view_all_style %}
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="view-all-wrapper">
-                  {%
-                    render 'button',
-                    button_text: section.settings.view_all_text | default: 'View All',
-                    button_link: collection.url,
-                    button_class: view_all_class
-                  %}
+          <div class="row">
+            <div class="col-12">
+              <div class="product-tabs__separator product-tabs__separator--horizontal"></div>
+              <div class="product-slider-wrapper">
+                <div class="product-slider product-slider--grid">
+                  {% if collection %}
+                    {% for product in collection.products limit: page_product_limit %}
+                      {% if section.settings.show_secondary_image == true %}
+                        {% assign image_two = product.media[1] %}
+                      {% endif %}
+                      {%
+                        render 'product-card',
+                        product_form: product,
+                        product_varient_id: product.variants.first.id,
+                        product_card_image: product.featured_media | default: product.featured_image,
+                        product_card_image_two: image_two,
+                        product_card_category: product.type,
+                        product_card_title: product.title,
+                        product_card_price: product.price,
+                        product_card_url: product.url
+                      %}
+                    {% endfor %}
+                  {% endif %}
                 </div>
               </div>
             </div>
-          {% endif %}
-        </div>
-        <div class="row">
-          {% render 'pagination', paginate: paginate, anchor: '' %}
+          </div>
+          <div class="row">
+            {% if section.settings.view_all %}
+              {% assign view_all_class = 'button--' | append: section.settings.view_all_style %}
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="view-all-wrapper">
+                    {%
+                      render 'button',
+                      button_text: section.settings.view_all_text | default: 'View All',
+                      button_link: collection.url,
+                      button_class: view_all_class
+                    %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          <div class="row">
+            {%- if paginate.pages > 1 -%}
+              {% render 'pagination', paginate: paginate %}
+            {%- endif -%}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  {%- endpaginate -%}
 </section>
 
 {% schema %}
