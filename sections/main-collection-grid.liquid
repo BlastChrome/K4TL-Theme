@@ -135,21 +135,26 @@
             </div>
           </div>
         </div>
-        {% if section.settings.view_all %}
-          {% assign view_all_class = 'button--' | append: section.settings.view_all_style %}
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="view-all-wrapper">
-                {%
-                  render 'button',
-                  button_text: section.settings.view_all_text | default: 'View All',
-                  button_link: collection.url,
-                  button_class: view_all_class
-                %}
+        <div class="row">
+          {% if section.settings.view_all %}
+            {% assign view_all_class = 'button--' | append: section.settings.view_all_style %}
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="view-all-wrapper">
+                  {%
+                    render 'button',
+                    button_text: section.settings.view_all_text | default: 'View All',
+                    button_link: collection.url,
+                    button_class: view_all_class
+                  %}
+                </div>
               </div>
             </div>
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
+        <div class="row">
+          {% render 'pagination', paginate: paginate, anchor: '' %}
+        </div>
       </div>
     </div>
   </div>
