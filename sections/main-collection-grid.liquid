@@ -56,6 +56,10 @@
   filter_type: 'sortby_drawer'
 %}
 
+{% liquid
+  assign page_product_limit = 8
+%}
+
 <section class="main-collection-grid section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
   <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
     <div class="row">
@@ -69,7 +73,7 @@
       <div class="col-12 col-lg-10">
         <div class="row">
           <div class="col-12 title-category-col">
-            <p class="results-summary">Showing 8 of {{ collection.products.size }} Products.</p>
+            <p class="results-summary">Showing {{ page_product_limit }} of {{ collection.products.size }} Products.</p>
             {% render 'filters',
               image_ad: section.settings.image_ad,
               show_ad: section.settings.show_ad,
@@ -110,7 +114,7 @@
             <div class="product-slider-wrapper">
               <div class="product-slider product-slider--grid">
                 {% if collection %}
-                  {% for product in collection.products %}
+                  {% for product in collection.products limit: page_product_limit %}
                     {% if section.settings.show_secondary_image == true %}
                       {% assign image_two = product.media[1] %}
                     {% endif %}
