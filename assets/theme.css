@@ -6482,6 +6482,68 @@ button.button--link span {
 /**
 * Media queries
 **/
+.pagination-wrapper .pagination__list {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 30px auto 0;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__list {
+    max-width: 300px;
+  }
+}
+.pagination-wrapper .pagination li {
+  display: flex;
+  align-items: center;
+}
+.pagination-wrapper .pagination li svg.no-squish {
+  flex: none;
+}
+.pagination-wrapper .pagination__item {
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  letter-spacing: 0px;
+  padding: 9px 20px;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__item {
+    padding: 5px 10px;
+  }
+}
+.pagination-wrapper .pagination__item--active {
+  color: var(--clr-white);
+  background-color: var(--clr-smoke-2);
+}
+.pagination-wrapper .pagination__item--last {
+  padding: 0;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__item {
+    font-size: var(--theme-font-p-mob-5);
+  }
+}
+.pagination-wrapper .pagination__arrow {
+  padding: 0;
+}
+.pagination-wrapper .pagination__arrow--next {
+  transform: rotate(180deg);
+}
+
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
 .header__top-bar {
   padding: 22px 0;
 }
@@ -10668,6 +10730,55 @@ button.button--link span {
 /**
 * Media queries
 **/
+.pagination-wrapper .pagination__list {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 30px auto 0;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__list {
+    max-width: 300px;
+  }
+}
+.pagination-wrapper .pagination li {
+  display: flex;
+  align-items: center;
+}
+.pagination-wrapper .pagination li svg.no-squish {
+  flex: none;
+}
+.pagination-wrapper .pagination__item {
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  letter-spacing: 0px;
+  padding: 9px 20px;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__item {
+    padding: 5px 10px;
+  }
+}
+.pagination-wrapper .pagination__item--active {
+  color: var(--clr-white);
+  background-color: var(--clr-smoke-2);
+}
+.pagination-wrapper .pagination__item--last {
+  padding: 0;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__item {
+    font-size: var(--theme-font-p-mob-5);
+  }
+}
+.pagination-wrapper .pagination__arrow {
+  padding: 0;
+}
+.pagination-wrapper .pagination__arrow--next {
+  transform: rotate(180deg);
+}
 /**
 * Convert PX to EM
 *

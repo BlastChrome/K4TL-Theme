@@ -13,27 +13,40 @@
 
 <div class="pagination-wrapper">
   <nav class="pagination">
-    <ul class="pagination__list list-unstyled" role="list">
+    <ul class="pagination__list" role="list">
       <li>
-        <a
-          href=""
-          class="pagination__item pagination__item--next pagination__item-arrow"
-        >
+        <a href="#" class="pagination__arrow pagination__arrow--prev">
           <span class="svg-wrapper">
-            {{- 'icon-caret.svg' | inline_asset_content -}}
+            {{- 'icon-carrot.svg' | inline_asset_content -}}
           </span>
         </a>
       </li>
-      <a
-        href="#"
-        class="pagination__item"
-      >
-        <span>1</span>
-      </a>
       <li>
-        <a href="" class="pagination__item pagination__item--prev pagination__item-arrow">
+        <a href="#" class="pagination__item pagination__item--active"><span>1</span></a>
+      </li>
+      <li>
+        <a href="#" class="pagination__item"><span>2</span></a>
+      </li>
+      <li>
+        <a href="#" class="pagination__item"><span>3</span></a>
+      </li>
+      <li>
+        <a href="#" class="pagination__item"><span>4</span></a>
+      </li>
+      <li>
+        <a href="#" class="pagination__item"><span>5</span></a>
+      </li>
+      <li>
+        <a href="#" class="pagination__arrow pagination__arrow--next">
           <span class="svg-wrapper">
-            {{- 'icon-caret.svg' | inline_asset_content -}}
+            {{- 'icon-carrot.svg' | inline_asset_content -}}
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="pagination__item pagination__item--last">
+          <span class="svg-wrapper">
+            {{- 'icon-double-arrow.svg' | inline_asset_content -}}
           </span>
         </a>
       </li>
