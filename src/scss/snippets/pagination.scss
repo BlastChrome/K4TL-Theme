@@ -1,0 +1,7 @@
+@use '../utilities/mx' as mx;
+
+.pagination-wrapper {
+    .pagination {
+        &__list {}
+    }
+}

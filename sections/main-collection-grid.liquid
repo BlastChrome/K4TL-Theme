@@ -109,43 +109,47 @@
             <div class="product-tabs__separator product-tabs__separator--horizontal"></div>
             <div class="product-slider-wrapper">
               <div class="product-slider product-slider--grid">
-                {% if collection %}
-                  {% for product in collection.products %}
-                    {% if section.settings.show_secondary_image == true %}
-                      {% assign image_two = product.media[1] %}
-                    {% endif %}
-                    {%
-                      render 'product-card',
-                      product_form: product,
-                      product_varient_id: product.variants.first.id,
-                      product_card_image: product.featured_media | default: product.featured_image,
-                      product_card_image_two: image_two,
-                      product_card_category: product.type,
-                      product_card_title: product.title,
-                      product_card_price: product.price,
-                      product_card_url: product.url
-                    %}
-                  {% endfor %}
-                {% endif %}
+                {% assign max_products = 8 %}
+                {% for product in collection.products limit: max_products %}
+                  {% if section.settings.show_secondary_image == true %}
+                    {% assign image_two = product.media[1] %}
+                  {% endif %}
+                  {%
+                    render 'product-card',
+                    product_form: product,
+                    product_varient_id: product.variants.first.id,
+                    product_card_image: product.featured_media | default: product.featured_image,
+                    product_card_image_two: image_two,
+                    product_card_category: product.type,
+                    product_card_title: product.title,
+                    product_card_price: product.price,
+                    product_card_url: product.url
+                  %}
+                {% endfor %}
               </div>
             </div>
           </div>
         </div>
-        {% if section.settings.view_all %}
-          {% assign view_all_class = 'button--' | append: section.settings.view_all_style %}
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="view-all-wrapper">
-                {%
-                  render 'button',
-                  button_text: section.settings.view_all_text | default: 'View All',
-                  button_link: collection.url,
-                  button_class: view_all_class
-                %}
+        <div class="row">
+          {% if section.settings.view_all %}
+            {% assign view_all_class = 'button--' | append: section.settings.view_all_style %}
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="view-all-wrapper">
+                  {%
+                    render 'button',
+                    button_text: section.settings.view_all_text | default: 'View All',
+                    button_link: collection.url,
+                    button_class: view_all_class
+                  %}
+                </div>
               </div>
             </div>
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
+        <div class="row">
+          {% render 'pagination', paginate: paginate, anchor: '' %}
+        </div>
       </div>
     </div>
   </div>
