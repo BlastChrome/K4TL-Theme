@@ -43,6 +43,10 @@
             @include mx.mq('tablet', max) {
                 font-size: var(--theme-font-p-mob-5);
             }
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
 
         &__arrow {
