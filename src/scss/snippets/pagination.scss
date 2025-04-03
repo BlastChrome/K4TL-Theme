@@ -2,6 +2,59 @@
 
 .pagination-wrapper {
     .pagination {
-        &__list {}
+        &__list {
+            display: flex;
+            justify-content: space-between;
+            max-width: 400px;
+            margin: 30px auto 0;
+
+
+            @include mx.mq('tablet', max) {
+                max-width: 300px;
+            }
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+
+            svg.no-squish {
+                flex: none;
+            }
+        }
+
+        &__item {
+            @include mx.font-source-sans(--font-family-2, --theme-font-p-mob-3, --clr-smoke-2, false, 30px, 0px);
+            padding: 9px 20px;
+
+            @include mx.mq('tablet', max) {
+                padding: 5px 10px;
+            }
+
+            &--active {
+                color: var(--clr-white);
+                background-color: var(--clr-smoke-2);
+            }
+
+            &--last {
+                padding: 0;
+            }
+
+            @include mx.mq('tablet', max) {
+                font-size: var(--theme-font-p-mob-5);
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &__arrow {
+            padding: 0;
+
+            &--next {
+                transform: rotate(180deg);
+            }
+        }
     }
 }
