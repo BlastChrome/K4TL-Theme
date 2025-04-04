@@ -6486,7 +6486,7 @@ button.button--link span {
   display: flex;
   justify-content: space-between;
   max-width: 400px;
-  margin: 30px auto 0;
+  margin: 60px auto 0;
 }
 @media only screen and (max-width: 767px) {
   .pagination-wrapper .pagination__list {
@@ -10709,7 +10709,7 @@ button.button--link span {
   display: flex;
   justify-content: space-between;
   max-width: 400px;
-  margin: 30px auto 0;
+  margin: 60px auto 0;
 }
 @media only screen and (max-width: 767px) {
   .pagination-wrapper .pagination__list {

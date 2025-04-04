@@ -14,42 +14,64 @@
   <div class="pagination-wrapper">
     <nav class="pagination">
       <ul class="pagination__list" role="list">
-        <li>
-          <a href="#" class="pagination__arrow pagination__arrow--prev">
-            <span class="svg-wrapper">
-              {{- 'icon-carrot.svg' | inline_asset_content -}}
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="pagination__item pagination__item--active"><span>1</span></a>
-        </li>
-        <li>
-          <a href="#" class="pagination__item"><span>2</span></a>
-        </li>
-        <li>
-          <a href="#" class="pagination__item"><span>3</span></a>
-        </li>
-        <li>
-          <a href="#" class="pagination__item"><span>4</span></a>
-        </li>
-        <li>
-          <a href="#" class="pagination__item"><span>5</span></a>
-        </li>
-        <li>
-          <a href="#" class="pagination__arrow pagination__arrow--next">
-            <span class="svg-wrapper">
-              {{- 'icon-carrot.svg' | inline_asset_content -}}
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="pagination__item pagination__item--last">
-            <span class="svg-wrapper">
-              {{- 'icon-double-arrow.svg' | inline_asset_content -}}
-            </span>
-          </a>
-        </li>
+        {%- if paginate.previous -%}
+          <li>
+            <a href="#" class="pagination__arrow pagination__arrow--prev">
+              <span class="svg-wrapper">
+                {{- 'icon-carrot.svg' | inline_asset_content -}}
+              </span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- for part in paginate.parts -%}
+          <li>
+            {%- if part.is_link -%}
+              <a
+                href="{{ part.url }}{{ anchor }}"
+                class="pagination__item"
+              >
+                <span>{{ part.title }}</span>
+              </a>
+            {%- else -%}
+              {%- if part.title == paginate.current_page -%}
+                <a
+                  class="pagination__item pagination__item--active"
+                  aria-disabled="true"
+                  aria-current="page"
+                  role="link"
+                >
+                  <span>{{ part.title }}</span>
+                </a>
+              {%- else -%}
+                <span class="pagination__item">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+        {%- if paginate.next -%}
+          <li>
+            <a
+              href="{{ paginate.next.url }}{{ anchor }}"
+              class="pagination__arrow pagination__arrow--next"
+            >
+              <span class="svg-wrapper">
+                {{- 'icon-carrot.svg' | inline_asset_content -}}
+              </span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if paginate.current_page != paginate.pages -%}
+          <li>
+            <a
+              href="{{ paginate.parts | last | map: 'url' | first }}{{ anchor }}"
+              class="pagination__item pagination__item--last"
+            >
+              <span class="svg-wrapper">
+                {{- 'icon-double-arrow.svg' | inline_asset_content -}}
+              </span>
+            </a>
+          </li>
+        {%- endif -%}
       </ul>
     </nav>
   </div>
