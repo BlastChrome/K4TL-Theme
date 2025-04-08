@@ -56,12 +56,8 @@
   filter_type: 'sortby_drawer'
 %}
 
-{% liquid
-  assign page_product_limit = 8
-%}
-
 <section class="main-collection-grid section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
-  {%- paginate collection.products by page_product_limit -%}
+  {%- paginate collection.products by section.settings.total_products_to_show -%}
     <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
       <div class="row">
         <div class="d-none d-lg-block col-3 col-lg-2">
@@ -74,9 +70,7 @@
         <div class="col-12 col-lg-10">
           <div class="row">
             <div class="col-12 title-category-col">
-              <p class="results-summary">
-                Showing {{ page_product_limit }} of {{ collection.products.size }} Products.
-              </p>
+              <p class="results-summary">Showing {{ section.settings.total_products_to_show }} Per Page.</p>
               {% render 'filters',
                 image_ad: section.settings.image_ad,
                 show_ad: section.settings.show_ad,
@@ -213,6 +207,15 @@
       "type": "collection",
       "id": "product_collection_one",
       "label": "Product Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 25,
+      "step": 1,
+      "label": "Products Per Page",
+      "default": 15
     },
     {
       "type": "checkbox",
