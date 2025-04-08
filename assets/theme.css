@@ -4985,7 +4985,7 @@ button.button--link span {
   height: auto;
 }
 .product-card.disabled {
-  opacity: 0.9;
+  opacity: 0.6;
 }
 .product-card * {
   cursor: pointer;
@@ -10824,7 +10824,7 @@ button.button--link span {
   height: auto;
 }
 .product-card.disabled {
-  opacity: 0.9;
+  opacity: 0.6;
 }
 .product-card * {
   cursor: pointer;
