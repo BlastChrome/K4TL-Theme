@@ -7849,6 +7849,34 @@ button.button--link span {
 /**
 * Media queries
 **/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
 .blog-card-section__title-wrapper {
   display: flex;
   justify-content: space-between;
@@ -11513,33 +11541,5 @@ button.button--link span {
 .sortby-container .filter-wrapper__footer #close-btn {
   padding: 10px;
   justify-content: center;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
 }
 /*# sourceMappingURL=theme.css.map */
