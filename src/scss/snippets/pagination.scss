@@ -4,7 +4,8 @@
     .pagination {
         &__list {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 25px;
             max-width: 400px;
             margin: 60px auto 0;
 
