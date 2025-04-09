@@ -55,6 +55,12 @@ class FacetFiltersForm extends HTMLElement {
   static updateParams(name, value, action) {
     if (!action) return;
 
+    // show the loading spinners
+    const loadingSpinners = document.querySelectorAll('.main-collection-grid .loader-spinner');
+    const loadingElements = document.querySelectorAll('.main-collection-grid');
+    loadingSpinners.forEach((spinner) => spinner.classList.add('active'));
+    loadingElements.forEach((item) => item.classList.add('loading'));
+
     if (action === 'clear') {
       FacetFiltersForm.searchParams = new URLSearchParams();
       FacetFiltersForm.updateFiltersProducts('/collections/all');
@@ -95,6 +101,12 @@ class FacetFiltersForm extends HTMLElement {
             wrapper.appendChild(newContent);
           }
         });
+
+        // hide loading spinners
+        const loadingSpinners = document.querySelectorAll('.main-collection-grid .loader-spinner');
+        const loadingElements = document.querySelectorAll('.main-collection-grid');
+        loadingSpinners.forEach((spinner) => spinner.classList.remove('active'));
+        loadingElements.forEach((item) => item.classList.remove('loading'));
       });
   }
 }

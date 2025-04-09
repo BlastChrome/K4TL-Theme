@@ -6484,7 +6484,8 @@ button.button--link span {
 **/
 .pagination-wrapper .pagination__list {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 25px;
   max-width: 400px;
   margin: 60px auto 0;
 }
@@ -7849,34 +7850,6 @@ button.button--link span {
 /**
 * Media queries
 **/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
 .blog-card-section__title-wrapper {
   display: flex;
   justify-content: space-between;
@@ -8587,11 +8560,23 @@ button.button--link span {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px;
+  position: relative;
 }
 @media only screen and (max-width: 991px) {
   .main-collection-grid .title-category-col {
     margin-bottom: 20px;
   }
+}
+.main-collection-grid .title-category-col .loader-spinner {
+  right: 30px;
+  bottom: 35px;
+  width: 25px;
+  height: 25px;
+  border: 2px solid rgb(29, 29, 29);
+  border-top-color: #fff;
+}
+.main-collection-grid .title-category-col .loader-spinner.active {
+  opacity: 1;
 }
 .main-collection-grid .sort-by {
   display: flex;
@@ -8746,6 +8731,9 @@ button.button--link span {
   margin-right: 0;
   border-radius: 0;
   margin-left: 30px;
+}
+.main-collection-grid.loading {
+  opacity: 0.4;
 }
 /**
 * Convert PX to EM
@@ -10735,7 +10723,8 @@ button.button--link span {
 **/
 .pagination-wrapper .pagination__list {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 25px;
   max-width: 400px;
   margin: 60px auto 0;
 }
@@ -11541,5 +11530,33 @@ button.button--link span {
 .sortby-container .filter-wrapper__footer #close-btn {
   padding: 10px;
   justify-content: center;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
 }
 /*# sourceMappingURL=theme.css.map */
