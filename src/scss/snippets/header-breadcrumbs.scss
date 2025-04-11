@@ -1,0 +1,64 @@
+@use '../utilities/mx' as mx;
+
+.breadcrumbs-wrapper {
+    background-color: var(--clr-grey);
+
+    .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 0 16px;
+        @include mx.font-source-sans(--font-family-2-2, --theme-font-p-mob-1, --clr-smoke-2, false, 62px, 0px);
+
+        @include mx.mq('tablet', max) {
+            flex-wrap: wrap;
+            font-size: 12px;
+        }
+
+        @include mx.mq('phone-wide', max) {
+            display: none;
+        }
+
+        li {
+            a {
+                opacity: 0.5;
+                color: var(--clr-smoke-2);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    color: var(--clr-red);
+                    opacity: 1;
+
+                    svg {
+                        path {
+                            fill: var(--clr-red);
+                        }
+                    }
+                }
+            }
+
+            .svg-wrapper {
+                width: 100%;
+                max-width: 20px;
+
+                svg {
+                    width: 100%;
+                    height: auto;
+
+                    path {
+                        transition: all 0.3s ease-in-out;
+                    }
+                }
+            }
+        }
+
+        .sep {
+            width: 1px;
+            height: 32px;
+            background-color: var(--clr-smoke-2);
+            opacity: 0.5;
+        }
+    }
+}

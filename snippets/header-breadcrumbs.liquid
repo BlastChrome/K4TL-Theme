@@ -1,0 +1,53 @@
+{% comment %}
+  Simplified breadcrumbs for:
+  - Collection pages: Home > Products
+  - Product pages: Home > Products > Product Title
+
+  Usage:
+  {% render 'header-breadcrumbs' %}
+
+  Future extensions:
+  - Add logic for custom pages (e.g. About, Contact)
+  - Add blog/article paths
+  - Add tags/filters inside collections
+{% endcomment %}
+
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+  {%- assign temp = template | split: '.' | first -%}
+  <div class="breadcrumbs-wrapper">
+    <div class="container">
+      <nav>
+        <ul class="breadcrumbs">
+          {%- comment -%} Home link {%- endcomment -%}
+          <li class="item">
+            <a href="/">
+              <span class="svg-wrapper">
+                {{ 'icon-home.svg' | inline_asset_content }}
+              </span>
+              <span class="text">Home</span>
+            </a>
+          </li>
+          <span class="sep"></span>
+
+          {%- case temp -%}
+            {%- when 'collection' -%}
+              {%- comment -%} We’re on a collection page like /collections/something {%- endcomment -%}
+              <li class="item">
+                <span class="text">{{ collection.title }}</span>
+              </li>
+            {%- when 'product' -%}
+              <li class="item">
+                <a href="/collections/all">
+                  <span class="text">Products</span>
+                </a>
+              </li>
+              <span class="sep"></span>
+              <li class="item">
+                <span class="text">{{ product.title }}</span>
+              </li>
+          {%- endcase -%}
+        </ul>
+      </nav>
+    </div>
+  </div>
+{%- endunless -%}

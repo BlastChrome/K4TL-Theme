@@ -1,165 +1,20 @@
-<script src="{{ 'facets.js' | asset_url }}" defer></script>
-<script src="{{ 'productCard.js' | asset_url }}" defer></script>
-
 {%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-
-    @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-        padding-bottom: {{ section.settings.padding_bottom }}px;
-      }
-    }
-  {% if section.settings.view_all %}
-    .view-all-wrapper{
-      margin-top: 40px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-  {% endif %}
-
-    {% assign grid_columns = section.settings.columns_desktop %}
-    .section-{{ section.id }} .product-slider--grid{
-      display: grid;
-      gap: 10px;
-      padding: 0 15px;
-      grid-template-columns: repeat({{ grid_columns }}, 1fr);
-    }
-
-    @media screen and (max-width: 991px) {
-        .section-{{ section.id }} .product-slider--grid{
-        grid-template-columns: repeat(3, 1fr);
-        padding: 0;
-      }
-    }
-    @media screen and (max-width: 767px) {
-        .section-{{ section.id }} .product-slider--grid{
-        grid-template-columns: repeat(2, 1fr);
-
-      }
-    }
+  }
 {%- endstyle -%}
-
-{% render 'filters',
-  image_ad: section.settings.image_ad,
-  show_ad: section.settings.show_ad,
-  filter_type: 'main_filters_drawer'
-%}
-{% render 'filters',
-  image_ad: section.settings.image_ad,
-  show_ad: section.settings.show_ad,
-  sort_by_options: collection.sort_options,
-  filter_type: 'sortby_drawer'
-%}
-
-<section class="main-collection-grid section-{{ section.id }} section-{{ section.id }}-padding" id="{{section.id}}">
-  {%- paginate collection.products by section.settings.total_products_to_show -%}
-    <div class="{% if section.settings.full_width %} container-full {% else %} container {% endif %}">
-      <div class="row">
-        <div class="d-none d-lg-block col-3 col-lg-2">
-          {% render 'filters',
-            image_ad: section.settings.image_ad,
-            show_ad: section.settings.show_ad,
-            filter_type: 'main_filters_sidebar'
-          %}
-        </div>
-        <div class="col-12 col-lg-10">
-          <div class="row">
-            <div class="col-12 title-category-col">
-              <p class="results-summary">Showing {{ section.settings.total_products_to_show }} Max Per Page.</p>
-              {% render 'filters',
-                image_ad: section.settings.image_ad,
-                show_ad: section.settings.show_ad,
-                sort_by_options: collection.sort_options,
-                filter_type: 'sortby_desktop'
-              %}
-              {% render 'loader-spinner' %}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-lg-none">
-              <div class="mb-filters-buttons">
-                <a
-                  href="#"
-                  id="filters-open-btn"
-                  class="button black button--outline"
-                  data-target="mobile-filters"
-                  data-drawer="open"
-                >
-                  <span>Filters</span>
-                  <span class="icon">{{ 'filter-hamburger.svg' | inline_asset_content }}</span>
-                </a>
-                <a
-                  href="#"
-                  id="filters-open-btn"
-                  data-target="mobile-sortby"
-                  class="button black button--outline"
-                  data-drawer="open"
-                >
-                  <span>Sort By</span>
-                  <span class="icon">{{ 'filter-sortby.svg' | inline_asset_content }}</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="product-tabs__separator product-tabs__separator--horizontal"></div>
-              <div class="product-slider-wrapper">
-                <div class="product-slider product-slider--grid">
-                  {% if collection %}
-                    {% for product in collection.products limit: page_product_limit %}
-                      {% if section.settings.show_secondary_image == true %}
-                        {% assign image_two = product.media[1] %}
-                      {% endif %}
-                      {%
-                        render 'product-card',
-                        product_form: product,
-                        product_varient_id: product.variants.first.id,
-                        product_card_image: product.featured_media | default: product.featured_image,
-                        product_card_image_two: image_two,
-                        product_card_category: product.type,
-                        product_card_title: product.title,
-                        product_card_price: product.price,
-                        product_card_url: product.url
-                      %}
-                    {% endfor %}
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            {% if section.settings.view_all %}
-              {% assign view_all_class = 'button--' | append: section.settings.view_all_style %}
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="view-all-wrapper">
-                    {%
-                      render 'button',
-                      button_text: section.settings.view_all_text | default: 'View All',
-                      button_link: collection.url,
-                      button_class: view_all_class
-                    %}
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          </div>
-          <div class="row">
-            {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate %}
-            {%- endif -%}
-          </div>
-        </div>
-      </div>
-    </div>
-  {%- endpaginate -%}
-</section>
+<section
+  class="main-product-wrapper section-{{ section.id }} section-{{ section.id }}-padding"
+  id="{{section.id}}"
+></section>
 
 {% schema %}
 {
@@ -199,90 +54,6 @@
       "id": "image_ad",
       "label": "Advertisement",
       "info": "Recommended image size: 748x610px"
-    },
-    {
-      "type": "header",
-      "content": "Collections"
-    },
-    {
-      "type": "collection",
-      "id": "product_collection_one",
-      "label": "Product Collection"
-    },
-    {
-      "type": "range",
-      "id": "products_per_page",
-      "min": 8,
-      "max": 25,
-      "step": 1,
-      "label": "Products Per Page",
-      "default": 15
-    },
-    {
-      "type": "checkbox",
-      "id": "view_all",
-      "label": "Enable View All Button",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "view_all_text",
-      "label": "Button Text",
-      "default": "View All"
-    },
-    {
-      "type": "select",
-      "id": "view_all_style",
-      "label": "View View All Style",
-      "options": [
-        {
-          "value": "outline",
-          "label": "Outline"
-        },
-        {
-          "value": "solid",
-          "label": "Solid"
-        },
-        {
-          "value": "link",
-          "label": "Link"
-        }
-      ],
-      "default": "solid"
-    },
-    {
-      "type": "range",
-      "label": "Number of Columns (Desktop)",
-      "id": "columns_desktop",
-      "min": 3,
-      "max": 6,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "range",
-      "label": "Products To Show",
-      "id": "total_products_to_show",
-      "min": 3,
-      "max": 16,
-      "step": 1,
-      "default": 8
-    },
-    {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Enable Full Width",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Product Image Options"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_secondary_image",
-      "default": false,
-      "label": "Show secondary image on hover"
     }
   ]
 }
