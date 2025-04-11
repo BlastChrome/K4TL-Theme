@@ -1,100 +1,53 @@
 {% comment %}
-  Renders the breacrumb navigation for all pages other than the homepage
+  Simplified breadcrumbs for:
+  - Collection pages: Home > Products
+  - Product pages: Home > Products > Product Title
 
   Usage:
   {% render 'header-breadcrumbs' %}
+
+  Future extensions:
+  - Add logic for custom pages (e.g. About, Contact)
+  - Add blog/article paths
+  - Add tags/filters inside collections
 {% endcomment %}
+
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign temp = template | split: '.' | first -%}
   <div class="breadcrumbs-wrapper">
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <nav>
-            <ul class="breadcrumbs">
+      <nav>
+        <ul class="breadcrumbs">
+          {%- comment -%} Home link {%- endcomment -%}
+          <li class="item">
+            <a href="/">
+              <span class="svg-wrapper">
+                {{ 'icon-home.svg' | inline_asset_content }}
+              </span>
+              <span class="text">Home</span>
+            </a>
+          </li>
+          <span class="sep"></span>
+
+          {%- case temp -%}
+            {%- when 'collection' -%}
+              {%- comment -%} We’re on a collection page like /collections/something {%- endcomment -%}
               <li class="item">
-                <a href="/">
-                  <span class="svg-wrapper">
-                    {{- 'icon-home.svg' | inline_asset_content -}}
-                  </span>
-                  <span class="text">Home</span>
+                <span class="text">{{ collection.title }}</span>
+              </li>
+            {%- when 'product' -%}
+              <li class="item">
+                <a href="/collections/all">
+                  <span class="text">Products</span>
                 </a>
               </li>
               <span class="sep"></span>
-              {%- case temp -%}
-                {%- when 'page' -%}
-                  <li class="breadcrumbs__item">
-                    <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
-                  </li>
-                  <li class="item" href="{{ page.url }}" aria-current="page">
-                    <a href="/">
-                      <span class="text">{{ page.title }}</span>
-                    </a>
-                  </li>
-                {%- when 'product' -%}
-                  {%- if collection.url -%}
-                    <li class="item" href="{{ page.url }}" aria-current="page">
-                      <a href="{{ collection.url }}">
-                        <span class="text">{{ collection.title | link_to: collection.url }}</span>
-                      </a>
-                    </li>
-                  {%- endif -%}
-                  <li class="item" href="{{ page.url }}" aria-current="page">
-                    <a href="{{ product.url }}">
-                      <span class="text">{{ product.title }}</span>
-                    </a>
-                  </li>
-                {%- when 'collection' and collection.handle -%}
-                  {%- if current_tags -%}
-                    <li class="item" href="{{ page.url }}" aria-current="page">
-                      <a href="{{ collection.url }}">
-                        <span class="text">{{ collection.title | link_to: collection.url }}</span>
-                      </a>
-                    </li>
-                    <li class="item" href="{{ page.url }}" aria-current="page">
-                      <a href="{{ collection.url }}">
-                        <span class="text">{{ collection.title | link_to: collection.url }}</span>
-                      </a>
-                    </li>
-
-                    <li class="breadcrumbs__item">
-                      {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
-                      <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">
-                        {{- current_tags | join: ' + ' -}}
-                      </a>
-                    </li>
-                  {%- else -%}
-                    <li class="breadcrumbs__item">
-                      <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">
-                        {{- collection.title -}}
-                      </a>
-                    </li>
-                  {%- endif -%}
-              {%- endcase -%}
-
-              {% comment %}
-                <li class="item">
-                  <a href="">
-                    <span class="text">Products</span>
-                  </a>
-                </li>
-                <span class="sep"></span>
-                <li class="item">
-                  <a href="">
-                    <span class="text">Mens</span>
-                  </a>
-                </li>
-                <span class="sep"></span>
-                <li class="item">
-                  <a href="">
-                    <span class="text">Nike SB Dunk Low</span>
-                  </a>
-                </li>
-              {% endcomment %}
-            </ul>
-          </nav>
-        </div>
-      </div>
+              <li class="item">
+                <span class="text">{{ product.title }}</span>
+              </li>
+          {%- endcase -%}
+        </ul>
+      </nav>
     </div>
   </div>
 {%- endunless -%}

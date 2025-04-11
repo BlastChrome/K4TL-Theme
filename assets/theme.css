@@ -6785,12 +6785,23 @@ button.button--link span {
 .breadcrumbs-wrapper .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0 16px;
   font-family: var(--font-family-2-2);
   font-size: var(--theme-font-p-mob-1);
   color: var(--clr-smoke-2);
   line-height: 62px;
   letter-spacing: 0px;
+}
+@media only screen and (max-width: 767px) {
+  .breadcrumbs-wrapper .breadcrumbs {
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .breadcrumbs-wrapper .breadcrumbs {
+    display: none;
+  }
 }
 .breadcrumbs-wrapper .breadcrumbs li a {
   opacity: 0.5;
@@ -6798,6 +6809,14 @@ button.button--link span {
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: all 0.3s ease-in-out;
+}
+.breadcrumbs-wrapper .breadcrumbs li a:hover {
+  color: var(--clr-red);
+  opacity: 1;
+}
+.breadcrumbs-wrapper .breadcrumbs li a:hover svg path {
+  fill: var(--clr-red);
 }
 .breadcrumbs-wrapper .breadcrumbs li .svg-wrapper {
   width: 100%;
@@ -6806,6 +6825,9 @@ button.button--link span {
 .breadcrumbs-wrapper .breadcrumbs li .svg-wrapper svg {
   width: 100%;
   height: auto;
+}
+.breadcrumbs-wrapper .breadcrumbs li .svg-wrapper svg path {
+  transition: all 0.3s ease-in-out;
 }
 .breadcrumbs-wrapper .breadcrumbs .sep {
   width: 1px;
@@ -9265,6 +9287,34 @@ button.button--link span {
 /**
 * Media queries
 **/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
 .arrow-button {
   width: 100%;
   max-width: 200px;
@@ -10157,12 +10207,23 @@ button.button--link span {
 .breadcrumbs-wrapper .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0 16px;
   font-family: var(--font-family-2-2);
   font-size: var(--theme-font-p-mob-1);
   color: var(--clr-smoke-2);
   line-height: 62px;
   letter-spacing: 0px;
+}
+@media only screen and (max-width: 767px) {
+  .breadcrumbs-wrapper .breadcrumbs {
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .breadcrumbs-wrapper .breadcrumbs {
+    display: none;
+  }
 }
 .breadcrumbs-wrapper .breadcrumbs li a {
   opacity: 0.5;
@@ -10170,6 +10231,14 @@ button.button--link span {
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: all 0.3s ease-in-out;
+}
+.breadcrumbs-wrapper .breadcrumbs li a:hover {
+  color: var(--clr-red);
+  opacity: 1;
+}
+.breadcrumbs-wrapper .breadcrumbs li a:hover svg path {
+  fill: var(--clr-red);
 }
 .breadcrumbs-wrapper .breadcrumbs li .svg-wrapper {
   width: 100%;
@@ -10178,6 +10247,9 @@ button.button--link span {
 .breadcrumbs-wrapper .breadcrumbs li .svg-wrapper svg {
   width: 100%;
   height: auto;
+}
+.breadcrumbs-wrapper .breadcrumbs li .svg-wrapper svg path {
+  transition: all 0.3s ease-in-out;
 }
 .breadcrumbs-wrapper .breadcrumbs .sep {
   width: 1px;
@@ -11638,33 +11710,5 @@ button.button--link span {
 .sortby-container .filter-wrapper__footer #close-btn {
   padding: 10px;
   justify-content: center;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
 }
 /*# sourceMappingURL=theme.css.map */
