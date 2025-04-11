@@ -1,0 +1,39 @@
+@use '../utilities/mx' as mx;
+
+.breadcrumbs-wrapper {
+    background-color: var(--clr-grey);
+
+    .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        @include mx.font-source-sans(--font-family-2-2, --theme-font-p-mob-1, --clr-smoke-2, false, 62px, 0px);
+
+        li {
+            a {
+                opacity: 0.5;
+                color: var(--clr-smoke-2);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .svg-wrapper {
+                width: 100%;
+                max-width: 20px;
+
+                svg {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .sep {
+            width: 1px;
+            height: 32px;
+            background-color: var(--clr-smoke-2);
+            opacity: 0.5;
+        }
+    }
+}
