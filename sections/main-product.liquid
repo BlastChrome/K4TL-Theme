@@ -17,7 +17,6 @@
   id="{{section.id}}"
 >
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
-  {%- assign product_description_limit = 225 -%}
 
   <div class="product">
     <div class="container">
@@ -32,27 +31,25 @@
             <p class="price">{{ product.price | money }}</p>
             <div class="desc">{{ product.content }}</div>
             <div class="varients">
-              {%- unless product.has_only_default_variant -%}
-                {%- for option in product.options_with_values -%}
-                  <div class="wrapper">
-                    <p class="option-title option-title--{{ option.name | escape }}">
-                      <strong>{{ option.name }}</strong>
-                    </p>
-                    <div class="varients__{{option.name | downcase | escape}}">
-                      {%- for filter_value in option.values -%}
-                        <button
-                          class=" button button--outline{% if filter_value.active %} active {% endif %}"
-                          id="swatch-{{filter_value.name | append: '-' | append: product.id | escape}}"
-                          value="{{ filter_value.name }}"
-                          name="{{ filter_value.name }}"
-                        >
-                          <span>{{ filter_value.name }}</span>
-                        </button>
-                      {%- endfor -%}
-                    </div>
+              {%- for option in product.options_with_values -%}
+                <div class="wrapper">
+                  <p class="option-title option-title--{{ option.name | escape }}">
+                    <strong>{{ option.name }}</strong>
+                  </p>
+                  <div class="varients__{{option.name | downcase | escape}}">
+                    {%- for filter_value in option.values -%}
+                      <button
+                        class=" button button--outline{% if filter_value.active %} active {% endif %}"
+                        id="swatch-{{filter_value.name | append: '-' | append: product.id | escape}}"
+                        value="{{ filter_value.name }}"
+                        name="{{ filter_value.name }}"
+                      >
+                        <span>{{ filter_value.name }}</span>
+                      </button>
+                    {%- endfor -%}
                   </div>
-                {%- endfor -%}
-              {%- endunless -%}
+                </div>
+              {%- endfor -%}
             </div>
             <div class="quantity-wrapper">
               <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">

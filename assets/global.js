@@ -119,3 +119,30 @@ class MenuDrawer extends HTMLElement {
   }
 }
 customElements.define('menu-drawer', MenuDrawer);
+
+class QuantityInput extends HTMLElement {
+  constructor() {
+    super();
+    const buttons = this.querySelectorAll('button');
+    this.input = this.querySelector('input');
+
+    buttons.forEach((button) => button.addEventListener('click', this.handleQuantityChange.bind(this)));
+  }
+
+  handleQuantityChange(e) {
+    e.preventDefault();
+    const plusIsClicked = e.currentTarget.name == 'plus' ? true : false;
+    const lastInputValue = this.input.value;
+
+    if (plusIsClicked) {
+      this.input.value++;
+    } else {
+      if (lastInputValue <= 0) {
+        this.input.value = 0;
+      } else {
+        this.input.value--;
+      }
+    }
+  }
+}
+customElements.define('quantity-input', QuantityInput);
