@@ -1,5 +1,104 @@
 @use '../utilities/mx' as mx;
 
-.main-pruduct-wrapper {
-    background-color: red;
+.main-product-wrapper {
+    .product {
+        h3 {
+            letter-spacing: 4.3px;
+            text-transform: uppercase;
+
+            @include mx.mq('desktop-medium') {
+                margin-bottom: 19px;
+            }
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            text-transform: capitalize;
+
+            @include mx.mq('desktop-medium') {
+                @include mx.font-source-sans(--font-family-1, --theme-font-h2-mob-2-1, --clr-smoke-2, false, 44px);
+            }
+        }
+
+        p {
+            &.price {
+                margin-bottom: 10px;
+                @include mx.font-source-sans(--font-family-1, --theme-font-p-mob-3, --clr-red, false, 30px);
+
+                @include mx.mq('desktop-medium') {
+                    margin-bottom: 25px;
+                }
+            }
+        }
+
+        .desc {
+            p {
+                margin-bottom: 10px;
+                @include mx.font-source-sans(--font-family-2, --theme-font-p-mob-3, --clr-smoke-2, false, 30px, 0px);
+
+                @include mx.mq('desktop-medium') {
+                    margin-bottom: 51px;
+                }
+            }
+        }
+    }
+
+    .varients {
+        display: flex;
+        justify-content: space-between;
+        gap: 0 15px;
+
+        .wrapper {
+            width: 100%;
+        }
+
+        &__size,
+        &__gender {
+            display: grid;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px 0;
+        }
+
+        &__size {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        &__gender {
+            grid-template-columns: 1fr;
+        }
+
+        p {
+            &.option-title {
+                @include mx.font-source-sans(--font-family-1, --theme-font-p-mob-3, --clr-smoke-2, false, 30px);
+            }
+        }
+
+        .button.button--outline {
+            padding: 5px 0px;
+            width: auto;
+            border: 2px solid rgb(48 48 48 / 20%);
+
+            span {
+                color: var(--clr-smoke-2);
+            }
+
+            &:hover,
+            &.active {
+                span {
+                    color: var(--clr-white);
+                }
+            }
+
+            &:after {
+                background: var(--clr-smoke-2);
+            }
+
+            &.active:after {
+                transform: translate(0);
+            }
+        }
+    }
+
 }

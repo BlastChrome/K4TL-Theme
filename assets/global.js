@@ -37,7 +37,6 @@ class TopHeader extends HTMLElement {
   handleStickyNavSettings() {
     // get the nav
     const header = this.parentElement;
-
     // get the first section on the page
     const firstSection = document.querySelector('#main section'); // gets the first section within <main></main>
 
