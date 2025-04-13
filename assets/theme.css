@@ -6549,7 +6549,7 @@ button.button--link span {
 * Media queries
 **/
 .header__top-bar {
-  padding: 22px 0;
+  padding: 12px 0;
 }
 @media only screen and (max-width: 767px) {
   .header__top-bar {
@@ -6633,7 +6633,7 @@ button.button--link span {
 * Media queries
 **/
 .header__logo-bar {
-  padding: 22px 0;
+  padding: 12px 0;
 }
 .header__logo-bar .row {
   align-items: center;
@@ -6781,6 +6781,7 @@ button.button--link span {
 **/
 .breadcrumbs-wrapper {
   background-color: var(--clr-grey);
+  padding: 0 12px;
 }
 .breadcrumbs-wrapper .breadcrumbs {
   display: flex;
@@ -6789,7 +6790,7 @@ button.button--link span {
   font-family: var(--font-family-2-2);
   font-size: var(--theme-font-p-mob-1);
   color: var(--clr-smoke-2);
-  line-height: 62px;
+  line-height: normal;
   letter-spacing: 0px;
 }
 @media only screen and (max-width: 767px) {
@@ -10175,6 +10176,7 @@ button.button--link span {
 **/
 .breadcrumbs-wrapper {
   background-color: var(--clr-grey);
+  padding: 0 12px;
 }
 .breadcrumbs-wrapper .breadcrumbs {
   display: flex;
@@ -10183,7 +10185,7 @@ button.button--link span {
   font-family: var(--font-family-2-2);
   font-size: var(--theme-font-p-mob-1);
   color: var(--clr-smoke-2);
-  line-height: 62px;
+  line-height: normal;
   letter-spacing: 0px;
 }
 @media only screen and (max-width: 767px) {
@@ -10242,7 +10244,7 @@ button.button--link span {
 * Media queries
 **/
 .header__logo-bar {
-  padding: 22px 0;
+  padding: 12px 0;
 }
 .header__logo-bar .row {
   align-items: center;
@@ -10436,7 +10438,7 @@ button.button--link span {
 }
 .header__nav-bar .nav.nav--main-menu,
 .header__nav-bar .nav-phone {
-  min-height: 88px;
+  min-height: 50px;
 }
 @media only screen and (max-width: 991px) {
   .header__nav-bar .nav.nav--main-menu,
@@ -10474,7 +10476,7 @@ button.button--link span {
   font-size: var(--theme-font-p-mob-1);
   color: var(--clr-white);
   line-height: 24px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 @media only screen and (max-width: 767px) {
   .header__nav-bar .nav.nav--main-menu li a {
@@ -10635,7 +10637,7 @@ button.button--link span {
 * Media queries
 **/
 .header__top-bar {
-  padding: 22px 0;
+  padding: 12px 0;
 }
 @media only screen and (max-width: 767px) {
   .header__top-bar {
