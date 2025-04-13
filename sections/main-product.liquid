@@ -27,13 +27,32 @@
         </div>
         <div class="col-12 col-md-4">
           <div class="product__info">
-            <h3>{{ product.category }}</h3>
-            <h2>{{ product.title }}</h2>
+            <h3>{{ product.category | escape }}</h3>
+            <h2>{{ product.title | escape }}</h2>
             <p class="price">{{ product.price | money }}</p>
             <div class="desc">{{ product.content }}</div>
             <div class="varients">
-              <div class="varients__size"></div>
-              <div class="varients__gender"></div>
+              {%- unless product.has_only_default_variant -%}
+                {%- for option in product.options_with_values -%}
+                  <div class="wrapper">
+                    <p class="option-title option-title--{{ option.name | escape }}">
+                      <strong>{{ option.name }}</strong>
+                    </p>
+                    <div class="varients__{{option.name | downcase | escape}}">
+                      {%- for filter_value in option.values -%}
+                        <button
+                          class=" button button--outline{% if filter_value.active %} active {% endif %}"
+                          id="swatch-{{filter_value.name | append: '-' | append: product.id | escape}}"
+                          value="{{ filter_value.name }}"
+                          name="{{ filter_value.name }}"
+                        >
+                          <span>{{ filter_value.name }}</span>
+                        </button>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              {%- endunless -%}
             </div>
             <div class="quantity-wrapper">
               <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
