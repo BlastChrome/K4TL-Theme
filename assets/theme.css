@@ -4656,6 +4656,22 @@ a:hover {
   opacity: 0;
 }
 
+.visually-hidden {
+  width: 1px;
+  height: 1px;
+  clip: rect(0px, 0px, 0px, 0px);
+  position: absolute !important;
+  overflow-wrap: normal !important;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0px;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  -o-border-image: initial;
+  border-image: initial;
+}
+
 @keyframes loader-spinner {
   to {
     -webkit-transform: rotate(360deg);
@@ -6781,7 +6797,7 @@ button.button--link span {
 **/
 .breadcrumbs-wrapper {
   background-color: var(--clr-grey);
-  padding: 0 12px;
+  padding: 6px 12px;
 }
 .breadcrumbs-wrapper .breadcrumbs {
   display: flex;
@@ -8848,8 +8864,50 @@ button.button--link span {
 /**
 * Media queries
 **/
-.main-pruduct-wrapper {
-  background-color: red;
+.main-product-wrapper .product h3 {
+  letter-spacing: 4.3px;
+  text-transform: uppercase;
+}
+@media only screen and (min-width: 1440px) {
+  .main-product-wrapper .product h3 {
+    margin-bottom: 19px;
+  }
+}
+.main-product-wrapper .product h2 {
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+@media only screen and (min-width: 1440px) {
+  .main-product-wrapper .product h2 {
+    font-family: var(--font-family-1);
+    font-size: var(--theme-font-h2-mob-2-1);
+    color: var(--clr-smoke-2);
+    line-height: 44px;
+  }
+}
+.main-product-wrapper .product p.price {
+  margin-bottom: 10px;
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-red);
+  line-height: 30px;
+}
+@media only screen and (min-width: 1440px) {
+  .main-product-wrapper .product p.price {
+    margin-bottom: 25px;
+  }
+}
+.main-product-wrapper .product .desc p {
+  margin-bottom: 10px;
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+@media only screen and (min-width: 1440px) {
+  .main-product-wrapper .product .desc p {
+    margin-bottom: 51px;
+  }
 }
 /**
 * Convert PX to EM
@@ -10176,7 +10234,7 @@ button.button--link span {
 **/
 .breadcrumbs-wrapper {
   background-color: var(--clr-grey);
-  padding: 0 12px;
+  padding: 6px 12px;
 }
 .breadcrumbs-wrapper .breadcrumbs {
   display: flex;
@@ -10392,6 +10450,8 @@ button.button--link span {
 .header__nav-bar {
   display: flex;
   background-color: var(--clr-smoke-2);
+  position: relative;
+  z-index: 1;
 }
 @media only screen and (max-width: 767px) {
   .header__nav-bar {

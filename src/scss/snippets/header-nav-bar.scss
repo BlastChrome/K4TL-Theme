@@ -4,6 +4,8 @@
     &__nav-bar {
         display: flex;
         background-color: var(--clr-smoke-2);
+        position: relative;
+        z-index: 1;
 
         @include mx.mq('tablet', max) {
             background-color: var(--clr-white);

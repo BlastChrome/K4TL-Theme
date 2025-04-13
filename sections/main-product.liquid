@@ -11,10 +11,14 @@
     }
   }
 {%- endstyle -%}
+
 <section
   class="main-product-wrapper section-{{ section.id }} section-{{ section.id }}-padding"
   id="{{section.id}}"
 >
+  {%- assign product_form_id = 'product-form-' | append: section.id -%}
+  {%- assign product_description_limit = 225 -%}
+
   <div class="product">
     <div class="container">
       <div class="row">
@@ -23,12 +27,48 @@
         </div>
         <div class="col-12 col-md-4">
           <div class="product__info">
-            <h3></h3>
-            <h2></h2>
-            <p class="price"></p>
-            <p class="desc"></p>
+            <h3>{{ product.category }}</h3>
+            <h2>{{ product.title }}</h2>
+            <p class="price">{{ product.price | money }}</p>
+            <div class="desc">{{ product.content }}</div>
             <div class="varients">
-              <div class="size"></div>
+              <div class="varients__size"></div>
+              <div class="varients__gender"></div>
+            </div>
+            <div class="quantity-wrapper">
+              <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
+                <button class="quantity__button" name="minus" type="button">
+                  <span class="visually-hidden">
+                    {{ product.title | escape }}
+                  </span>
+                  <span class="svg-wrapper">
+                    {{- 'icon-minus.svg' | inline_asset_content -}}
+                  </span>
+                </button>
+                <input
+                  class="quantity__input"
+                  type="number"
+                  name="quantity"
+                  id="Quantity-{{ section.id }}"
+                  data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                    data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                    max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                  {% endif %}
+                  step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                  value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  form="{{ product_form_id }}"
+                >
+                <button class="quantity__button" name="plus" type="button">
+                  <span class="visually-hidden">
+                    {{ product.title | escape }}
+                  </span>
+                  <span class="svg-wrapper">
+                    {{- 'icon-plus.svg' | inline_asset_content -}}
+                  </span>
+                </button>
+              </quantity-input>
             </div>
           </div>
         </div>
