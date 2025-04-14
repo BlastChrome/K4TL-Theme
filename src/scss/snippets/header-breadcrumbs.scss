@@ -2,12 +2,13 @@
 
 .breadcrumbs-wrapper {
     background-color: var(--clr-grey);
+    padding: 6px 12px;
 
     .breadcrumbs {
         display: flex;
         align-items: center;
         gap: 0 16px;
-        @include mx.font-source-sans(--font-family-2-2, --theme-font-p-mob-1, --clr-smoke-2, false, 62px, 0px);
+        @include mx.font-source-sans(--font-family-2-2, --theme-font-p-mob-1, --clr-smoke-2, false, normal, 0px);
 
         @include mx.mq('tablet', max) {
             flex-wrap: wrap;

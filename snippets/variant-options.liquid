@@ -1,0 +1,31 @@
+{% comment %}
+  Renders product variant option selectors (e.g. Size, Color) as buttons.
+
+  Accepts:
+  - product: {Object} Product object. Should include options_with_values.
+
+  Usage:
+  {% render 'variant-options', product: product %}
+{% endcomment %}
+
+<div class="varient-options">
+  {%- for option in product.options_with_values -%}
+    <div class="wrapper">
+      <p class="option-title option-title--{{ option.name | escape }}">
+        <strong>{{ option.name }}</strong>
+      </p>
+      <div class="varient-options__{{option.name | downcase | escape}}">
+        {%- for filter_value in option.values -%}
+          <button
+            class=" button button--outline{% if filter_value.active %} active {% endif %}"
+            id="swatch-{{filter_value.name | append: '-' | append: product.id | escape}}"
+            value="{{ filter_value.name }}"
+            name="{{ filter_value.name }}"
+          >
+            <span>{{ filter_value.name }}</span>
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>

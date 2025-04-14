@@ -37,7 +37,6 @@ class TopHeader extends HTMLElement {
   handleStickyNavSettings() {
     // get the nav
     const header = this.parentElement;
-
     // get the first section on the page
     const firstSection = document.querySelector('#main section'); // gets the first section within <main></main>
 
@@ -120,3 +119,31 @@ class MenuDrawer extends HTMLElement {
   }
 }
 customElements.define('menu-drawer', MenuDrawer);
+
+class QuantityInput extends HTMLElement {
+  constructor() {
+    super();
+    const buttons = this.querySelectorAll('button');
+    this.input = this.querySelector('input');
+    const stock = parseInt(this.dataset.stock);
+    if (stock > 0) buttons.forEach((button) => button.addEventListener('click', this.handleQuantityChange.bind(this)));
+  }
+
+  handleQuantityChange(e) {
+    debugger;
+    e.preventDefault();
+    const plusIsClicked = e.currentTarget.name == 'plus' ? true : false;
+    const lastInputValue = this.input.value;
+
+    if (plusIsClicked) {
+      this.input.value++;
+    } else {
+      if (lastInputValue <= 0) {
+        this.input.value = 0;
+      } else {
+        this.input.value--;
+      }
+    }
+  }
+}
+customElements.define('quantity-input', QuantityInput);

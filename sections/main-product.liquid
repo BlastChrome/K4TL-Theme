@@ -11,10 +11,16 @@
     }
   }
 {%- endstyle -%}
+
 <section
   class="main-product-wrapper section-{{ section.id }} section-{{ section.id }}-padding"
   id="{{section.id}}"
 >
+  {%- assign product_form_id = 'product-form-' | append: section.id -%}
+  {% for variant in product.variants %}
+    {% assign total_inventory = total_inventory | plus: variant.inventory_quantity %}
+  {% endfor %}
+
   <div class="product">
     <div class="container">
       <div class="row">
@@ -23,14 +29,18 @@
         </div>
         <div class="col-12 col-md-4">
           <div class="product__info">
-            <h3></h3>
-            <h2></h2>
-            <p class="price"></p>
-            <p class="desc"></p>
-            <div class="varients">
-              <div class="size"></div>
-            </div>
+            <h3>{{ product.category | escape }}</h3>
+            <h2>{{ product.title | escape }}</h2>
+            <p class="price">{{ product.price | money }}</p>
+            <div class="desc">{{ product.content }}</div>
           </div>
+          {% render 'variant-options', product: product %}
+          {% render 'quantity-input',
+            product: product,
+            total_inventory: total_inventory,
+            section: section,
+            product_form_id: product_form_id
+          %}
         </div>
       </div>
     </div>
