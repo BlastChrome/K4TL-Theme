@@ -1,0 +1,92 @@
+@use '../utilities/mx' as mx;
+
+.product-form {
+    width: 100%;
+    height: auto;
+
+    form {
+        line-height: normal;
+        height: auto;
+    }
+
+    &.disabled {
+        opacity: 0.6;
+    }
+
+    &__actions {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        gap: 0 15px;
+        margin-top: 20px;
+        min-height: 64px;
+
+        button {
+            position: initial;
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            position: relative;
+            cursor: pointer;
+        }
+
+
+        &--cart {
+            width: 100%;
+            max-width: 495px;
+            transition: background-color 0.125s ease-in-out, transform 0.3s ease-in-out;
+            z-index: 1;
+            border: none;
+            background-color: var(--clr-smoke-2);
+            text-transform: uppercase;
+            padding: 10px 0;
+            @include mx.font-source-sans(--font-family-2, --theme-font-btn-mob-3, --clr-white, false, normal, normal);
+
+            &:hover,
+            &.adding {
+                background-color: var(--clr-red);
+            }
+
+            &.adding {
+                .loader-spinner {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &--favorite {
+            width: 100%;
+            max-width: 64px;
+            background-color: var(--clr-grey);
+            border: none;
+
+            &:hover {
+                svg {
+                    path {
+                        fill: var(--clr-red);
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .product-card__actions--cart {
+                transform: translateY(0);
+            }
+
+        }
+
+        &.active {
+            .product-card__actions--cart {
+                transform: translateY(0);
+            }
+
+        }
+
+    }
+}

@@ -11416,6 +11416,86 @@ button.button--link span {
 /**
 * Media queries
 **/
+.product-form {
+  width: 100%;
+  height: auto;
+}
+.product-form form {
+  line-height: normal;
+  height: auto;
+}
+.product-form.disabled {
+  opacity: 0.6;
+}
+.product-form__actions {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 0 15px;
+  margin-top: 20px;
+  min-height: 64px;
+}
+.product-form__actions button {
+  position: initial;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  position: relative;
+  cursor: pointer;
+}
+.product-form__actions--cart {
+  width: 100%;
+  max-width: 495px;
+  transition: background-color 0.125s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 1;
+  border: none;
+  background-color: var(--clr-smoke-2);
+  text-transform: uppercase;
+  padding: 10px 0;
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-btn-mob-3);
+  color: var(--clr-white);
+  line-height: normal;
+  letter-spacing: normal;
+}
+.product-form__actions--cart:hover, .product-form__actions--cart.adding {
+  background-color: var(--clr-red);
+}
+.product-form__actions--cart.adding .loader-spinner {
+  opacity: 1;
+}
+.product-form__actions--favorite {
+  width: 100%;
+  max-width: 64px;
+  background-color: var(--clr-grey);
+  border: none;
+}
+.product-form__actions--favorite:hover svg path {
+  fill: var(--clr-red);
+}
+.product-form__actions:hover .product-card__actions--cart {
+  transform: translateY(0);
+}
+.product-form__actions.active .product-card__actions--cart {
+  transform: translateY(0);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
 .promo-card {
   width: 100%;
   min-height: 622px;
