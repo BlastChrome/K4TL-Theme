@@ -6564,6 +6564,136 @@ button.button--link span {
 /**
 * Media queries
 **/
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.quantity-wrapper .quantity {
+  display: flex;
+  text-align: center;
+  gap: 0 15px;
+  width: 100%;
+}
+.quantity-wrapper .quantity.out {
+  opacity: 0.4;
+}
+.quantity-wrapper .quantity.out,
+.quantity-wrapper .quantity.out * {
+  cursor: not-allowed;
+}
+.quantity-wrapper .quantity.out input {
+  pointer-events: none;
+}
+.quantity-wrapper .quantity input {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-h2-mob-2);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  max-width: 100px;
+  text-align: center;
+  border: none;
+}
+.quantity-wrapper .quantity button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.quantity-wrapper .stock {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.quantity-wrapper .stock p {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.quantity-wrapper .stock p:nth-of-type(2) {
+  font-family: var(--font-family-2);
+  opacity: 0.3;
+}
+.quantity-wrapper .stock p.out {
+  opacity: 0.5;
+}
+.quantity-wrapper .stock .sep {
+  width: 1px;
+  height: 32px;
+  background-color: var(--clr-smoke-2);
+  opacity: 0.3;
+}
+
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.varient-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 15px;
+}
+.varient-options .wrapper {
+  width: 100%;
+}
+.varient-options__size, .varient-options__gender {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+.varient-options__size {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.varient-options__gender {
+  grid-template-columns: 1fr;
+}
+.varient-options p.option-title {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.varient-options .button.button--outline {
+  padding: 5px 0px;
+  width: auto;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+}
+.varient-options .button.button--outline span {
+  color: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline:hover span, .varient-options .button.button--outline.active span {
+  color: var(--clr-white);
+}
+.varient-options .button.button--outline:after {
+  background: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline.active:after {
+  transform: translate(0);
+}
+
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
 .header__top-bar {
   padding: 12px 0;
 }
@@ -7936,34 +8066,6 @@ button.button--link span {
 /**
 * Media queries
 **/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
 .blog-card-section__title-wrapper {
   display: flex;
   justify-content: space-between;
@@ -8938,96 +9040,49 @@ button.button--link span {
     margin-bottom: 51px;
   }
 }
-.main-product-wrapper .varients {
+.main-product-wrapper .varient-options {
   display: flex;
   justify-content: space-between;
   gap: 0 15px;
 }
-.main-product-wrapper .varients .wrapper {
+.main-product-wrapper .varient-options .wrapper {
   width: 100%;
 }
-.main-product-wrapper .varients__size, .main-product-wrapper .varients__gender {
+.main-product-wrapper .varient-options__size, .main-product-wrapper .varient-options__gender {
   display: grid;
   gap: 10px;
   width: 100%;
   max-width: 300px;
   margin: 10px 0;
 }
-.main-product-wrapper .varients__size {
+.main-product-wrapper .varient-options__size {
   grid-template-columns: 1fr 1fr 1fr;
 }
-.main-product-wrapper .varients__gender {
+.main-product-wrapper .varient-options__gender {
   grid-template-columns: 1fr;
 }
-.main-product-wrapper .varients p.option-title {
+.main-product-wrapper .varient-options p.option-title {
   font-family: var(--font-family-1);
   font-size: var(--theme-font-p-mob-3);
   color: var(--clr-smoke-2);
   line-height: 30px;
 }
-.main-product-wrapper .varients .button.button--outline {
+.main-product-wrapper .varient-options .button.button--outline {
   padding: 5px 0px;
   width: auto;
   border: 2px solid rgba(48, 48, 48, 0.2);
 }
-.main-product-wrapper .varients .button.button--outline span {
+.main-product-wrapper .varient-options .button.button--outline span {
   color: var(--clr-smoke-2);
 }
-.main-product-wrapper .varients .button.button--outline:hover span, .main-product-wrapper .varients .button.button--outline.active span {
+.main-product-wrapper .varient-options .button.button--outline:hover span, .main-product-wrapper .varient-options .button.button--outline.active span {
   color: var(--clr-white);
 }
-.main-product-wrapper .varients .button.button--outline:after {
+.main-product-wrapper .varient-options .button.button--outline:after {
   background: var(--clr-smoke-2);
 }
-.main-product-wrapper .varients .button.button--outline.active:after {
+.main-product-wrapper .varient-options .button.button--outline.active:after {
   transform: translate(0);
-}
-.main-product-wrapper .quantity-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 50px;
-}
-.main-product-wrapper .quantity-wrapper .quantity {
-  display: flex;
-  text-align: center;
-  gap: 0 15px;
-  width: 100%;
-}
-.main-product-wrapper .quantity-wrapper .quantity input {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-h2-mob-2);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-  max-width: 100px;
-  text-align: center;
-  border: none;
-}
-.main-product-wrapper .quantity-wrapper .quantity button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.main-product-wrapper .quantity-wrapper .stock {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.main-product-wrapper .quantity-wrapper .stock p {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-p-mob-3);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-}
-.main-product-wrapper .quantity-wrapper .stock p:nth-of-type(2) {
-  font-family: var(--font-family-2);
-  opacity: 0.3;
-}
-.main-product-wrapper .quantity-wrapper .stock .sep {
-  width: 1px;
-  height: 32px;
-  background-color: var(--clr-smoke-2);
-  opacity: 0.3;
 }
 /**
 * Convert PX to EM
@@ -11586,6 +11641,78 @@ button.button--link span {
 /**
 * Media queries
 **/
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.quantity-wrapper .quantity {
+  display: flex;
+  text-align: center;
+  gap: 0 15px;
+  width: 100%;
+}
+.quantity-wrapper .quantity.out {
+  opacity: 0.4;
+}
+.quantity-wrapper .quantity.out,
+.quantity-wrapper .quantity.out * {
+  cursor: not-allowed;
+}
+.quantity-wrapper .quantity.out input {
+  pointer-events: none;
+}
+.quantity-wrapper .quantity input {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-h2-mob-2);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  max-width: 100px;
+  text-align: center;
+  border: none;
+}
+.quantity-wrapper .quantity button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.quantity-wrapper .stock {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.quantity-wrapper .stock p {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.quantity-wrapper .stock p:nth-of-type(2) {
+  font-family: var(--font-family-2);
+  opacity: 0.3;
+}
+.quantity-wrapper .stock p.out {
+  opacity: 0.5;
+}
+.quantity-wrapper .stock .sep {
+  width: 1px;
+  height: 32px;
+  background-color: var(--clr-smoke-2);
+  opacity: 0.3;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
 .sortby-container .filter .horizontal-line {
   margin: 20px 0;
 }
@@ -11864,5 +11991,89 @@ button.button--link span {
 .sortby-container .filter-wrapper__footer #close-btn {
   padding: 10px;
   justify-content: center;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.varient-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 15px;
+}
+.varient-options .wrapper {
+  width: 100%;
+}
+.varient-options__size, .varient-options__gender {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+.varient-options__size {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.varient-options__gender {
+  grid-template-columns: 1fr;
+}
+.varient-options p.option-title {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.varient-options .button.button--outline {
+  padding: 5px 0px;
+  width: auto;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+}
+.varient-options .button.button--outline span {
+  color: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline:hover span, .varient-options .button.button--outline.active span {
+  color: var(--clr-white);
+}
+.varient-options .button.button--outline:after {
+  background: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline.active:after {
+  transform: translate(0);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
 }
 /*# sourceMappingURL=theme.css.map */

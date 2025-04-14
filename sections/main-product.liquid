@@ -17,6 +17,9 @@
   id="{{section.id}}"
 >
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
+  {% for variant in product.variants %}
+    {% assign total_inventory = total_inventory | plus: variant.inventory_quantity %}
+  {% endfor %}
 
   <div class="product">
     <div class="container">
@@ -30,68 +33,14 @@
             <h2>{{ product.title | escape }}</h2>
             <p class="price">{{ product.price | money }}</p>
             <div class="desc">{{ product.content }}</div>
-            <div class="varients">
-              {%- for option in product.options_with_values -%}
-                <div class="wrapper">
-                  <p class="option-title option-title--{{ option.name | escape }}">
-                    <strong>{{ option.name }}</strong>
-                  </p>
-                  <div class="varients__{{option.name | downcase | escape}}">
-                    {%- for filter_value in option.values -%}
-                      <button
-                        class=" button button--outline{% if filter_value.active %} active {% endif %}"
-                        id="swatch-{{filter_value.name | append: '-' | append: product.id | escape}}"
-                        value="{{ filter_value.name }}"
-                        name="{{ filter_value.name }}"
-                      >
-                        <span>{{ filter_value.name }}</span>
-                      </button>
-                    {%- endfor -%}
-                  </div>
-                </div>
-              {%- endfor -%}
-            </div>
-            <div class="quantity-wrapper">
-              <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                <button class="quantity__button" name="minus" type="button">
-                  <span class="visually-hidden">
-                    {{ product.title | escape }}
-                  </span>
-                  <span class="svg-wrapper">
-                    {{- 'icon-minus.svg' | inline_asset_content -}}
-                  </span>
-                </button>
-                <input
-                  class="quantity__input"
-                  type="number"
-                  name="quantity"
-                  id="Quantity-{{ section.id }}"
-                  data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                  min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                  {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                    data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                    max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                  {% endif %}
-                  step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                  value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                  form="{{ product_form_id }}"
-                >
-                <button class="quantity__button" name="plus" type="button">
-                  <span class="visually-hidden">
-                    {{ product.title | escape }}
-                  </span>
-                  <span class="svg-wrapper">
-                    {{- 'icon-plus.svg' | inline_asset_content -}}
-                  </span>
-                </button>
-              </quantity-input>
-              <div class="stock">
-                <p>Stock</p>
-                <span class="sep"></span>
-                <p>125 Available</p>
-              </div>
-            </div>
           </div>
+          {% render 'variant-options', product: product %}
+          {% render 'quantity-input',
+            product: product,
+            total_inventory: total_inventory,
+            section: section,
+            product_form_id: product_form_id
+          %}
         </div>
       </div>
     </div>
