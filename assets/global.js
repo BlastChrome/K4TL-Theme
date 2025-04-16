@@ -125,18 +125,19 @@ class QuantityInput extends HTMLElement {
     super();
     const buttons = this.querySelectorAll('button');
     this.input = this.querySelector('input');
-    const stock = parseInt(this.dataset.stock);
-    if (stock > 0) buttons.forEach((button) => button.addEventListener('click', this.handleQuantityChange.bind(this)));
+    this.stock = parseInt(this.dataset.stock);
+
+    if (this.stock > 0)
+      buttons.forEach((button) => button.addEventListener('click', this.handleQuantityChange.bind(this)));
   }
 
   handleQuantityChange(e) {
-    debugger;
     e.preventDefault();
     const plusIsClicked = e.currentTarget.name == 'plus' ? true : false;
     const lastInputValue = this.input.value;
 
     if (plusIsClicked) {
-      this.input.value++;
+      if (this.input.value < this.stock) this.input.value++;
     } else {
       if (lastInputValue <= 0) {
         this.input.value = 0;

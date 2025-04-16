@@ -11,6 +11,7 @@
     }
   }
 {%- endstyle -%}
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 
 <section
   class="main-product-wrapper section-{{ section.id }} section-{{ section.id }}-padding"
@@ -21,11 +22,36 @@
     {% assign total_inventory = total_inventory | plus: variant.inventory_quantity %}
   {% endfor %}
 
+  {% assign variant_images = product.images | map: 'src' %}
+
   <div class="product">
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-8">
-          <div class="product__gallery"></div>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {% for product_image in variant_images %}
+                {% assign slide_count = forloop.index %}
+                <div class="swiper-slide" data-slide="{{ slide_count }}">
+                  <img
+                    src="{{ product_image | img_url: 'master' }}"
+                    alt="{{ product.title }}"
+                    width="748"
+                    height="610"
+                  >
+                </div>
+              {% endfor %}
+            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- Scrollbar -->
+            <div class="swiper-scrollbar"></div>
+          </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="product__info">
@@ -51,6 +77,26 @@
       </div>
     </div>
   </div>
+
+  <script src="{{ 'swiper-bundle.min.js' | asset_url }}" async></script>
+  <script>
+    window.addEventListener('load', function () {
+      const swiper = new Swiper('.swiper', {
+        direction: 'vertical',
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        scrollbar: {
+          el: '.swiper-scrollbar',
+        },
+      });
+    });
+  </script>
 </section>
 
 {% schema %}
