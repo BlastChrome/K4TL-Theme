@@ -28,29 +28,45 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-8">
-          <div class="swiper">
-            <div class="swiper-wrapper">
-              {% for product_image in variant_images %}
-                {% assign slide_count = forloop.index %}
-                <div class="swiper-slide" data-slide="{{ slide_count }}">
-                  <img
-                    src="{{ product_image | img_url: 'master' }}"
-                    alt="{{ product.title }}"
-                    width="748"
-                    height="610"
-                  >
-                </div>
-              {% endfor %}
+          <div class="swiper-group-wrapper">
+            <div class="product-swiper product-swiper--support swiper">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-wrapper">
+                {% for product_image in variant_images %}
+                  {% assign slide_count = forloop.index %}
+                  <div class="product-swiper__slide swiper-slide" data-slide="{{ slide_count }}">
+                    <img
+                      src="{{ product_image | img_url: 'master' }}"
+                      alt="{{ product.title }}"
+                      width="237"
+                      height="262"
+                    >
+                  </div>
+                {% endfor %}
+              </div>
+              <div class="swiper-button-next"></div>
             </div>
-            <!-- Pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="product-swiper product-swiper--main swiper">
+              <div class="swiper-wrapper">
+                {% for product_image in variant_images %}
+                  {% assign slide_count = forloop.index %}
+                  <div class="product-swiper__slide swiper-slide" data-slide="{{ slide_count }}">
+                    <img
+                      src="{{ product_image | img_url: 'master' }}"
+                      alt="{{ product.title }}"
+                      width="748"
+                      height="610"
+                    >
+                  </div>
+                {% endfor %}
+              </div>
+              <!-- Pagination -->
+              <div class="swiper-pagination"></div>
 
-            <!-- Navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-
-            <!-- Scrollbar -->
-            <div class="swiper-scrollbar"></div>
+              <!-- Navigation buttons -->
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
           </div>
         </div>
         <div class="col-12 col-md-4">
@@ -81,18 +97,37 @@
   <script src="{{ 'swiper-bundle.min.js' | asset_url }}" async></script>
   <script>
     window.addEventListener('load', function () {
-      const swiper = new Swiper('.swiper', {
-        direction: 'vertical',
+      const mainSwiper = new Swiper('.product-swiper--main', {
+        direction: 'horizontal',
         loop: true,
+        autoPlay: true,
         pagination: {
-          el: '.swiper-pagination',
+          el: '.product-swiper--main .swiper-pagination',
+          clickable: true,
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.product-swiper--main .swiper-button-next',
+          prevEl: '.product-swiper--main .swiper-button-prev',
         },
-        scrollbar: {
-          el: '.swiper-scrollbar',
+        thumbs: {
+          swiper: '.product-swiper--support', // Link the support swiper as thumbs
+        },
+      });
+      const supportSwiper = new Swiper('.product-swiper--support', {
+        direction: 'vertical',
+        loop: true,
+        slidesPerView: 3, // show 3 slides
+        spaceBetween: 20,
+        watchSlidesProgress: true,
+        slideToClickedSlide: true,
+        autoPlay: true,
+        navigation: {
+          nextEl: '.product-swiper--support .swiper-button-next',
+          prevEl: '.product-swiper--support .swiper-button-prev',
+        },
+        pagination: {
+          el: '.product-swiper--support .swiper-pagination',
+          clickable: true,
         },
       });
     });
