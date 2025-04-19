@@ -9023,8 +9023,33 @@ button.button--link span {
   -o-object-position: center;
   object-position: center;
 }
+.main-product-wrapper .product .product-swiper .slider-controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border: none;
+  z-index: 1;
+  background: var(--clr-grey);
+}
 .main-product-wrapper .product .product-swiper--main {
+  position: relative;
   max-width: none;
+}
+.main-product-wrapper .product .product-swiper--main .slider-controller {
+  top: 50%;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+}
+.main-product-wrapper .product .product-swiper--main .slider-controller__next-button {
+  right: 0;
+}
+.main-product-wrapper .product .product-swiper--main .slider-controller__prev-button {
+  left: 0;
+}
+.main-product-wrapper .product .product-swiper--main .slider-controller__prev-button svg {
+  transform: rotate(180deg);
 }
 .main-product-wrapper .product .product-swiper--main img {
   height: 826px;
@@ -9043,6 +9068,11 @@ button.button--link span {
 .main-product-wrapper .product .product-swiper--support img {
   width: 100%;
   height: 262px;
+}
+.main-product-wrapper .product .product-swiper--support .slider-controller__next-button {
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0;
 }
 .main-product-wrapper .product h3 {
   letter-spacing: 4.3px;
@@ -9558,34 +9588,6 @@ button.button--link span {
   margin-right: 0;
   border-radius: 0;
   margin-left: 30px;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
 }
 /**
 * Convert PX to EM
@@ -12206,5 +12208,33 @@ button.button--link span {
 }
 .varient-options .button.button--outline.active:after {
   transform: translate(0);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
 }
 /*# sourceMappingURL=theme.css.map */
