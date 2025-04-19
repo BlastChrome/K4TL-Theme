@@ -1,0 +1,18 @@
+<product-form
+  class="product-form"
+  data-section-id="{{ section.id }}"
+>
+  {%- form 'product', product, id: product_form_id, class: 'form', data-type: 'add-to-cart-form' -%}
+    <div class="product-form__actions">
+      <button type="submit" name="add" class="product-form__actions--cart">
+        <span id="btn-text" class="actions__btn-text">Add to Cart</span>
+        {% render 'loader-spinner' %}
+      </button>
+      <button name="favorite" class="product-form__actions--favorite">
+        <span class="svg-wrapper">
+          {{ 'icon-cart-heart.svg' | inline_asset_content }}
+        </span>
+      </button>
+    </div>
+  {%- endform -%}
+</product-form>

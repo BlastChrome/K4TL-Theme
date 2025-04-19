@@ -11,9 +11,12 @@
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
+    "install": "^0.13.0",
+    "npm": "^11.3.0",
     "postcss": "^8.4.44",
     "postcss-em": "^3.0.0",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "swiper": "^11.2.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

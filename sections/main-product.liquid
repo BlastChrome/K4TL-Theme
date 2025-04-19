@@ -11,89 +11,127 @@
     }
   }
 {%- endstyle -%}
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 
 <section
   class="main-product-wrapper section-{{ section.id }} section-{{ section.id }}-padding"
   id="{{section.id}}"
 >
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
-  {%- assign product_description_limit = 225 -%}
+  {% for variant in product.variants %}
+    {% assign total_inventory = total_inventory | plus: variant.inventory_quantity %}
+  {% endfor %}
+
+  {% assign variant_images = product.images | map: 'src' %}
 
   <div class="product">
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-8">
-          <div class="product__gallery"></div>
+          <div class="swiper-group-wrapper">
+            <div class="product-swiper product-swiper--support swiper">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-wrapper">
+                {% for product_image in variant_images %}
+                  {% assign slide_count = forloop.index %}
+                  <div class="product-swiper__slide swiper-slide" data-slide="{{ slide_count }}">
+                    <img
+                      src="{{ product_image | img_url: 'master' }}"
+                      alt="{{ product.title }}"
+                      width="237"
+                      height="262"
+                    >
+                  </div>
+                {% endfor %}
+              </div>
+              <div class="swiper-button-next"></div>
+            </div>
+            <div class="product-swiper product-swiper--main swiper">
+              <div class="swiper-wrapper">
+                {% for product_image in variant_images %}
+                  {% assign slide_count = forloop.index %}
+                  <div class="product-swiper__slide swiper-slide" data-slide="{{ slide_count }}">
+                    <img
+                      src="{{ product_image | img_url: 'master' }}"
+                      alt="{{ product.title }}"
+                      width="748"
+                      height="610"
+                    >
+                  </div>
+                {% endfor %}
+              </div>
+              <!-- Pagination -->
+              <div class="swiper-pagination"></div>
+
+              <!-- Navigation buttons -->
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="product__info">
             <h3>{{ product.category | escape }}</h3>
             <h2>{{ product.title | escape }}</h2>
             <p class="price">{{ product.price | money }}</p>
-            <div class="desc">{{ product.content }}</div>
-            <div class="varients">
-              {%- unless product.has_only_default_variant -%}
-                {%- for option in product.options_with_values -%}
-                  <div class="wrapper">
-                    <p class="option-title option-title--{{ option.name | escape }}">
-                      <strong>{{ option.name }}</strong>
-                    </p>
-                    <div class="varients__{{option.name | downcase | escape}}">
-                      {%- for filter_value in option.values -%}
-                        <button
-                          class=" button button--outline{% if filter_value.active %} active {% endif %}"
-                          id="swatch-{{filter_value.name | append: '-' | append: product.id | escape}}"
-                          value="{{ filter_value.name }}"
-                          name="{{ filter_value.name }}"
-                        >
-                          <span>{{ filter_value.name }}</span>
-                        </button>
-                      {%- endfor -%}
-                    </div>
-                  </div>
-                {%- endfor -%}
-              {%- endunless -%}
-            </div>
-            <div class="quantity-wrapper">
-              <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                <button class="quantity__button" name="minus" type="button">
-                  <span class="visually-hidden">
-                    {{ product.title | escape }}
-                  </span>
-                  <span class="svg-wrapper">
-                    {{- 'icon-minus.svg' | inline_asset_content -}}
-                  </span>
-                </button>
-                <input
-                  class="quantity__input"
-                  type="number"
-                  name="quantity"
-                  id="Quantity-{{ section.id }}"
-                  data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                  min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                  {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                    data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                    max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                  {% endif %}
-                  step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                  value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                  form="{{ product_form_id }}"
-                >
-                <button class="quantity__button" name="plus" type="button">
-                  <span class="visually-hidden">
-                    {{ product.title | escape }}
-                  </span>
-                  <span class="svg-wrapper">
-                    {{- 'icon-plus.svg' | inline_asset_content -}}
-                  </span>
-                </button>
-              </quantity-input>
-            </div>
+            <div class="desc">{{ product.content | truncatewords: 43 }}</div>
           </div>
+          {% render 'variant-options', product: product %}
+          {% render 'quantity-input',
+            product: product,
+            total_inventory: total_inventory,
+            section: section,
+            product_form_id: product_form_id
+          %}
+          {% render 'product-form',
+            product: product,
+            section: section,
+            product_form_id: product_form_id,
+            total_inventory: total_inventory
+          %}
         </div>
       </div>
     </div>
   </div>
+
+  <script src="{{ 'swiper-bundle.min.js' | asset_url }}" async></script>
+  <script>
+    window.addEventListener('load', function () {
+      const mainSwiper = new Swiper('.product-swiper--main', {
+        direction: 'horizontal',
+        loop: true,
+        autoPlay: true,
+        pagination: {
+          el: '.product-swiper--main .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.product-swiper--main .swiper-button-next',
+          prevEl: '.product-swiper--main .swiper-button-prev',
+        },
+        thumbs: {
+          swiper: '.product-swiper--support', // Link the support swiper as thumbs
+        },
+      });
+      const supportSwiper = new Swiper('.product-swiper--support', {
+        direction: 'vertical',
+        loop: true,
+        slidesPerView: 3, // show 3 slides
+        spaceBetween: 20,
+        watchSlidesProgress: true,
+        slideToClickedSlide: true,
+        autoPlay: true,
+        navigation: {
+          nextEl: '.product-swiper--support .swiper-button-next',
+          prevEl: '.product-swiper--support .swiper-button-prev',
+        },
+        pagination: {
+          el: '.product-swiper--support .swiper-pagination',
+          clickable: true,
+        },
+      });
+    });
+  </script>
 </section>
 
 {% schema %}

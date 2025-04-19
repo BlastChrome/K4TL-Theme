@@ -6564,6 +6564,136 @@ button.button--link span {
 /**
 * Media queries
 **/
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.quantity-wrapper .quantity {
+  display: flex;
+  text-align: center;
+  gap: 0 15px;
+  width: 100%;
+}
+.quantity-wrapper .quantity.out {
+  opacity: 0.4;
+}
+.quantity-wrapper .quantity.out,
+.quantity-wrapper .quantity.out * {
+  cursor: not-allowed;
+}
+.quantity-wrapper .quantity.out input {
+  pointer-events: none;
+}
+.quantity-wrapper .quantity input {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-h2-mob-2);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  max-width: 100px;
+  text-align: center;
+  border: none;
+}
+.quantity-wrapper .quantity button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.quantity-wrapper .stock {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.quantity-wrapper .stock p {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.quantity-wrapper .stock p:nth-of-type(2) {
+  font-family: var(--font-family-2);
+  opacity: 0.3;
+}
+.quantity-wrapper .stock p.out {
+  opacity: 0.5;
+}
+.quantity-wrapper .stock .sep {
+  width: 1px;
+  height: 32px;
+  background-color: var(--clr-smoke-2);
+  opacity: 0.3;
+}
+
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.varient-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 15px;
+}
+.varient-options .wrapper {
+  width: 100%;
+}
+.varient-options__size, .varient-options__gender {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+.varient-options__size {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.varient-options__gender {
+  grid-template-columns: 1fr;
+}
+.varient-options p.option-title {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.varient-options .button.button--outline {
+  padding: 5px 0px;
+  width: auto;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+}
+.varient-options .button.button--outline span {
+  color: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline:hover span, .varient-options .button.button--outline.active span {
+  color: var(--clr-white);
+}
+.varient-options .button.button--outline:after {
+  background: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline.active:after {
+  transform: translate(0);
+}
+
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
 .header__top-bar {
   padding: 12px 0;
 }
@@ -8864,6 +8994,56 @@ button.button--link span {
 /**
 * Media queries
 **/
+.main-product-wrapper .product {
+  padding-top: 40px;
+}
+.main-product-wrapper .product .swiper {
+  margin: 0;
+}
+.main-product-wrapper .product .swiper-group-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 25px;
+  overflow: hidden;
+  height: 826px;
+}
+.main-product-wrapper .product .product-swiper {
+  height: 100%;
+  cursor: pointer;
+}
+.main-product-wrapper .product .product-swiper__slide {
+  width: 100%;
+}
+.main-product-wrapper .product .product-swiper__slide img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+.main-product-wrapper .product .product-swiper--main {
+  max-width: none;
+}
+.main-product-wrapper .product .product-swiper--main img {
+  height: 826px;
+}
+.main-product-wrapper .product .product-swiper--support {
+  min-width: 237px;
+}
+.main-product-wrapper .product .product-swiper--support .swiper-slide {
+  max-height: 262px;
+  opacity: 0.25;
+  transition: opacity 0.125s ease-in-out;
+}
+.main-product-wrapper .product .product-swiper--support .swiper-slide.swiper-slide-thumb-active {
+  opacity: 1;
+}
+.main-product-wrapper .product .product-swiper--support img {
+  width: 100%;
+  height: 262px;
+}
 .main-product-wrapper .product h3 {
   letter-spacing: 4.3px;
   text-transform: uppercase;
@@ -8898,7 +9078,7 @@ button.button--link span {
   }
 }
 .main-product-wrapper .product .desc p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-family: var(--font-family-2);
   font-size: var(--theme-font-p-mob-3);
   color: var(--clr-smoke-2);
@@ -8910,48 +9090,48 @@ button.button--link span {
     margin-bottom: 51px;
   }
 }
-.main-product-wrapper .varients {
+.main-product-wrapper .varient-options {
   display: flex;
   justify-content: space-between;
   gap: 0 15px;
 }
-.main-product-wrapper .varients .wrapper {
+.main-product-wrapper .varient-options .wrapper {
   width: 100%;
 }
-.main-product-wrapper .varients__size, .main-product-wrapper .varients__gender {
+.main-product-wrapper .varient-options__size, .main-product-wrapper .varient-options__gender {
   display: grid;
   gap: 10px;
   width: 100%;
   max-width: 300px;
   margin: 10px 0;
 }
-.main-product-wrapper .varients__size {
+.main-product-wrapper .varient-options__size {
   grid-template-columns: 1fr 1fr 1fr;
 }
-.main-product-wrapper .varients__gender {
+.main-product-wrapper .varient-options__gender {
   grid-template-columns: 1fr;
 }
-.main-product-wrapper .varients p.option-title {
+.main-product-wrapper .varient-options p.option-title {
   font-family: var(--font-family-1);
   font-size: var(--theme-font-p-mob-3);
   color: var(--clr-smoke-2);
   line-height: 30px;
 }
-.main-product-wrapper .varients .button.button--outline {
+.main-product-wrapper .varient-options .button.button--outline {
   padding: 5px 0px;
   width: auto;
   border: 2px solid rgba(48, 48, 48, 0.2);
 }
-.main-product-wrapper .varients .button.button--outline span {
+.main-product-wrapper .varient-options .button.button--outline span {
   color: var(--clr-smoke-2);
 }
-.main-product-wrapper .varients .button.button--outline:hover span, .main-product-wrapper .varients .button.button--outline.active span {
+.main-product-wrapper .varient-options .button.button--outline:hover span, .main-product-wrapper .varient-options .button.button--outline.active span {
   color: var(--clr-white);
 }
-.main-product-wrapper .varients .button.button--outline:after {
+.main-product-wrapper .varient-options .button.button--outline:after {
   background: var(--clr-smoke-2);
 }
-.main-product-wrapper .varients .button.button--outline.active:after {
+.main-product-wrapper .varient-options .button.button--outline.active:after {
   transform: translate(0);
 }
 /**
@@ -11314,6 +11494,87 @@ button.button--link span {
 /**
 * Media queries
 **/
+.product-form {
+  width: 100%;
+  height: auto;
+}
+.product-form form {
+  line-height: normal;
+  height: auto;
+}
+.product-form.disabled {
+  opacity: 0.6;
+}
+.product-form__actions {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 0 15px;
+  margin-top: 20px;
+  min-height: 64px;
+}
+.product-form__actions button {
+  position: initial;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  position: relative;
+  cursor: pointer;
+}
+.product-form__actions--cart {
+  width: 100%;
+  max-width: 495px;
+  transition: background-color 0.125s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 1;
+  border: none;
+  background-color: var(--clr-smoke-2);
+  text-transform: uppercase;
+  padding: 10px 0;
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-btn-mob-3);
+  color: var(--clr-white);
+  line-height: normal;
+  letter-spacing: normal;
+}
+.product-form__actions--cart:hover, .product-form__actions--cart.adding {
+  background-color: var(--clr-red);
+}
+.product-form__actions--cart.adding .loader-spinner {
+  opacity: 1;
+}
+.product-form__actions--favorite {
+  width: 100%;
+  max-width: 64px;
+  background-color: var(--clr-grey);
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.product-form__actions--favorite:hover svg path, .product-form__actions--favorite.active svg path {
+  fill: var(--clr-red);
+}
+.product-form__actions:hover .product-card__actions--cart {
+  transform: translateY(0);
+}
+.product-form__actions.active .product-card__actions--cart {
+  transform: translateY(0);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
 .promo-card {
   width: 100%;
   min-height: 622px;
@@ -11526,6 +11787,78 @@ button.button--link span {
 }
 .promo-card--secondary .bg-circle circle {
   fill: var(--clr-yellow);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.quantity-wrapper .quantity {
+  display: flex;
+  text-align: center;
+  gap: 0 15px;
+  width: 100%;
+}
+.quantity-wrapper .quantity.out {
+  opacity: 0.4;
+}
+.quantity-wrapper .quantity.out,
+.quantity-wrapper .quantity.out * {
+  cursor: not-allowed;
+}
+.quantity-wrapper .quantity.out input {
+  pointer-events: none;
+}
+.quantity-wrapper .quantity input {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-h2-mob-2);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  max-width: 100px;
+  text-align: center;
+  border: none;
+}
+.quantity-wrapper .quantity button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.quantity-wrapper .stock {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.quantity-wrapper .stock p {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.quantity-wrapper .stock p:nth-of-type(2) {
+  font-family: var(--font-family-2);
+  opacity: 0.3;
+}
+.quantity-wrapper .stock p.out {
+  opacity: 0.5;
+}
+.quantity-wrapper .stock .sep {
+  width: 1px;
+  height: 32px;
+  background-color: var(--clr-smoke-2);
+  opacity: 0.3;
 }
 /**
 * Convert PX to EM
@@ -11817,5 +12150,61 @@ button.button--link span {
 .sortby-container .filter-wrapper__footer #close-btn {
   padding: 10px;
   justify-content: center;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.varient-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 15px;
+}
+.varient-options .wrapper {
+  width: 100%;
+}
+.varient-options__size, .varient-options__gender {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+.varient-options__size {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.varient-options__gender {
+  grid-template-columns: 1fr;
+}
+.varient-options p.option-title {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.varient-options .button.button--outline {
+  padding: 5px 0px;
+  width: auto;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+}
+.varient-options .button.button--outline span {
+  color: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline:hover span, .varient-options .button.button--outline.active span {
+  color: var(--clr-white);
+}
+.varient-options .button.button--outline:after {
+  background: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline.active:after {
+  transform: translate(0);
 }
 /*# sourceMappingURL=theme.css.map */
