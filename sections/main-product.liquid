@@ -74,7 +74,7 @@
             <h3>{{ product.category | escape }}</h3>
             <h2>{{ product.title | escape }}</h2>
             <p class="price">{{ product.price | money }}</p>
-            <div class="desc">{{ product.content }}</div>
+            <div class="desc">{{ product.content | truncatewords: 43 }}</div>
           </div>
           {% render 'variant-options', product: product %}
           {% render 'quantity-input',

@@ -64,8 +64,10 @@
             max-width: 64px;
             background-color: var(--clr-grey);
             border: none;
+            transition: all 0.3s ease-in-out;
 
-            &:hover {
+            &:hover,
+            &.active {
                 svg {
                     path {
                         fill: var(--clr-red);
