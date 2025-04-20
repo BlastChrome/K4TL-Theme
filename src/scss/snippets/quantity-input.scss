@@ -6,11 +6,21 @@
     justify-content: space-between;
     margin-top: 50px;
 
+    @include mx.mq('desktop-medium', max) {
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
     .quantity {
         display: flex;
         text-align: center;
         gap: 0 15px;
         width: 100%;
+
+        @include mx.mq('desktop-medium', max) {
+            justify-content: space-between;
+            gap: 0;
+        }
 
         &.out {
             opacity: 0.4;
@@ -30,12 +40,21 @@
             max-width: 100px;
             text-align: center;
             border: none;
+
+            @include mx.mq('desktop-medium', max) {
+                max-width: none;
+                min-width: 0px;
+            }
         }
 
         button {
             border: none;
             background-color: transparent;
             cursor: pointer;
+
+            svg {
+                max-width: 16px;
+            }
         }
     }
 
@@ -62,6 +81,10 @@
             height: 32px;
             background-color: var(--clr-smoke-2);
             opacity: 0.3;
+
+            @include mx.mq('desktop-medium', max) {
+                display: none;
+            }
         }
     }
 }
