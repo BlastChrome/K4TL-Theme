@@ -27,7 +27,14 @@
   <div class="product">
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-8">
+        <div class="col-12 d-xl-none">
+          <div class="product__info product__info--mobile">
+            <h2>{{ product.title | escape }}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-xl-8">
           <div class="swiper-group-wrapper">
             <div class="product-swiper product-swiper--support swiper">
               <div class="swiper-wrapper">
@@ -80,12 +87,14 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-4">
-          <div class="product__info">
-            <h3>{{ product.category | escape }}</h3>
+        <div class="col-12 col-xl-4">
+          <div class="product__info product__info--desktop">
             <h2>{{ product.title | escape }}</h2>
             <p class="price">{{ product.price | money }}</p>
-            <div class="desc">{{ product.content | truncatewords: 43 }}</div>
+            <div class="desc">
+              <h3>Description</h3>
+              {{ product.content | truncatewords: 43 }}
+            </div>
           </div>
           {% render 'variant-options', product: product %}
           {% render 'quantity-input',
@@ -109,7 +118,6 @@
   <script>
     window.addEventListener('load', function () {
       const mainSwiper = new Swiper('.product-swiper--main', {
-        direction: 'horizontal',
         loop: true,
         autoPlay: true,
         pagination: {
@@ -125,9 +133,9 @@
         },
       });
       const supportSwiper = new Swiper('.product-swiper--support', {
-        direction: 'vertical',
+        direction: 'horizontal',
         loop: true,
-        slidesPerView: 3, // show 3 slides
+        slidesPerView: 5, // show 3 slides
         spaceBetween: 20,
         watchSlidesProgress: true,
         slideToClickedSlide: true,
@@ -138,6 +146,12 @@
         pagination: {
           el: '.product-swiper--support .swiper-pagination',
           clickable: true,
+        },
+        breakpoints: {
+          1198: {
+            direction: 'vertical', // At screen width 768px and up, switch to horizontal
+            slidesPerView: 3, // show 3 slides
+          },
         },
       });
     });

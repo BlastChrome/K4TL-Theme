@@ -1,8 +1,20 @@
 @use '../utilities/mx' as mx;
 
 .main-product-wrapper {
+
+    .container {
+        @include mx.mq('desktop', max) {
+            max-width: 960px;
+        }
+    }
+
     .product {
         padding-top: 40px;
+
+        @include mx.mq('desktop', max) {
+            padding-top: 0;
+        }
+
 
         .swiper {
             margin: 0;
@@ -15,6 +27,26 @@
             gap: 25px;
             overflow: hidden;
             height: 826px;
+
+            @include mx.mq('desktop', max) {
+                flex-direction: column-reverse;
+                align-items: stretch;
+                /* behaves like block */
+                justify-content: flex-start;
+                /* behaves like normal block flow */
+                height: auto;
+            }
+        }
+
+        &__info {
+            &--desktop {
+
+                h2 {
+                    @include mx.mq('desktop', max) {
+                        display: none;
+                    }
+                }
+            }
         }
 
         .product-swiper {
@@ -47,11 +79,16 @@
                 position: relative;
                 max-width: none;
 
+
                 .slider-controller {
                     top: 50%;
                     border-radius: 50%;
                     padding: 20px;
                     margin: 10px;
+
+                    @include mx.mq('tablet', max) {
+                        padding: 10px;
+                    }
                 }
 
                 .slider-controller__next-button {
@@ -68,6 +105,10 @@
 
                 img {
                     height: 826px;
+
+                    @include mx.mq('desktop', max) {
+                        height: auto;
+                    }
                 }
             }
 
@@ -75,6 +116,11 @@
 
             &--support {
                 min-width: 237px;
+
+                @include mx.mq('desktop', max) {
+                    margin-bottom: 20px;
+                }
+
 
                 .swiper-slide {
                     max-height: 262px;
@@ -89,13 +135,32 @@
                 img {
                     width: 100%;
                     height: 262px;
+
+                    @include mx.mq('desktop', max) {
+                        height: auto;
+                    }
                 }
 
                 .slider-controller__next-button {
                     bottom: 0;
                     width: 100%;
                     padding: 5px 0;
+
+                    @include mx.mq('desktop', max) {
+                        max-width: 35px;
+                        top: 0;
+                        right: 0;
+
+                        svg {
+                            transform: rotate(-90deg);
+                        }
+                    }
+
                 }
+
+                // @include mx.mq('desktop', max) {
+                //     display: none;
+                // }
             }
         }
 
@@ -125,6 +190,10 @@
                 @include mx.mq('desktop-medium') {
                     margin-bottom: 25px;
                 }
+
+                @include mx.mq('desktop', max) {
+                    margin-bottom: 30px;
+                }
             }
         }
 
@@ -145,6 +214,10 @@
         justify-content: space-between;
         gap: 0 15px;
 
+        @include mx.mq('desktop-medium', max) {
+            flex-direction: column;
+        }
+
         .wrapper {
             width: 100%;
         }
@@ -156,14 +229,23 @@
             width: 100%;
             max-width: 300px;
             margin: 10px 0;
+
+            @include mx.mq('desktop-medium', max) {
+                max-width: none;
+            }
         }
 
         &__size {
             grid-template-columns: 1fr 1fr 1fr;
+
         }
 
         &__gender {
             grid-template-columns: 1fr;
+
+            @include mx.mq('desktop', max) {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         p {
@@ -176,6 +258,11 @@
             padding: 5px 0px;
             width: auto;
             border: 2px solid rgb(48 48 48 / 20%);
+
+            @include mx.mq('desktop-medium', max) {
+                max-width: none;
+                width: 100%;
+            }
 
             span {
                 color: var(--clr-smoke-2);
