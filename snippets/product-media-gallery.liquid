@@ -1,0 +1,54 @@
+<div class="swiper-group-wrapper {% if desktop_thumbnail_carousel_position_class != nil %}{{desktop_thumbnail_carousel_position_class}}{% endif %}">
+  <div
+    class="product-swiper product-swiper--support swiper"
+    data-thumbnail-position="{{ section.settings.desktop_thumbnail_carousel_position }}"
+  >
+    <div class="swiper-wrapper">
+      {% for product_image in product_images %}
+        {% assign slide_count = forloop.index %}
+        <div class="product-swiper__slide swiper-slide" data-slide="{{ slide_count }}">
+          <img
+            src="{{ product_image | img_url: 'master' }}"
+            alt="{{ product.title }}"
+            width="237"
+            height="262"
+          >
+        </div>
+      {% endfor %}
+    </div>
+    <button class="slider-controller slider-controller__next-button">
+      <span class="svg-wrapper">
+        {{- 'icon-down-arrow.svg' | inline_asset_content -}}
+      </span>
+    </button>
+  </div>
+  <div class="product-swiper product-swiper--main swiper">
+    <div class="swiper-wrapper">
+      {% for product_image in product_images %}
+        {% assign slide_count = forloop.index %}
+        <div class="product-swiper__slide swiper-slide" data-slide="{{ slide_count }}">
+          <img
+            src="{{ product_image | img_url: 'master' }}"
+            alt="{{ product.title }}"
+            width="748"
+            height="610"
+          >
+        </div>
+      {% endfor %}
+    </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Navigation buttons -->
+    <div class="slider-controller slider-controller__prev-button">
+      <span class="svg-wrapper">
+        {{ 'product-slider-section-prev.svg' | inline_asset_content }}
+      </span>
+    </div>
+    <div class="slider-controller slider-controller__next-button">
+      <span class="svg-wrapper">
+        {{ 'product-slider-section-next.svg' | inline_asset_content }}
+      </span>
+    </div>
+  </div>
+</div>
