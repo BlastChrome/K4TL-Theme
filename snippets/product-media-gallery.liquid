@@ -1,5 +1,8 @@
-<div class="swiper-group-wrapper">
-  <div class="product-swiper product-swiper--support swiper">
+<div class="swiper-group-wrapper {% if desktop_thumbnail_carousel_position_class != nil %}{{desktop_thumbnail_carousel_position_class}}{% endif %}">
+  <div
+    class="product-swiper product-swiper--support swiper"
+    data-thumbnail-position="{{ section.settings.desktop_thumbnail_carousel_position }}"
+  >
     <div class="swiper-wrapper">
       {% for product_image in product_images %}
         {% assign slide_count = forloop.index %}

@@ -31,10 +31,43 @@
             @include mx.mq('desktop', max) {
                 flex-direction: column-reverse;
                 align-items: stretch;
-                /* behaves like block */
                 justify-content: flex-start;
-                /* behaves like normal block flow */
                 height: auto;
+            }
+
+            &.left {
+                flex-direction: row;
+
+                @include mx.mq('desktop', max) {
+                    flex-direction: column-reverse;
+                }
+            }
+
+            &.right {
+                flex-direction: row-reverse;
+            }
+
+            &.bottom {
+                flex-direction: column-reverse;
+                align-items: stretch;
+                justify-content: flex-start;
+                height: auto;
+
+                .product-swiper--support {
+                    .slider-controller__next-button {
+                        max-width: 35px;
+                        top: 0;
+                        right: 0;
+
+                        svg {
+                            transform: rotate(-90deg);
+                        }
+                    }
+
+                    img {
+                        height: auto;
+                    }
+                }
             }
         }
 
@@ -155,7 +188,6 @@
                             transform: rotate(-90deg);
                         }
                     }
-
                 }
 
                 // @include mx.mq('desktop', max) {
@@ -227,7 +259,7 @@
             display: grid;
             gap: 10px;
             width: 100%;
-            max-width: 300px;
+            max-width: none;
             margin: 10px 0;
 
             @include mx.mq('desktop-medium', max) {
@@ -258,11 +290,8 @@
             padding: 5px 0px;
             width: auto;
             border: 2px solid rgb(48 48 48 / 20%);
-
-            @include mx.mq('desktop-medium', max) {
-                max-width: none;
-                width: 100%;
-            }
+            max-width: none;
+            width: 100%;
 
             span {
                 color: var(--clr-smoke-2);

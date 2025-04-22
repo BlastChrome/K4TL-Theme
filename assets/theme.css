@@ -9048,11 +9048,37 @@ button.button--link span {
   .main-product-wrapper .product .swiper-group-wrapper {
     flex-direction: column-reverse;
     align-items: stretch;
-    /* behaves like block */
     justify-content: flex-start;
-    /* behaves like normal block flow */
     height: auto;
   }
+}
+.main-product-wrapper .product .swiper-group-wrapper.left {
+  flex-direction: row;
+}
+@media only screen and (max-width: 1199px) {
+  .main-product-wrapper .product .swiper-group-wrapper.left {
+    flex-direction: column-reverse;
+  }
+}
+.main-product-wrapper .product .swiper-group-wrapper.right {
+  flex-direction: row-reverse;
+}
+.main-product-wrapper .product .swiper-group-wrapper.bottom {
+  flex-direction: column-reverse;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: auto;
+}
+.main-product-wrapper .product .swiper-group-wrapper.bottom .product-swiper--support .slider-controller__next-button {
+  max-width: 35px;
+  top: 0;
+  right: 0;
+}
+.main-product-wrapper .product .swiper-group-wrapper.bottom .product-swiper--support .slider-controller__next-button svg {
+  transform: rotate(-90deg);
+}
+.main-product-wrapper .product .swiper-group-wrapper.bottom .product-swiper--support img {
+  height: auto;
 }
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product__info--desktop h2 {
@@ -9223,7 +9249,7 @@ button.button--link span {
   display: grid;
   gap: 10px;
   width: 100%;
-  max-width: 300px;
+  max-width: none;
   margin: 10px 0;
 }
 @media only screen and (max-width: 1439px) {
@@ -9252,12 +9278,8 @@ button.button--link span {
   padding: 5px 0px;
   width: auto;
   border: 2px solid rgba(48, 48, 48, 0.2);
-}
-@media only screen and (max-width: 1439px) {
-  .main-product-wrapper .varient-options .button.button--outline {
-    max-width: none;
-    width: 100%;
-  }
+  max-width: none;
+  width: 100%;
 }
 .main-product-wrapper .varient-options .button.button--outline span {
   color: var(--clr-smoke-2);
