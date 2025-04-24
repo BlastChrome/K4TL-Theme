@@ -9036,6 +9036,9 @@ button.button--link span {
 .main-product-wrapper .product .swiper {
   margin: 0;
 }
+.main-product-wrapper .product .swiper-pagination-bullet-active {
+  background: var(--clr-red);
+}
 .main-product-wrapper .product .swiper-group-wrapper {
   display: flex;
   justify-content: space-between;
@@ -9063,6 +9066,11 @@ button.button--link span {
 .main-product-wrapper .product .swiper-group-wrapper.right {
   flex-direction: row-reverse;
 }
+@media only screen and (max-width: 1199px) {
+  .main-product-wrapper .product .swiper-group-wrapper.right {
+    flex-direction: column-reverse;
+  }
+}
 .main-product-wrapper .product .swiper-group-wrapper.bottom {
   flex-direction: column-reverse;
   align-items: stretch;
@@ -9084,6 +9092,21 @@ button.button--link span {
   .main-product-wrapper .product__info--desktop h2 {
     display: none;
   }
+}
+.main-product-wrapper .product .product-media-grid {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+.main-product-wrapper .product .product-media-grid-img img {
+  width: 100%;
+  height: auto;
+}
+.main-product-wrapper .product .product-media-grid-img--double {
+  grid-column: span 1;
+}
+.main-product-wrapper .product .product-media-grid-img--single {
+  grid-column: span 2;
 }
 .main-product-wrapper .product .product-swiper {
   height: 100%;
@@ -9143,11 +9166,6 @@ button.button--link span {
 }
 .main-product-wrapper .product .product-swiper--support {
   min-width: 237px;
-}
-@media only screen and (max-width: 1199px) {
-  .main-product-wrapper .product .product-swiper--support {
-    margin-bottom: 20px;
-  }
 }
 .main-product-wrapper .product .product-swiper--support .swiper-slide {
   max-height: 262px;
@@ -9211,12 +9229,12 @@ button.button--link span {
 }
 @media only screen and (min-width: 1440px) {
   .main-product-wrapper .product p.price {
-    margin-bottom: 25px;
+    margin: 25px 0;
   }
 }
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product p.price {
-    margin-bottom: 30px;
+    margin: 30px 0;
   }
 }
 .main-product-wrapper .product .desc p {
@@ -9292,6 +9310,12 @@ button.button--link span {
 }
 .main-product-wrapper .varient-options .button.button--outline.active:after {
   transform: translate(0);
+}
+.main-product-wrapper .product-options-wrapper,
+.main-product-wrapper .container,
+.main-product-wrapper .row,
+.main-product-wrapper .col-12 {
+  overflow: visible !important;
 }
 /**
 * Convert PX to EM

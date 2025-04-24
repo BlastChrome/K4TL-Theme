@@ -20,6 +20,12 @@
             margin: 0;
         }
 
+        .swiper-pagination-bullet {
+            &-active {
+                background: var(--clr-red);
+            }
+        }
+
         .swiper-group-wrapper {
             display: flex;
             justify-content: space-between;
@@ -45,6 +51,10 @@
 
             &.right {
                 flex-direction: row-reverse;
+
+                @include mx.mq('desktop', max) {
+                    flex-direction: column-reverse;
+                }
             }
 
             &.bottom {
@@ -81,6 +91,28 @@
                 }
             }
         }
+
+        .product-media-grid {
+            display: grid;
+            grid-gap: 12px;
+            grid-template-columns: 1fr 1fr;
+
+            &-img {
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                &--double {
+                    grid-column: span 1;
+                }
+
+                &--single {
+                    grid-column: span 2;
+                }
+            }
+        }
+
 
         .product-swiper {
             height: 100%;
@@ -150,10 +182,6 @@
             &--support {
                 min-width: 237px;
 
-                @include mx.mq('desktop', max) {
-                    margin-bottom: 20px;
-                }
-
 
                 .swiper-slide {
                     max-height: 262px;
@@ -220,11 +248,11 @@
                 @include mx.font-source-sans(--font-family-1, --theme-font-p-mob-3, --clr-red, false, 30px);
 
                 @include mx.mq('desktop-medium') {
-                    margin-bottom: 25px;
+                    margin: 25px 0;
                 }
 
                 @include mx.mq('desktop', max) {
-                    margin-bottom: 30px;
+                    margin: 30px 0;
                 }
             }
         }
@@ -312,6 +340,13 @@
                 transform: translate(0);
             }
         }
+    }
+
+    .product-options-wrapper,
+    .container,
+    .row,
+    .col-12 {
+        overflow: visible !important;
     }
 
 }

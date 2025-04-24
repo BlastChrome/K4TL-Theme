@@ -54,58 +54,71 @@
           </div>
         </div>
       </div>
-      <div class="row {{ section.settings.media_position }}">
+      <div class="row flex-column {{ section.settings.media_position }}">
         <div class="col-12 {{desktop_media_gallery_width}}">
           {% render 'product-media-gallery',
+            gallery_layout: section.settings.gallery_layout,
             product_images: variant_images,
             desktop_thumbnail_carousel_position_class: section.settings.desktop_thumbnail_carousel_position
           %}
         </div>
         <div class="col-12 {{desktop_media_carousel_width}}">
-          <div class="product__info product__info--desktop">
-            <h2>{{ product.title | escape }}</h2>
-            <p class="price">{{ product.price | money }}</p>
-            <div class="desc">
-              <h3>Description</h3>
-              {{ product.content | truncatewords: 43 }}
+          <div
+            class="product-options-wrapper"
+          >
+            <div class="product-options-group">
+              {% render 'product-info', product: product %}
+              {% render 'variant-options', product: product %}
+              {% render 'quantity-input',
+                product: product,
+                total_inventory: total_inventory,
+                section: section,
+                product_form_id: product_form_id
+              %}
+              {% render 'product-form',
+                product: product,
+                section: section,
+                product_form_id: product_form_id,
+                total_inventory: total_inventory
+              %}
             </div>
           </div>
-
-          {% render 'variant-options', product: product %}
-          {% render 'quantity-input',
-            product: product,
-            total_inventory: total_inventory,
-            section: section,
-            product_form_id: product_form_id
-          %}
-          {% render 'product-form',
-            product: product,
-            section: section,
-            product_form_id: product_form_id,
-            total_inventory: total_inventory
-          %}
         </div>
       </div>
     </div>
   </div>
-
   <script src="{{ 'swiper-bundle.min.js' | asset_url }}" async></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      initProductMediaSwipers();
-    });
+    function updateSwiperHeightOnImagesLoad(swiperEl, swiperInstance) {
+      const images = swiperEl.querySelectorAll('img');
+      let loadedCount = 0;
 
-    document.addEventListener('shopify:section:load', function () {
-      initProductMediaSwipers();
-    });
+      images.forEach((img) => {
+        if (img.complete) {
+          loadedCount++;
+        } else {
+          img.addEventListener('load', () => {
+            loadedCount++;
+            if (loadedCount === images.length) {
+              swiperInstance.update();
+            }
+          });
+        }
+      });
+
+      // All were already loaded
+      if (loadedCount === images.length) {
+        swiperInstance.update();
+      }
+    }
 
     function initProductMediaSwipers() {
       const wrapper = document.querySelector('.product-swiper--support');
       const thumbnailPosition = wrapper?.dataset.thumbnailPosition || 'left';
-
       // Set Swiper direction based on the setting
       const isVertical = thumbnailPosition === 'left' || thumbnailPosition === 'right';
 
+      // swiper initializations
       const supportSwiper = new Swiper('.product-swiper--support', {
         loop: true,
         autoPlay: true,
@@ -128,7 +141,6 @@
           },
         },
       });
-
       const mainSwiper = new Swiper('.product-swiper--main', {
         loop: true,
         autoPlay: true,
@@ -144,7 +156,17 @@
           swiper: supportSwiper, // Link the support swiper as thumbs
         },
       });
+
+      updateSwiperHeightOnImagesLoad(document.querySelector('.product-swiper--main'), mainSwiper);
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initProductMediaSwipers();
+    });
+
+    document.addEventListener('shopify:section:load', function () {
+      initProductMediaSwipers();
+    });
   </script>
 </section>
 
@@ -182,6 +204,44 @@
     },
     {
       "type": "select",
+      "id": "media_position",
+      "label": "Desktop Media Position",
+      "info": "Position is automatically optimized for mobile",
+      "options": [
+        {
+          "value": "flex-xl-row",
+          "label": "Left"
+        },
+        {
+          "value": "flex-xl-row-reverse",
+          "label": "Right"
+        }
+      ],
+      "default": "flex-xl-row"
+    },
+    {
+      "type": "select",
+      "id": "desktop_media_width",
+      "label": "Desktop Media Width",
+      "info": "Media is automatically optimized for mobile.",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
       "id": "desktop_thumbnail_carousel_position",
       "label": "Desktop Carousel Position",
       "info": "Carousel is positioned bottom for mobile.",
@@ -202,42 +262,28 @@
       "default": "left"
     },
     {
+      "label": "Desktop layout",
       "type": "select",
-      "id": "desktop_media_width",
-      "label": "Desktop media width",
-      "info": "Media is automatically optimized for mobile.",
+      "id": "gallery_layout",
       "options": [
         {
-          "value": "small",
-          "label": "Small"
+          "value": "thumbnail_slider",
+          "label": "Thumbnail Slider"
         },
         {
-          "value": "medium",
-          "label": "Medium"
+          "value": "stacked",
+          "label": "Stacked"
         },
         {
-          "value": "large",
-          "label": "Large"
+          "value": "columns",
+          "label": "Columns"
+        },
+        {
+          "value": "thumbnails",
+          "label": "Thumbnails"
         }
       ],
-      "default": "large"
-    },
-    {
-      "type": "select",
-      "id": "media_position",
-      "options": [
-        {
-          "value": "flex-row",
-          "label": "Left"
-        },
-        {
-          "value": "flex-row-reverse",
-          "label": "Right"
-        }
-      ],
-      "default": "flex-row",
-      "label": "Left",
-      "info": "Position is automatically optimized for mobile"
+      "default": "thumbnail_slider"
     }
   ]
 }

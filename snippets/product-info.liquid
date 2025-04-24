@@ -1,0 +1,8 @@
+<div class="product__info product__info--desktop">
+  <h2>{{ product.title | escape }}</h2>
+  <p class="price">{{ product.price | money }}</p>
+  <div class="desc">
+    <h3>Description</h3>
+    {{ product.content | truncatewords: 43 }}
+  </div>
+</div>
