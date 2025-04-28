@@ -60,13 +60,14 @@
             <div class="product-options-group">
               {%- for block in section.blocks -%}
                 {%- case block.type -%}
+                  {%- when 'type' -%}
+                    <h3>{{ product.type }}</h3>
                   {%- when 'title' -%}
                     <h2>{{ product.title | escape }}</h2>
                   {%- when 'price' -%}
                     <p class="price">{{ product.price | money }}</p>
                   {%- when 'description' -%}
                     <div class="desc">
-                      <h3>Description</h3>
                       {{ product.content | truncatewords: 43 }}
                     </div>
                   {%- when 'variant_options' -%}
@@ -180,6 +181,11 @@
 {
   "name": "Main Product",
   "blocks": [
+    {
+      "type": "type",
+      "name": "Type",
+      "limit": 1
+    },
     {
       "type": "title",
       "name": "Title",
@@ -322,6 +328,34 @@
         }
       ],
       "default": "thumbnail_slider"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "blocks": [
+        {
+          "type": "type"
+        },
+        {
+          "type": "title"
+        },
+        {
+          "type": "price"
+        },
+        {
+          "type": "description"
+        },
+        {
+          "type": "variant_options"
+        },
+        {
+          "type": "quantity_input"
+        },
+        {
+          "type": "product_form"
+        }
+      ]
     }
   ]
 }
