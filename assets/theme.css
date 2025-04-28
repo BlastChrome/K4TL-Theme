@@ -9311,11 +9311,20 @@ button.button--link span {
 .main-product-wrapper .varient-options .button.button--outline.active:after {
   transform: translate(0);
 }
-.main-product-wrapper .product-options-wrapper,
-.main-product-wrapper .container,
-.main-product-wrapper .row,
-.main-product-wrapper .col-12 {
-  overflow: visible !important;
+.main-product-wrapper .product-options-wrapper {
+  background-color: blue;
+  height: 7000px;
+}
+.main-product-wrapper .product-options-group {
+  flex: 1;
+  background: #e0e0e0;
+  padding: 20px;
+  height: -moz-fit-content;
+  height: fit-content;
+  /* Important for sticky */
+  position: sticky;
+  top: 20px;
+  /* How far from top of viewport */
 }
 /**
 * Convert PX to EM
@@ -9741,6 +9750,34 @@ button.button--link span {
   margin-right: 0;
   border-radius: 0;
   margin-left: 30px;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
 }
 /**
 * Convert PX to EM
@@ -12398,33 +12435,5 @@ button.button--link span {
 }
 .varient-options .button.button--outline.active:after {
   transform: translate(0);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
 }
 /*# sourceMappingURL=theme.css.map */
