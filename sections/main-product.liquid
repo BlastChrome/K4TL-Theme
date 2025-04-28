@@ -47,13 +47,6 @@
 
   <div class="product">
     <div class="container">
-      <div class="row">
-        <div class="col-12 d-xl-none">
-          <div class="product__info product__info--mobile">
-            <h2>{{ product.title | escape }}</h2>
-          </div>
-        </div>
-      </div>
       <div class="row flex-column {{ section.settings.media_position }}">
         <div class="col-12 {{desktop_media_gallery_width}}">
           {% render 'product-media-gallery',
@@ -65,28 +58,35 @@
         <div class="col-12 {{desktop_media_carousel_width}}">
           <div class="product-options-wrapper">
             <div class="product-options-group">
-              <div class="product__info product__info--desktop">
-                <h2>{{ product.title | escape }}</h2>
-                <p class="price">{{ product.price | money }}</p>
-                <div class="desc">
-                  <h3>Description</h3>
-                  {{ product.content | truncatewords: 43 }}
-                </div>
-              </div>
-
-              {% render 'variant-options', product: product %}
-              {% render 'quantity-input',
-                product: product,
-                total_inventory: total_inventory,
-                section: section,
-                product_form_id: product_form_id
-              %}
-              {% render 'product-form',
-                product: product,
-                section: section,
-                product_form_id: product_form_id,
-                total_inventory: total_inventory
-              %}
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'title' -%}
+                    <h2>{{ product.title | escape }}</h2>
+                  {%- when 'price' -%}
+                    <p class="price">{{ product.price | money }}</p>
+                  {%- when 'description' -%}
+                    <div class="desc">
+                      <h3>Description</h3>
+                      {{ product.content | truncatewords: 43 }}
+                    </div>
+                  {%- when 'variant_options' -%}
+                    {% render 'variant-options', product: product %}
+                  {%- when 'quantity_input' -%}
+                    {% render 'quantity-input',
+                      product: product,
+                      total_inventory: total_inventory,
+                      section: section,
+                      product_form_id: product_form_id
+                    %}
+                  {%- when 'product_form' -%}
+                    {% render 'product-form',
+                      product: product,
+                      section: section,
+                      product_form_id: product_form_id,
+                      total_inventory: total_inventory
+                    %}
+                {%- endcase -%}
+              {%- endfor -%}
             </div>
           </div>
         </div>
@@ -179,6 +179,38 @@
 {% schema %}
 {
   "name": "Main Product",
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
+    {
+      "type": "variant_options",
+      "name": "Variant Options",
+      "limit": 1
+    },
+    {
+      "type": "quantity_input",
+      "name": "Quantity Input",
+      "limit": 1
+    },
+    {
+      "type": "product_form",
+      "name": "Product Form",
+      "limit": 1
+    }
+  ],
   "settings": [
     {
       "type": "header",
