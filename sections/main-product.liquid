@@ -1,17 +1,15 @@
 {%- style -%}
-  /* Padding Settings */
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-    }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
 
-    @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-        padding-bottom: {{ section.settings.padding_bottom }}px;
-      }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-    /* /Padding Settings */
+  }
 {%- endstyle -%}
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 
@@ -29,19 +27,19 @@
   {% assign variant_images = product.images | map: 'src' %}
 
   {%- liquid
-    assign desktop_media_gallery_width = 'col-xl-7'
-    assign desktop_media_carousel_width = 'col-xl-5'
+    assign desktop_media_gallery_width = 'col-lg-7'
+    assign desktop_media_carousel_width = 'col-lg-5'
 
     case section.settings.desktop_media_width
       when 'small'
-        assign desktop_media_gallery_width = 'col-xl-6'
-        assign desktop_media_carousel_width = 'col-xl-6'
+        assign desktop_media_gallery_width = 'col-lg-6'
+        assign desktop_media_carousel_width = 'col-lg-6'
       when 'medium'
-        assign desktop_media_gallery_width = 'col-xl-7'
-        assign desktop_media_carousel_width = 'col-xl-5'
+        assign desktop_media_gallery_width = 'col-lg-7'
+        assign desktop_media_carousel_width = 'col-lg-5'
       when 'large'
-        assign desktop_media_gallery_width = 'col-xl-8'
-        assign desktop_media_carousel_width = 'col-xl-4'
+        assign desktop_media_gallery_width = 'col-lg-8'
+        assign desktop_media_carousel_width = 'col-lg-4'
     endcase
   -%}
 
@@ -57,7 +55,7 @@
         </div>
         <div class="col-12 {{desktop_media_carousel_width}}">
           <div class="product-options-wrapper">
-            <div class="product-options-group">
+            <div class="product-options-group {% if section.settings.enable_sticky_info %}product-options-group--sticky{% endif %}">
               {%- for block in section.blocks -%}
                 {%- case block.type -%}
                   {%- when 'type' -%}
@@ -68,7 +66,7 @@
                     <p class="price">{{ product.price | money }}</p>
                   {%- when 'description' -%}
                     <div class="desc">
-                      {{ product.content | truncatewords: 43 }}
+                      {{ product.content | truncatewords: 60 }}
                     </div>
                   {%- when 'variant_options' -%}
                     {% render 'variant-options', product: product %}
@@ -253,15 +251,15 @@
       "info": "Position is automatically optimized for mobile",
       "options": [
         {
-          "value": "flex-xl-row",
+          "value": "flex-lg-row",
           "label": "Left"
         },
         {
-          "value": "flex-xl-row-reverse",
+          "value": "flex-lg-row-reverse",
           "label": "Right"
         }
       ],
-      "default": "flex-xl-row"
+      "default": "flex-lg-row"
     },
     {
       "type": "select",
@@ -328,6 +326,13 @@
         }
       ],
       "default": "thumbnail_slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "default": true,
+      "label": "Enable sticky content on desktop",
+      "info": "Only available when desktop layout is either stacked or column"
     }
   ],
   "presets": [
