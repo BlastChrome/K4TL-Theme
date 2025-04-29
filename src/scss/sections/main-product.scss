@@ -3,8 +3,8 @@
 .main-product-wrapper {
 
     .container {
-        @include mx.mq('desktop', max) {
-            max-width: 960px;
+        @include mx.mq('desktop', min) {
+            max-width: 1190px;
         }
     }
 
@@ -209,7 +209,7 @@
                 }
 
                 img {
-                    height: 826px;
+                    height: auto;
 
                     @include mx.mq('desktop', max) {
                         height: auto;
@@ -258,9 +258,6 @@
                     }
                 }
 
-                // @include mx.mq('desktop', max) {
-                //     display: none;
-                // }
             }
         }
 
@@ -300,7 +297,7 @@
         .desc {
             p {
                 margin-bottom: 20px;
-                @include mx.font-source-sans(--font-family-2, --theme-font-p-mob-3, --clr-smoke-2, false, 30px, 0px);
+                @include mx.font-source-sans(--font-family-2, --theme-font-btn-mob-1, --clr-smoke-2, false, 30px, 0px);
 
                 @include mx.mq('desktop-medium') {
                     margin-bottom: 51px;

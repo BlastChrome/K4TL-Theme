@@ -60,12 +60,14 @@
             {% assign grid_type = 'double' %}
           {% endif %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <img
-              src="{{ product_image | img_url: 'master' }}"
-              alt="{{ product.title }}"
-              width="237"
-              height="262"
-            >
+            <a href="#" data-lity>
+              <img
+                src="{{ product_image | img_url: 'master' }}"
+                alt="{{ product.title }}"
+                width="237"
+                height="262"
+              >
+            </a>
             <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
               {{ 'icon-zoom.svg' | inline_asset_content }}
             </span>
@@ -77,12 +79,14 @@
         {% for product_image in product_images %}
           {% assign grid_type = 'double' %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <img
-              src="{{ product_image | img_url: 'master' }}"
-              alt="{{ product.title }}"
-              width="237"
-              height="262"
-            >
+            <a href="#" data-lity>
+              <img
+                src="{{ product_image | img_url: 'master' }}"
+                alt="{{ product.title }}"
+                width="237"
+                height="262"
+              >
+            </a>
             <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
               {{ 'icon-zoom.svg' | inline_asset_content }}
             </span>
@@ -98,12 +102,14 @@
             {% assign grid_type = 'thumbnail' %}
           {% endif %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <img
-              src="{{ product_image | img_url: 'master' }}"
-              alt="{{ product.title }}"
-              width="237"
-              height="262"
-            >
+            <a href="#" data-lity>
+              <img
+                src="{{ product_image | img_url: 'master' }}"
+                alt="{{ product.title }}"
+                width="237"
+                height="262"
+              >
+            </a>
             <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
               {{ 'icon-zoom.svg' | inline_asset_content }}
             </span>

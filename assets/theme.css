@@ -9016,9 +9016,9 @@ button.button--link span {
 /**
 * Media queries
 **/
-@media only screen and (max-width: 1199px) {
+@media only screen and (min-width: 1200px) {
   .main-product-wrapper .container {
-    max-width: 960px;
+    max-width: 1190px;
   }
 }
 .main-product-wrapper .product {
@@ -9190,7 +9190,7 @@ button.button--link span {
   transform: rotate(180deg);
 }
 .main-product-wrapper .product .product-swiper--main img {
-  height: 826px;
+  height: auto;
 }
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product .product-swiper--main img {
@@ -9273,7 +9273,7 @@ button.button--link span {
 .main-product-wrapper .product .desc p {
   margin-bottom: 20px;
   font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-3);
+  font-size: var(--theme-font-btn-mob-1);
   color: var(--clr-smoke-2);
   line-height: 30px;
   letter-spacing: 0px;
