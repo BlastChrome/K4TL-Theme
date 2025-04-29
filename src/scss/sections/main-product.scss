@@ -96,19 +96,59 @@
             display: grid;
             grid-gap: 12px;
             grid-template-columns: 1fr 1fr;
+            margin-bottom: 20px;
+
+            @include mx.mq('desktop', max) {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
 
             &-img {
+                position: relative;
+
                 img {
                     width: 100%;
                     height: auto;
                 }
 
-                &--double {
-                    grid-column: span 1;
+                .svg-wrapper {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 1;
+                    width: 100%;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    transform: scale(1);
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+
+                    svg {
+                        width: 100%;
+                        height: auto;
+                    }
+
+                    &--full {
+                        max-width: 50px;
+                    }
+
+                    &--double {
+                        max-width: 36px;
+                    }
                 }
 
-                &--single {
-                    grid-column: span 2;
+
+                &--double {
+                    grid-column: span 1;
+
+                    @include mx.mq('desktop', max) {
+                        grid-column: span 1;
+                    }
+                }
+
+                &--full {
+                    grid-column: -1/ 1;
                 }
             }
         }
@@ -343,20 +383,14 @@
     }
 
     .product-options-wrapper {
-        background-color: blue;
-        height: 7000px;
-
+        height: 100%;
     }
 
     .product-options-group {
-        flex: 1;
-        background: #e0e0e0;
-        padding: 20px;
-        height: fit-content;
-        /* Important for sticky */
-        position: sticky;
-        top: 20px;
-        /* How far from top of viewport */
+        &--sticky {
+            position: sticky;
+            top: 18rem;
+        }
     }
 
 }

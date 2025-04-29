@@ -55,7 +55,7 @@
       <div class="product-media-grid">
         {% for product_image in product_images %}
           {% if forloop.index == 1 %}
-            {% assign grid_type = 'single' %}
+            {% assign grid_type = 'full' %}
           {% else %}
             {% assign grid_type = 'double' %}
           {% endif %}
@@ -66,13 +66,49 @@
               width="237"
               height="262"
             >
+            <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
+              {{ 'icon-zoom.svg' | inline_asset_content }}
+            </span>
           </div>
         {% endfor %}
       </div>
     {% when 'columns' %}
-      {# Add columns layout HTML here #}
-
+      <div class="product-media-grid">
+        {% for product_image in product_images %}
+          {% assign grid_type = 'double' %}
+          <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
+            <img
+              src="{{ product_image | img_url: 'master' }}"
+              alt="{{ product.title }}"
+              width="237"
+              height="262"
+            >
+            <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
+              {{ 'icon-zoom.svg' | inline_asset_content }}
+            </span>
+          </div>
+        {% endfor %}
+      </div>
     {% when 'thumbnails' %}
-      {# Add thumbnails layout HTML here #}
+      <div class="product-media-grid product-media-grid--thumbnails">
+        {% for product_image in product_images %}
+          {% if forloop.index == 1 %}
+            {% assign grid_type = 'full' %}
+          {% else %}
+            {% assign grid_type = 'thumbnail' %}
+          {% endif %}
+          <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
+            <img
+              src="{{ product_image | img_url: 'master' }}"
+              alt="{{ product.title }}"
+              width="237"
+              height="262"
+            >
+            <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
+              {{ 'icon-zoom.svg' | inline_asset_content }}
+            </span>
+          </div>
+        {% endfor %}
+      </div>
   {% endcase %}
 </media-gallery>

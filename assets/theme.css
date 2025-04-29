@@ -4524,10 +4524,6 @@ body {
   position: relative;
 }
 
-main#main {
-  overflow: hidden;
-}
-
 .no-scroll {
   overflow: hidden;
 }
@@ -9097,16 +9093,53 @@ button.button--link span {
   display: grid;
   grid-gap: 12px;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 1199px) {
+  .main-product-wrapper .product .product-media-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.main-product-wrapper .product .product-media-grid-img {
+  position: relative;
 }
 .main-product-wrapper .product .product-media-grid-img img {
   width: 100%;
   height: auto;
 }
+.main-product-wrapper .product .product-media-grid-img .svg-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+.main-product-wrapper .product .product-media-grid-img .svg-wrapper:hover {
+  transform: scale(1.1);
+}
+.main-product-wrapper .product .product-media-grid-img .svg-wrapper svg {
+  width: 100%;
+  height: auto;
+}
+.main-product-wrapper .product .product-media-grid-img .svg-wrapper--full {
+  max-width: 50px;
+}
+.main-product-wrapper .product .product-media-grid-img .svg-wrapper--double {
+  max-width: 36px;
+}
 .main-product-wrapper .product .product-media-grid-img--double {
   grid-column: span 1;
 }
-.main-product-wrapper .product .product-media-grid-img--single {
-  grid-column: span 2;
+@media only screen and (max-width: 1199px) {
+  .main-product-wrapper .product .product-media-grid-img--double {
+    grid-column: span 1;
+  }
+}
+.main-product-wrapper .product .product-media-grid-img--full {
+  grid-column: -1/1;
 }
 .main-product-wrapper .product .product-swiper {
   height: 100%;
@@ -9312,19 +9345,11 @@ button.button--link span {
   transform: translate(0);
 }
 .main-product-wrapper .product-options-wrapper {
-  background-color: blue;
-  height: 7000px;
+  height: 100%;
 }
-.main-product-wrapper .product-options-group {
-  flex: 1;
-  background: #e0e0e0;
-  padding: 20px;
-  height: -moz-fit-content;
-  height: fit-content;
-  /* Important for sticky */
+.main-product-wrapper .product-options-group--sticky {
   position: sticky;
-  top: 20px;
-  /* How far from top of viewport */
+  top: 18rem;
 }
 /**
 * Convert PX to EM
@@ -9750,34 +9775,6 @@ button.button--link span {
   margin-right: 0;
   border-radius: 0;
   margin-left: 30px;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
 }
 /**
 * Convert PX to EM
@@ -12435,5 +12432,33 @@ button.button--link span {
 }
 .varient-options .button.button--outline.active:after {
   transform: translate(0);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
 }
 /*# sourceMappingURL=theme.css.map */

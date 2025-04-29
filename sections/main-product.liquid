@@ -57,7 +57,7 @@
         </div>
         <div class="col-12 {{desktop_media_carousel_width}}">
           <div class="product-options-wrapper">
-            <div class="product-options-group">
+            <div class="product-options-group {% if section.settings.gallery_layout == 'stacked' or section.settings.gallery_layout == 'columns' %}product-options-group--sticky{% endif %}">
               {%- for block in section.blocks -%}
                 {%- case block.type -%}
                   {%- when 'type' -%}
