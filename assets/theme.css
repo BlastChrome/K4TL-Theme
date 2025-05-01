@@ -9084,6 +9084,10 @@ button.button--link span {
 .main-product-wrapper .product .swiper-group-wrapper.bottom .product-swiper--support img {
   height: auto;
 }
+.main-product-wrapper .product .swiper-group-wrapper.sticky {
+  position: sticky;
+  top: 18rem;
+}
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product__info--desktop h2 {
     display: none;
@@ -9100,8 +9104,20 @@ button.button--link span {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+.main-product-wrapper .product .product-media-grid--thumbnails {
+  grid-template-columns: repeat(6, 1fr);
+}
+@media only screen and (max-width: 1199px) {
+  .main-product-wrapper .product .product-media-grid--thumbnails {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
 .main-product-wrapper .product .product-media-grid-img {
   position: relative;
+}
+.main-product-wrapper .product .product-media-grid-img:hover .svg-wrapper {
+  transform: scale(1);
+  opacity: 1;
 }
 .main-product-wrapper .product .product-media-grid-img img {
   width: 100%;
@@ -9109,13 +9125,14 @@ button.button--link span {
 }
 .main-product-wrapper .product .product-media-grid-img .svg-wrapper {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 5%;
+  right: 5%;
   z-index: 1;
   width: 100%;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  transform: scale(1);
+  transform: scale(0);
+  opacity: 0;
 }
 .main-product-wrapper .product .product-media-grid-img .svg-wrapper:hover {
   transform: scale(1.1);
@@ -9125,10 +9142,18 @@ button.button--link span {
   height: auto;
 }
 .main-product-wrapper .product .product-media-grid-img .svg-wrapper--full {
-  max-width: 50px;
+  max-width: 30px;
 }
 .main-product-wrapper .product .product-media-grid-img .svg-wrapper--double {
-  max-width: 36px;
+  max-width: 20px;
+}
+.main-product-wrapper .product .product-media-grid-img .svg-wrapper--thumbnail {
+  max-width: 18px;
+}
+@media only screen and (max-width: 1199px) {
+  .main-product-wrapper .product .product-media-grid-img .svg-wrapper--double, .main-product-wrapper .product .product-media-grid-img .svg-wrapper--thumbnail {
+    display: none;
+  }
 }
 .main-product-wrapper .product .product-media-grid-img--double {
   grid-column: span 1;
@@ -9190,7 +9215,7 @@ button.button--link span {
   transform: rotate(180deg);
 }
 .main-product-wrapper .product .product-swiper--main img {
-  height: auto;
+  height: 100%;
 }
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product .product-swiper--main img {
@@ -9201,7 +9226,7 @@ button.button--link span {
   min-width: 237px;
 }
 .main-product-wrapper .product .product-swiper--support .swiper-slide {
-  max-height: 262px;
+  max-height: 172px;
   opacity: 0.25;
   transition: opacity 0.125s ease-in-out;
 }
@@ -9210,7 +9235,7 @@ button.button--link span {
 }
 .main-product-wrapper .product .product-swiper--support img {
   width: 100%;
-  height: 262px;
+  height: 100%;
 }
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product .product-swiper--support img {
@@ -9235,6 +9260,7 @@ button.button--link span {
 .main-product-wrapper .product h3 {
   letter-spacing: 4.3px;
   text-transform: uppercase;
+  margin: 10px 0;
 }
 @media only screen and (min-width: 1440px) {
   .main-product-wrapper .product h3 {
@@ -9254,21 +9280,11 @@ button.button--link span {
   }
 }
 .main-product-wrapper .product p.price {
-  margin-bottom: 10px;
   font-family: var(--font-family-1);
   font-size: var(--theme-font-p-mob-3);
   color: var(--clr-red);
   line-height: 30px;
-}
-@media only screen and (min-width: 1440px) {
-  .main-product-wrapper .product p.price {
-    margin: 25px 0;
-  }
-}
-@media only screen and (max-width: 1199px) {
-  .main-product-wrapper .product p.price {
-    margin: 30px 0;
-  }
+  margin: 18px 0;
 }
 .main-product-wrapper .product .desc p {
   margin-bottom: 20px;
@@ -9775,6 +9791,34 @@ button.button--link span {
   margin-right: 0;
   border-radius: 0;
   margin-left: 30px;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
 }
 /**
 * Convert PX to EM
@@ -12432,33 +12476,5 @@ button.button--link span {
 }
 .varient-options .button.button--outline.active:after {
   transform: translate(0);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
 }
 /*# sourceMappingURL=theme.css.map */

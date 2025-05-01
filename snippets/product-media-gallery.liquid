@@ -1,7 +1,7 @@
 <media-gallery>
   {% case gallery_layout %}
     {% when 'thumbnail_slider' %}
-      <div class="swiper-group-wrapper {{ gallery_layout }} {% if desktop_thumbnail_carousel_position_class %}{{ desktop_thumbnail_carousel_position_class }}{% endif %}">
+      <div class="swiper-group-wrapper sticky  {{ gallery_layout }} {% if desktop_thumbnail_carousel_position_class %}{{ desktop_thumbnail_carousel_position_class }}{% endif %}">
         <div
           class="product-swiper product-swiper--support swiper"
           data-thumbnail-position="{{ section.settings.desktop_thumbnail_carousel_position }}"

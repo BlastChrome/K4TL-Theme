@@ -58,7 +58,7 @@
             <div class="product-options-group {% if section.settings.enable_sticky_info %}product-options-group--sticky{% endif %}">
               {%- for block in section.blocks -%}
                 {%- case block.type -%}
-                  {%- when 'type' -%}
+                  {%- when 'product_type' -%}
                     <h3>{{ product.type }}</h3>
                   {%- when 'title' -%}
                     <h2>{{ product.title | escape }}</h2>
@@ -128,7 +128,7 @@
         loop: true,
         autoPlay: true,
         direction: 'horizontal',
-        slidesPerView: 4,
+        slidesPerView: 5,
         spaceBetween: 20,
         watchSlidesProgress: true,
         slideToClickedSlide: true,
@@ -180,8 +180,8 @@
   "name": "Main Product",
   "blocks": [
     {
-      "type": "type",
-      "name": "Type",
+      "type": "product_type",
+      "name": "Product Type",
       "limit": 1
     },
     {
@@ -301,7 +301,7 @@
           "label": "Bottom"
         }
       ],
-      "default": "left"
+      "default": "bottom"
     },
     {
       "label": "Desktop layout",
@@ -325,7 +325,7 @@
           "label": "Thumbnails"
         }
       ],
-      "default": "thumbnail_slider"
+      "default": "stacked"
     },
     {
       "type": "checkbox",
@@ -333,34 +333,6 @@
       "default": true,
       "label": "Enable sticky content on desktop",
       "info": "Only available when desktop layout is either stacked or column"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Default",
-      "blocks": [
-        {
-          "type": "type"
-        },
-        {
-          "type": "title"
-        },
-        {
-          "type": "price"
-        },
-        {
-          "type": "description"
-        },
-        {
-          "type": "variant_options"
-        },
-        {
-          "type": "quantity_input"
-        },
-        {
-          "type": "product_form"
-        }
-      ]
     }
   ]
 }
