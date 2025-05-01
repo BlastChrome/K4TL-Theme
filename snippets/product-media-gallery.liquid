@@ -60,7 +60,7 @@
             {% assign grid_type = 'double' %}
           {% endif %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <a href="#" data-lity>
+            <a href="#">
               <img
                 src="{{ product_image | img_url: 'master' }}"
                 alt="{{ product.title }}"
@@ -79,7 +79,7 @@
         {% for product_image in product_images %}
           {% assign grid_type = 'double' %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <a href="#" data-lity>
+            <a href="#">
               <img
                 src="{{ product_image | img_url: 'master' }}"
                 alt="{{ product.title }}"
@@ -102,7 +102,7 @@
             {% assign grid_type = 'thumbnail' %}
           {% endif %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <a href="#" data-lity>
+            <a href="#">
               <img
                 src="{{ product_image | img_url: 'master' }}"
                 alt="{{ product.title }}"
