@@ -37,7 +37,8 @@
 
         input {
             @include mx.font-source-sans(--font-family-1, --theme-font-h2-mob-2, --clr-smoke-2, false, 30px);
-            max-width: 100px;
+            line-height: 30px;
+            max-width: 60px;
             text-align: center;
             border: none;
 
@@ -64,7 +65,7 @@
         width: 100%;
 
         p {
-            @include mx.font-source-sans(--font-family-1, --theme-font-p-mob-3, --clr-smoke-2, false, 30px);
+            @include mx.font-source-sans(--font-family-1, --theme-font-p-mob-5, --clr-smoke-2, false, 30px);
 
             &:nth-of-type(2) {
                 font-family: var(--font-family-2);

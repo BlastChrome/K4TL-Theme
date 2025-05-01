@@ -6599,7 +6599,8 @@ button.button--link span {
   font-size: var(--theme-font-h2-mob-2);
   color: var(--clr-smoke-2);
   line-height: 30px;
-  max-width: 100px;
+  line-height: 30px;
+  max-width: 60px;
   text-align: center;
   border: none;
 }
@@ -6624,7 +6625,7 @@ button.button--link span {
 }
 .quantity-wrapper .stock p {
   font-family: var(--font-family-1);
-  font-size: var(--theme-font-p-mob-3);
+  font-size: var(--theme-font-p-mob-5);
   color: var(--clr-smoke-2);
   line-height: 30px;
 }
@@ -9804,34 +9805,6 @@ button.button--link span {
 /**
 * Media queries
 **/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
 .arrow-button {
   width: 100%;
   max-width: 200px;
@@ -12083,7 +12056,8 @@ button.button--link span {
   font-size: var(--theme-font-h2-mob-2);
   color: var(--clr-smoke-2);
   line-height: 30px;
-  max-width: 100px;
+  line-height: 30px;
+  max-width: 60px;
   text-align: center;
   border: none;
 }
@@ -12108,7 +12082,7 @@ button.button--link span {
 }
 .quantity-wrapper .stock p {
   font-family: var(--font-family-1);
-  font-size: var(--theme-font-p-mob-3);
+  font-size: var(--theme-font-p-mob-5);
   color: var(--clr-smoke-2);
   line-height: 30px;
 }
@@ -12476,5 +12450,33 @@ button.button--link span {
 }
 .varient-options .button.button--outline.active:after {
   transform: translate(0);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
 }
 /*# sourceMappingURL=theme.css.map */

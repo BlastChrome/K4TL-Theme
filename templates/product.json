@@ -1,12 +1,12 @@
 {
   "sections": {
-    "main": {
+    "main-product": {
       "type": "main-product",
       "settings": {
         "padding_top": 44,
         "padding_bottom": 44,
         "media_position": "flex-lg-row",
-        "desktop_media_width": "small",
+        "desktop_media_width": "medium",
         "desktop_thumbnail_carousel_position": "bottom",
         "gallery_layout": "columns",
         "enable_sticky_info": true
@@ -45,5 +45,5 @@
       ]
     }
   },
-  "order": ["main"]
+  "order": ["main-product"]
 }
