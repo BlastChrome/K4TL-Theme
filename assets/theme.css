@@ -9101,10 +9101,11 @@ button.button--link span {
 }
 .main-product-wrapper .product .product-media-grid--columns, .main-product-wrapper .product .product-media-grid--stacked {
   grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
 }
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product .product-media-grid--columns, .main-product-wrapper .product .product-media-grid--stacked {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 .main-product-wrapper .product .product-media-grid--thumbnails {
