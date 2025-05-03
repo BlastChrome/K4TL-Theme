@@ -9097,11 +9097,13 @@ button.button--link span {
 .main-product-wrapper .product .product-media-grid {
   display: grid;
   grid-gap: 12px;
-  grid-template-columns: 1fr 1fr;
   margin-bottom: 20px;
 }
+.main-product-wrapper .product .product-media-grid--columns, .main-product-wrapper .product .product-media-grid--stacked {
+  grid-template-columns: 1fr 1fr;
+}
 @media only screen and (max-width: 1199px) {
-  .main-product-wrapper .product .product-media-grid {
+  .main-product-wrapper .product .product-media-grid--columns, .main-product-wrapper .product .product-media-grid--stacked {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }

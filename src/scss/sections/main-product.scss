@@ -100,11 +100,15 @@
         .product-media-grid {
             display: grid;
             grid-gap: 12px;
-            grid-template-columns: 1fr 1fr;
             margin-bottom: 20px;
 
-            @include mx.mq('desktop', max) {
-                grid-template-columns: 1fr 1fr 1fr;
+            &--columns,
+            &--stacked {
+                grid-template-columns: 1fr 1fr;
+
+                @include mx.mq('desktop', max) {
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
             }
 
             &--thumbnails {

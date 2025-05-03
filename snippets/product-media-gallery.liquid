@@ -1,162 +1,102 @@
 <media-gallery>
-  {% case gallery_layout %}
-    {% when 'thumbnail_slider' %}
-      <div class="swiper-group-wrapper sticky {{ gallery_layout }} {% if desktop_thumbnail_carousel_position_class %}{{ desktop_thumbnail_carousel_position_class }}{% endif %}">
-        <div
-          class="product-swiper product-swiper--support swiper"
-          data-thumbnail-position="{{ section.settings.desktop_thumbnail_carousel_position }}"
-        >
-          <div class="swiper-wrapper">
-            {% for product_image in product_images %}
-              <div class="product-swiper__slide swiper-slide" data-slide="{{ forloop.index }}">
-                <img
-                  src="{{ product_image | img_url: 'master' }}"
-                  alt="{{ product.title }}"
-                  width="237"
-                  height="262"
-                >
-              </div>
-            {% endfor %}
-          </div>
-          <button class="slider-controller slider-controller__next-button">
-            <span class="svg-wrapper">
-              {{ 'icon-down-arrow.svg' | inline_asset_content }}
-            </span>
-          </button>
+  {% if gallery_layout == 'thumbnail_slider' %}
+    <div class="swiper-group-wrapper sticky {{ gallery_layout }} {% if desktop_thumbnail_carousel_position_class %}{{ desktop_thumbnail_carousel_position_class }}{% endif %}">
+      <div
+        class="product-swiper product-swiper--support swiper"
+        data-thumbnail-position="{{ section.settings.desktop_thumbnail_carousel_position }}"
+      >
+        <div class="swiper-wrapper">
+          {% for product_image in product_images %}
+            <div class="product-swiper__slide swiper-slide" data-slide="{{ forloop.index }}">
+              <img
+                src="{{ product_image | img_url: 'master' }}"
+                alt="{{ product.title }}"
+                width="237"
+                height="262"
+              >
+            </div>
+          {% endfor %}
         </div>
-        <div class="product-swiper product-swiper--main swiper">
-          <div class="swiper-wrapper">
-            {% for product_image in product_images %}
-              <div class="product-swiper__slide swiper-slide" data-slide="{{ forloop.index }}">
-                <img
-                  src="{{ product_image | img_url: 'master' }}"
-                  alt="{{ product.title }}"
-                  width="748"
-                  height="610"
-                >
-              </div>
-            {% endfor %}
-          </div>
+        <button class="slider-controller slider-controller__next-button">
+          <span class="svg-wrapper">
+            {{ 'icon-down-arrow.svg' | inline_asset_content }}
+          </span>
+        </button>
+      </div>
+      <div class="product-swiper product-swiper--main swiper">
+        <div class="swiper-wrapper">
+          {% for product_image in product_images %}
+            <div class="product-swiper__slide swiper-slide" data-slide="{{ forloop.index }}">
+              <img
+                src="{{ product_image | img_url: 'master' }}"
+                alt="{{ product.title }}"
+                width="748"
+                height="610"
+              >
+            </div>
+          {% endfor %}
+        </div>
 
-          <div class="swiper-pagination"></div>
-          <div class="slider-controller slider-controller__prev-button">
-            <span class="svg-wrapper">
-              {{ 'product-slider-section-prev.svg' | inline_asset_content }}
-            </span>
-          </div>
-          <div class="slider-controller slider-controller__next-button">
-            <span class="svg-wrapper">
-              {{ 'product-slider-section-next.svg' | inline_asset_content }}
-            </span>
-          </div>
+        <div class="swiper-pagination"></div>
+        <div class="slider-controller slider-controller__prev-button">
+          <span class="svg-wrapper">
+            {{ 'product-slider-section-prev.svg' | inline_asset_content }}
+          </span>
+        </div>
+        <div class="slider-controller slider-controller__next-button">
+          <span class="svg-wrapper">
+            {{ 'product-slider-section-next.svg' | inline_asset_content }}
+          </span>
         </div>
       </div>
-    {% when 'stacked' %}
-      <div class="product-media-grid">
-        {% for product_image in product_images %}
-          {% if forloop.index == 1 %}
-            {% assign grid_type = 'full' %}
-          {% else %}
+    </div>
+  {% else %}
+    <div class="product-media-grid product-media-grid--{{gallery_layout}}">
+      {% for product_image in product_images %}
+        {% case gallery_layout %}
+          {% when 'stacked' %}
+            {% if forloop.index == 1 %}
+              {% assign grid_type = 'full' %}
+            {% else %}
+              {% assign grid_type = 'double' %}
+            {% endif %}
+          {% when 'columns' %}
             {% assign grid_type = 'double' %}
-          {% endif %}
-          <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            {% case image_zoom %}
-              {% when 'open_lightbox' %}
-                <a
-                  href="{{ product_image | img_url: 'master' }}"
-                  data-gallery="product_gallery"
-                  data-toggle="lightbox"
-                >
-                  <img
-                    src="{{ product_image | img_url: 'master' }}"
-                    alt="{{ product.title }}"
-                    width="237"
-                    height="262"
-                  >
-                </a>
-                <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
-                  {{ 'icon-zoom.svg' | inline_asset_content }}
-                </span>
-              {% when 'no_zoom' %}
+          {% when 'thumbnails' %}
+            {% if forloop.index == 1 %}
+              {% assign grid_type = 'full' %}
+            {% else %}
+              {% assign grid_type = 'thumbnail' %}
+            {% endif %}
+        {% endcase %}
+        <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
+          {% case image_zoom %}
+            {% when 'open_lightbox' %}
+              <a
+                href="{{ product_image | img_url: 'master' }}"
+                data-gallery="product_gallery"
+                data-toggle="lightbox"
+              >
                 <img
                   src="{{ product_image | img_url: 'master' }}"
                   alt="{{ product.title }}"
                   width="237"
                   height="262"
                 >
-            {% endcase %}
-          </div>
-        {% endfor %}
-      </div>
-    {% when 'columns' %}
-      <div class="product-media-grid">
-        {% for product_image in product_images %}
-          {% assign grid_type = 'double' %}
-          <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            {% case image_zoom %}
-              {% when 'open_lightbox' %}
-                <a
-                  href="{{ product_image | img_url: 'master' }}"
-                  data-gallery="product_gallery"
-                  data-toggle="lightbox"
-                >
-                  <img
-                    src="{{ product_image | img_url: 'master' }}"
-                    alt="{{ product.title }}"
-                    width="237"
-                    height="262"
-                  >
-                </a>
-                <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
-                  {{ 'icon-zoom.svg' | inline_asset_content }}
-                </span>
-              {% when 'no_zoom' %}
-                <img
-                  src="{{ product_image | img_url: 'master' }}"
-                  alt="{{ product.title }}"
-                  width="237"
-                  height="262"
-                >
-            {% endcase %}
-          </div>
-        {% endfor %}
-      </div>
-    {% when 'thumbnails' %}
-      <div class="product-media-grid product-media-grid--thumbnails">
-        {% for product_image in product_images %}
-          {% if forloop.index == 1 %}
-            {% assign grid_type = 'full' %}
-          {% else %}
-            {% assign grid_type = 'thumbnail' %}
-          {% endif %}
-          <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            {% case image_zoom %}
-              {% when 'open_lightbox' %}
-                <a
-                  href="{{ product_image | img_url: 'master' }}"
-                  data-gallery="product_gallery"
-                  data-toggle="lightbox"
-                >
-                  <img
-                    src="{{ product_image | img_url: 'master' }}"
-                    alt="{{ product.title }}"
-                    width="237"
-                    height="262"
-                  >
-                </a>
-                <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
-                  {{ 'icon-zoom.svg' | inline_asset_content }}
-                </span>
-              {% when 'no_zoom' %}
-                <img
-                  src="{{ product_image | img_url: 'master' }}"
-                  alt="{{ product.title }}"
-                  width="237"
-                  height="262"
-                >
-            {% endcase %}
-          </div>
-        {% endfor %}
-      </div>
-  {% endcase %}
+              </a>
+              <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
+                {{ 'icon-zoom.svg' | inline_asset_content }}
+              </span>
+            {% when 'no_zoom' %}
+              <img
+                src="{{ product_image | img_url: 'master' }}"
+                alt="{{ product.title }}"
+                width="237"
+                height="262"
+              >
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
 </media-gallery>
