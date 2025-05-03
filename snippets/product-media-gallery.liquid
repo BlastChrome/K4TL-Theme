@@ -60,17 +60,31 @@
             {% assign grid_type = 'double' %}
           {% endif %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <a href="#">
-              <img
-                src="{{ product_image | img_url: 'master' }}"
-                alt="{{ product.title }}"
-                width="237"
-                height="262"
-              >
-            </a>
-            <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
-              {{ 'icon-zoom.svg' | inline_asset_content }}
-            </span>
+            {% case image_zoom %}
+              {% when 'open_lightbox' %}
+                <a
+                  href="{{ product_image | img_url: 'master' }}"
+                  data-gallery="product_gallery"
+                  data-toggle="lightbox"
+                >
+                  <img
+                    src="{{ product_image | img_url: 'master' }}"
+                    alt="{{ product.title }}"
+                    width="237"
+                    height="262"
+                  >
+                </a>
+                <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
+                  {{ 'icon-zoom.svg' | inline_asset_content }}
+                </span>
+              {% when 'no_zoom' %}
+                <img
+                  src="{{ product_image | img_url: 'master' }}"
+                  alt="{{ product.title }}"
+                  width="237"
+                  height="262"
+                >
+            {% endcase %}
           </div>
         {% endfor %}
       </div>
@@ -79,17 +93,31 @@
         {% for product_image in product_images %}
           {% assign grid_type = 'double' %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <a href="#">
-              <img
-                src="{{ product_image | img_url: 'master' }}"
-                alt="{{ product.title }}"
-                width="237"
-                height="262"
-              >
-            </a>
-            <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
-              {{ 'icon-zoom.svg' | inline_asset_content }}
-            </span>
+            {% case image_zoom %}
+              {% when 'open_lightbox' %}
+                <a
+                  href="{{ product_image | img_url: 'master' }}"
+                  data-gallery="product_gallery"
+                  data-toggle="lightbox"
+                >
+                  <img
+                    src="{{ product_image | img_url: 'master' }}"
+                    alt="{{ product.title }}"
+                    width="237"
+                    height="262"
+                  >
+                </a>
+                <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
+                  {{ 'icon-zoom.svg' | inline_asset_content }}
+                </span>
+              {% when 'no_zoom' %}
+                <img
+                  src="{{ product_image | img_url: 'master' }}"
+                  alt="{{ product.title }}"
+                  width="237"
+                  height="262"
+                >
+            {% endcase %}
           </div>
         {% endfor %}
       </div>
@@ -102,17 +130,31 @@
             {% assign grid_type = 'thumbnail' %}
           {% endif %}
           <div class="product-media-grid-img product-media-grid-img--{{ grid_type }}" data-slide="{{ forloop.index }}">
-            <a href="#">
-              <img
-                src="{{ product_image | img_url: 'master' }}"
-                alt="{{ product.title }}"
-                width="237"
-                height="262"
-              >
-            </a>
-            <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
-              {{ 'icon-zoom.svg' | inline_asset_content }}
-            </span>
+            {% case image_zoom %}
+              {% when 'open_lightbox' %}
+                <a
+                  href="{{ product_image | img_url: 'master' }}"
+                  data-gallery="product_gallery"
+                  data-toggle="lightbox"
+                >
+                  <img
+                    src="{{ product_image | img_url: 'master' }}"
+                    alt="{{ product.title }}"
+                    width="237"
+                    height="262"
+                  >
+                </a>
+                <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
+                  {{ 'icon-zoom.svg' | inline_asset_content }}
+                </span>
+              {% when 'no_zoom' %}
+                <img
+                  src="{{ product_image | img_url: 'master' }}"
+                  alt="{{ product.title }}"
+                  width="237"
+                  height="262"
+                >
+            {% endcase %}
           </div>
         {% endfor %}
       </div>

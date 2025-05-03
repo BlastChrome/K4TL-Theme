@@ -48,8 +48,9 @@
       <div class="row flex-column {{ section.settings.media_position }}">
         <div class="col-12 {{desktop_media_gallery_width}}">
           {% render 'product-media-gallery',
-            gallery_layout: section.settings.gallery_layout,
             product_images: variant_images,
+            gallery_layout: section.settings.gallery_layout,
+            image_zoom: section.settings.image_zoom,
             desktop_thumbnail_carousel_position_class: section.settings.desktop_thumbnail_carousel_position
           %}
         </div>
