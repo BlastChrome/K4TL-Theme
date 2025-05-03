@@ -87,6 +87,23 @@
               <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
                 {{ 'icon-zoom.svg' | inline_asset_content }}
               </span>
+            {% when 'click_zoom' %}
+              <img
+                src="{{ product_image | img_url: 'master' }}"
+                alt="{{ product.title }}"
+                width="237"
+                height="262"
+                {% if forloop.index == 1 %}
+                  id="zoom-img"
+                {% endif %}
+              >
+
+              <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
+                {{ 'icon-zoom.svg' | inline_asset_content }}
+              </span>
+              {% if forloop.index == 1 %}
+                <span id="myresult" class="img-zoom-result"></span>
+              {% endif %}
             {% when 'no_zoom' %}
               <img
                 src="{{ product_image | img_url: 'master' }}"
