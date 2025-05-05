@@ -12,7 +12,7 @@
   }
 {%- endstyle -%}
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
-{{ 'image-zoom.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-media-gallery.js' | asset_url }}" defer></script>
 
 <section
   class="main-product-wrapper section-{{ section.id }} section-{{ section.id }}-padding"
@@ -95,7 +95,7 @@
     </div>
   </div>
   <script src="{{ 'swiper-bundle.min.js' | asset_url }}" async></script>
-  <script src="{{ 'image-zoom.js' | asset_url }}" async></script>
+  {% comment %} <script src="{{ 'image-zoom.js' | asset_url }}" async></script> {% endcomment %}
   <script>
     function updateSwiperHeightOnImagesLoad(swiperEl, swiperInstance) {
       const images = swiperEl.querySelectorAll('img');
@@ -121,6 +121,8 @@
     }
 
     function initProductMediaSwipers() {
+      const hasMainSwiper = document.querySelector('.product-swiper--main') ? true : false;
+      if (!hasMainSwiper) return;
       const wrapper = document.querySelector('.product-swiper--support');
       const thumbnailPosition = wrapper?.dataset.thumbnailPosition || 'left';
       // Set Swiper direction based on the setting
@@ -168,7 +170,10 @@
       updateSwiperHeightOnImagesLoad(document.querySelector('.product-swiper--main'), mainSwiper);
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    function initImageZoom() {
+      const hasZoomImg = document.getElementById('zoom-img') ? true : false;
+      if (!hasZoomImg) return;
+
       const zoomImg = document.getElementById('zoom-img');
       let zoomInstance = null;
 
@@ -181,17 +186,17 @@
           zoomInstance = imageZoom(imgID, 'myresult');
         }
       });
+    }
 
+    document.addEventListener('DOMContentLoaded', function () {
+      {% comment %} initImageZoom(); {% endcomment %}
       initProductMediaSwipers();
     });
 
     document.addEventListener('shopify:section:load', function () {
+      {% comment %} initImageZoom(); {% endcomment %}
+
       initProductMediaSwipers();
-      const zoomImg = document.getElementById('zoom-img');
-      zoomImg.addEventListener('click', (e) => {
-        const imgID = e.target.id;
-        imageZoom(imgID, 'myresult');
-      });
     });
   </script>
 </section>
@@ -352,6 +357,7 @@
       "label": "Image zoom",
       "type": "select",
       "id": "image_zoom",
+      "info": "zoom options unavailable when layout is set to Thumbnail Slider",
       "options": [
         {
           "value": "no_zoom",

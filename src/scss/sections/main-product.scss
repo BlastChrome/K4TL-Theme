@@ -133,6 +133,10 @@
                 img {
                     width: 100%;
                     height: auto;
+
+                    &.active {
+                        border: 2px solid var(--clr-red);
+                    }
                 }
 
                 .svg-wrapper {
@@ -417,7 +421,7 @@
     .product-options-group {
         &--sticky {
             position: sticky;
-            top: 18rem;
+            top: 15rem;
         }
     }
 

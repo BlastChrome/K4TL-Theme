@@ -1,0 +1,24 @@
+.img-zoom-container {
+    position: relative;
+}
+
+.img-zoom-lens {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    /*set the size of the lens:*/
+    width: 45%;
+    height: 45%;
+    pointer-events: none;
+}
+
+.img-zoom-result {
+    border: 1px solid #d4d4d4;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    pointer-events: none;
+}
