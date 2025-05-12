@@ -354,6 +354,26 @@
       "default": "stacked"
     },
     {
+      "type": "select",
+      "id": "mobile_thumbnails",
+      "options": [
+        {
+          "value": "columns",
+          "label": "2 columns"
+        },
+        {
+          "value": "show",
+          "label": "Show Thumbnails"
+        },
+        {
+          "value": "hide",
+          "label": "Hide Thumbnails"
+        }
+      ],
+      "default": "hide",
+      "label": "Mobile Layout"
+    },
+    {
       "label": "Image zoom",
       "type": "select",
       "id": "image_zoom",
@@ -372,8 +392,9 @@
           "label": "Click and zoom"
         }
       ],
-      "default": "no_zoom"
+      "default": "click_zoom"
     },
+
     {
       "type": "checkbox",
       "id": "enable_sticky_info",

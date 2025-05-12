@@ -9,7 +9,8 @@
         "desktop_media_width": "medium",
         "desktop_thumbnail_carousel_position": "bottom",
         "gallery_layout": "columns",
-        "image_zoom": "no_zoom",
+        "image_zoom": "click_zoom",
+        "mobile_thumbnails": "columns",
         "enable_sticky_info": true
       },
       "blocks": {
