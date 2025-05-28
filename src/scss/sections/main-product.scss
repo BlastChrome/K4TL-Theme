@@ -133,10 +133,20 @@
                 img {
                     width: 100%;
                     height: auto;
+                    border: 2px solid transparent;
 
                     &.active {
                         border: 2px solid var(--clr-red);
                     }
+
+                    &.zoom-img {
+                        cursor: zoom-in;
+                    }
+
+                    &.zoom-img.active {
+                        cursor: zoom-out;
+                    }
+
                 }
 
                 .svg-wrapper {

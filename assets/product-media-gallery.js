@@ -13,36 +13,29 @@ class MediaGallery extends HTMLElement {
       this.handleImgClick(el);
     }
   }
+
   handleImgClick(clickedImg) {
-    // get the featured img src
     const images = [...this.querySelectorAll('img')];
-    const featuredImg = images.filter((img) => img.id == 'zoom-img')[0];
+    // clear the active class from the other images
+    images.forEach((img) => img.classList.remove('active'));
 
-    // swap the clicked img with the featured image
-    if (featuredImg.src != clickedImg.src) {
-      featuredImg.src = clickedImg.src;
-
-      // clear the active class from the other images
-      images.forEach((img) => img.classList.remove('active'));
-
-      // apply the active class to the clicked img
-      clickedImg.classList.add('active');
-    } else {
-      debugger;
+    // check if the is a zoom-image
+    const isZoomImage = clickedImg.parentElement.hasAttribute('data-zoom') ? true : false;
+    if (isZoomImage) {
       let zoomInstance = null;
-      const featuredID = featuredImg.id;
-      if (!zoomInstance) {
-        zoomInstance = this.handleImageZoom(featuredID, 'myresult');
+      if (!clickedImg.classList.contains('active')) {
+        const resultEl = clickedImg.parentElement.querySelector('#my-result');
+        zoomInstance = this.handleImageZoom(clickedImg, resultEl);
+        // apply the active class to the clicked img
+        clickedImg.classList.add('active');
       } else {
         zoomInstance.disable();
-        zoomInstance = null;
+        clickedImg.classList.remove('active');
       }
     }
   }
 
-  handleImageZoom(imgID, resultID) {
-    const img = document.getElementById(imgID);
-    const result = document.getElementById(resultID);
+  handleImageZoom(img, result) {
     const lens = document.createElement('div');
 
     lens.classList.add('img-zoom-lens');
