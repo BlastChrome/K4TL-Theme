@@ -27,12 +27,16 @@
         <div class="swiper-wrapper">
           {% for product_image in product_images %}
             <div class="product-swiper__slide swiper-slide" data-slide="{{ forloop.index }}">
-              <img
-                src="{{ product_image | img_url: 'master' }}"
-                alt="{{ product.title }}"
-                width="748"
-                height="610"
-              >
+              {{
+                product_image
+                | image_url: width: 748, height: 610
+                | image_tag:
+                  loading: 'lazy',
+                  alt: product.title,
+                  class: 'product-media-gallery__image',
+                  widths: '165, 360, 533, 720, 940, 1066',
+                  sizes: '(min-width: 1200px) 748px, (min-width: 990px) calc(65.0vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)'
+              }}
             </div>
           {% endfor %}
         </div>
