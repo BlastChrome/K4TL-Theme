@@ -10,3 +10,7 @@ Thumbs.db
 node_modules
 
 .shopify
+
+# build files
+assets/theme.css
+assets/theme.css.map

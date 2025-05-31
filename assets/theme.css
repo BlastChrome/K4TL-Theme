@@ -6983,6 +6983,11 @@ button.button--link span {
   background-color: var(--clr-grey);
   padding: 6px 12px;
 }
+@media only screen and (max-width: 479px) {
+  .breadcrumbs-wrapper {
+    display: none;
+  }
+}
 .breadcrumbs-wrapper .breadcrumbs {
   display: flex;
   align-items: center;
@@ -6997,11 +7002,6 @@ button.button--link span {
   .breadcrumbs-wrapper .breadcrumbs {
     flex-wrap: wrap;
     font-size: 12px;
-  }
-}
-@media only screen and (max-width: 479px) {
-  .breadcrumbs-wrapper .breadcrumbs {
-    display: none;
   }
 }
 .breadcrumbs-wrapper .breadcrumbs li a {
@@ -9050,11 +9050,8 @@ button.button--link span {
 **/
 @media only screen and (min-width: 1200px) {
   .main-product-wrapper .container {
-    max-width: 1190px;
+    max-width: 1250px;
   }
-}
-.main-product-wrapper .product {
-  padding-top: 40px;
 }
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product {
@@ -9071,7 +9068,7 @@ button.button--link span {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 25px;
+  gap: 6px;
   overflow: hidden;
   height: 826px;
 }
@@ -9266,10 +9263,10 @@ button.button--link span {
   }
 }
 .main-product-wrapper .product .product-swiper--support {
-  min-width: 237px;
+  min-width: 100px;
 }
 .main-product-wrapper .product .product-swiper--support .swiper-slide {
-  max-height: 172px;
+  max-height: 100px;
   opacity: 0.25;
   transition: opacity 0.125s ease-in-out;
 }
@@ -9827,58 +9824,6 @@ button.button--link span {
   margin-right: 0;
   border-radius: 0;
   margin-left: 30px;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
-}
-.img-zoom-container {
-  position: relative;
-}
-
-.img-zoom-lens {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  /*set the size of the lens:*/
-  width: 45%;
-  height: 45%;
-  pointer-events: none;
-}
-
-.img-zoom-result {
-  border: 1px solid #d4d4d4;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  left: 0%;
-  pointer-events: none;
 }
 /**
 * Convert PX to EM
@@ -10782,6 +10727,11 @@ button.button--link span {
   background-color: var(--clr-grey);
   padding: 6px 12px;
 }
+@media only screen and (max-width: 479px) {
+  .breadcrumbs-wrapper {
+    display: none;
+  }
+}
 .breadcrumbs-wrapper .breadcrumbs {
   display: flex;
   align-items: center;
@@ -10796,11 +10746,6 @@ button.button--link span {
   .breadcrumbs-wrapper .breadcrumbs {
     flex-wrap: wrap;
     font-size: 12px;
-  }
-}
-@media only screen and (max-width: 479px) {
-  .breadcrumbs-wrapper .breadcrumbs {
-    display: none;
   }
 }
 .breadcrumbs-wrapper .breadcrumbs li a {
@@ -12539,5 +12484,57 @@ button.button--link span {
 }
 .varient-options .button.button--outline.active:after {
   transform: translate(0);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
+}
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 45%;
+  height: 45%;
+  pointer-events: none;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  pointer-events: none;
 }
 /*# sourceMappingURL=theme.css.map */
