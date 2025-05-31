@@ -6594,12 +6594,11 @@ button.button--link span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 50px;
+  margin: 15px 0;
 }
 @media only screen and (max-width: 1439px) {
   .quantity-wrapper {
     flex-direction: column;
-    margin-top: 40px;
   }
 }
 .quantity-wrapper .quantity {
@@ -6665,6 +6664,7 @@ button.button--link span {
 }
 .quantity-wrapper .stock p.out {
   opacity: 0.5;
+  margin: 0;
 }
 .quantity-wrapper .stock .sep {
   width: 1px;
@@ -6748,11 +6748,10 @@ button.button--link span {
 * Media queries
 **/
 .header__top-bar {
-  padding: 12px 0;
+  padding: 6px 0;
 }
 @media only screen and (max-width: 767px) {
   .header__top-bar {
-    padding: 12px 0;
     display: none;
   }
 }
@@ -6833,7 +6832,7 @@ button.button--link span {
 * Media queries
 **/
 .header__logo-bar {
-  padding: 12px 0;
+  padding: 6px 0;
 }
 .header__logo-bar .row {
   align-items: center;
@@ -6915,7 +6914,7 @@ button.button--link span {
 }
 .header__logo-bar .search input {
   width: 100%;
-  max-width: 236px;
+  max-width: none;
   border: none;
 }
 .header__logo-bar .search button {
@@ -8108,2666 +8107,6 @@ button.button--link span {
   .main-collection-title h1 {
     font-size: var(--theme-font-h2-mob-2-1);
   }
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.arrow-button {
-  width: 100%;
-  max-width: 200px;
-  min-height: 52px;
-  height: auto;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.arrow-button:hover .arrow-button__text {
-  color: var(--clr-red);
-}
-.arrow-button:hover .arrow-button__arrow {
-  transform: translateX(10px);
-}
-.arrow-button__text {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-btn-tab-1);
-  color: var(--clr-smoke-2);
-  line-height: 32px;
-  margin: 0;
-  transition: all 0.6s ease-in-out;
-}
-.arrow-button__arrow {
-  opacity: 1;
-  transition: all 0.6s ease-in-out;
-  position: absolute;
-  right: 0;
-  z-index: 1;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.banner-card {
-  width: 100%;
-  height: auto;
-  background-color: var(--clr-grey);
-  padding: 40px;
-  margin-bottom: 20px;
-  position: relative;
-}
-@media only screen and (min-width: 992px) {
-  .banner-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .banner-card {
-    min-height: 358px;
-    align-items: flex-start;
-  }
-}
-.banner-card:hover .banner-card__img img {
-  transform: scale(1.05);
-}
-.banner-card:hover .banner-card__button {
-  color: var(--clr-red);
-}
-.banner-card:hover .banner-card__text-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-.banner-card__wrapper-info {
-  text-align: center;
-}
-@media only screen and (min-width: 992px) {
-  .banner-card__wrapper-info {
-    text-align: left;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .banner-card__wrapper-info {
-    max-width: 283px;
-    margin-top: 5px;
-  }
-}
-.banner-card__subtitle {
-  letter-spacing: 4.3px;
-  text-transform: uppercase;
-}
-@media only screen and (min-width: 1440px) {
-  .banner-card__subtitle {
-    margin-bottom: 19px;
-  }
-}
-.banner-card__title {
-  margin-bottom: 10px;
-}
-@media only screen and (min-width: 1440px) {
-  .banner-card__title {
-    font-family: var(--font-family-1);
-    font-size: var(--theme-font-h2-mob-2-1);
-    color: var(--clr-smoke-2);
-    line-height: 44px;
-  }
-}
-.banner-card__text {
-  margin-bottom: 10px;
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-3);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-}
-@media only screen and (min-width: 1440px) {
-  .banner-card__text {
-    margin-bottom: 51px;
-  }
-}
-.banner-card__text-arrow {
-  opacity: 0;
-  transition: all 0.6s ease-in-out;
-  transform: translateX(-100%);
-}
-.banner-card__button {
-  margin: 0 auto 40px;
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-btn-tab-1);
-  color: var(--clr-smoke-2);
-  line-height: normal;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: none;
-  width: -moz-fit-content;
-  width: fit-content;
-  position: relative;
-  flex-direction: column;
-}
-@media only screen and (min-width: 992px) {
-  .banner-card__button {
-    margin-left: 0;
-    min-width: 216px;
-    flex-direction: row;
-  }
-}
-.banner-card__img {
-  position: relative;
-}
-.banner-card__img img {
-  width: 100%;
-  height: auto;
-  max-width: 448px;
-  margin: 0 auto;
-  z-index: 2;
-  position: relative;
-  transition: all 0.6s ease-in-out;
-  cursor: pointer;
-}
-.banner-card__img:hover img {
-  transform: scale(1.05);
-}
-.banner-card__img .bg-circle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-.banner-card__img .bg-circle svg {
-  width: 100%;
-  height: 100%;
-}
-@media only screen and (min-width: 1440px) {
-  .banner-card--half {
-    min-height: 430px;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 69px 23px 33px 57px;
-  }
-}
-.banner-card--secondary {
-  background-color: var(--clr-smoke-2);
-}
-.banner-card--secondary:hover .banner-card__button {
-  color: var(--clr-yellow);
-}
-.banner-card--secondary .banner-card__title,
-.banner-card--secondary .banner-card__text,
-.banner-card--secondary .banner-card__button {
-  color: var(--clr-white);
-}
-.banner-card--secondary .banner-card__subtitle {
-  color: var(--clr-yellow);
-}
-.banner-card--secondary .banner-card__text-arrow svg {
-  fill: var(--clr-yellow);
-}
-.banner-card--secondary .bg-circle circle {
-  fill: var(--clr-yellow);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-a.button,
-button.button {
-  display: block;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 20px 38px;
-  text-transform: uppercase;
-  overflow: hidden;
-  position: relative;
-  max-width: 240px;
-  display: flex;
-  justify-content: center;
-  font-family: var(--font-family-2-1);
-  font-size: var(--theme-font-2);
-  color: var(--clr-white);
-  line-height: 24px;
-}
-a.button:after,
-button.button:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: var(--clr-white);
-  transform: translateX(-105%);
-  transition: transform 0.4s ease-in-out;
-}
-a.button:hover:after,
-button.button:hover:after {
-  transform: translateX(0);
-}
-a.button span,
-button.button span {
-  transition: all 0.3s;
-  position: relative;
-  z-index: 1;
-}
-a.button *,
-button.button * {
-  pointer-events: none;
-}
-a.button--primary, a.button--solid,
-button.button--primary,
-button.button--solid {
-  border: 2px solid var(--clr-red);
-  background-color: var(--clr-red);
-}
-a.button--primary:hover, a.button--solid:hover,
-button.button--primary:hover,
-button.button--solid:hover {
-  color: var(--clr-red);
-}
-a.button--secondary,
-button.button--secondary {
-  border: 2px solid var(--clr-yellow);
-  color: var(--clr-black);
-  background-color: var(--clr-yellow);
-}
-a.button--secondary:hover,
-button.button--secondary:hover {
-  color: var(--clr-yellow);
-}
-a.button--black,
-button.button--black {
-  border: 2px solid var(--clr-smoke-2);
-  color: var(--clr-white);
-  background-color: var(--clr-smoke-2);
-}
-a.button--black:hover,
-button.button--black:hover {
-  color: var(--clr-smoke-2);
-}
-a.button--outline span, a.button--link span,
-button.button--outline span,
-button.button--link span {
-  color: var(--clr-red);
-}
-a.button--outline,
-button.button--outline {
-  background: transparent;
-  border: 2px solid var(--clr-red);
-}
-a.button--outline:after,
-button.button--outline:after {
-  background: var(--clr-red);
-}
-a.button--outline:hover span,
-button.button--outline:hover span {
-  color: var(--clr-white);
-}
-a.button--outline.black,
-button.button--outline.black {
-  border: 2px solid var(--clr-smoke-2);
-}
-a.button--outline.black span,
-button.button--outline.black span {
-  color: var(--clr-smoke-2);
-}
-a.button--outline.black:after,
-button.button--outline.black:after {
-  background: var(--clr-smoke-2);
-}
-a.button--outline.black:hover span,
-button.button--outline.black:hover span {
-  color: var(--color-white);
-}
-a.button--link,
-button.button--link {
-  background-color: none;
-  border: none;
-}
-a.button--link span,
-button.button--link span {
-  text-decoration: underline;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.filters-container .filter .horizontal-line {
-  margin: 20px 0;
-}
-.filters-container .filter h3 {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-btn-mob-2);
-  color: var(--clr-smoke-2);
-  line-height: 32px;
-  letter-spacing: normal;
-  margin-bottom: 10px;
-}
-.filters-container .filter .filter-group ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.filters-container .filter .filter-group li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-.filters-container .filter .filter-group .checkboxWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-}
-.filters-container .filter .filter-group .checkboxWrapper label {
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-h3-mob-4);
-  color: var(--clr-smoke-2);
-  line-height: normal;
-  letter-spacing: normal;
-}
-.filters-container .filter .filter-group .checkboxWrapper input[type=checkbox] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  opacity: 0;
-  width: 16px;
-  height: 16px;
-  z-index: 1;
-  border: 1px solid var(--clr-smoke-1);
-}
-.filters-container .filter .filter-group .checkboxWrapper .checkmark {
-  position: relative;
-  border: 1px solid var(--clr-smoke-1);
-  background-color: transparent;
-  pointer-events: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-  aspect-ratio: 1/1;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 0;
-}
-.filters-container .filter .filter-group .checkboxWrapper .checkmark svg {
-  opacity: 0;
-}
-.filters-container .filter .filter-group .checkboxWrapper:hover > input[type=checkbox] ~ .checkmark {
-  background-color: #ccc;
-  border: 1px solid #ccc;
-}
-.filters-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ .checkmark {
-  background-color: var(--clr-red);
-  border: 1px solid var(--clr-red);
-}
-.filters-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ .checkmark svg {
-  opacity: 1;
-}
-.filters-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ label {
-  font-family: var(--font-family-2-1);
-}
-.filters-container .filter .filter-group__buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 11px;
-  width: 100%;
-}
-.filters-container .filter .filter-group__buttons .button.button--outline {
-  padding: 5px 0px;
-  width: auto;
-  border: 2px solid rgba(48, 48, 48, 0.2);
-}
-.filters-container .filter .filter-group__buttons .button.button--outline span {
-  color: var(--clr-smoke-2);
-}
-.filters-container .filter .filter-group__buttons .button.button--outline:hover span, .filters-container .filter .filter-group__buttons .button.button--outline.active span {
-  color: var(--clr-white);
-}
-.filters-container .filter .filter-group__buttons .button.button--outline:after {
-  background: var(--clr-smoke-2);
-}
-.filters-container .filter .filter-group__buttons .button.button--outline.active:after {
-  transform: translate(0);
-}
-.filters-container .filter .filter-group .range__slider {
-  position: relative;
-  margin: 25px 0;
-  min-height: 2px;
-  background-color: rgba(48, 48, 48, 0.2);
-}
-.filters-container .filter .filter-group .range__track {
-  position: absolute;
-  background-color: var(--clr-red);
-  height: 2px;
-  z-index: 0;
-}
-.filters-container .filter .filter-group .range__slide-input {
-  position: absolute;
-  width: 100%;
-  background: none;
-  pointer-events: none;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.filters-container .filter .filter-group .range__slide-input[type=range]::-webkit-slider-thumb {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  border: 3px solid var(--clr-red);
-  background: var(--clr-red);
-  pointer-events: auto;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-}
-.filters-container .filter .filter-group .range__slide-input[type=range]::-moz-range-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  border: 3px solid var(--clr-red);
-  background: var(--clr-red);
-  pointer-events: auto;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-}
-.filters-container .filter .filter-group .range__number {
-  display: flex;
-  text-align: left;
-  gap: 11px;
-}
-@media only screen and (max-width: 1439px) {
-  .filters-container .filter .filter-group .range__number {
-    flex-direction: coluin;
-    gap: 5px;
-  }
-}
-.filters-container .filter .filter-group .range__number label {
-  margin-bottom: 8px;
-  display: block;
-}
-.filters-container .filter .filter-group .range__number input {
-  padding: 12px 5px 12px 25px;
-  width: 100%;
-  border: 2px solid rgba(48, 48, 48, 0.2);
-  font-family: var(--font-family-2-2);
-  font-size: var(--theme-font-btn-mob-1);
-  color: var(--clr-black);
-  line-height: 24px;
-  letter-spacing: normal;
-}
-.filters-container .filter .filter-clear {
-  margin-bottom: 32px;
-}
-.filters-container .filter .filter-clear button.clear-btn {
-  font-family: var(--font-family-2-2);
-  font-size: var(--theme-font-h3-mob-4);
-  color: var(--clr-smoke-2);
-  line-height: 24px;
-  letter-spacing: normal;
-  text-transform: uppercase;
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  padding-bottom: 5px;
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 5px;
-}
-@media only screen and (max-width: 1439px) {
-  .filters-container .filter .filter-clear button.clear-btn {
-    font-size: 11px;
-    text-align: left;
-    gap: 5px;
-  }
-}
-.filters-container .filter .filter-clear button.clear-btn:after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background-color: var(--clr-smoke-2);
-  transition: all 0.3s ease-in-out;
-  bottom: 0;
-  left: 0;
-}
-.filters-container .filter .filter-clear button.clear-btn:hover:after, .filters-container .filter .filter-clear button.clear-btn.active:after {
-  width: 100%;
-}
-.filters-container .filter .advertisement {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 1258px;
-  margin-bottom: 20px;
-}
-@media only screen and (max-width: 1439px) {
-  .filters-container .filter .advertisement {
-    height: 400px;
-  }
-}
-@media only screen and (max-width: 991px) {
-  .filters-container .filter .advertisement {
-    height: 300px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .filters-container .filter .advertisement {
-    height: 600px;
-  }
-}
-.filters-container .filter .advertisement:after {
-  position: absolute;
-  content: "";
-  background-color: rgba(0, 0, 0, 0.4117647059);
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  top: 0;
-}
-.filters-container .filter .advertisement .img {
-  position: absolute;
-  width: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-.filters-container .filter .advertisement .img img {
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: center;
-  object-position: center;
-}
-.filters-container .filter .advertisement__text {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 48px;
-  width: 100%;
-}
-.filters-container .filter .advertisement h3 {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-h2-mob-2-1);
-  color: var(--clr-white);
-  line-height: 44px;
-  letter-spacing: normal;
-  margin-bottom: 24px;
-  text-align: center;
-}
-.filters-container #close-btn {
-  max-width: none;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 10px;
-  font-size: var(--theme-font-p-mob-5);
-}
-.filters-container .filter--drawer {
-  position: fixed;
-  top: 0;
-  display: none;
-  background-color: var(--clr-white);
-  height: 100%;
-  max-width: 300px;
-  width: 100%;
-  opacity: 1;
-  transition: transform 0.17s ease-in-out;
-  z-index: 9999;
-  border-top: 1px solid #ececec;
-  transform: translateX(-100%);
-  left: 0;
-}
-@media only screen and (max-width: 991px) {
-  .filters-container .filter--drawer {
-    display: block;
-  }
-  .filters-container .filter--drawer.active {
-    transform: translateX(0%);
-  }
-}
-.filters-container .filter--drawer .filter-clear {
-  margin-bottom: 10px;
-}
-.filters-container .filter--drawer h3 {
-  font-size: 1em;
-}
-.filters-container .filter--drawer .filter-group li {
-  margin-bottom: 10px;
-}
-.filters-container .filter-wrapper__content {
-  height: calc(100% - 120px);
-  padding: 12px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 20px;
-}
-.filters-container .filter-wrapper__content #close-btn {
-  padding: 20px;
-}
-.filters-container .filter-wrapper__footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-top: 1px solid var(--clr-black);
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
-  padding: 20px;
-  background: var(--clr-white);
-  z-index: 10000;
-}
-.filters-container .filter-wrapper__footer #close-btn {
-  padding: 10px;
-  justify-content: center;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.full-banner-card {
-  width: 100%;
-  height: auto;
-  background-color: var(--clr-grey);
-  padding: 40px 40px 0;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-}
-.full-banner-card .bg-rectangle {
-  position: absolute;
-  background-color: var(--clr-yellow);
-  width: 130%;
-  height: 300px;
-  z-index: 1;
-  right: 0;
-  bottom: 0;
-  clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
-}
-@media only screen and (min-width: 992px) {
-  .full-banner-card .bg-rectangle {
-    width: 100%;
-    height: 996px;
-    right: -600px;
-    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
-  }
-}
-@media only screen and (min-width: 992px) {
-  .full-banner-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .full-banner-card {
-    align-items: flex-start;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .full-banner-card {
-    justify-content: space-around;
-    align-items: center;
-  }
-}
-.full-banner-card:hover .full-banner-card__button {
-  color: var(--clr-red);
-}
-.full-banner-card:hover .full-banner-card__text-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-.full-banner-card__wrapper-info {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  overflow: hidden;
-}
-@media only screen and (min-width: 992px) {
-  .full-banner-card__wrapper-info {
-    text-align: left;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .full-banner-card__wrapper-info {
-    max-width: 513px;
-    margin-top: 5px;
-  }
-}
-.full-banner-card__subtitle {
-  letter-spacing: 4.3px;
-  text-transform: uppercase;
-  max-width: 400px;
-  margin: 0 auto;
-}
-@media only screen and (min-width: 1440px) {
-  .full-banner-card__subtitle {
-    margin: 0 auto 19px;
-  }
-}
-.full-banner-card__title {
-  margin-bottom: 10px;
-}
-@media only screen and (min-width: 1440px) {
-  .full-banner-card__title {
-    font-family: var(--font-family-1);
-    font-size: var(--theme-font-h1-mob-3);
-    color: var(--clr-smoke-2);
-    line-height: 62px;
-  }
-}
-.full-banner-card__text {
-  margin-bottom: 10px;
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-3);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-}
-@media only screen and (min-width: 1440px) {
-  .full-banner-card__text {
-    margin-bottom: 51px;
-  }
-}
-.full-banner-card__text-arrow {
-  opacity: 0;
-  transition: all 0.6s ease-in-out;
-  transform: translateX(-100%);
-}
-.full-banner-card__button {
-  margin: 0 auto 40px;
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-btn-tab-1);
-  color: var(--clr-smoke-2);
-  line-height: normal;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: none;
-  width: -moz-fit-content;
-  width: fit-content;
-  position: relative;
-  flex-direction: column;
-}
-@media only screen and (min-width: 992px) {
-  .full-banner-card__button {
-    margin-left: 0;
-    min-width: 216px;
-    flex-direction: row;
-  }
-}
-.full-banner-card__img {
-  position: relative;
-}
-.full-banner-card__img img {
-  width: 100%;
-  height: auto;
-  max-width: 712px;
-  margin: 0 auto;
-  z-index: 2;
-  position: relative;
-  transition: all 0.6s ease-in-out;
-  cursor: pointer;
-}
-.full-banner-card__img:hover img {
-  transform: scale(1.05);
-}
-.full-banner-card--secondary {
-  background-color: var(--clr-grey);
-}
-.full-banner-card--secondary:hover .full-banner-card__button {
-  color: var(--clr-red);
-}
-.full-banner-card--secondary .full-banner-card__title,
-.full-banner-card--secondary .full-banner-card__text,
-.full-banner-card--secondary .full-banner-card__button {
-  color: var(--clr-smoke-2);
-}
-.full-banner-card--secondary .full-banner-card__subtitle {
-  color: var(--clr-smoke-2);
-}
-.full-banner-card--secondary .full-banner-card__text-arrow svg {
-  fill: var(--clr-red);
-}
-.full-banner-card--secondary .bg-rectangle {
-  background-color: var(--clr-yellow);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.breadcrumbs-wrapper {
-  background-color: var(--clr-grey);
-  padding: 6px 12px;
-}
-.breadcrumbs-wrapper .breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 0 16px;
-  font-family: var(--font-family-2-2);
-  font-size: var(--theme-font-p-mob-1);
-  color: var(--clr-smoke-2);
-  line-height: normal;
-  letter-spacing: 0px;
-}
-@media only screen and (max-width: 767px) {
-  .breadcrumbs-wrapper .breadcrumbs {
-    flex-wrap: wrap;
-    font-size: 12px;
-  }
-}
-@media only screen and (max-width: 479px) {
-  .breadcrumbs-wrapper .breadcrumbs {
-    display: none;
-  }
-}
-.breadcrumbs-wrapper .breadcrumbs li a {
-  opacity: 0.5;
-  color: var(--clr-smoke-2);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease-in-out;
-}
-.breadcrumbs-wrapper .breadcrumbs li a:hover {
-  color: var(--clr-red);
-  opacity: 1;
-}
-.breadcrumbs-wrapper .breadcrumbs li a:hover svg path {
-  fill: var(--clr-red);
-}
-.breadcrumbs-wrapper .breadcrumbs li .svg-wrapper {
-  width: 100%;
-  max-width: 20px;
-}
-.breadcrumbs-wrapper .breadcrumbs li .svg-wrapper svg {
-  width: 100%;
-  height: auto;
-}
-.breadcrumbs-wrapper .breadcrumbs li .svg-wrapper svg path {
-  transition: all 0.3s ease-in-out;
-}
-.breadcrumbs-wrapper .breadcrumbs .sep {
-  width: 1px;
-  height: 32px;
-  background-color: var(--clr-smoke-2);
-  opacity: 0.5;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.header__logo-bar {
-  padding: 12px 0;
-}
-.header__logo-bar .row {
-  align-items: center;
-}
-.header__logo-bar .location,
-.header__logo-bar .settings {
-  display: flex;
-  align-items: center;
-}
-.header__logo-bar .logo {
-  margin: 0 auto;
-}
-@media only screen and (max-width: 767px) {
-  .header__logo-bar .logo {
-    margin: 0 auto 0 0;
-  }
-}
-.header__logo-bar .logo svg,
-.header__logo-bar .logo img {
-  width: 100%;
-  height: auto;
-}
-@media only screen and (max-width: 991px) {
-  .header__logo-bar .logo svg,
-  .header__logo-bar .logo img {
-    max-width: 80px;
-    display: block;
-    margin: 0 auto;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header__logo-bar .logo svg,
-  .header__logo-bar .logo img {
-    margin: 0;
-  }
-}
-.header__logo-bar .icon-group {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.header__logo-bar .icon-group .user {
-  display: flex;
-  align-items: center;
-  gap: 0 16px;
-}
-.header__logo-bar .icon-group .user__text {
-  font-family: var(--font-family-2-1);
-  font-size: var(--theme-font-p-mob-1);
-  color: var(--clr-smoke-2);
-  line-height: 24px;
-  text-transform: uppercase;
-  opacity: 0.75;
-  transition: all 0.5s ease-in-out;
-  margin: 0;
-}
-.header__logo-bar .icon-group .user svg path {
-  transition: all 0.5s ease-in-out;
-}
-.header__logo-bar .icon-group .user:hover .user__text {
-  color: var(--clr-red);
-  opacity: 1;
-}
-.header__logo-bar .icon-group .user:hover svg path {
-  fill: var(--clr-red);
-}
-.header__logo-bar .icon-group .cart__icon svg {
-  transition: all 0.3s ease-in-out;
-}
-.header__logo-bar .icon-group .cart:hover .cart__icon svg {
-  transform: scale(1.1);
-}
-.header__logo-bar .search:hover svg {
-  transform: scale(1.1);
-}
-.header__logo-bar .search form {
-  display: flex;
-  gap: 12px;
-}
-.header__logo-bar .search input {
-  width: 100%;
-  max-width: 236px;
-  border: none;
-}
-.header__logo-bar .search button {
-  background-color: transparent;
-  border: none;
-}
-.header__logo-bar .search svg {
-  transition: all 0.5s ease-in-out;
-}
-.header__logo-bar .hamburger {
-  width: 30px;
-  height: 20px;
-  position: relative;
-  margin: 0 0 0 auto;
-  transform: rotate(0);
-  transition: 0.5s ease-in-out;
-  cursor: pointer;
-}
-.header__logo-bar .hamburger span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: var(--clr-red);
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: 0.25s ease-in-out;
-}
-.header__logo-bar .hamburger span:nth-child(1) {
-  top: 0px;
-}
-.header__logo-bar .hamburger span:nth-child(2) {
-  top: 8px;
-}
-.header__logo-bar .hamburger span:nth-child(3) {
-  top: 16px;
-}
-.header__logo-bar .hamburger.open span:nth-child(1) {
-  top: 16px;
-  transform: rotate(135deg);
-}
-.header__logo-bar .hamburger.open span:nth-child(2) {
-  opacity: 0;
-  left: -60px;
-}
-.header__logo-bar .hamburger.open span:nth-child(3) {
-  top: 16px;
-  transform: rotate(-135deg);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.header__nav-bar {
-  display: flex;
-  background-color: var(--clr-smoke-2);
-  position: relative;
-  z-index: 1;
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar {
-    background-color: var(--clr-white);
-    position: absolute;
-    height: 100vh;
-    max-width: 65%;
-    width: 100%;
-    opacity: 1;
-    transition: all 0.3s ease-in-out;
-    z-index: 9999;
-    border-top: 1px solid #ececec;
-    transform: translate(100%);
-    right: 0;
-  }
-  .header__nav-bar:after {
-    content: "";
-    transition: all 0.3s ease-in-out;
-    position: absolute;
-    opacity: 0;
-    transform: translateX(-100%);
-    width: 100vw;
-    height: 100vh;
-    z-index: 9998;
-    background-color: rgba(0, 0, 0, 0.5);
-    pointer-events: none;
-  }
-  .header__nav-bar.open {
-    transform: translateX(0%);
-  }
-  .header__nav-bar.open::after {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-.header__nav-bar ul {
-  padding: 0;
-}
-.header__nav-bar .nav.nav--main-menu,
-.header__nav-bar .nav.nav--main-menu > li,
-.header__nav-bar .nav-phone {
-  display: flex;
-  align-items: stretch;
-}
-.header__nav-bar .nav.nav--main-menu,
-.header__nav-bar .nav-phone {
-  min-height: 50px;
-}
-@media only screen and (max-width: 991px) {
-  .header__nav-bar .nav.nav--main-menu,
-  .header__nav-bar .nav-phone {
-    min-height: 45px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu,
-  .header__nav-bar .nav-phone {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu li,
-  .header__nav-bar .nav.nav--main-menu a {
-    width: 100%;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu a {
-    justify-content: space-between;
-  }
-}
-.header__nav-bar .nav.nav--main-menu li a {
-  padding: 0 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  font-family: var(--font-family-2-1);
-  font-size: var(--theme-font-p-mob-1);
-  color: var(--clr-white);
-  line-height: 24px;
-  text-transform: capitalize;
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu li a {
-    color: var(--clr-smoke-2);
-    font-family: var(--font-family-2);
-  }
-}
-.header__nav-bar .nav.nav--main-menu li a .nav-arrow svg {
-  transform-origin: center;
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu li a .nav-arrow svg path {
-    fill: var(--clr-smoke-2);
-  }
-}
-.header__nav-bar .nav.nav--main-menu li.open > a > .nav-arrow > svg {
-  transform: rotate(-90deg);
-}
-.header__nav-bar .nav.nav--main-menu li:hover > a, .header__nav-bar .nav.nav--main-menu li.active > a {
-  background-color: var(--clr-red);
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu li:hover > a, .header__nav-bar .nav.nav--main-menu li.active > a {
-    background-color: transparent;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .header__nav-bar .nav.nav--main-menu li.has-submenu:hover > .submenu {
-    display: block;
-  }
-}
-.header__nav-bar .nav.nav--main-menu li.has-submenu.open > .submenu {
-  display: block;
-}
-.header__nav-bar .nav.nav--main-menu li.has-submenu .has-submenu:hover li a svg {
-  transform: rotate(-90deg);
-}
-@media only screen and (min-width: 768px) {
-  .header__nav-bar .nav.nav--main-menu li.has-submenu .has-submenu:hover > .submenu {
-    display: block;
-  }
-}
-.header__nav-bar li.has-submenu {
-  position: relative;
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar li.has-submenu {
-    flex-direction: column;
-  }
-}
-.header__nav-bar li.has-submenu a {
-  gap: 5px;
-}
-.header__nav-bar .nav.nav--main-menu .submenu {
-  display: none;
-  position: absolute;
-  width: -moz-fit-content;
-  width: fit-content;
-  min-width: 100%;
-  top: 100%;
-  list-style: none;
-  padding: 0;
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu .submenu {
-    position: inherit;
-    width: 100%;
-  }
-}
-.header__nav-bar .nav.nav--main-menu .submenu > li {
-  background-color: var(--clr-smoke-2);
-  padding: 5px 0;
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu .submenu > li {
-    background-color: transparent;
-  }
-}
-.header__nav-bar .nav.nav--main-menu .submenu > li:hover {
-  background-color: var(--clr-red);
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu .submenu > li:hover {
-    background-color: transparent;
-  }
-}
-.header__nav-bar .nav.nav--main-menu .submenu > li > a {
-  padding: 5px 5px 5px 15px;
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu .submenu > li > a {
-    padding: 5px 5px 5px 25px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu.submenu-depth-0 > li {
-    border-bottom: 1px solid #ececec;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu.submenu-depth-0 > li a {
-    padding: 15px 5px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu .submenu.submenu-depth-1 > li > a {
-    padding: 5px 5px 5px 15px;
-  }
-}
-.header__nav-bar .nav.nav--main-menu .submenu.submenu-depth-2 {
-  left: 100%;
-  top: 0;
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu .submenu.submenu-depth-2 {
-    position: initial;
-    left: 0;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header__nav-bar .nav.nav--main-menu .submenu.submenu-depth-2 > li > a {
-    padding: 5px 5px 5px 30px;
-  }
-}
-.header__nav-bar .nav-phone {
-  justify-content: flex-end;
-}
-@media only screen and (max-width: 991px) {
-  .header__nav-bar .nav-phone__text {
-    display: none;
-  }
-}
-.header__nav-bar .nav-phone a {
-  padding: 0 30px;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-  font-family: var(--font-family-2-1);
-  font-size: var(--theme-font-p-mob-1);
-  color: var(--clr-white);
-  line-height: 24px;
-  text-transform: capitalize;
-  gap: 13px;
-}
-.header__nav-bar .nav-phone a:hover, .header__nav-bar .nav-phone a.active {
-  background-color: var(--clr-red);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.header__top-bar {
-  padding: 12px 0;
-}
-@media only screen and (max-width: 767px) {
-  .header__top-bar {
-    padding: 12px 0;
-    display: none;
-  }
-}
-.header__top-bar .location,
-.header__top-bar .settings {
-  display: flex;
-  align-items: center;
-}
-.header__top-bar .location {
-  gap: 0 12px;
-}
-.header__top-bar .location:hover .location__text {
-  color: var(--clr-red);
-}
-.header__top-bar .location:hover .location__pin {
-  transform: scale(1.1);
-}
-.header__top-bar .location:hover .location__pin svg path {
-  fill: var(--clr-red);
-}
-@media only screen and (max-width: 767px) {
-  .header__top-bar .location {
-    justify-content: center;
-    margin-bottom: 5px;
-  }
-}
-.header__top-bar .location__pin {
-  transition: all 0.6s ease-in-out;
-}
-.header__top-bar .location__pin svg path {
-  transition: all 0.6s ease-in-out;
-}
-.header__top-bar .location__text {
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-5);
-  color: var(--clr-smoke-2);
-  line-height: 20px;
-  padding: 0;
-  margin: 0;
-  transition: all 0.6s ease-in-out;
-}
-.header__top-bar .settings {
-  justify-content: flex-end;
-}
-@media only screen and (max-width: 767px) {
-  .header__top-bar .settings {
-    justify-content: center;
-  }
-}
-.header__top-bar .settings select {
-  border: none;
-  background-color: transparent;
-}
-.header__top-bar .settings__currency, .header__top-bar .settings__lang, .header__top-bar .settings__order-track {
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-5);
-  color: var(--clr-smoke-2);
-  line-height: 20px;
-}
-.header__top-bar .settings__order-track:hover a {
-  color: var(--clr-red);
-}
-.header__top-bar .settings__order-track a {
-  color: var(--clr-smoke-2);
-  transition: all 0.6s ease-in-out;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.mini-cards-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.mini-cards {
-  width: 100%;
-  min-height: 194px;
-  background-color: var(--clr-grey);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0;
-  overflow: hidden;
-}
-.mini-cards::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.231372549);
-  z-index: 2;
-  transition: all 0.5s ease-in-out;
-}
-.mini-cards:hover .mini-cards__button {
-  color: var(--clr-white);
-}
-.mini-cards:hover .mini-cards__text-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-.mini-cards:hover:after {
-  transform: translateX(100%) scaleX(0);
-}
-.mini-cards:hover .mini-cards__title,
-.mini-cards:hover .mini-cards__text {
-  color: var(--clr-smoke-2);
-}
-.mini-cards:hover .mini-cards__img img {
-  transform: scale(1.1);
-}
-.mini-cards__wrapper-info {
-  text-align: center;
-  position: relative;
-  z-index: 3;
-  padding: 0 0 0 25px;
-  text-align: left;
-}
-@media only screen and (min-width: 992px) {
-  .mini-cards__wrapper-info {
-    text-align: left;
-  }
-}
-.mini-cards__title {
-  margin-bottom: 10px;
-  color: var(--clr-white);
-}
-@media only screen and (min-width: 1440px) {
-  .mini-cards__title {
-    font-family: var(--font-family-1);
-    font-size: var(--theme-font-btn-tab-1);
-    color: var(--clr-white);
-    line-height: 62px;
-    transition: all 0.5s ease-in-out;
-  }
-}
-.mini-cards__text {
-  margin-bottom: 10px;
-  color: var(--clr-white);
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-3);
-  color: var(--clr-white);
-  line-height: 30px;
-  transition: all 0.5s ease-in-out;
-}
-@media only screen and (min-width: 1440px) {
-  .mini-cards__text {
-    margin-bottom: 28px;
-  }
-}
-.mini-cards__text-arrow {
-  opacity: 0;
-  transition: all 0.6s ease-in-out;
-  transform: translateX(-100%);
-}
-.mini-cards__button {
-  margin: 0 auto 40px;
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-btn-tab-1);
-  color: var(--clr-white);
-  line-height: normal;
-  transition: all 0.5s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: none;
-  width: -moz-fit-content;
-  width: fit-content;
-  position: relative;
-  flex-direction: column;
-}
-@media only screen and (min-width: 992px) {
-  .mini-cards__button {
-    margin-left: 0;
-    min-width: 216px;
-    flex-direction: row;
-  }
-}
-.mini-cards__img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.mini-cards__img img {
-  width: 100%;
-  min-height: 260px;
-  -o-object-position: left;
-  object-position: left;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  max-width: none;
-  margin: 0 auto;
-  z-index: 2;
-  position: relative;
-  transition: all 0.5s ease-in-out;
-  cursor: pointer;
-}
-.mini-cards--middle .mini-cards__img img {
-  min-height: 0;
-  height: 240px;
-  width: 100%;
-  -o-object-position: bottom;
-  object-position: bottom;
-}
-.mini-cards--bottom .mini-cards__img img {
-  min-height: 0;
-  height: 240px;
-  width: 100%;
-  -o-object-position: bottom;
-  object-position: bottom;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.pagination-wrapper .pagination__list {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  max-width: 400px;
-  margin: 60px auto 0;
-}
-@media only screen and (max-width: 767px) {
-  .pagination-wrapper .pagination__list {
-    max-width: 300px;
-  }
-}
-.pagination-wrapper .pagination li {
-  display: flex;
-  align-items: center;
-}
-.pagination-wrapper .pagination li svg.no-squish {
-  flex: none;
-}
-.pagination-wrapper .pagination__item {
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-3);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-  letter-spacing: 0px;
-  padding: 9px 20px;
-}
-@media only screen and (max-width: 767px) {
-  .pagination-wrapper .pagination__item {
-    padding: 5px 10px;
-  }
-}
-.pagination-wrapper .pagination__item--active {
-  color: var(--clr-white);
-  background-color: var(--clr-smoke-2);
-}
-.pagination-wrapper .pagination__item--last {
-  padding: 0;
-}
-@media only screen and (max-width: 767px) {
-  .pagination-wrapper .pagination__item {
-    font-size: var(--theme-font-p-mob-5);
-  }
-}
-.pagination-wrapper .pagination__item:hover {
-  text-decoration: underline;
-}
-.pagination-wrapper .pagination__arrow {
-  padding: 0;
-}
-.pagination-wrapper .pagination__arrow--next {
-  transform: rotate(180deg);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.pill-button {
-  width: 100%;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  min-height: 25px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  position: relative;
-  background-color: var(--clr-black);
-  padding: 8px;
-  margin-bottom: 5px;
-}
-.pill-button:hover .pill-button__icon {
-  transform: rotate(270deg);
-}
-.pill-button__text {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-h3-mob-4);
-  color: var(--clr-white);
-  line-height: normal;
-  margin: 0;
-}
-.pill-button__icon {
-  opacity: 1;
-  transition: all 0.25s ease-in-out;
-  z-index: 1;
-  transform: rotate(45deg);
-  width: 10px;
-  height: 10px;
-}
-.pill-button__icon svg {
-  min-width: 10px;
-  height: 10px;
-}
-.pill-button__icon path {
-  fill: var(--clr-white);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.product-card {
-  width: 100%;
-  height: auto;
-}
-.product-card.disabled {
-  opacity: 0.6;
-}
-.product-card * {
-  cursor: pointer;
-}
-.product-card__details {
-  margin-top: 12px;
-}
-.product-card__category {
-  font-family: var(--font-family-2-1);
-  font-size: var(--theme-font-h3-mob-4);
-  color: var(--clr-red);
-  line-height: normal;
-  letter-spacing: 4.3px;
-  text-transform: uppercase;
-}
-@media only screen and (min-width: 1440px) {
-  .product-card__category {
-    margin-bottom: 12px;
-  }
-}
-.product-card__title {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-h2-mob-4);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-  text-transform: capitalize;
-  margin-bottom: 0px;
-}
-.product-card__price {
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-1);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-}
-.product-card__actions {
-  position: relative;
-  overflow: hidden;
-  min-height: 280px;
-}
-@media only screen and (min-width: 1200px) {
-  .product-card__actions {
-    min-height: 358px;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .product-card__actions {
-    min-height: 471px;
-  }
-}
-.product-card__actions--image {
-  position: relative;
-}
-.product-card__actions--image .img-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.product-card__actions--image .img-wrapper--one {
-  z-index: 1;
-}
-.product-card__actions--image .img-wrapper--one:hover img {
-  opacity: 0;
-}
-.product-card__actions--image .img-wrapper--two {
-  z-index: 0;
-}
-.product-card__actions--image img {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-  transition: all 0.3s ease-in-out;
-  -o-object-fit: cover;
-  object-fit: cover;
-  min-height: 300px;
-}
-@media only screen and (min-width: 1200px) {
-  .product-card__actions--image img {
-    min-height: 370px;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .product-card__actions--image img {
-    min-height: 480px;
-  }
-}
-.product-card__actions--cart {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  max-height: 65px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-  transition: background-color 0.125s ease-in-out, transform 0.3s ease-in-out;
-  z-index: 1;
-  border: none;
-  background-color: var(--clr-smoke-2);
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-btn-mob-3);
-  color: var(--clr-white);
-  line-height: 30px;
-  text-transform: uppercase;
-  transform: translateY(100%);
-}
-.product-card__actions--cart:hover, .product-card__actions--cart.adding {
-  background-color: var(--clr-red);
-}
-.product-card__actions--cart.adding .loader-spinner {
-  opacity: 1;
-}
-.product-card__actions-group {
-  position: absolute;
-  right: 0;
-  width: 100%;
-  top: 24px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  max-width: 50px;
-  gap: 4px;
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 4;
-}
-.product-card__actions-group button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  padding: 14px;
-}
-.product-card__actions-group button:hover svg path {
-  fill: var(--clr-red);
-}
-.product-card__actions-group button svg {
-  width: 100%;
-  max-width: 24px;
-  height: auto;
-  fill: var(--clr-smoke-2);
-  transition: all 0.3s ease-in-out;
-}
-.product-card__actions-group button svg path {
-  transition: all 0.3s ease-in-out;
-}
-.product-card__actions .product-card__action--zoom:hover svg path {
-  stroke: var(--clr-red);
-}
-.product-card__actions:hover .product-card__actions--cart {
-  transform: translateY(0);
-}
-.product-card__actions:hover .product-card__actions-group {
-  transform: translateX(-25%);
-}
-.product-card__actions:hover.image-single .product-card__actions--image img {
-  transform: scale(1.05);
-}
-.product-card__actions.active .product-card__actions--cart {
-  transform: translateY(0);
-}
-.product-card__actions.active .product-card__actions-group {
-  transform: translateX(-25%);
-}
-.product-card__actions.active .product-card__actions--image img {
-  transform: scale(1.05);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.product-form {
-  width: 100%;
-  height: auto;
-}
-.product-form form {
-  line-height: normal;
-  height: auto;
-}
-.product-form.disabled {
-  opacity: 0.6;
-}
-.product-form__actions {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  gap: 0 15px;
-  margin-top: 20px;
-  min-height: 64px;
-}
-@media only screen and (max-width: 767px) {
-  .product-form__actions {
-    flex-direction: column-reverse;
-    gap: 10px;
-  }
-}
-.product-form__actions button {
-  position: initial;
-  width: 100%;
-  height: auto;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-  position: relative;
-  cursor: pointer;
-}
-.product-form__actions--cart {
-  width: 100%;
-  max-width: none;
-  transition: background-color 0.125s ease-in-out, transform 0.3s ease-in-out;
-  z-index: 1;
-  border: none;
-  background-color: var(--clr-smoke-2);
-  text-transform: uppercase;
-  padding: 10px 0;
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-btn-mob-3);
-  color: var(--clr-white);
-  line-height: normal;
-  letter-spacing: normal;
-}
-.product-form__actions--cart:hover, .product-form__actions--cart.adding {
-  background-color: var(--clr-red);
-}
-.product-form__actions--cart.adding .loader-spinner {
-  opacity: 1;
-}
-.product-form__actions--favorite {
-  width: 100%;
-  max-width: 64px;
-  background-color: var(--clr-grey);
-  border: none;
-  transition: all 0.3s ease-in-out;
-}
-@media only screen and (max-width: 767px) {
-  .product-form__actions--favorite {
-    max-width: none;
-  }
-}
-.product-form__actions--favorite:hover svg path, .product-form__actions--favorite.active svg path {
-  fill: var(--clr-red);
-}
-.product-form__actions:hover .product-card__actions--cart {
-  transform: translateY(0);
-}
-.product-form__actions.active .product-card__actions--cart {
-  transform: translateY(0);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.promo-card {
-  width: 100%;
-  min-height: 622px;
-  background-color: var(--clr-grey);
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-}
-@media only screen and (min-width: 992px) {
-  .promo-card {
-    display: flex;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .promo-card {
-    align-items: flex-start;
-  }
-}
-.promo-card:hover .promo-card__button {
-  color: var(--clr-white);
-}
-.promo-card:hover .promo-card__text-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-.promo-card__wrapper-info {
-  text-align: center;
-  position: relative;
-  z-index: 3;
-}
-@media only screen and (min-width: 992px) {
-  .promo-card__wrapper-info {
-    text-align: left;
-  }
-}
-.promo-card__subtitle {
-  letter-spacing: 4.3px;
-  color: var(--clr-white);
-  text-transform: uppercase;
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card__subtitle {
-    margin-bottom: 19px;
-  }
-}
-.promo-card__title {
-  margin-bottom: 10px;
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card__title {
-    font-family: var(--font-family-1);
-    font-size: var(--theme-font-h1-mob-4);
-    color: var(--clr-white);
-    line-height: 62px;
-  }
-}
-.promo-card__text {
-  margin-bottom: 10px;
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-p-mob-3);
-  color: var(--clr-white);
-  line-height: 30px;
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card__text {
-    margin-bottom: 28px;
-  }
-}
-.promo-card__text-arrow {
-  opacity: 0;
-  transition: all 0.6s ease-in-out;
-  transform: translateX(-100%);
-}
-.promo-card__button {
-  margin: 0 auto 40px;
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-btn-tab-1);
-  color: var(--clr-smoke-2);
-  line-height: normal;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: none;
-  width: -moz-fit-content;
-  width: fit-content;
-  position: relative;
-  flex-direction: column;
-}
-@media only screen and (min-width: 992px) {
-  .promo-card__button {
-    margin-left: 0;
-    min-width: 216px;
-    flex-direction: row;
-  }
-}
-.promo-card__img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-}
-.promo-card__img img {
-  width: 100%;
-  min-height: 622px;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  max-width: none;
-  margin: 0 auto;
-  z-index: 2;
-  position: relative;
-  transition: all 0.6s ease-in-out;
-  cursor: pointer;
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card--half {
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 0;
-  }
-}
-.promo-card--half .promo-card__wrapper-info {
-  margin-left: 0;
-  margin-top: 48px;
-  padding: 0 20px;
-  text-align: center;
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card--half .promo-card__wrapper-info {
-    max-width: 378px;
-    margin-top: 147px;
-    margin-left: 78px;
-    text-align: left;
-  }
-}
-.promo-card--half .promo-card__title {
-  color: var(--clr-white);
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card--half .promo-card__title {
-    font-family: var(--font-family-1);
-    font-size: var(--theme-font-h1-mob-4);
-    color: var(--clr-white);
-    line-height: 62px;
-  }
-}
-.promo-card--half .button {
-  margin: 0 auto;
-  min-width: 0;
-  gap: 20px;
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card--half .button {
-    margin: 0 auto 0 0;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card--quarter {
-    min-height: 622px;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 0;
-  }
-}
-.promo-card--quarter .promo-card__wrapper-info {
-  text-align: center;
-  max-width: none;
-  margin-top: 48px;
-  width: 100%;
-}
-@media only screen and (min-width: 1440px) {
-  .promo-card--quarter .promo-card__title {
-    font-family: var(--font-family-1);
-    font-size: var(--theme-font-btn-tab-1);
-    color: var(--clr-smoke-2);
-    line-height: 32px;
-  }
-}
-.promo-card--quarter .promo-card__subtitle {
-  color: var(--clr-red);
-}
-.promo-card--quarter .promo-card__text {
-  color: var(--clr-smoke-2);
-}
-.promo-card--quarter .promo-card__button {
-  margin: 0 auto;
-  min-width: 0;
-  gap: 20px;
-}
-.promo-card--quarter:hover .promo-card__button {
-  color: var(--clr-red);
-}
-.promo-card--secondary {
-  background-color: var(--clr-smoke-2);
-}
-.promo-card--secondary:hover .promo-card__button {
-  color: var(--clr-yellow);
-}
-.promo-card--secondary .promo-card__title,
-.promo-card--secondary .promo-card__text,
-.promo-card--secondary .promo-card__button {
-  color: var(--clr-white);
-}
-.promo-card--secondary .promo-card__subtitle {
-  color: var(--clr-yellow);
-}
-.promo-card--secondary .promo-card__text-arrow svg {
-  fill: var(--clr-yellow);
-}
-.promo-card--secondary .bg-circle circle {
-  fill: var(--clr-yellow);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.quantity-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 50px;
-}
-@media only screen and (max-width: 1439px) {
-  .quantity-wrapper {
-    flex-direction: column;
-    margin-top: 40px;
-  }
-}
-.quantity-wrapper .quantity {
-  display: flex;
-  text-align: center;
-  gap: 0 15px;
-  width: 100%;
-}
-@media only screen and (max-width: 1439px) {
-  .quantity-wrapper .quantity {
-    justify-content: space-between;
-    gap: 0;
-  }
-}
-.quantity-wrapper .quantity.out {
-  opacity: 0.4;
-}
-.quantity-wrapper .quantity.out,
-.quantity-wrapper .quantity.out * {
-  cursor: not-allowed;
-}
-.quantity-wrapper .quantity.out input {
-  pointer-events: none;
-}
-.quantity-wrapper .quantity input {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-h2-mob-2);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-  line-height: 30px;
-  max-width: 60px;
-  text-align: center;
-  border: none;
-}
-@media only screen and (max-width: 1439px) {
-  .quantity-wrapper .quantity input {
-    max-width: none;
-    min-width: 0px;
-  }
-}
-.quantity-wrapper .quantity button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.quantity-wrapper .quantity button svg {
-  max-width: 16px;
-}
-.quantity-wrapper .stock {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.quantity-wrapper .stock p {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-p-mob-5);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-}
-.quantity-wrapper .stock p:nth-of-type(2) {
-  font-family: var(--font-family-2);
-  opacity: 0.3;
-}
-.quantity-wrapper .stock p.out {
-  opacity: 0.5;
-}
-.quantity-wrapper .stock .sep {
-  width: 1px;
-  height: 32px;
-  background-color: var(--clr-smoke-2);
-  opacity: 0.3;
-}
-@media only screen and (max-width: 1439px) {
-  .quantity-wrapper .stock .sep {
-    display: none;
-  }
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.sortby-container .filter .horizontal-line {
-  margin: 20px 0;
-}
-.sortby-container .filter h3 {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-btn-tab-1);
-  color: var(--clr-smoke-2);
-  line-height: 32px;
-  letter-spacing: normal;
-  margin-bottom: 20px;
-}
-.sortby-container .filter .filter-group ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.sortby-container .filter .filter-group li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-.sortby-container .filter .filter-group .checkboxWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-}
-.sortby-container .filter .filter-group .checkboxWrapper label {
-  font-family: var(--font-family-2);
-  font-size: var(--theme-font-h3-mob-4);
-  color: var(--clr-smoke-2);
-  line-height: normal;
-  letter-spacing: normal;
-}
-.sortby-container .filter .filter-group .checkboxWrapper input[type=checkbox] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  opacity: 0;
-  width: 16px;
-  height: 16px;
-  z-index: 1;
-  border: 1px solid var(--clr-smoke-1);
-}
-.sortby-container .filter .filter-group .checkboxWrapper .checkmark {
-  position: relative;
-  border: 1px solid var(--clr-smoke-1);
-  background-color: transparent;
-  pointer-events: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-  aspect-ratio: 1/1;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 0;
-}
-.sortby-container .filter .filter-group .checkboxWrapper .checkmark svg {
-  opacity: 0;
-}
-.sortby-container .filter .filter-group .checkboxWrapper:hover > input[type=checkbox] ~ .checkmark {
-  background-color: #ccc;
-  border: 1px solid #ccc;
-}
-.sortby-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ .checkmark {
-  background-color: var(--clr-red);
-  border: 1px solid var(--clr-red);
-}
-.sortby-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ .checkmark svg {
-  opacity: 1;
-}
-.sortby-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ label {
-  font-family: var(--font-family-2-1);
-}
-.sortby-container .filter .filter-group__buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 11px;
-  width: 100%;
-}
-.sortby-container .filter .filter-group__buttons .button.button--outline {
-  padding: 5px 0px;
-  width: auto;
-  border: 2px solid rgba(48, 48, 48, 0.2);
-}
-.sortby-container .filter .filter-group__buttons .button.button--outline span {
-  color: var(--clr-smoke-2);
-}
-.sortby-container .filter .filter-group__buttons .button.button--outline:hover span, .sortby-container .filter .filter-group__buttons .button.button--outline.active span {
-  color: var(--clr-white);
-}
-.sortby-container .filter .filter-group__buttons .button.button--outline:after {
-  background: var(--clr-smoke-2);
-}
-.sortby-container .filter .filter-group__buttons .button.button--outline.active:after {
-  transform: translate(0);
-}
-.sortby-container .filter .filter-group .range__slider {
-  position: relative;
-  margin: 40px 0;
-  min-height: 2px;
-  background-color: rgba(48, 48, 48, 0.2);
-}
-.sortby-container .filter .filter-group .range__track {
-  position: absolute;
-  height: 100%;
-}
-.sortby-container .filter .filter-group .range__slide-input {
-  background: none;
-  position: absolute;
-  width: 100%;
-  pointer-events: none;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.sortby-container .filter .filter-group .range__slide-input[type=range]::-webkit-slider-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  border: 3px solid var(--clr-red);
-  background: var(--clr-red);
-  pointer-events: auto;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-}
-.sortby-container .filter .filter-group .range__slide-input[type=range]::-moz-range-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  border: 3px solid var(--clr-red);
-  background: var(--clr-red);
-  pointer-events: auto;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-}
-.sortby-container .filter .filter-group .range__number {
-  display: flex;
-  text-align: left;
-  gap: 11px;
-}
-@media only screen and (max-width: 1439px) {
-  .sortby-container .filter .filter-group .range__number {
-    flex-direction: column;
-    gap: 5px;
-  }
-}
-.sortby-container .filter .filter-group .range__number label {
-  margin-bottom: 8px;
-  display: block;
-}
-.sortby-container .filter .filter-group .range__number input {
-  padding: 12px 5px 12px 25px;
-  width: 100%;
-  border: 2px solid rgba(48, 48, 48, 0.2);
-  font-family: var(--font-family-2-2);
-  font-size: var(--theme-font-btn-mob-1);
-  color: var(--clr-black);
-  line-height: 24px;
-  letter-spacing: normal;
-}
-.sortby-container .filter .filter-clear {
-  margin-bottom: 32px;
-}
-.sortby-container .filter .filter-clear button.clear-btn {
-  font-family: var(--font-family-2-2);
-  font-size: var(--theme-font-h3-mob-4);
-  color: var(--clr-smoke-2);
-  line-height: 24px;
-  letter-spacing: normal;
-  text-transform: uppercase;
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  padding-bottom: 5px;
-  position: relative;
-  cursor: pointer;
-}
-@media only screen and (max-width: 1439px) {
-  .sortby-container .filter .filter-clear button.clear-btn {
-    font-size: 11px;
-    text-align: left;
-    gap: 5px;
-  }
-}
-.sortby-container .filter .filter-clear button.clear-btn:after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background-color: var(--clr-smoke-2);
-  transition: all 0.3s ease-in-out;
-  bottom: 0;
-  left: 0;
-}
-.sortby-container .filter .filter-clear button.clear-btn:hover:after, .sortby-container .filter .filter-clear button.clear-btn.active:after {
-  width: 100%;
-}
-.sortby-container #close-btn {
-  max-width: none;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 10px;
-  font-size: var(--theme-font-p-mob-5);
-}
-.sortby-container .filter--drawer {
-  position: fixed;
-  top: 0;
-  display: none;
-  background-color: var(--clr-white);
-  height: 100%;
-  max-width: 300px;
-  width: 100%;
-  opacity: 1;
-  transition: transform 0.17s ease-in-out;
-  z-index: 9999;
-  border-top: 1px solid #ececec;
-  transform: translateX(-100%);
-  left: 0;
-}
-@media only screen and (max-width: 991px) {
-  .sortby-container .filter--drawer {
-    display: block;
-  }
-  .sortby-container .filter--drawer.active {
-    transform: translateX(0%);
-  }
-}
-.sortby-container .filter--drawer .filter-clear {
-  margin-bottom: 10px;
-}
-.sortby-container .filter--drawer h3 {
-  font-size: 1em;
-}
-.sortby-container .filter--drawer .filter-group li {
-  margin-bottom: 10px;
-}
-.sortby-container .filter-wrapper__content {
-  height: calc(100% - 120px);
-  padding: 12px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 20px;
-}
-.sortby-container .filter-wrapper__content #close-btn {
-  padding: 20px;
-}
-.sortby-container .filter-wrapper__footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-top: 1px solid var(--clr-black);
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
-  padding: 20px;
-  background: var(--clr-white);
-  z-index: 10000;
-}
-.sortby-container .filter-wrapper__footer #close-btn {
-  padding: 10px;
-  justify-content: center;
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-.varient-options {
-  display: flex;
-  justify-content: space-between;
-  gap: 0 15px;
-}
-.varient-options .wrapper {
-  width: 100%;
-}
-.varient-options__size, .varient-options__gender {
-  display: grid;
-  gap: 10px;
-  width: 100%;
-  max-width: 300px;
-  margin: 10px 0;
-}
-.varient-options__size {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-.varient-options__gender {
-  grid-template-columns: 1fr;
-}
-.varient-options p.option-title {
-  font-family: var(--font-family-1);
-  font-size: var(--theme-font-p-mob-3);
-  color: var(--clr-smoke-2);
-  line-height: 30px;
-}
-.varient-options .button.button--outline {
-  padding: 5px 0px;
-  width: auto;
-  border: 2px solid rgba(48, 48, 48, 0.2);
-}
-.varient-options .button.button--outline span {
-  color: var(--clr-smoke-2);
-}
-.varient-options .button.button--outline:hover span, .varient-options .button.button--outline.active span {
-  color: var(--clr-white);
-}
-.varient-options .button.button--outline:after {
-  background: var(--clr-smoke-2);
-}
-.varient-options .button.button--outline.active:after {
-  transform: translate(0);
 }
 /**
 * Convert PX to EM
@@ -11789,7 +9128,7 @@ button.button--link span {
 .main-product-wrapper .product .product-media-grid {
   display: grid;
   grid-gap: 12px;
-  margin-bottom: 20px;
+  margin: 15px 0;
 }
 .main-product-wrapper .product .product-media-grid--columns, .main-product-wrapper .product .product-media-grid--stacked {
   grid-template-columns: 1fr 1fr;
@@ -11966,18 +9305,14 @@ button.button--link span {
 .main-product-wrapper .product h3 {
   letter-spacing: 4.3px;
   text-transform: uppercase;
-  margin: 10px 0;
-}
-@media only screen and (min-width: 1440px) {
-  .main-product-wrapper .product h3 {
-    margin-bottom: 19px;
-  }
+  margin: 15px 0;
 }
 .main-product-wrapper .product h2 {
-  margin-bottom: 10px;
+  margin: 15px 0;
   text-transform: capitalize;
+  font-size: var(--theme-font-h2-mob-2-1);
 }
-@media only screen and (min-width: 1440px) {
+@media only screen and (max-width: 1199px) {
   .main-product-wrapper .product h2 {
     font-family: var(--font-family-1);
     font-size: var(--theme-font-h2-mob-2-1);
@@ -11993,24 +9328,21 @@ button.button--link span {
   margin: 18px 0;
 }
 .main-product-wrapper .product .desc p {
-  margin-bottom: 20px;
   font-family: var(--font-family-2);
   font-size: var(--theme-font-btn-mob-1);
   color: var(--clr-smoke-2);
   line-height: 30px;
   letter-spacing: 0px;
-}
-@media only screen and (min-width: 1440px) {
-  .main-product-wrapper .product .desc p {
-    margin-bottom: 51px;
-  }
+  margin: 15px 0;
+  line-height: normal;
+  font-size: 0.85em;
 }
 .main-product-wrapper .varient-options {
   display: flex;
   justify-content: space-between;
   gap: 0 15px;
 }
-@media only screen and (max-width: 1439px) {
+@media only screen and (max-width: 1199px) {
   .main-product-wrapper .varient-options {
     flex-direction: column;
   }
@@ -12025,7 +9357,7 @@ button.button--link span {
   max-width: none;
   margin: 10px 0;
 }
-@media only screen and (max-width: 1439px) {
+@media only screen and (max-width: 1199px) {
   .main-product-wrapper .varient-options__size, .main-product-wrapper .varient-options__gender {
     max-width: none;
   }
@@ -12071,7 +9403,7 @@ button.button--link span {
 }
 .main-product-wrapper .product-options-group--sticky {
   position: sticky;
-  top: 15rem;
+  top: 13rem;
 }
 /**
 * Convert PX to EM
@@ -12497,6 +9829,2666 @@ button.button--link span {
   margin-right: 0;
   border-radius: 0;
   margin-left: 30px;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.arrow-button {
+  width: 100%;
+  max-width: 200px;
+  min-height: 52px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.arrow-button:hover .arrow-button__text {
+  color: var(--clr-red);
+}
+.arrow-button:hover .arrow-button__arrow {
+  transform: translateX(10px);
+}
+.arrow-button__text {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-btn-tab-1);
+  color: var(--clr-smoke-2);
+  line-height: 32px;
+  margin: 0;
+  transition: all 0.6s ease-in-out;
+}
+.arrow-button__arrow {
+  opacity: 1;
+  transition: all 0.6s ease-in-out;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.banner-card {
+  width: 100%;
+  height: auto;
+  background-color: var(--clr-grey);
+  padding: 40px;
+  margin-bottom: 20px;
+  position: relative;
+}
+@media only screen and (min-width: 992px) {
+  .banner-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .banner-card {
+    min-height: 358px;
+    align-items: flex-start;
+  }
+}
+.banner-card:hover .banner-card__img img {
+  transform: scale(1.05);
+}
+.banner-card:hover .banner-card__button {
+  color: var(--clr-red);
+}
+.banner-card:hover .banner-card__text-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.banner-card__wrapper-info {
+  text-align: center;
+}
+@media only screen and (min-width: 992px) {
+  .banner-card__wrapper-info {
+    text-align: left;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .banner-card__wrapper-info {
+    max-width: 283px;
+    margin-top: 5px;
+  }
+}
+.banner-card__subtitle {
+  letter-spacing: 4.3px;
+  text-transform: uppercase;
+}
+@media only screen and (min-width: 1440px) {
+  .banner-card__subtitle {
+    margin-bottom: 19px;
+  }
+}
+.banner-card__title {
+  margin-bottom: 10px;
+}
+@media only screen and (min-width: 1440px) {
+  .banner-card__title {
+    font-family: var(--font-family-1);
+    font-size: var(--theme-font-h2-mob-2-1);
+    color: var(--clr-smoke-2);
+    line-height: 44px;
+  }
+}
+.banner-card__text {
+  margin-bottom: 10px;
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+@media only screen and (min-width: 1440px) {
+  .banner-card__text {
+    margin-bottom: 51px;
+  }
+}
+.banner-card__text-arrow {
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  transform: translateX(-100%);
+}
+.banner-card__button {
+  margin: 0 auto 40px;
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-btn-tab-1);
+  color: var(--clr-smoke-2);
+  line-height: normal;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  flex-direction: column;
+}
+@media only screen and (min-width: 992px) {
+  .banner-card__button {
+    margin-left: 0;
+    min-width: 216px;
+    flex-direction: row;
+  }
+}
+.banner-card__img {
+  position: relative;
+}
+.banner-card__img img {
+  width: 100%;
+  height: auto;
+  max-width: 448px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+  transition: all 0.6s ease-in-out;
+  cursor: pointer;
+}
+.banner-card__img:hover img {
+  transform: scale(1.05);
+}
+.banner-card__img .bg-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.banner-card__img .bg-circle svg {
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (min-width: 1440px) {
+  .banner-card--half {
+    min-height: 430px;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 69px 23px 33px 57px;
+  }
+}
+.banner-card--secondary {
+  background-color: var(--clr-smoke-2);
+}
+.banner-card--secondary:hover .banner-card__button {
+  color: var(--clr-yellow);
+}
+.banner-card--secondary .banner-card__title,
+.banner-card--secondary .banner-card__text,
+.banner-card--secondary .banner-card__button {
+  color: var(--clr-white);
+}
+.banner-card--secondary .banner-card__subtitle {
+  color: var(--clr-yellow);
+}
+.banner-card--secondary .banner-card__text-arrow svg {
+  fill: var(--clr-yellow);
+}
+.banner-card--secondary .bg-circle circle {
+  fill: var(--clr-yellow);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+a.button,
+button.button {
+  display: block;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 20px 38px;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+  max-width: 240px;
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-family-2-1);
+  font-size: var(--theme-font-2);
+  color: var(--clr-white);
+  line-height: 24px;
+}
+a.button:after,
+button.button:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: var(--clr-white);
+  transform: translateX(-105%);
+  transition: transform 0.4s ease-in-out;
+}
+a.button:hover:after,
+button.button:hover:after {
+  transform: translateX(0);
+}
+a.button span,
+button.button span {
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+}
+a.button *,
+button.button * {
+  pointer-events: none;
+}
+a.button--primary, a.button--solid,
+button.button--primary,
+button.button--solid {
+  border: 2px solid var(--clr-red);
+  background-color: var(--clr-red);
+}
+a.button--primary:hover, a.button--solid:hover,
+button.button--primary:hover,
+button.button--solid:hover {
+  color: var(--clr-red);
+}
+a.button--secondary,
+button.button--secondary {
+  border: 2px solid var(--clr-yellow);
+  color: var(--clr-black);
+  background-color: var(--clr-yellow);
+}
+a.button--secondary:hover,
+button.button--secondary:hover {
+  color: var(--clr-yellow);
+}
+a.button--black,
+button.button--black {
+  border: 2px solid var(--clr-smoke-2);
+  color: var(--clr-white);
+  background-color: var(--clr-smoke-2);
+}
+a.button--black:hover,
+button.button--black:hover {
+  color: var(--clr-smoke-2);
+}
+a.button--outline span, a.button--link span,
+button.button--outline span,
+button.button--link span {
+  color: var(--clr-red);
+}
+a.button--outline,
+button.button--outline {
+  background: transparent;
+  border: 2px solid var(--clr-red);
+}
+a.button--outline:after,
+button.button--outline:after {
+  background: var(--clr-red);
+}
+a.button--outline:hover span,
+button.button--outline:hover span {
+  color: var(--clr-white);
+}
+a.button--outline.black,
+button.button--outline.black {
+  border: 2px solid var(--clr-smoke-2);
+}
+a.button--outline.black span,
+button.button--outline.black span {
+  color: var(--clr-smoke-2);
+}
+a.button--outline.black:after,
+button.button--outline.black:after {
+  background: var(--clr-smoke-2);
+}
+a.button--outline.black:hover span,
+button.button--outline.black:hover span {
+  color: var(--color-white);
+}
+a.button--link,
+button.button--link {
+  background-color: none;
+  border: none;
+}
+a.button--link span,
+button.button--link span {
+  text-decoration: underline;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.filters-container .filter .horizontal-line {
+  margin: 20px 0;
+}
+.filters-container .filter h3 {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-btn-mob-2);
+  color: var(--clr-smoke-2);
+  line-height: 32px;
+  letter-spacing: normal;
+  margin-bottom: 10px;
+}
+.filters-container .filter .filter-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.filters-container .filter .filter-group li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.filters-container .filter .filter-group .checkboxWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.filters-container .filter .filter-group .checkboxWrapper label {
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-h3-mob-4);
+  color: var(--clr-smoke-2);
+  line-height: normal;
+  letter-spacing: normal;
+}
+.filters-container .filter .filter-group .checkboxWrapper input[type=checkbox] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  opacity: 0;
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+  border: 1px solid var(--clr-smoke-1);
+}
+.filters-container .filter .filter-group .checkboxWrapper .checkmark {
+  position: relative;
+  border: 1px solid var(--clr-smoke-1);
+  background-color: transparent;
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  aspect-ratio: 1/1;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+.filters-container .filter .filter-group .checkboxWrapper .checkmark svg {
+  opacity: 0;
+}
+.filters-container .filter .filter-group .checkboxWrapper:hover > input[type=checkbox] ~ .checkmark {
+  background-color: #ccc;
+  border: 1px solid #ccc;
+}
+.filters-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ .checkmark {
+  background-color: var(--clr-red);
+  border: 1px solid var(--clr-red);
+}
+.filters-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ .checkmark svg {
+  opacity: 1;
+}
+.filters-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ label {
+  font-family: var(--font-family-2-1);
+}
+.filters-container .filter .filter-group__buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 11px;
+  width: 100%;
+}
+.filters-container .filter .filter-group__buttons .button.button--outline {
+  padding: 5px 0px;
+  width: auto;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+}
+.filters-container .filter .filter-group__buttons .button.button--outline span {
+  color: var(--clr-smoke-2);
+}
+.filters-container .filter .filter-group__buttons .button.button--outline:hover span, .filters-container .filter .filter-group__buttons .button.button--outline.active span {
+  color: var(--clr-white);
+}
+.filters-container .filter .filter-group__buttons .button.button--outline:after {
+  background: var(--clr-smoke-2);
+}
+.filters-container .filter .filter-group__buttons .button.button--outline.active:after {
+  transform: translate(0);
+}
+.filters-container .filter .filter-group .range__slider {
+  position: relative;
+  margin: 25px 0;
+  min-height: 2px;
+  background-color: rgba(48, 48, 48, 0.2);
+}
+.filters-container .filter .filter-group .range__track {
+  position: absolute;
+  background-color: var(--clr-red);
+  height: 2px;
+  z-index: 0;
+}
+.filters-container .filter .filter-group .range__slide-input {
+  position: absolute;
+  width: 100%;
+  background: none;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.filters-container .filter .filter-group .range__slide-input[type=range]::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 3px solid var(--clr-red);
+  background: var(--clr-red);
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.filters-container .filter .filter-group .range__slide-input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 3px solid var(--clr-red);
+  background: var(--clr-red);
+  pointer-events: auto;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.filters-container .filter .filter-group .range__number {
+  display: flex;
+  text-align: left;
+  gap: 11px;
+}
+@media only screen and (max-width: 1439px) {
+  .filters-container .filter .filter-group .range__number {
+    flex-direction: coluin;
+    gap: 5px;
+  }
+}
+.filters-container .filter .filter-group .range__number label {
+  margin-bottom: 8px;
+  display: block;
+}
+.filters-container .filter .filter-group .range__number input {
+  padding: 12px 5px 12px 25px;
+  width: 100%;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+  font-family: var(--font-family-2-2);
+  font-size: var(--theme-font-btn-mob-1);
+  color: var(--clr-black);
+  line-height: 24px;
+  letter-spacing: normal;
+}
+.filters-container .filter .filter-clear {
+  margin-bottom: 32px;
+}
+.filters-container .filter .filter-clear button.clear-btn {
+  font-family: var(--font-family-2-2);
+  font-size: var(--theme-font-h3-mob-4);
+  color: var(--clr-smoke-2);
+  line-height: 24px;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-bottom: 5px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+@media only screen and (max-width: 1439px) {
+  .filters-container .filter .filter-clear button.clear-btn {
+    font-size: 11px;
+    text-align: left;
+    gap: 5px;
+  }
+}
+.filters-container .filter .filter-clear button.clear-btn:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: var(--clr-smoke-2);
+  transition: all 0.3s ease-in-out;
+  bottom: 0;
+  left: 0;
+}
+.filters-container .filter .filter-clear button.clear-btn:hover:after, .filters-container .filter .filter-clear button.clear-btn.active:after {
+  width: 100%;
+}
+.filters-container .filter .advertisement {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 1258px;
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 1439px) {
+  .filters-container .filter .advertisement {
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .filters-container .filter .advertisement {
+    height: 300px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .filters-container .filter .advertisement {
+    height: 600px;
+  }
+}
+.filters-container .filter .advertisement:after {
+  position: absolute;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.4117647059);
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+}
+.filters-container .filter .advertisement .img {
+  position: absolute;
+  width: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.filters-container .filter .advertisement .img img {
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+.filters-container .filter .advertisement__text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+  width: 100%;
+}
+.filters-container .filter .advertisement h3 {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-h2-mob-2-1);
+  color: var(--clr-white);
+  line-height: 44px;
+  letter-spacing: normal;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.filters-container #close-btn {
+  max-width: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  font-size: var(--theme-font-p-mob-5);
+}
+.filters-container .filter--drawer {
+  position: fixed;
+  top: 0;
+  display: none;
+  background-color: var(--clr-white);
+  height: 100%;
+  max-width: 300px;
+  width: 100%;
+  opacity: 1;
+  transition: transform 0.17s ease-in-out;
+  z-index: 9999;
+  border-top: 1px solid #ececec;
+  transform: translateX(-100%);
+  left: 0;
+}
+@media only screen and (max-width: 991px) {
+  .filters-container .filter--drawer {
+    display: block;
+  }
+  .filters-container .filter--drawer.active {
+    transform: translateX(0%);
+  }
+}
+.filters-container .filter--drawer .filter-clear {
+  margin-bottom: 10px;
+}
+.filters-container .filter--drawer h3 {
+  font-size: 1em;
+}
+.filters-container .filter--drawer .filter-group li {
+  margin-bottom: 10px;
+}
+.filters-container .filter-wrapper__content {
+  height: calc(100% - 120px);
+  padding: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+}
+.filters-container .filter-wrapper__content #close-btn {
+  padding: 20px;
+}
+.filters-container .filter-wrapper__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid var(--clr-black);
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  padding: 20px;
+  background: var(--clr-white);
+  z-index: 10000;
+}
+.filters-container .filter-wrapper__footer #close-btn {
+  padding: 10px;
+  justify-content: center;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.full-banner-card {
+  width: 100%;
+  height: auto;
+  background-color: var(--clr-grey);
+  padding: 40px 40px 0;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.full-banner-card .bg-rectangle {
+  position: absolute;
+  background-color: var(--clr-yellow);
+  width: 130%;
+  height: 300px;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
+}
+@media only screen and (min-width: 992px) {
+  .full-banner-card .bg-rectangle {
+    width: 100%;
+    height: 996px;
+    right: -600px;
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+@media only screen and (min-width: 992px) {
+  .full-banner-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .full-banner-card {
+    align-items: flex-start;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .full-banner-card {
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+.full-banner-card:hover .full-banner-card__button {
+  color: var(--clr-red);
+}
+.full-banner-card:hover .full-banner-card__text-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.full-banner-card__wrapper-info {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  overflow: hidden;
+}
+@media only screen and (min-width: 992px) {
+  .full-banner-card__wrapper-info {
+    text-align: left;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .full-banner-card__wrapper-info {
+    max-width: 513px;
+    margin-top: 5px;
+  }
+}
+.full-banner-card__subtitle {
+  letter-spacing: 4.3px;
+  text-transform: uppercase;
+  max-width: 400px;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1440px) {
+  .full-banner-card__subtitle {
+    margin: 0 auto 19px;
+  }
+}
+.full-banner-card__title {
+  margin-bottom: 10px;
+}
+@media only screen and (min-width: 1440px) {
+  .full-banner-card__title {
+    font-family: var(--font-family-1);
+    font-size: var(--theme-font-h1-mob-3);
+    color: var(--clr-smoke-2);
+    line-height: 62px;
+  }
+}
+.full-banner-card__text {
+  margin-bottom: 10px;
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+@media only screen and (min-width: 1440px) {
+  .full-banner-card__text {
+    margin-bottom: 51px;
+  }
+}
+.full-banner-card__text-arrow {
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  transform: translateX(-100%);
+}
+.full-banner-card__button {
+  margin: 0 auto 40px;
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-btn-tab-1);
+  color: var(--clr-smoke-2);
+  line-height: normal;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  flex-direction: column;
+}
+@media only screen and (min-width: 992px) {
+  .full-banner-card__button {
+    margin-left: 0;
+    min-width: 216px;
+    flex-direction: row;
+  }
+}
+.full-banner-card__img {
+  position: relative;
+}
+.full-banner-card__img img {
+  width: 100%;
+  height: auto;
+  max-width: 712px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+  transition: all 0.6s ease-in-out;
+  cursor: pointer;
+}
+.full-banner-card__img:hover img {
+  transform: scale(1.05);
+}
+.full-banner-card--secondary {
+  background-color: var(--clr-grey);
+}
+.full-banner-card--secondary:hover .full-banner-card__button {
+  color: var(--clr-red);
+}
+.full-banner-card--secondary .full-banner-card__title,
+.full-banner-card--secondary .full-banner-card__text,
+.full-banner-card--secondary .full-banner-card__button {
+  color: var(--clr-smoke-2);
+}
+.full-banner-card--secondary .full-banner-card__subtitle {
+  color: var(--clr-smoke-2);
+}
+.full-banner-card--secondary .full-banner-card__text-arrow svg {
+  fill: var(--clr-red);
+}
+.full-banner-card--secondary .bg-rectangle {
+  background-color: var(--clr-yellow);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.breadcrumbs-wrapper {
+  background-color: var(--clr-grey);
+  padding: 6px 12px;
+}
+.breadcrumbs-wrapper .breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0 16px;
+  font-family: var(--font-family-2-2);
+  font-size: var(--theme-font-p-mob-1);
+  color: var(--clr-smoke-2);
+  line-height: normal;
+  letter-spacing: 0px;
+}
+@media only screen and (max-width: 767px) {
+  .breadcrumbs-wrapper .breadcrumbs {
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .breadcrumbs-wrapper .breadcrumbs {
+    display: none;
+  }
+}
+.breadcrumbs-wrapper .breadcrumbs li a {
+  opacity: 0.5;
+  color: var(--clr-smoke-2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+}
+.breadcrumbs-wrapper .breadcrumbs li a:hover {
+  color: var(--clr-red);
+  opacity: 1;
+}
+.breadcrumbs-wrapper .breadcrumbs li a:hover svg path {
+  fill: var(--clr-red);
+}
+.breadcrumbs-wrapper .breadcrumbs li .svg-wrapper {
+  width: 100%;
+  max-width: 20px;
+}
+.breadcrumbs-wrapper .breadcrumbs li .svg-wrapper svg {
+  width: 100%;
+  height: auto;
+}
+.breadcrumbs-wrapper .breadcrumbs li .svg-wrapper svg path {
+  transition: all 0.3s ease-in-out;
+}
+.breadcrumbs-wrapper .breadcrumbs .sep {
+  width: 1px;
+  height: 32px;
+  background-color: var(--clr-smoke-2);
+  opacity: 0.5;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.header__logo-bar {
+  padding: 6px 0;
+}
+.header__logo-bar .row {
+  align-items: center;
+}
+.header__logo-bar .location,
+.header__logo-bar .settings {
+  display: flex;
+  align-items: center;
+}
+.header__logo-bar .logo {
+  margin: 0 auto;
+}
+@media only screen and (max-width: 767px) {
+  .header__logo-bar .logo {
+    margin: 0 auto 0 0;
+  }
+}
+.header__logo-bar .logo svg,
+.header__logo-bar .logo img {
+  width: 100%;
+  height: auto;
+}
+@media only screen and (max-width: 991px) {
+  .header__logo-bar .logo svg,
+  .header__logo-bar .logo img {
+    max-width: 80px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header__logo-bar .logo svg,
+  .header__logo-bar .logo img {
+    margin: 0;
+  }
+}
+.header__logo-bar .icon-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.header__logo-bar .icon-group .user {
+  display: flex;
+  align-items: center;
+  gap: 0 16px;
+}
+.header__logo-bar .icon-group .user__text {
+  font-family: var(--font-family-2-1);
+  font-size: var(--theme-font-p-mob-1);
+  color: var(--clr-smoke-2);
+  line-height: 24px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: all 0.5s ease-in-out;
+  margin: 0;
+}
+.header__logo-bar .icon-group .user svg path {
+  transition: all 0.5s ease-in-out;
+}
+.header__logo-bar .icon-group .user:hover .user__text {
+  color: var(--clr-red);
+  opacity: 1;
+}
+.header__logo-bar .icon-group .user:hover svg path {
+  fill: var(--clr-red);
+}
+.header__logo-bar .icon-group .cart__icon svg {
+  transition: all 0.3s ease-in-out;
+}
+.header__logo-bar .icon-group .cart:hover .cart__icon svg {
+  transform: scale(1.1);
+}
+.header__logo-bar .search:hover svg {
+  transform: scale(1.1);
+}
+.header__logo-bar .search form {
+  display: flex;
+  gap: 12px;
+}
+.header__logo-bar .search input {
+  width: 100%;
+  max-width: none;
+  border: none;
+}
+.header__logo-bar .search button {
+  background-color: transparent;
+  border: none;
+}
+.header__logo-bar .search svg {
+  transition: all 0.5s ease-in-out;
+}
+.header__logo-bar .hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  margin: 0 0 0 auto;
+  transform: rotate(0);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+.header__logo-bar .hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--clr-red);
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+.header__logo-bar .hamburger span:nth-child(1) {
+  top: 0px;
+}
+.header__logo-bar .hamburger span:nth-child(2) {
+  top: 8px;
+}
+.header__logo-bar .hamburger span:nth-child(3) {
+  top: 16px;
+}
+.header__logo-bar .hamburger.open span:nth-child(1) {
+  top: 16px;
+  transform: rotate(135deg);
+}
+.header__logo-bar .hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+.header__logo-bar .hamburger.open span:nth-child(3) {
+  top: 16px;
+  transform: rotate(-135deg);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.header__nav-bar {
+  display: flex;
+  background-color: var(--clr-smoke-2);
+  position: relative;
+  z-index: 1;
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar {
+    background-color: var(--clr-white);
+    position: absolute;
+    height: 100vh;
+    max-width: 65%;
+    width: 100%;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+    z-index: 9999;
+    border-top: 1px solid #ececec;
+    transform: translate(100%);
+    right: 0;
+  }
+  .header__nav-bar:after {
+    content: "";
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    opacity: 0;
+    transform: translateX(-100%);
+    width: 100vw;
+    height: 100vh;
+    z-index: 9998;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+  }
+  .header__nav-bar.open {
+    transform: translateX(0%);
+  }
+  .header__nav-bar.open::after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+.header__nav-bar ul {
+  padding: 0;
+}
+.header__nav-bar .nav.nav--main-menu,
+.header__nav-bar .nav.nav--main-menu > li,
+.header__nav-bar .nav-phone {
+  display: flex;
+  align-items: stretch;
+}
+.header__nav-bar .nav.nav--main-menu,
+.header__nav-bar .nav-phone {
+  min-height: 50px;
+}
+@media only screen and (max-width: 991px) {
+  .header__nav-bar .nav.nav--main-menu,
+  .header__nav-bar .nav-phone {
+    min-height: 45px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu,
+  .header__nav-bar .nav-phone {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu li,
+  .header__nav-bar .nav.nav--main-menu a {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu a {
+    justify-content: space-between;
+  }
+}
+.header__nav-bar .nav.nav--main-menu li a {
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  font-family: var(--font-family-2-1);
+  font-size: var(--theme-font-p-mob-1);
+  color: var(--clr-white);
+  line-height: 24px;
+  text-transform: capitalize;
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu li a {
+    color: var(--clr-smoke-2);
+    font-family: var(--font-family-2);
+  }
+}
+.header__nav-bar .nav.nav--main-menu li a .nav-arrow svg {
+  transform-origin: center;
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu li a .nav-arrow svg path {
+    fill: var(--clr-smoke-2);
+  }
+}
+.header__nav-bar .nav.nav--main-menu li.open > a > .nav-arrow > svg {
+  transform: rotate(-90deg);
+}
+.header__nav-bar .nav.nav--main-menu li:hover > a, .header__nav-bar .nav.nav--main-menu li.active > a {
+  background-color: var(--clr-red);
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu li:hover > a, .header__nav-bar .nav.nav--main-menu li.active > a {
+    background-color: transparent;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__nav-bar .nav.nav--main-menu li.has-submenu:hover > .submenu {
+    display: block;
+  }
+}
+.header__nav-bar .nav.nav--main-menu li.has-submenu.open > .submenu {
+  display: block;
+}
+.header__nav-bar .nav.nav--main-menu li.has-submenu .has-submenu:hover li a svg {
+  transform: rotate(-90deg);
+}
+@media only screen and (min-width: 768px) {
+  .header__nav-bar .nav.nav--main-menu li.has-submenu .has-submenu:hover > .submenu {
+    display: block;
+  }
+}
+.header__nav-bar li.has-submenu {
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar li.has-submenu {
+    flex-direction: column;
+  }
+}
+.header__nav-bar li.has-submenu a {
+  gap: 5px;
+}
+.header__nav-bar .nav.nav--main-menu .submenu {
+  display: none;
+  position: absolute;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 100%;
+  top: 100%;
+  list-style: none;
+  padding: 0;
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu .submenu {
+    position: inherit;
+    width: 100%;
+  }
+}
+.header__nav-bar .nav.nav--main-menu .submenu > li {
+  background-color: var(--clr-smoke-2);
+  padding: 5px 0;
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu .submenu > li {
+    background-color: transparent;
+  }
+}
+.header__nav-bar .nav.nav--main-menu .submenu > li:hover {
+  background-color: var(--clr-red);
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu .submenu > li:hover {
+    background-color: transparent;
+  }
+}
+.header__nav-bar .nav.nav--main-menu .submenu > li > a {
+  padding: 5px 5px 5px 15px;
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu .submenu > li > a {
+    padding: 5px 5px 5px 25px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu.submenu-depth-0 > li {
+    border-bottom: 1px solid #ececec;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu.submenu-depth-0 > li a {
+    padding: 15px 5px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu .submenu.submenu-depth-1 > li > a {
+    padding: 5px 5px 5px 15px;
+  }
+}
+.header__nav-bar .nav.nav--main-menu .submenu.submenu-depth-2 {
+  left: 100%;
+  top: 0;
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu .submenu.submenu-depth-2 {
+    position: initial;
+    left: 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header__nav-bar .nav.nav--main-menu .submenu.submenu-depth-2 > li > a {
+    padding: 5px 5px 5px 30px;
+  }
+}
+.header__nav-bar .nav-phone {
+  justify-content: flex-end;
+}
+@media only screen and (max-width: 991px) {
+  .header__nav-bar .nav-phone__text {
+    display: none;
+  }
+}
+.header__nav-bar .nav-phone a {
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  font-family: var(--font-family-2-1);
+  font-size: var(--theme-font-p-mob-1);
+  color: var(--clr-white);
+  line-height: 24px;
+  text-transform: capitalize;
+  gap: 13px;
+}
+.header__nav-bar .nav-phone a:hover, .header__nav-bar .nav-phone a.active {
+  background-color: var(--clr-red);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.header__top-bar {
+  padding: 6px 0;
+}
+@media only screen and (max-width: 767px) {
+  .header__top-bar {
+    display: none;
+  }
+}
+.header__top-bar .location,
+.header__top-bar .settings {
+  display: flex;
+  align-items: center;
+}
+.header__top-bar .location {
+  gap: 0 12px;
+}
+.header__top-bar .location:hover .location__text {
+  color: var(--clr-red);
+}
+.header__top-bar .location:hover .location__pin {
+  transform: scale(1.1);
+}
+.header__top-bar .location:hover .location__pin svg path {
+  fill: var(--clr-red);
+}
+@media only screen and (max-width: 767px) {
+  .header__top-bar .location {
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+}
+.header__top-bar .location__pin {
+  transition: all 0.6s ease-in-out;
+}
+.header__top-bar .location__pin svg path {
+  transition: all 0.6s ease-in-out;
+}
+.header__top-bar .location__text {
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-5);
+  color: var(--clr-smoke-2);
+  line-height: 20px;
+  padding: 0;
+  margin: 0;
+  transition: all 0.6s ease-in-out;
+}
+.header__top-bar .settings {
+  justify-content: flex-end;
+}
+@media only screen and (max-width: 767px) {
+  .header__top-bar .settings {
+    justify-content: center;
+  }
+}
+.header__top-bar .settings select {
+  border: none;
+  background-color: transparent;
+}
+.header__top-bar .settings__currency, .header__top-bar .settings__lang, .header__top-bar .settings__order-track {
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-5);
+  color: var(--clr-smoke-2);
+  line-height: 20px;
+}
+.header__top-bar .settings__order-track:hover a {
+  color: var(--clr-red);
+}
+.header__top-bar .settings__order-track a {
+  color: var(--clr-smoke-2);
+  transition: all 0.6s ease-in-out;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.mini-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mini-cards {
+  width: 100%;
+  min-height: 194px;
+  background-color: var(--clr-grey);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+.mini-cards::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.231372549);
+  z-index: 2;
+  transition: all 0.5s ease-in-out;
+}
+.mini-cards:hover .mini-cards__button {
+  color: var(--clr-white);
+}
+.mini-cards:hover .mini-cards__text-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mini-cards:hover:after {
+  transform: translateX(100%) scaleX(0);
+}
+.mini-cards:hover .mini-cards__title,
+.mini-cards:hover .mini-cards__text {
+  color: var(--clr-smoke-2);
+}
+.mini-cards:hover .mini-cards__img img {
+  transform: scale(1.1);
+}
+.mini-cards__wrapper-info {
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  padding: 0 0 0 25px;
+  text-align: left;
+}
+@media only screen and (min-width: 992px) {
+  .mini-cards__wrapper-info {
+    text-align: left;
+  }
+}
+.mini-cards__title {
+  margin-bottom: 10px;
+  color: var(--clr-white);
+}
+@media only screen and (min-width: 1440px) {
+  .mini-cards__title {
+    font-family: var(--font-family-1);
+    font-size: var(--theme-font-btn-tab-1);
+    color: var(--clr-white);
+    line-height: 62px;
+    transition: all 0.5s ease-in-out;
+  }
+}
+.mini-cards__text {
+  margin-bottom: 10px;
+  color: var(--clr-white);
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-white);
+  line-height: 30px;
+  transition: all 0.5s ease-in-out;
+}
+@media only screen and (min-width: 1440px) {
+  .mini-cards__text {
+    margin-bottom: 28px;
+  }
+}
+.mini-cards__text-arrow {
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  transform: translateX(-100%);
+}
+.mini-cards__button {
+  margin: 0 auto 40px;
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-btn-tab-1);
+  color: var(--clr-white);
+  line-height: normal;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  flex-direction: column;
+}
+@media only screen and (min-width: 992px) {
+  .mini-cards__button {
+    margin-left: 0;
+    min-width: 216px;
+    flex-direction: row;
+  }
+}
+.mini-cards__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.mini-cards__img img {
+  width: 100%;
+  min-height: 260px;
+  -o-object-position: left;
+  object-position: left;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  max-width: none;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+.mini-cards--middle .mini-cards__img img {
+  min-height: 0;
+  height: 240px;
+  width: 100%;
+  -o-object-position: bottom;
+  object-position: bottom;
+}
+.mini-cards--bottom .mini-cards__img img {
+  min-height: 0;
+  height: 240px;
+  width: 100%;
+  -o-object-position: bottom;
+  object-position: bottom;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.pagination-wrapper .pagination__list {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  max-width: 400px;
+  margin: 60px auto 0;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__list {
+    max-width: 300px;
+  }
+}
+.pagination-wrapper .pagination li {
+  display: flex;
+  align-items: center;
+}
+.pagination-wrapper .pagination li svg.no-squish {
+  flex: none;
+}
+.pagination-wrapper .pagination__item {
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  letter-spacing: 0px;
+  padding: 9px 20px;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__item {
+    padding: 5px 10px;
+  }
+}
+.pagination-wrapper .pagination__item--active {
+  color: var(--clr-white);
+  background-color: var(--clr-smoke-2);
+}
+.pagination-wrapper .pagination__item--last {
+  padding: 0;
+}
+@media only screen and (max-width: 767px) {
+  .pagination-wrapper .pagination__item {
+    font-size: var(--theme-font-p-mob-5);
+  }
+}
+.pagination-wrapper .pagination__item:hover {
+  text-decoration: underline;
+}
+.pagination-wrapper .pagination__arrow {
+  padding: 0;
+}
+.pagination-wrapper .pagination__arrow--next {
+  transform: rotate(180deg);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.pill-button {
+  width: 100%;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  min-height: 25px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+  background-color: var(--clr-black);
+  padding: 8px;
+  margin-bottom: 5px;
+}
+.pill-button:hover .pill-button__icon {
+  transform: rotate(270deg);
+}
+.pill-button__text {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-h3-mob-4);
+  color: var(--clr-white);
+  line-height: normal;
+  margin: 0;
+}
+.pill-button__icon {
+  opacity: 1;
+  transition: all 0.25s ease-in-out;
+  z-index: 1;
+  transform: rotate(45deg);
+  width: 10px;
+  height: 10px;
+}
+.pill-button__icon svg {
+  min-width: 10px;
+  height: 10px;
+}
+.pill-button__icon path {
+  fill: var(--clr-white);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.product-card {
+  width: 100%;
+  height: auto;
+}
+.product-card.disabled {
+  opacity: 0.6;
+}
+.product-card * {
+  cursor: pointer;
+}
+.product-card__details {
+  margin-top: 12px;
+}
+.product-card__category {
+  font-family: var(--font-family-2-1);
+  font-size: var(--theme-font-h3-mob-4);
+  color: var(--clr-red);
+  line-height: normal;
+  letter-spacing: 4.3px;
+  text-transform: uppercase;
+}
+@media only screen and (min-width: 1440px) {
+  .product-card__category {
+    margin-bottom: 12px;
+  }
+}
+.product-card__title {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-h2-mob-4);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  text-transform: capitalize;
+  margin-bottom: 0px;
+}
+.product-card__price {
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-1);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.product-card__actions {
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+}
+@media only screen and (min-width: 1200px) {
+  .product-card__actions {
+    min-height: 358px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .product-card__actions {
+    min-height: 471px;
+  }
+}
+.product-card__actions--image {
+  position: relative;
+}
+.product-card__actions--image .img-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.product-card__actions--image .img-wrapper--one {
+  z-index: 1;
+}
+.product-card__actions--image .img-wrapper--one:hover img {
+  opacity: 0;
+}
+.product-card__actions--image .img-wrapper--two {
+  z-index: 0;
+}
+.product-card__actions--image img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  transition: all 0.3s ease-in-out;
+  -o-object-fit: cover;
+  object-fit: cover;
+  min-height: 300px;
+}
+@media only screen and (min-width: 1200px) {
+  .product-card__actions--image img {
+    min-height: 370px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .product-card__actions--image img {
+    min-height: 480px;
+  }
+}
+.product-card__actions--cart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 65px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: background-color 0.125s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 1;
+  border: none;
+  background-color: var(--clr-smoke-2);
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-btn-mob-3);
+  color: var(--clr-white);
+  line-height: 30px;
+  text-transform: uppercase;
+  transform: translateY(100%);
+}
+.product-card__actions--cart:hover, .product-card__actions--cart.adding {
+  background-color: var(--clr-red);
+}
+.product-card__actions--cart.adding .loader-spinner {
+  opacity: 1;
+}
+.product-card__actions-group {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  top: 24px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 50px;
+  gap: 4px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 4;
+}
+.product-card__actions-group button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 14px;
+}
+.product-card__actions-group button:hover svg path {
+  fill: var(--clr-red);
+}
+.product-card__actions-group button svg {
+  width: 100%;
+  max-width: 24px;
+  height: auto;
+  fill: var(--clr-smoke-2);
+  transition: all 0.3s ease-in-out;
+}
+.product-card__actions-group button svg path {
+  transition: all 0.3s ease-in-out;
+}
+.product-card__actions .product-card__action--zoom:hover svg path {
+  stroke: var(--clr-red);
+}
+.product-card__actions:hover .product-card__actions--cart {
+  transform: translateY(0);
+}
+.product-card__actions:hover .product-card__actions-group {
+  transform: translateX(-25%);
+}
+.product-card__actions:hover.image-single .product-card__actions--image img {
+  transform: scale(1.05);
+}
+.product-card__actions.active .product-card__actions--cart {
+  transform: translateY(0);
+}
+.product-card__actions.active .product-card__actions-group {
+  transform: translateX(-25%);
+}
+.product-card__actions.active .product-card__actions--image img {
+  transform: scale(1.05);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.product-form {
+  width: 100%;
+  height: auto;
+}
+.product-form form {
+  line-height: normal;
+  height: auto;
+}
+.product-form.disabled {
+  opacity: 0.6;
+}
+.product-form__actions {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 0 15px;
+  margin-top: 20px;
+  margin: 20px 0;
+  min-height: 64px;
+}
+@media only screen and (max-width: 767px) {
+  .product-form__actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+}
+.product-form__actions button {
+  position: initial;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  position: relative;
+  cursor: pointer;
+}
+.product-form__actions--cart {
+  width: 100%;
+  max-width: none;
+  transition: background-color 0.125s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 1;
+  border: none;
+  background-color: var(--clr-smoke-2);
+  text-transform: uppercase;
+  padding: 10px 0;
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-btn-mob-3);
+  color: var(--clr-white);
+  line-height: normal;
+  letter-spacing: normal;
+}
+.product-form__actions--cart:hover, .product-form__actions--cart.adding {
+  background-color: var(--clr-red);
+}
+.product-form__actions--cart.adding .loader-spinner {
+  opacity: 1;
+}
+.product-form__actions--favorite {
+  width: 100%;
+  max-width: 64px;
+  background-color: var(--clr-grey);
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+@media only screen and (max-width: 767px) {
+  .product-form__actions--favorite {
+    max-width: none;
+  }
+}
+.product-form__actions--favorite:hover svg path, .product-form__actions--favorite.active svg path {
+  fill: var(--clr-red);
+}
+.product-form__actions:hover .product-card__actions--cart {
+  transform: translateY(0);
+}
+.product-form__actions.active .product-card__actions--cart {
+  transform: translateY(0);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.promo-card {
+  width: 100%;
+  min-height: 622px;
+  background-color: var(--clr-grey);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+@media only screen and (min-width: 992px) {
+  .promo-card {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .promo-card {
+    align-items: flex-start;
+  }
+}
+.promo-card:hover .promo-card__button {
+  color: var(--clr-white);
+}
+.promo-card:hover .promo-card__text-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.promo-card__wrapper-info {
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+@media only screen and (min-width: 992px) {
+  .promo-card__wrapper-info {
+    text-align: left;
+  }
+}
+.promo-card__subtitle {
+  letter-spacing: 4.3px;
+  color: var(--clr-white);
+  text-transform: uppercase;
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card__subtitle {
+    margin-bottom: 19px;
+  }
+}
+.promo-card__title {
+  margin-bottom: 10px;
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card__title {
+    font-family: var(--font-family-1);
+    font-size: var(--theme-font-h1-mob-4);
+    color: var(--clr-white);
+    line-height: 62px;
+  }
+}
+.promo-card__text {
+  margin-bottom: 10px;
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-white);
+  line-height: 30px;
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card__text {
+    margin-bottom: 28px;
+  }
+}
+.promo-card__text-arrow {
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  transform: translateX(-100%);
+}
+.promo-card__button {
+  margin: 0 auto 40px;
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-btn-tab-1);
+  color: var(--clr-smoke-2);
+  line-height: normal;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  flex-direction: column;
+}
+@media only screen and (min-width: 992px) {
+  .promo-card__button {
+    margin-left: 0;
+    min-width: 216px;
+    flex-direction: row;
+  }
+}
+.promo-card__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+.promo-card__img img {
+  width: 100%;
+  min-height: 622px;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  max-width: none;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+  transition: all 0.6s ease-in-out;
+  cursor: pointer;
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card--half {
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0;
+  }
+}
+.promo-card--half .promo-card__wrapper-info {
+  margin-left: 0;
+  margin-top: 48px;
+  padding: 0 20px;
+  text-align: center;
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card--half .promo-card__wrapper-info {
+    max-width: 378px;
+    margin-top: 147px;
+    margin-left: 78px;
+    text-align: left;
+  }
+}
+.promo-card--half .promo-card__title {
+  color: var(--clr-white);
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card--half .promo-card__title {
+    font-family: var(--font-family-1);
+    font-size: var(--theme-font-h1-mob-4);
+    color: var(--clr-white);
+    line-height: 62px;
+  }
+}
+.promo-card--half .button {
+  margin: 0 auto;
+  min-width: 0;
+  gap: 20px;
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card--half .button {
+    margin: 0 auto 0 0;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card--quarter {
+    min-height: 622px;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0;
+  }
+}
+.promo-card--quarter .promo-card__wrapper-info {
+  text-align: center;
+  max-width: none;
+  margin-top: 48px;
+  width: 100%;
+}
+@media only screen and (min-width: 1440px) {
+  .promo-card--quarter .promo-card__title {
+    font-family: var(--font-family-1);
+    font-size: var(--theme-font-btn-tab-1);
+    color: var(--clr-smoke-2);
+    line-height: 32px;
+  }
+}
+.promo-card--quarter .promo-card__subtitle {
+  color: var(--clr-red);
+}
+.promo-card--quarter .promo-card__text {
+  color: var(--clr-smoke-2);
+}
+.promo-card--quarter .promo-card__button {
+  margin: 0 auto;
+  min-width: 0;
+  gap: 20px;
+}
+.promo-card--quarter:hover .promo-card__button {
+  color: var(--clr-red);
+}
+.promo-card--secondary {
+  background-color: var(--clr-smoke-2);
+}
+.promo-card--secondary:hover .promo-card__button {
+  color: var(--clr-yellow);
+}
+.promo-card--secondary .promo-card__title,
+.promo-card--secondary .promo-card__text,
+.promo-card--secondary .promo-card__button {
+  color: var(--clr-white);
+}
+.promo-card--secondary .promo-card__subtitle {
+  color: var(--clr-yellow);
+}
+.promo-card--secondary .promo-card__text-arrow svg {
+  fill: var(--clr-yellow);
+}
+.promo-card--secondary .bg-circle circle {
+  fill: var(--clr-yellow);
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+@media only screen and (max-width: 1439px) {
+  .quantity-wrapper {
+    flex-direction: column;
+  }
+}
+.quantity-wrapper .quantity {
+  display: flex;
+  text-align: center;
+  gap: 0 15px;
+  width: 100%;
+}
+@media only screen and (max-width: 1439px) {
+  .quantity-wrapper .quantity {
+    justify-content: space-between;
+    gap: 0;
+  }
+}
+.quantity-wrapper .quantity.out {
+  opacity: 0.4;
+}
+.quantity-wrapper .quantity.out,
+.quantity-wrapper .quantity.out * {
+  cursor: not-allowed;
+}
+.quantity-wrapper .quantity.out input {
+  pointer-events: none;
+}
+.quantity-wrapper .quantity input {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-h2-mob-2);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+  line-height: 30px;
+  max-width: 60px;
+  text-align: center;
+  border: none;
+}
+@media only screen and (max-width: 1439px) {
+  .quantity-wrapper .quantity input {
+    max-width: none;
+    min-width: 0px;
+  }
+}
+.quantity-wrapper .quantity button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.quantity-wrapper .quantity button svg {
+  max-width: 16px;
+}
+.quantity-wrapper .stock {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.quantity-wrapper .stock p {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-5);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.quantity-wrapper .stock p:nth-of-type(2) {
+  font-family: var(--font-family-2);
+  opacity: 0.3;
+}
+.quantity-wrapper .stock p.out {
+  opacity: 0.5;
+  margin: 0;
+}
+.quantity-wrapper .stock .sep {
+  width: 1px;
+  height: 32px;
+  background-color: var(--clr-smoke-2);
+  opacity: 0.3;
+}
+@media only screen and (max-width: 1439px) {
+  .quantity-wrapper .stock .sep {
+    display: none;
+  }
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.sortby-container .filter .horizontal-line {
+  margin: 20px 0;
+}
+.sortby-container .filter h3 {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-btn-tab-1);
+  color: var(--clr-smoke-2);
+  line-height: 32px;
+  letter-spacing: normal;
+  margin-bottom: 20px;
+}
+.sortby-container .filter .filter-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sortby-container .filter .filter-group li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.sortby-container .filter .filter-group .checkboxWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.sortby-container .filter .filter-group .checkboxWrapper label {
+  font-family: var(--font-family-2);
+  font-size: var(--theme-font-h3-mob-4);
+  color: var(--clr-smoke-2);
+  line-height: normal;
+  letter-spacing: normal;
+}
+.sortby-container .filter .filter-group .checkboxWrapper input[type=checkbox] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  opacity: 0;
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+  border: 1px solid var(--clr-smoke-1);
+}
+.sortby-container .filter .filter-group .checkboxWrapper .checkmark {
+  position: relative;
+  border: 1px solid var(--clr-smoke-1);
+  background-color: transparent;
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  aspect-ratio: 1/1;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+.sortby-container .filter .filter-group .checkboxWrapper .checkmark svg {
+  opacity: 0;
+}
+.sortby-container .filter .filter-group .checkboxWrapper:hover > input[type=checkbox] ~ .checkmark {
+  background-color: #ccc;
+  border: 1px solid #ccc;
+}
+.sortby-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ .checkmark {
+  background-color: var(--clr-red);
+  border: 1px solid var(--clr-red);
+}
+.sortby-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ .checkmark svg {
+  opacity: 1;
+}
+.sortby-container .filter .filter-group .checkboxWrapper > input[type=checkbox]:checked ~ label {
+  font-family: var(--font-family-2-1);
+}
+.sortby-container .filter .filter-group__buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 11px;
+  width: 100%;
+}
+.sortby-container .filter .filter-group__buttons .button.button--outline {
+  padding: 5px 0px;
+  width: auto;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+}
+.sortby-container .filter .filter-group__buttons .button.button--outline span {
+  color: var(--clr-smoke-2);
+}
+.sortby-container .filter .filter-group__buttons .button.button--outline:hover span, .sortby-container .filter .filter-group__buttons .button.button--outline.active span {
+  color: var(--clr-white);
+}
+.sortby-container .filter .filter-group__buttons .button.button--outline:after {
+  background: var(--clr-smoke-2);
+}
+.sortby-container .filter .filter-group__buttons .button.button--outline.active:after {
+  transform: translate(0);
+}
+.sortby-container .filter .filter-group .range__slider {
+  position: relative;
+  margin: 40px 0;
+  min-height: 2px;
+  background-color: rgba(48, 48, 48, 0.2);
+}
+.sortby-container .filter .filter-group .range__track {
+  position: absolute;
+  height: 100%;
+}
+.sortby-container .filter .filter-group .range__slide-input {
+  background: none;
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.sortby-container .filter .filter-group .range__slide-input[type=range]::-webkit-slider-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 3px solid var(--clr-red);
+  background: var(--clr-red);
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.sortby-container .filter .filter-group .range__slide-input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 3px solid var(--clr-red);
+  background: var(--clr-red);
+  pointer-events: auto;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.sortby-container .filter .filter-group .range__number {
+  display: flex;
+  text-align: left;
+  gap: 11px;
+}
+@media only screen and (max-width: 1439px) {
+  .sortby-container .filter .filter-group .range__number {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+.sortby-container .filter .filter-group .range__number label {
+  margin-bottom: 8px;
+  display: block;
+}
+.sortby-container .filter .filter-group .range__number input {
+  padding: 12px 5px 12px 25px;
+  width: 100%;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+  font-family: var(--font-family-2-2);
+  font-size: var(--theme-font-btn-mob-1);
+  color: var(--clr-black);
+  line-height: 24px;
+  letter-spacing: normal;
+}
+.sortby-container .filter .filter-clear {
+  margin-bottom: 32px;
+}
+.sortby-container .filter .filter-clear button.clear-btn {
+  font-family: var(--font-family-2-2);
+  font-size: var(--theme-font-h3-mob-4);
+  color: var(--clr-smoke-2);
+  line-height: 24px;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-bottom: 5px;
+  position: relative;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1439px) {
+  .sortby-container .filter .filter-clear button.clear-btn {
+    font-size: 11px;
+    text-align: left;
+    gap: 5px;
+  }
+}
+.sortby-container .filter .filter-clear button.clear-btn:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: var(--clr-smoke-2);
+  transition: all 0.3s ease-in-out;
+  bottom: 0;
+  left: 0;
+}
+.sortby-container .filter .filter-clear button.clear-btn:hover:after, .sortby-container .filter .filter-clear button.clear-btn.active:after {
+  width: 100%;
+}
+.sortby-container #close-btn {
+  max-width: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  font-size: var(--theme-font-p-mob-5);
+}
+.sortby-container .filter--drawer {
+  position: fixed;
+  top: 0;
+  display: none;
+  background-color: var(--clr-white);
+  height: 100%;
+  max-width: 300px;
+  width: 100%;
+  opacity: 1;
+  transition: transform 0.17s ease-in-out;
+  z-index: 9999;
+  border-top: 1px solid #ececec;
+  transform: translateX(-100%);
+  left: 0;
+}
+@media only screen and (max-width: 991px) {
+  .sortby-container .filter--drawer {
+    display: block;
+  }
+  .sortby-container .filter--drawer.active {
+    transform: translateX(0%);
+  }
+}
+.sortby-container .filter--drawer .filter-clear {
+  margin-bottom: 10px;
+}
+.sortby-container .filter--drawer h3 {
+  font-size: 1em;
+}
+.sortby-container .filter--drawer .filter-group li {
+  margin-bottom: 10px;
+}
+.sortby-container .filter-wrapper__content {
+  height: calc(100% - 120px);
+  padding: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+}
+.sortby-container .filter-wrapper__content #close-btn {
+  padding: 20px;
+}
+.sortby-container .filter-wrapper__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid var(--clr-black);
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  padding: 20px;
+  background: var(--clr-white);
+  z-index: 10000;
+}
+.sortby-container .filter-wrapper__footer #close-btn {
+  padding: 10px;
+  justify-content: center;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+.varient-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 15px;
+}
+.varient-options .wrapper {
+  width: 100%;
+}
+.varient-options__size, .varient-options__gender {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+.varient-options__size {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.varient-options__gender {
+  grid-template-columns: 1fr;
+}
+.varient-options p.option-title {
+  font-family: var(--font-family-1);
+  font-size: var(--theme-font-p-mob-3);
+  color: var(--clr-smoke-2);
+  line-height: 30px;
+}
+.varient-options .button.button--outline {
+  padding: 5px 0px;
+  width: auto;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+}
+.varient-options .button.button--outline span {
+  color: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline:hover span, .varient-options .button.button--outline.active span {
+  color: var(--clr-white);
+}
+.varient-options .button.button--outline:after {
+  background: var(--clr-smoke-2);
+}
+.varient-options .button.button--outline.active:after {
+  transform: translate(0);
 }
 /**
 * Convert PX to EM

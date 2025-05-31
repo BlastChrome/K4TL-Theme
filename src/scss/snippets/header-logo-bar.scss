@@ -2,7 +2,7 @@
 
 .header {
     &__logo-bar {
-        padding: 12px 0;
+        padding: 6px 0;
 
         .row {
             align-items: center;
@@ -107,7 +107,7 @@
 
             input {
                 width: 100%;
-                max-width: 236px;
+                max-width: none;
                 border: none;
             }
 

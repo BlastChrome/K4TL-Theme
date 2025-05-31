@@ -95,7 +95,6 @@
     </div>
   </div>
   <script src="{{ 'swiper-bundle.min.js' | asset_url }}" async></script>
-  {% comment %} <script src="{{ 'image-zoom.js' | asset_url }}" async></script> {% endcomment %}
   <script>
     function updateSwiperHeightOnImagesLoad(swiperEl, swiperInstance) {
       const images = swiperEl.querySelectorAll('img');
@@ -356,27 +355,6 @@
     },
 
     {
-      "type": "select",
-      "id": "mobile_thumbnails",
-      "visible_if": "{{ section.settings.gallery_layout != 'thumbnail_slider' }}",
-      "options": [
-        {
-          "value": "columns",
-          "label": "2 columns"
-        },
-        {
-          "value": "show",
-          "label": "Show Thumbnails"
-        },
-        {
-          "value": "hide",
-          "label": "Hide Thumbnails"
-        }
-      ],
-      "default": "hide",
-      "label": "Mobile Layout"
-    },
-    {
       "label": "Image zoom",
       "type": "select",
       "id": "image_zoom",
@@ -398,6 +376,27 @@
         }
       ],
       "default": "click_zoom"
+    },
+    {
+      "type": "select",
+      "id": "mobile_thumbnails",
+      "visible_if": "{{ section.settings.gallery_layout != 'thumbnail_slider' }}",
+      "options": [
+        {
+          "value": "columns",
+          "label": "2 columns"
+        },
+        {
+          "value": "show",
+          "label": "Show Thumbnails"
+        },
+        {
+          "value": "hide",
+          "label": "Hide Thumbnails"
+        }
+      ],
+      "default": "hide",
+      "label": "Mobile Layout"
     },
 
     {

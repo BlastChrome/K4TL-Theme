@@ -4,11 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 50px;
+    margin: 15px 0;
 
     @include mx.mq('desktop-medium', max) {
         flex-direction: column;
-        margin-top: 40px;
     }
 
     .quantity {
@@ -74,6 +73,7 @@
 
             &.out {
                 opacity: 0.5;
+                margin: 0;
             }
         }
 
