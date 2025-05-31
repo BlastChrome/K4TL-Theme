@@ -4,12 +4,11 @@
 
     .container {
         @include mx.mq('desktop', min) {
-            max-width: 1190px;
+            max-width: 1250px;
         }
     }
 
     .product {
-        padding-top: 40px;
 
         @include mx.mq('desktop', max) {
             padding-top: 0;
@@ -30,7 +29,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 25px;
+            gap: 6px;
             overflow: hidden;
             height: 826px;
 
@@ -275,11 +274,11 @@
 
 
             &--support {
-                min-width: 237px;
+                min-width: 100px;
 
 
                 .swiper-slide {
-                    max-height: 172px;
+                    max-height: 100px;
                     opacity: 0.25;
                     transition: opacity 0.125s ease-in-out;
 
