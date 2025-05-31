@@ -14,17 +14,16 @@ class MediaGallery extends HTMLElement {
     const img = e.target.closest('img');
     if (!img) return;
 
-    this.images.forEach((image) => image.classList.remove('active'));
-
     const zoomWrapper = img.closest('[data-zoom]');
+
     if (zoomWrapper) {
-      if (!img.classList.contains('active')) {
+      if (!zoomWrapper.classList.contains('active')) {
         const resultEl = zoomWrapper.querySelector('#my-result');
         this.currentZoom = this.initializeZoom(img, resultEl);
-        img.classList.add('active');
+        zoomWrapper.classList.add('active');
       } else {
-        this.currentZoom?.disable();
-        img.classList.remove('active');
+        this.currentZoom.disable();
+        zoomWrapper.classList.remove('active');
       }
     }
   }

@@ -80,7 +80,7 @@
                 </span>
               </div>
             {% when 'click_zoom' %}
-              <div class="img-wrapper zoom-wrapper" data-zoom="zoom-{{ forloop.index }}">
+              <div class="img-wrapper img-wrapper--zoom" data-zoom="zoom-{{ forloop.index }}">
                 {% render 'product-image-tag', product_image: product_image %}
                 <span class="svg-wrapper svg-wrapper--{{ grid_type }}">
                   {{ 'icon-zoom.svg' | inline_asset_content }}
