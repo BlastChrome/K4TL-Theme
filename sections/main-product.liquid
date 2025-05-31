@@ -309,27 +309,6 @@
       "default": "large"
     },
     {
-      "type": "select",
-      "id": "desktop_thumbnail_carousel_position",
-      "label": "Desktop Carousel Position",
-      "info": "Carousel is positioned bottom for mobile.",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        },
-        {
-          "value": "bottom",
-          "label": "Bottom"
-        }
-      ],
-      "default": "bottom"
-    },
-    {
       "label": "Desktop layout",
       "type": "select",
       "id": "gallery_layout",
@@ -355,7 +334,31 @@
     },
     {
       "type": "select",
+      "id": "desktop_thumbnail_carousel_position",
+      "label": "Desktop Carousel Position",
+      "info": "Carousel is positioned bottom for mobile.",
+      "visible_if": "{{ section.settings.gallery_layout == 'thumbnail_slider' }}",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "bottom"
+    },
+
+    {
+      "type": "select",
       "id": "mobile_thumbnails",
+      "visible_if": "{{ section.settings.gallery_layout != 'thumbnail_slider' }}",
       "options": [
         {
           "value": "columns",
@@ -378,6 +381,8 @@
       "type": "select",
       "id": "image_zoom",
       "info": "zoom options unavailable when layout is set to Thumbnail Slider",
+      "visible_if": "{{ section.settings.gallery_layout != 'thumbnail_slider' }}",
+
       "options": [
         {
           "value": "no_zoom",
