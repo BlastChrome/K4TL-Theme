@@ -1,6 +1,6 @@
 <product-media-gallery>
   {% if gallery_layout == 'thumbnail_slider' %}
-    <div class="swiper-group-wrapper sticky {{ gallery_layout }} {% if desktop_thumbnail_carousel_position_class %}{{ desktop_thumbnail_carousel_position_class }}{% endif %}">
+    <div class="swiper-group-wrapper sticky desktop {{ gallery_layout }} {% if desktop_thumbnail_carousel_position_class %}{{ desktop_thumbnail_carousel_position_class }}{% endif %}">
       <div
         class="product-swiper product-swiper--support swiper"
         data-thumbnail-position="{{ section.settings.desktop_thumbnail_carousel_position }}"
@@ -41,7 +41,7 @@
       </div>
     </div>
   {% else %}
-    <div class="product-media-grid product-media-grid--{{gallery_layout}}">
+    <div class="product-media-grid desktop product-media-grid--{{gallery_layout}}">
       {% if image_zoom == 'open_lightbox' %}
         <script src="{{ 'bootstrap.bundle.min.js' | asset_url }}" defer></script>
         <script src="{{ 'bootstrap-lightbox.bundle.min.js' | asset_url }}" defer></script>
@@ -96,4 +96,45 @@
       {% endfor %}
     </div>
   {% endif %}
+  {% comment %} Mobile slider {% endcomment %}
+  <div class="swiper-group-wrapper sticky mobile {{ gallery_layout }} {% if desktop_thumbnail_carousel_position_class %}{{ desktop_thumbnail_carousel_position_class }}{% endif %}">
+    <div
+      class="product-swiper product-swiper--support swiper"
+      data-thumbnail-position="{{ section.settings.desktop_thumbnail_carousel_position }}"
+    >
+      <div class="swiper-wrapper">
+        {% for product_image in product_images %}
+          <div class="product-swiper__slide swiper-slide" data-slide="{{ forloop.index }}">
+            {% render 'product-image-tag', product_image: product_image %}
+          </div>
+        {% endfor %}
+      </div>
+      <button class="slider-controller slider-controller__next-button">
+        <span class="svg-wrapper">
+          {{ 'icon-down-arrow.svg' | inline_asset_content }}
+        </span>
+      </button>
+    </div>
+    <div class="product-swiper product-swiper--main swiper">
+      <div class="swiper-wrapper">
+        {% for product_image in product_images %}
+          <div class="product-swiper__slide swiper-slide" data-slide="{{ forloop.index }}">
+            {% render 'product-image-tag', product_image: product_image %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="swiper-pagination"></div>
+      <div class="slider-controller slider-controller__prev-button">
+        <span class="svg-wrapper">
+          {{ 'product-slider-section-prev.svg' | inline_asset_content }}
+        </span>
+      </div>
+      <div class="slider-controller slider-controller__next-button">
+        <span class="svg-wrapper">
+          {{ 'product-slider-section-next.svg' | inline_asset_content }}
+        </span>
+      </div>
+    </div>
+  </div>
 </product-media-gallery>

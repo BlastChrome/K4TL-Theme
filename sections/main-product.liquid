@@ -28,19 +28,19 @@
   {% assign variant_images = product.images | map: 'src' %}
 
   {%- liquid
-    assign desktop_media_gallery_width = 'col-lg-7'
-    assign desktop_media_carousel_width = 'col-lg-5'
+    assign desktop_media_gallery_width = 'col-md-7'
+    assign desktop_media_carousel_width = 'col-md-5'
 
     case section.settings.desktop_media_width
       when 'small'
-        assign desktop_media_gallery_width = 'col-lg-6'
-        assign desktop_media_carousel_width = 'col-lg-6'
+        assign desktop_media_gallery_width = 'col-md-6'
+        assign desktop_media_carousel_width = 'col-md-6'
       when 'medium'
-        assign desktop_media_gallery_width = 'col-lg-7'
-        assign desktop_media_carousel_width = 'col-lg-5'
+        assign desktop_media_gallery_width = 'col-md-7'
+        assign desktop_media_carousel_width = 'col-md-5'
       when 'large'
-        assign desktop_media_gallery_width = 'col-lg-8'
-        assign desktop_media_carousel_width = 'col-lg-4'
+        assign desktop_media_gallery_width = 'col-md-8'
+        assign desktop_media_carousel_width = 'col-md-4'
     endcase
   -%}
 
@@ -169,32 +169,11 @@
       updateSwiperHeightOnImagesLoad(document.querySelector('.product-swiper--main'), mainSwiper);
     }
 
-    function initImageZoom() {
-      const hasZoomImg = document.getElementById('zoom-img') ? true : false;
-      if (!hasZoomImg) return;
-
-      const zoomImg = document.getElementById('zoom-img');
-      let zoomInstance = null;
-
-      zoomImg.addEventListener('click', (e) => {
-        const imgID = e.target.id;
-        if (zoomInstance) {
-          zoomInstance.disable();
-          zoomInstance = null;
-        } else {
-          zoomInstance = imageZoom(imgID, 'myresult');
-        }
-      });
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
-      {% comment %} initImageZoom(); {% endcomment %}
       initProductMediaSwipers();
     });
 
     document.addEventListener('shopify:section:load', function () {
-      {% comment %} initImageZoom(); {% endcomment %}
-
       initProductMediaSwipers();
     });
   </script>
@@ -276,15 +255,15 @@
       "info": "Position is automatically optimized for mobile",
       "options": [
         {
-          "value": "flex-lg-row",
+          "value": "flex-md-row",
           "label": "Left"
         },
         {
-          "value": "flex-lg-row-reverse",
+          "value": "flex-md-row-reverse",
           "label": "Right"
         }
       ],
-      "default": "flex-lg-row"
+      "default": "flex-md-row"
     },
     {
       "type": "select",

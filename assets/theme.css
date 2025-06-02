@@ -4703,6 +4703,21 @@ a:hover {
     -webkit-transform: rotate(360deg);
   }
 }
+.mobile {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  .mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .desktop {
+    display: none;
+  }
+}
+
 /**
 * Convert PX to EM
 *
@@ -9117,6 +9132,19 @@ button.button--link span {
   position: sticky;
   top: 18rem;
 }
+.main-product-wrapper .product .swiper-group-wrapper.mobile {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .product .swiper-group-wrapper.mobile {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .product .swiper-group-wrapper.desktop {
+    display: none;
+  }
+}
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .product__info--desktop h2 {
     display: none;
@@ -9130,11 +9158,6 @@ button.button--link span {
 .main-product-wrapper .product .product-media-grid--columns, .main-product-wrapper .product .product-media-grid--stacked {
   grid-template-columns: 1fr 1fr;
   grid-template-columns: repeat(2, 1fr);
-}
-@media only screen and (max-width: 1199px) {
-  .main-product-wrapper .product .product-media-grid--columns, .main-product-wrapper .product .product-media-grid--stacked {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 .main-product-wrapper .product .product-media-grid--thumbnails {
   grid-template-columns: repeat(6, 1fr);
@@ -9205,6 +9228,19 @@ button.button--link span {
 }
 .main-product-wrapper .product .product-media-grid-img--full {
   grid-column: -1/1;
+}
+.main-product-wrapper .product .product-media-grid.mobile {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .product .product-media-grid.mobile {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .product .product-media-grid.desktop {
+    display: none;
+  }
 }
 .main-product-wrapper .product .product-swiper {
   height: 100%;
@@ -9302,6 +9338,16 @@ button.button--link span {
   text-transform: uppercase;
   margin: 15px 0;
 }
+@media only screen and (max-width: 1199px) {
+  .main-product-wrapper .product h3 {
+    line-height: normal;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .product h3 {
+    font-size: 0.8em;
+  }
+}
 .main-product-wrapper .product h2 {
   margin: 15px 0;
   text-transform: capitalize;
@@ -9313,6 +9359,12 @@ button.button--link span {
     font-size: var(--theme-font-h2-mob-2-1);
     color: var(--clr-smoke-2);
     line-height: 44px;
+    line-height: normal;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .product h2 {
+    font-size: 1.5em;
   }
 }
 .main-product-wrapper .product p.price {
@@ -9321,6 +9373,12 @@ button.button--link span {
   color: var(--clr-red);
   line-height: 30px;
   margin: 18px 0;
+}
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .product p.price {
+    font-size: 1em;
+    margin: 10px 0;
+  }
 }
 .main-product-wrapper .product .desc p {
   font-family: var(--font-family-2);
@@ -9360,12 +9418,25 @@ button.button--link span {
 .main-product-wrapper .varient-options__size {
   grid-template-columns: 1fr 1fr 1fr;
 }
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .varient-options__size {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
 .main-product-wrapper .varient-options__gender {
   grid-template-columns: 1fr;
+}
+.main-product-wrapper .varient-options__gender button {
+  min-width: 100px;
 }
 @media only screen and (max-width: 1199px) {
   .main-product-wrapper .varient-options__gender {
     grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main-product-wrapper .varient-options__gender {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 .main-product-wrapper .varient-options p.option-title {
@@ -9824,6 +9895,58 @@ button.button--link span {
   margin-right: 0;
   border-radius: 0;
   margin-left: 30px;
+}
+/**
+* Convert PX to EM
+*
+* em-convert is a function of the gulp postcss-em package
+*
+**/
+/**
+* Example
+**/
+/**
+* Media queries
+**/
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1585.87px;
+  }
+}
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 45%;
+  height: 45%;
+  pointer-events: none;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  pointer-events: none;
 }
 /**
 * Convert PX to EM
@@ -12484,57 +12607,5 @@ button.button--link span {
 }
 .varient-options .button.button--outline.active:after {
   transform: translate(0);
-}
-/**
-* Convert PX to EM
-*
-* em-convert is a function of the gulp postcss-em package
-*
-**/
-/**
-* Example
-**/
-/**
-* Media queries
-**/
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1440px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1585.87px;
-  }
-}
-.img-zoom-container {
-  position: relative;
-}
-
-.img-zoom-lens {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  /*set the size of the lens:*/
-  width: 45%;
-  height: 45%;
-  pointer-events: none;
-}
-
-.img-zoom-result {
-  border: 1px solid #d4d4d4;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  left: 0%;
-  pointer-events: none;
 }
 /*# sourceMappingURL=theme.css.map */

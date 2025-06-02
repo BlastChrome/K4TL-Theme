@@ -10,6 +10,8 @@
 
     .product {
 
+
+
         @include mx.mq('desktop', max) {
             padding-top: 0;
         }
@@ -83,6 +85,22 @@
                 position: sticky;
                 top: 18rem;
             }
+
+            // utility classes
+            &.mobile {
+                display: none;
+
+                @include mx.mq('tablet', max) {
+                    display: flex;
+                }
+            }
+
+            &.desktop {
+                @include mx.mq('tablet', max) {
+                    display: none;
+                }
+            }
+
         }
 
         &__info {
@@ -106,9 +124,6 @@
                 grid-template-columns: 1fr 1fr;
                 grid-template-columns: repeat(2, 1fr);
 
-                @include mx.mq('desktop', max) {
-                    grid-template-columns: repeat(3, 1fr);
-                }
             }
 
             &--thumbnails {
@@ -202,6 +217,20 @@
 
                 &--full {
                     grid-column: -1/ 1;
+                }
+            }
+
+            &.mobile {
+                display: none;
+
+                @include mx.mq('tablet', max) {
+                    display: block;
+                }
+            }
+
+            &.desktop {
+                @include mx.mq('tablet', max) {
+                    display: none;
                 }
             }
         }
@@ -320,6 +349,14 @@
             text-transform: uppercase;
             margin: 15px 0;
 
+            @include mx.mq('desktop', max) {
+                line-height: normal;
+            }
+
+            @include mx.mq('tablet', max) {
+                font-size: 0.8em;
+            }
+
         }
 
         h2 {
@@ -329,6 +366,11 @@
 
             @include mx.mq('desktop', max) {
                 @include mx.font-source-sans(--font-family-1, --theme-font-h2-mob-2-1, --clr-smoke-2, false, 44px);
+                line-height: normal;
+            }
+
+            @include mx.mq('tablet', max) {
+                font-size: 1.5em;
             }
         }
 
@@ -336,6 +378,11 @@
             &.price {
                 @include mx.font-source-sans(--font-family-1, --theme-font-p-mob-3, --clr-red, false, 30px);
                 margin: 18px 0;
+
+                @include mx.mq('tablet', max) {
+                    font-size: 1em;
+                    margin: 10px 0;
+                }
             }
         }
 
@@ -379,13 +426,27 @@
         &__size {
             grid-template-columns: 1fr 1fr 1fr;
 
+
+
+            @include mx.mq('tablet', max) {
+                grid-template-columns: repeat(6, 1fr);
+            }
+
         }
 
         &__gender {
             grid-template-columns: 1fr;
 
+            button {
+                min-width: 100px
+            }
+
             @include mx.mq('desktop', max) {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            @include mx.mq('tablet', max) {
+                grid-template-columns: repeat(5, 1fr);
             }
         }
 
@@ -433,5 +494,6 @@
             top: 13rem;
         }
     }
+
 
 }

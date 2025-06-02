@@ -5,7 +5,7 @@
       "settings": {
         "padding_top": 44,
         "padding_bottom": 44,
-        "media_position": "flex-lg-row",
+        "media_position": "flex-md-row",
         "desktop_media_width": "medium",
         "desktop_thumbnail_carousel_position": "bottom",
         "gallery_layout": "columns",
