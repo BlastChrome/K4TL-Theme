@@ -52,7 +52,8 @@
             product_images: variant_images,
             gallery_layout: section.settings.gallery_layout,
             image_zoom: section.settings.image_zoom,
-            desktop_thumbnail_carousel_position_class: section.settings.desktop_thumbnail_carousel_position
+            desktop_thumbnail_carousel_position_class: section.settings.desktop_thumbnail_carousel_position,
+            mobile_thumbnail_carousel_position_class: section.settings.mobile_layout
           %}
         </div>
         <div class="col-12 {{desktop_media_carousel_width}}">
@@ -358,7 +359,7 @@
     },
     {
       "type": "select",
-      "id": "mobile_thumbnails",
+      "id": "mobile_layout",
       "visible_if": "{{ section.settings.gallery_layout != 'thumbnail_slider' }}",
       "options": [
         {

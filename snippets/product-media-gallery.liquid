@@ -99,8 +99,13 @@
   {% comment %} Mobile slider {% endcomment %}
   <div class="swiper-group-wrapper sticky mobile {{ gallery_layout }} {% if desktop_thumbnail_carousel_position_class %}{{ desktop_thumbnail_carousel_position_class }}{% endif %}">
     <div
-      class="product-swiper product-swiper--support swiper"
+      class="
+        product-swiper
+        product-swiper--support
+        swiper
+      "
       data-thumbnail-position="{{ section.settings.desktop_thumbnail_carousel_position }}"
+      data-thumbnail-visibility="{{ section.settings.mobile_layout }}"
     >
       <div class="swiper-wrapper">
         {% for product_image in product_images %}
