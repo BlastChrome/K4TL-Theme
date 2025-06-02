@@ -158,18 +158,3 @@ a {
         -webkit-transform: rotate(360deg);
     }
 }
-
-// utility classes
-.mobile {
-    display: none;
-
-    @include mx.mq('tablet', max) {
-        display: block;
-    }
-}
-
-.desktop {
-    @include mx.mq('tablet', max) {
-        display: none;
-    }
-}
