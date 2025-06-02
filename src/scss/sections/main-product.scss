@@ -4,12 +4,11 @@
 
     .container {
         @include mx.mq('desktop', min) {
-            max-width: 1190px;
+            max-width: 1250px;
         }
     }
 
     .product {
-        padding-top: 40px;
 
         @include mx.mq('desktop', max) {
             padding-top: 0;
@@ -30,7 +29,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 25px;
+            gap: 6px;
             overflow: hidden;
             height: 826px;
 
@@ -100,7 +99,7 @@
         .product-media-grid {
             display: grid;
             grid-gap: 12px;
-            margin-bottom: 20px;
+            margin: 15px 0;
 
             &--columns,
             &--stacked {
@@ -135,18 +134,21 @@
                     height: auto;
                     border: 2px solid transparent;
 
-                    &.active {
-                        border: 2px solid var(--clr-red);
-                    }
 
-                    &.zoom-img {
+
+
+                }
+
+                .img-wrapper {
+                    &--zoom {
                         cursor: zoom-in;
-                    }
 
-                    &.zoom-img.active {
-                        cursor: zoom-out;
-                    }
+                        &.active {
+                            border: 1px solid var(--clr-red);
+                            cursor: zoom-out;
+                        }
 
+                    }
                 }
 
                 .svg-wrapper {
@@ -272,11 +274,11 @@
 
 
             &--support {
-                min-width: 237px;
+                min-width: 100px;
 
 
                 .swiper-slide {
-                    max-height: 172px;
+                    max-height: 100px;
                     opacity: 0.25;
                     transition: opacity 0.125s ease-in-out;
 
@@ -316,18 +318,16 @@
         h3 {
             letter-spacing: 4.3px;
             text-transform: uppercase;
-            margin: 10px 0;
+            margin: 15px 0;
 
-            @include mx.mq('desktop-medium') {
-                margin-bottom: 19px;
-            }
         }
 
         h2 {
-            margin-bottom: 10px;
+            margin: 15px 0;
             text-transform: capitalize;
+            font-size: var(--theme-font-h2-mob-2-1);
 
-            @include mx.mq('desktop-medium') {
+            @include mx.mq('desktop', max) {
                 @include mx.font-source-sans(--font-family-1, --theme-font-h2-mob-2-1, --clr-smoke-2, false, 44px);
             }
         }
@@ -341,12 +341,11 @@
 
         .desc {
             p {
-                margin-bottom: 20px;
                 @include mx.font-source-sans(--font-family-2, --theme-font-btn-mob-1, --clr-smoke-2, false, 30px, 0px);
+                margin: 15px 0;
+                line-height: normal;
+                font-size: 0.85em;
 
-                @include mx.mq('desktop-medium') {
-                    margin-bottom: 51px;
-                }
             }
         }
     }
@@ -356,7 +355,7 @@
         justify-content: space-between;
         gap: 0 15px;
 
-        @include mx.mq('desktop-medium', max) {
+        @include mx.mq('desktop', max) {
             flex-direction: column;
         }
 
@@ -372,7 +371,7 @@
             max-width: none;
             margin: 10px 0;
 
-            @include mx.mq('desktop-medium', max) {
+            @include mx.mq('desktop', max) {
                 max-width: none;
             }
         }
@@ -431,7 +430,7 @@
     .product-options-group {
         &--sticky {
             position: sticky;
-            top: 15rem;
+            top: 13rem;
         }
     }
 

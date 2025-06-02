@@ -1,43 +1,35 @@
 class MediaGallery extends HTMLElement {
   constructor() {
     super();
-    const grid = this.querySelector('.product-media-grid');
-    if (grid) {
-      grid.addEventListener('click', this.handleGridElementClick.bind(this));
+    this.grid = this.querySelector('.product-media-grid');
+    this.images = [...this.querySelectorAll('img')];
+    this.events = ['mousemove', 'touchmove'];
+
+    if (this.grid) {
+      this.grid.addEventListener('click', this.handleGridClick.bind(this));
     }
   }
 
-  handleGridElementClick(e) {
-    const el = e.target;
-    if (el.tagName == 'IMG') {
-      this.handleImgClick(el);
-    }
-  }
+  handleGridClick(e) {
+    const img = e.target.closest('img');
+    if (!img) return;
 
-  handleImgClick(clickedImg) {
-    const images = [...this.querySelectorAll('img')];
-    // clear the active class from the other images
-    images.forEach((img) => img.classList.remove('active'));
+    const zoomWrapper = img.closest('[data-zoom]');
 
-    // check if the is a zoom-image
-    const isZoomImage = clickedImg.parentElement.hasAttribute('data-zoom') ? true : false;
-    if (isZoomImage) {
-      let zoomInstance = null;
-      if (!clickedImg.classList.contains('active')) {
-        const resultEl = clickedImg.parentElement.querySelector('#my-result');
-        zoomInstance = this.handleImageZoom(clickedImg, resultEl);
-        // apply the active class to the clicked img
-        clickedImg.classList.add('active');
+    if (zoomWrapper) {
+      if (!zoomWrapper.classList.contains('active')) {
+        const resultEl = zoomWrapper.querySelector('#my-result');
+        this.currentZoom = this.initializeZoom(img, resultEl);
+        zoomWrapper.classList.add('active');
       } else {
-        zoomInstance.disable();
-        clickedImg.classList.remove('active');
+        this.currentZoom.disable();
+        zoomWrapper.classList.remove('active');
       }
     }
   }
 
-  handleImageZoom(img, result) {
+  initializeZoom(img, result) {
     const lens = document.createElement('div');
-
     lens.classList.add('img-zoom-lens');
     img.parentElement.insertBefore(lens, img);
 
@@ -47,47 +39,49 @@ class MediaGallery extends HTMLElement {
     result.style.backgroundImage = `url('${img.src}')`;
     result.style.backgroundSize = `${img.width * cx}px ${img.height * cy}px`;
 
-    function moveLens(e) {
-      e.preventDefault();
-      const pos = getCursorPos(e);
-      let x = pos.x - lens.offsetWidth / 2;
-      let y = pos.y - lens.offsetHeight / 2;
-
-      x = Math.max(0, Math.min(x, img.width - lens.offsetWidth));
-      y = Math.max(0, Math.min(y, img.height - lens.offsetHeight));
-
-      lens.style.left = `${x}px`;
-      lens.style.top = `${y}px`;
-
-      result.style.backgroundPosition = `-${x * cx}px -${y * cy}px`;
-    }
-
-    function getCursorPos(e) {
-      e = e || window.event;
-      const rect = img.getBoundingClientRect();
-      const x = e.pageX - rect.left - window.pageXOffset;
-      const y = e.pageY - rect.top - window.pageYOffset;
-      return { x, y };
-    }
+    // Bind the moveLens method to maintain correct 'this' context
+    const boundMoveLens = this.moveLens.bind(this, img, lens, result, cx, cy);
 
     // Attach event listeners
-    const events = ['mousemove', 'touchmove'];
-    events.forEach((evt) => {
-      lens.addEventListener(evt, moveLens);
-      img.addEventListener(evt, moveLens);
+    this.events.forEach((evt) => {
+      lens.addEventListener(evt, boundMoveLens);
+      img.addEventListener(evt, boundMoveLens);
     });
 
-    // Return an object with disable method
     return {
-      disable() {
-        events.forEach((evt) => {
-          lens.removeEventListener(evt, moveLens);
-          img.removeEventListener(evt, moveLens);
+      disable: () => {
+        this.events.forEach((evt) => {
+          lens.removeEventListener(evt, boundMoveLens);
+          img.removeEventListener(evt, boundMoveLens);
         });
         if (lens.parentElement) lens.parentElement.removeChild(lens);
         result.style.backgroundImage = 'none';
       },
     };
   }
+
+  moveLens(img, lens, result, cx, cy, e) {
+    e.preventDefault();
+    const pos = this.getCursorPos(img, e);
+    let x = pos.x - lens.offsetWidth / 2;
+    let y = pos.y - lens.offsetHeight / 2;
+
+    x = Math.max(0, Math.min(x, img.width - lens.offsetWidth));
+    y = Math.max(0, Math.min(y, img.height - lens.offsetHeight));
+
+    lens.style.left = `${x}px`;
+    lens.style.top = `${y}px`;
+
+    result.style.backgroundPosition = `-${x * cx}px -${y * cy}px`;
+  }
+
+  getCursorPos(img, e) {
+    e = e || window.event;
+    const rect = img.getBoundingClientRect();
+    const x = e.pageX - rect.left - window.pageXOffset;
+    const y = e.pageY - rect.top - window.pageYOffset;
+    return { x, y };
+  }
 }
+
 customElements.define('product-media-gallery', MediaGallery);

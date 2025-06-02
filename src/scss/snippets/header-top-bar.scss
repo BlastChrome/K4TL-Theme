@@ -2,10 +2,9 @@
 
 .header {
     &__top-bar {
-        padding: 12px 0;
+        padding: 6px 0;
 
         @include mx.mq('tablet', max) {
-            padding: 12px 0;
             display: none;
         }
 

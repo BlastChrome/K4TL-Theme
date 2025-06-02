@@ -95,7 +95,6 @@
     </div>
   </div>
   <script src="{{ 'swiper-bundle.min.js' | asset_url }}" async></script>
-  {% comment %} <script src="{{ 'image-zoom.js' | asset_url }}" async></script> {% endcomment %}
   <script>
     function updateSwiperHeightOnImagesLoad(swiperEl, swiperInstance) {
       const images = swiperEl.querySelectorAll('img');
@@ -134,7 +133,7 @@
         autoPlay: true,
         direction: 'horizontal',
         slidesPerView: 5,
-        spaceBetween: 20,
+        spaceBetween: 6,
         watchSlidesProgress: true,
         slideToClickedSlide: true,
         navigation: {
@@ -147,7 +146,7 @@
         breakpoints: {
           1198: {
             direction: isVertical ? 'vertical' : 'horizontal',
-            slidesPerView: isVertical ? 3 : 5, // show 3 slides
+            slidesPerView: isVertical ? 8 : 5, // show 3 slides
           },
         },
       });
@@ -309,27 +308,6 @@
       "default": "large"
     },
     {
-      "type": "select",
-      "id": "desktop_thumbnail_carousel_position",
-      "label": "Desktop Carousel Position",
-      "info": "Carousel is positioned bottom for mobile.",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        },
-        {
-          "value": "bottom",
-          "label": "Bottom"
-        }
-      ],
-      "default": "bottom"
-    },
-    {
       "label": "Desktop layout",
       "type": "select",
       "id": "gallery_layout",
@@ -355,7 +333,54 @@
     },
     {
       "type": "select",
+      "id": "desktop_thumbnail_carousel_position",
+      "label": "Desktop Carousel Position",
+      "info": "Carousel is positioned bottom for mobile.",
+      "visible_if": "{{ section.settings.gallery_layout == 'thumbnail_slider' }}",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "bottom"
+    },
+
+    {
+      "label": "Image zoom",
+      "type": "select",
+      "id": "image_zoom",
+      "info": "zoom options unavailable when layout is set to Thumbnail Slider",
+      "visible_if": "{{ section.settings.gallery_layout != 'thumbnail_slider' }}",
+
+      "options": [
+        {
+          "value": "no_zoom",
+          "label": "No zoom"
+        },
+        {
+          "value": "open_lightbox",
+          "label": "Open lightbox"
+        },
+        {
+          "value": "click_zoom",
+          "label": "Click and zoom"
+        }
+      ],
+      "default": "click_zoom"
+    },
+    {
+      "type": "select",
       "id": "mobile_thumbnails",
+      "visible_if": "{{ section.settings.gallery_layout != 'thumbnail_slider' }}",
       "options": [
         {
           "value": "columns",
@@ -372,27 +397,6 @@
       ],
       "default": "hide",
       "label": "Mobile Layout"
-    },
-    {
-      "label": "Image zoom",
-      "type": "select",
-      "id": "image_zoom",
-      "info": "zoom options unavailable when layout is set to Thumbnail Slider",
-      "options": [
-        {
-          "value": "no_zoom",
-          "label": "No zoom"
-        },
-        {
-          "value": "open_lightbox",
-          "label": "Open lightbox"
-        },
-        {
-          "value": "click_zoom",
-          "label": "Click and zoom"
-        }
-      ],
-      "default": "click_zoom"
     },
 
     {

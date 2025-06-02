@@ -182,7 +182,7 @@
             const first_varient_price = product.variants[0].price;
             const product_title = product.title;
             const product_featured_image = product.images[0].src;
-            const product_url = product.url
+            const product_url = `/products/${product.handle}`
             {% if section.settings.show_secondary_image == true %}
             const product_secondary_image = product.images[1].src;
             {% endif %}
