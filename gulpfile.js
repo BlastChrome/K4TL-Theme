@@ -33,8 +33,9 @@ gulp.task('styles', function () {
 });
 
 // Watch SCSS files for changes and run the styles task
-gulp.task('watch', function () {
+gulp.task('watch', function (done) {
   gulp.watch(paths.scss, gulp.series('styles'));
+  // Don't call done() as we want the watch to continue running
 });
 
 // Default task: compile styles and watch for changes
