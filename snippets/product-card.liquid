@@ -13,23 +13,21 @@
       <div class="product-card__actions--image">
         <div class="img-wrapper {% if product_card_image_two != null %}img-wrapper--one {% endif %}">
           <a href="{{ product_card_url }}">
-            <img
-              src="{{ product_card_image | img_url: 'master' }}"
-              alt="{{ product_card_title }}"
-              width="748"
-              height="610"
-            >
+            {{
+              product_card_image
+              | image_url: width: 748, height: 610, crop: 'center'
+              | image_tag: loading: 'lazy', alt: product_card_title, width: 748, height: 610
+            }}
           </a>
         </div>
         {% if product_card_image_two != null %}
           <div class="img-wrapper img-wrapper--two">
             <a href="{{ product_card_url }}">
-              <img
-                src="{{ product_card_image_two | img_url: 'master' }}"
-                alt="{{ product_card_title }}"
-                width="748"
-                height="610"
-              >
+              {{
+                product_card_image_two
+                | image_url: width: 748, height: 610, crop: 'center'
+                | image_tag: loading: 'lazy', alt: product_card_title, width: 748, height: 610
+              }}
             </a>
           </div>
         {% endif %}

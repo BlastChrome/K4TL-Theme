@@ -25,12 +25,11 @@
   </div>
   <div class="promo-card__img">
     <a href="{{ promo_card_button_link }}">
-      <img
-        src="{{ promo_card_image | img_url: 'master' }}"
-        alt="{{ promo_card_image_title }}"
-        width="450"
-        height="360"
-      >
+      {{
+        promo_card_image
+        | image_url: width: 450, height: 360, crop: 'center'
+        | image_tag: loading: 'lazy', alt: promo_card_image_title, width: 450, height: 360
+      }}
     </a>
   </div>
 </div>
