@@ -7,7 +7,11 @@
     <meta name="description" content="{{ page_description | escape }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | default: "favicon" | image_url: width: 32, height: 32  }}"
+      >
     {%- endif -%}
     {{ content_for_header }}
   </head>
