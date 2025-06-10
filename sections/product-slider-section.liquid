@@ -40,22 +40,50 @@
       <div class="col-12">
         {% assign collection_one = collections[section.settings.product_collection_one] %}
         {% assign collection_two = collections[section.settings.product_collection_two] %}
+
+        {{ section.id }}
+        <br>
+
+        <button onclick="testRendering('{{ section.id }}', 'product-tab-2')">Test</button>
+
+        <script>
+          function testRendering(section_id, active_tab) {
+            fetch(`${window.location.pathname}?section_id=${section_id}&active_tab=${active_tab}`)
+              .then((response) => response.text())
+              .then((responseText) => {
+                const parser = new DOMParser();
+                const html = parser.parseFromString(responseText, 'text/html');
+                const newSection = html.querySelector(`.section-${section_id}`);
+                const oldSection = document.querySelector(`.section-${section_id}`);
+                if (oldSection && newSection) {
+                  oldSection.innerHTML = newSection.innerHTML;
+                  // Re-initialize the slider after content update
+                }
+              });
+          }
+        </script>
+
         <div class="product-tabs">
+          {% assign active_tab = request.parameters.active_tab | default: section.settings.active_tab %}
+          {% assign active_handle = request.parameters.handle %}
+
           {% if section.settings.product_collection_one %}
+            {% assign collection = collections[section.settings.product_collection_one] %}
             <a
               href="#"
               id="product-tab-1"
-              class="product-tabs__title {% if section.settings.active_tab ==  'product-tab-1' %} product-tabs__title--active{% endif %}"
+              class="product-tabs__title {% if active_handle == collection.handle or active_tab == 'product-tab-1' %} product-tabs__title--active{% endif %}"
             >
               {{ collection_one.title }}
             </a>
           {% endif %}
           {% if section.settings.product_collection_two %}
             <div class="product-tabs__separator product-tabs__separator--vertical"></div>
+            {% assign collection = collections[section.settings.product_collection_two] %}
             <a
               href="#"
               id="product-tab-2"
-              class="product-tabs__title{% if section.settings.active_tab ==  'product-tab-2'%} product-tabs__title--active {% endif %}"
+              class="product-tabs__title{% if active_handle == collection.handle or active_tab == 'product-tab-2' %} product-tabs__title--active {% endif %}"
             >
               {{ collection_two.title }}
             </a>
@@ -91,9 +119,11 @@
               data-slick="slider"
             {% endunless %}
           >
-            {% if section.settings.product_collection_one and section.settings.active_tab == 'product-tab-1' %}
+            {% if active_handle %}
+              {% assign collection = collections[active_handle] %}
+            {% elsif section.settings.product_collection_one and active_tab == 'product-tab-1' %}
               {% assign collection = collections[section.settings.product_collection_one] %}
-            {% elsif section.settings.product_collection_two and section.settings.active_tab == 'product-tab-2' %}
+            {% elsif section.settings.product_collection_two and active_tab == 'product-tab-2' %}
               {% assign collection = collections[section.settings.product_collection_two] %}
             {% endif %}
             {% if collection %}
