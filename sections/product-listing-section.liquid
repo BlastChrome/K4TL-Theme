@@ -97,17 +97,7 @@
                 {% if section.settings.show_secondary_image == true %}
                   {% assign image_two = product.media[1] %}
                 {% endif %}
-                {%
-                  render 'product-card',
-                  product_form: product,
-                  product_varient_id: product.variants.first.id,
-                  product_card_image: product.featured_media | default: product.featured_image,
-                  product_card_image_two: image_two,
-                  product_card_category: product.type,
-                  product_card_title: product.title,
-                  product_card_price: product.price,
-                  product_card_url: product.url
-                %}
+                {% render 'product-card', product_form: product, product_varient_id: product.variants.first.id, product_card_image: product.featured_media, default: product.featured_image, product_card_image_two: image_two, product_card_category: product.type, product_card_title: product.title, product_card_price: product.price, product_card_url: product.url %}
               {% endfor %}
             {% endif %}
           </div>
@@ -357,3 +347,27 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+                      render 'product-card',
+                      product_form: product,
+                      product_varient_id: product.variants.first.id,
+                      product_card_image: product.featured_media | default: product.featured_image,
+                      product_card_image_two: image_two,
+                      product_card_category: product.type,
+                      product_card_title: product.title,
+                      product_card_price: product.price,
+                      product_card_url: product.url
+                    %}
+  to: "{% render 'product-card', product_form: product, product_varient_id: product.variants.first.id,
+    product_card_image: product.featured_media, default: product.featured_image, product_card_image_two:
+    image_two, product_card_category: product.type, product_card_title: product.title,
+    product_card_price: product.price, product_card_url: product.url %}"
+  position: 3928..4275
+{% endcomment %}
